@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('journal');
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const formattedDate = new Date(entry.data.date).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout
+  title={`${entry.data.title} — Varneet`}
+  description={entry.data.description || `Travel notes from ${entry.data.title}`}
+  image={entry.data.images?.[0]}
+  type="article"
+>
+  <div class="section-light">
+    <article class="content-narrow">
+      <div>
+        <a href="/journal" class="eyebrow" style="margin-bottom: 12px; display: inline-block;">
+          ← Back to Journeys
+        </a>
+        <h1 class="display-title" style="margin-top: 4px; margin-bottom: 8px;">
+          {entry.data.title}
+        </h1>
+        <span class="eyebrow" style="color: var(--text-light-muted);">
+          {formattedDate}{entry.data.location ? ` · ${entry.data.location}` : ''}
+        </span>
+      </div>
+
+      {entry.data.images && entry.data.images.length > 0 && (
+        <img
+          src={entry.data.images[0]}
+          alt={entry.data.title}
+          style="width: 100%; border-radius: 16px; margin: 28px 0; aspect-ratio: 16 / 10; object-fit: cover;"
+        />
+      )}
+
+      <div class="prose-block">
+        <Content />
+      </div>
+
+      {entry.data.images && entry.data.images.length > 1 && (
+        <div class="prose-gallery-grid" style="margin-top: 32px;">
+          {entry.data.images.slice(1).map((img, i) => (
+            <img src={img} alt={`${entry.data.title} gallery photo ${i + 2}`} loading="lazy" />
+          ))}
+        </div>
+      )}
+
+      <!-- Itinerary CTA Box -->
+      <div class="itinerary-cta-box">
+        <div class="itinerary-cta-header">
+          <span class="eyebrow" style="color: var(--accent-sage);">Field Itinerary Guide · ₹59</span>
+          <span class="badge-sage">Route Notes</span>
+        </div>
+        <h3>Want to walk this exact route?</h3>
+        <p>
+          I've compiled the complete day-by-day transit guide, local bus timings, homestay phone numbers, and offline trail markers for this journey for ₹59.
+        </p>
+        <div style="margin-top: 10px;">
+          <a
+            href="https://instagram.com/the_musafir_paaji"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-accent"
+          >
+            DM @the_musafir_paaji to get itinerary (₹59) →
+          </a>
+        </div>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

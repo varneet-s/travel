@@ -1,0 +1,112 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+}
+
+const {
+  title = "the_musafir_paaji — Slow Travel & Field Notes",
+  description = "Notes from the road — and the hostels that make it matter. By reKhoj (@the_musafir_paaji).",
+  image = "/images/bir/bir-hero.jpg",
+  type = "website",
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+const siteUrl = Astro.site ? Astro.site.origin : 'https://travel.varneet.in';
+const canonicalURL = new URL(currentPath, siteUrl).href;
+const ogImageURL = image.startsWith('http') ? image : new URL(image, siteUrl).href;
+const gaId = import.meta.env.PUBLIC_GA_ID || 'G-T0DVT2MZB2';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:site_name" content="the_musafir_paaji" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <!-- Google Fonts: Fraunces (Headings) + Source Sans 3 (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,400..800&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Google Analytics (GA4) -->
+    {gaId && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+        <script is:inline define:vars={{ gaId }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', gaId);
+        </script>
+      </>
+    )}
+  </head>
+  <body>
+    <!-- 3 Core Navigation Items: Journeys, Reading, About & Volunteer -->
+    <header class="nav-header">
+      <div class="content-wrap">
+        <nav class="nav-row">
+          <a href="/" class="site-brand">the_musafir_paaji</a>
+          <ul class="nav-menu">
+            <li>
+              <a href="/journal" class={currentPath.startsWith('/journal') ? 'active' : ''}>Journeys</a>
+            </li>
+            <li>
+              <a href="/reading" class={currentPath.startsWith('/reading') ? 'active' : ''}>Reading</a>
+            </li>
+            <li>
+              <a href="/about" class={currentPath === '/about' ? 'active' : ''}>About & Volunteer</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <!-- Editorial Footer (No email address) -->
+    <footer class="editorial-footer">
+      <div class="content-wrap">
+        <div class="footer-content-row">
+          <span class="footer-tagline">Slow routes. Useful stays. Open notebooks.</span>
+          <a
+            href="https://instagram.com/the_musafir_paaji"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-action"
+          >
+            DM @the_musafir_paaji →
+          </a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

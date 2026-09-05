@@ -1,0 +1,29 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  date: Date | string;
+  images: string[];
+}
+
+const { href, title, date, images } = Astro.props;
+
+const dateObj = new Date(date);
+const formattedDate = dateObj.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+---
+
+<a href={href} class="preview-card">
+  <div class="preview-grid-3">
+    {images.slice(0, 3).map((img, i) => (
+      <img src={img} alt={`${title} photo ${i + 1}`} loading="lazy" />
+    ))}
+  </div>
+  <div class="preview-meta">
+    <h3 class="preview-title">{title}</h3>
+    <span class="date-label">{formattedDate}</span>
+  </div>
+</a>

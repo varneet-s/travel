@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allEntries = await getCollection('journal');
+const sortedEntries = allEntries.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+---
+
+<BaseLayout
+  title="Journeys & Notes — Varneet"
+  description="Trip stories, high-altitude trail notes, and photographs from Himachal Pradesh."
+>
+  <div class="section-light">
+    <div class="content-narrow">
+      <div>
+        <span class="eyebrow">Trip Stories & Field Notes</span>
+        <h1 class="display-title" style="margin-top: 8px;">Journeys</h1>
+        <p style="margin-top: 12px; color: var(--text-light-secondary);">
+          Photo-led field archives from unhurried Himalayan routes and mountain valleys.
+        </p>
+      </div>
+
+      <div style="margin-top: 48px; display: flex; flex-direction: column; gap: 48px;">
+        {sortedEntries.map((entry) => {
+          const dateStr = new Date(entry.data.date).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+          });
+          return (
+            <a href={`/journal/${entry.id}`} class="preview-card-editorial">
+              <div class="preview-photos-3">
+                {entry.data.images.slice(0, 3).map((img, i) => (
+                  <img src={img} alt={`${entry.data.title} photo ${i + 1}`} loading="lazy" />
+                ))}
+              </div>
+              <div class="preview-meta-row">
+                <h3>{entry.data.title}</h3>
+                <span class="eyebrow" style="color: var(--text-light-muted);">{dateStr}</span>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

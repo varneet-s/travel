@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allEntries = await getCollection('reading');
+const sortedEntries = allEntries.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const currentlyReading = [
+  {
+    title: '1984',
+    author: 'George Orwell',
+    note: 'Reading for the 2nd time',
+    progress: 'Page 47 of 304 · 15%',
+    tag: 'Classic · Dystopia · Philosophy',
+  },
+  {
+    title: 'Men Without Women',
+    author: 'Haruki Murakami',
+    note: 'Short stories on solitude and longing',
+    progress: 'Page 55 of 228 · 24%',
+    tag: 'Literary · Contemporary',
+  },
+  {
+    title: 'What I Talk About When I Talk About Running',
+    author: 'Haruki Murakami',
+    note: 'Memoir on running, discipline, and writing',
+    progress: 'Currently reading',
+    tag: 'Memoir · Non-fiction',
+  },
+];
+---
+
+<BaseLayout
+  title="Reading Logs — the_musafir_paaji"
+  description="Books carried in the backpack, currently reading shelves, and Goodreads reflections."
+>
+  <div class="section-light">
+    <div class="content-narrow">
+      <div>
+        <span class="eyebrow">Goodreads Library & Backpack Books</span>
+        <h1 class="display-title" style="margin-top: 8px;">Reading</h1>
+        <p style="margin-top: 12px; color: var(--text-light-secondary);">
+          Books, memoirs, and field essays carried along mountain trails. 
+        </p>
+        <div style="margin-top: 10px;">
+          <a
+            href="https://www.goodreads.com/user/show/202026328-varneet-singh"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="accent-link"
+            style="font-size: 14px;"
+          >
+            Tracked live on Goodreads (389 books) ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Currently Reading Stack -->
+      <div style="margin-top: 48px;">
+        <span class="eyebrow" style="margin-bottom: 20px;">Currently Reading</span>
+
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          {currentlyReading.map((book) => (
+            <div style="background: #ffffff; border: 1px solid var(--border-on-light); border-radius: 16px; padding: 22px 24px; box-shadow: 0 10px 24px -10px rgba(15, 61, 48, 0.08);">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;">
+                <h3 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-light-primary);">
+                  {book.title}
+                </h3>
+                <span class="eyebrow" style="color: var(--text-light-muted);">{book.author}</span>
+              </div>
+              <p style="margin-top: 6px; font-size: 14px; color: var(--text-light-secondary);">
+                {book.note}
+              </p>
+              <div style="margin-top: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                <span style="font-size: 13px; font-weight: 500; color: #55756B;">
+                  {book.progress}
+                </span>
+                <span class="eyebrow" style="font-size: 10px; color: var(--text-light-muted);">
+                  {book.tag}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Monthly Reading Logs -->
+      <div style="margin-top: 64px;">
+        <span class="eyebrow" style="margin-bottom: 24px;">Monthly Archive Notes</span>
+
+        <div style="display: flex; flex-direction: column; gap: 40px;">
+          {sortedEntries.map((entry) => {
+            const dateStr = new Date(entry.data.date).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+            });
+            return (
+              <a href={`/reading/${entry.id}`} class="preview-card-editorial">
+                <div class="preview-photos-3">
+                  {entry.data.images.slice(0, 3).map((img, i) => (
+                    <img src={img} alt={`${entry.data.title} photo ${i + 1}`} loading="lazy" />
+                  ))}
+                </div>
+                <div class="preview-meta-row">
+                  <h3>{entry.data.title}</h3>
+                  <span class="eyebrow" style="color: var(--text-light-muted);">{dateStr}</span>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

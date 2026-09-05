@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="the_musafir_paaji — Travel, Work & The Long Way Home"
+  description="Notes from the road — and the hostels that make it matter. By reKhoj (@the_musafir_paaji)."
+>
+  <!-- 1. Hero Section (Dark Green #0F3D30) -->
+  <section class="section-dark" style="padding-top: 24px;">
+    <div class="content-wrap hero-wrap">
+      <div class="hero-text-block">
+        <span class="eyebrow">Travel, Work & The Long Way Home</span>
+        <h1 class="display-title">
+          Notes from the road — and the hostels that make it matter.
+        </h1>
+        <p class="hero-lead-text">
+          I’m reKhoj (@the_musafir_paaji) — a slow traveller, curious volunteer, and keeper of practical routes for anyone who wants to go farther without spending more.
+        </p>
+      </div>
+
+      <div class="hero-photo-frame">
+        <img
+          src="/images/bir/bir-hero.jpg"
+          alt="Mountain ridges and alpine mist in Himachal Pradesh"
+          class="hero-photo"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Volunteering / For Hostels Section (Cream #FBF7EE) -->
+  <section class="section-light">
+    <div class="content-wrap">
+      <div class="split-grid-2">
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <span class="eyebrow">For Hostels & Homestays</span>
+          <h2 class="section-title">
+            A guest’s-eye view, with hands-on help.
+          </h2>
+          <p>
+            I can help shape warm guest experiences, photograph the details that make your place memorable, write story-led social copy, and bring order to the everyday rhythm of a hostel.
+          </p>
+          <div style="margin-top: 8px;">
+            <a href="/about#volunteer" class="accent-link">
+              Read volunteering pitch →
+            </a>
+          </div>
+        </div>
+
+        <a href="/about#volunteer" class="volunteering-bento-card">
+          <div class="card-icon-wrap">
+            <!-- Clean SVG Book / Notebook Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
+              <path d="M6 6h10"></path>
+              <path d="M6 10h10"></path>
+            </svg>
+          </div>
+          <h3 class="card-title" style="color: var(--text-dark-primary);">
+            A useful pair of hands
+          </h3>
+          <p>
+            Guest-facing support · photography · copy & storytelling · local research
+          </p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Journeys & Affordable Itineraries Section (Dark Green #0F3D30) -->
+  <section class="section-dark">
+    <div class="content-wrap">
+      <div class="itinerary-section-header">
+        <div style="display: flex; flex-direction: column; gap: 12px; max-width: 620px;">
+          <span class="eyebrow">Journeys & Affordable Itineraries</span>
+          <h2 class="section-title">
+            Go slower. Spend less. See more.
+          </h2>
+          <p>
+            Photo-led place notes and full, practical itineraries made for a modest budget.
+          </p>
+        </div>
+        <div class="badge-sage">
+          Starting from ₹59
+        </div>
+      </div>
+
+      <!-- Featured Itinerary Bento Card (Cream Card) -->
+      <a href="/itineraries/parvati-grahan-trail" class="itinerary-bento-card">
+        <img
+          src="/images/shoja/shoja-1.jpg"
+          alt="Seraj Valley and misty cedar woods"
+          class="itinerary-card-img"
+          loading="lazy"
+        />
+        <div class="itinerary-card-info">
+          <span class="eyebrow">Seraj Valley, Himachal Pradesh</span>
+          <h3>The quiet side of the Himalayas</h3>
+          <p>
+            Five unhurried days between cedar ridges, morning temple bells, and a tiny mountain homestay.
+          </p>
+          <span class="itinerary-card-link">
+            Full itinerary · ₹59 →
+          </span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- 4. Currently Reading Section (Cream #FBF7EE) -->
+  <section class="section-light">
+    <div class="content-wrap">
+      <div class="reading-split-grid">
+        <!-- Book Cover Bento Card (Dark Green) -->
+        <a href="/reading" class="book-cover-bento">
+          <div class="card-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
+              <path d="M6 6h10"></path>
+            </svg>
+          </div>
+          <div>
+            <span class="eyebrow" style="color: var(--accent-sage); margin-bottom: 8px;">George Orwell</span>
+            <div class="book-cover-title">
+              1984
+            </div>
+          </div>
+        </a>
+
+        <!-- Reading Description & Status from Goodreads -->
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <span class="eyebrow">Currently Reading · Goodreads</span>
+          <h2 class="section-title">
+            1984 by George Orwell
+          </h2>
+          <p>
+            Reading for the second time. In an age of endless feeds and digital noise, Orwell’s examination of language, memory, and truth feels sharper with every reread.
+          </p>
+          <div class="reading-status-pill">
+            Page 47 of 304 · 15% through · Also reading Haruki Murakami’s <em>Men Without Women</em>
+          </div>
+          <div style="margin-top: 8px; display: flex; gap: 18px; flex-wrap: wrap; align-items: center;">
+            <a href="/reading" class="accent-link">
+              Explore reading logs →
+            </a>
+            <a
+              href="https://www.goodreads.com/user/show/202026328-varneet-singh"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="accent-link"
+              style="color: var(--text-light-muted); font-size: 14px;"
+            >
+              Goodreads profile (389 books) ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { itineraries } from '../../data/itineraries';
+
+export function getStaticPaths() {
+  return itineraries.map((itinerary) => ({
+    params: { slug: itinerary.slug },
+    props: { itinerary },
+  }));
+}
+
+const { itinerary } = Astro.props;
+---
+
+<BaseLayout
+  title={`${itinerary.title} — Varneet`}
+  description={itinerary.overview}
+  type="article"
+>
+  <div class="section-light">
+    <article class="content-narrow">
+      <div>
+        <a href="/itineraries" class="eyebrow" style="margin-bottom: 12px; display: inline-block;">
+          ← Back to Itineraries
+        </a>
+        <h1 class="display-title" style="margin-top: 4px; margin-bottom: 8px;">
+          {itinerary.title}
+        </h1>
+        <span class="eyebrow" style="color: var(--text-light-muted);">
+          {itinerary.region} · {itinerary.duration} · {itinerary.price}
+        </span>
+      </div>
+
+      <div class="prose-block" style="margin-top: 24px;">
+        <p>{itinerary.overview}</p>
+
+        <div style="margin-top: 16px;">
+          <span class="eyebrow" style="margin-bottom: 12px;">Route Highlights</span>
+          <ul style="list-style-position: inside; padding-left: 4px; display: flex; flex-direction: column; gap: 8px;">
+            {itinerary.highlights.map((highlight) => (
+              <li>{highlight}</li>
+            ))}
+          </ul>
+        </div>
+
+        <hr style="border: none; border-top: 1px solid var(--border-on-light); margin: 32px 0;" />
+
+        <div>
+          <span class="eyebrow" style="margin-bottom: 16px;">Day-by-Day Breakdown</span>
+          <div style="display: flex; flex-direction: column; gap: 24px;">
+            {itinerary.days.map((item) => (
+              <div style="display: flex; flex-direction: column; gap: 4px;">
+                <span class="eyebrow" style="color: var(--text-light-muted);">{item.day}</span>
+                <h3 style="font-size: 1.25rem;">{item.title}</h3>
+                <p style="margin-top: 4px;">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <hr style="border: none; border-top: 1px solid var(--border-on-light); margin: 32px 0;" />
+
+        <div>
+          <span class="eyebrow" style="margin-bottom: 12px;">Practical Field Notes</span>
+          <ul style="list-style-position: inside; padding-left: 4px; display: flex; flex-direction: column; gap: 8px;">
+            {itinerary.practicalNotes.map((note) => (
+              <li>{note}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div style="margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border-on-light);">
+          <p style="font-size: 15px; color: var(--text-light-muted);">
+            To request full offline GPX trail markers and homestay contact list for this route, reach out at <a href="/contact" class="accent-link">contact</a> or on Instagram <a href="https://instagram.com/the_musafir_paaji" target="_blank" rel="noopener noreferrer" class="accent-link">@the_musafir_paaji</a>.
+          </p>
+        </div>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
