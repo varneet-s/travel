@@ -1,0 +1,656 @@
+---
+// Interactive World & Subcontinent Journey Map
+// Plots all 14 authentic journeys taken by Varneet (2023–2026)
+---
+
+<div class="expedition-map-section">
+  <div class="content-wrap">
+    <!-- Header -->
+    <div class="reveal-on-scroll" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
+      <div>
+        <span class="eyebrow" style="color: var(--accent-sage);">Expedition Atlas · 2023–2026</span>
+        <h2 class="section-title" style="margin-top: 4px; color: #ffffff;">
+          Where the road has led so far.
+        </h2>
+        <p style="color: var(--text-dark-secondary); font-size: 15px; margin-top: 6px; max-width: 600px; line-height: 1.6;">
+          14 journeys across coastal cliffs, high glaciated passes, river ghats, and desert highways. Every pin represents a trail walked on foot or traversed by local transit.
+        </p>
+      </div>
+
+      <!-- Quick Stats Ticker -->
+      <div class="map-stats-ticker">
+        <div class="stat-pill">
+          <span class="stat-num">14</span>
+          <span class="stat-label">Journeys</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-num">4</span>
+          <span class="stat-label">States</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-num">3,450m</span>
+          <span class="stat-label">Max Alt</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-num">3 Years</span>
+          <span class="stat-label">On Road</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- View & Region Control Filter Pills -->
+    <div class="map-controls-row reveal-on-scroll stagger-1">
+      <div class="map-filter-group" id="mapFilterPills">
+        <button class="map-pill-btn active" data-view="world" data-lat="24" data-lng="55" data-zoom="3">
+          🌍 World View
+        </button>
+        <button class="map-pill-btn" data-view="india" data-lat="25" data-lng="78" data-zoom="5">
+          🇮🇳 Subcontinent
+        </button>
+        <button class="map-pill-btn" data-view="himachal" data-lat="31.85" data-lng="77.3" data-zoom="8">
+          🏔️ Himachal Valleys (7)
+        </button>
+        <button class="map-pill-btn" data-view="rajasthan" data-lat="26.25" data-lng="72.8" data-zoom="7">
+          🏜️ Rajasthan Desert (1)
+        </button>
+        <button class="map-pill-btn" data-view="ganga" data-lat="26.1" data-lng="81.9" data-zoom="7">
+          🕌 Ganga & Awadh (2)
+        </button>
+        <button class="map-pill-btn" data-view="gokarna" data-lat="14.54" data-lng="74.32" data-zoom="9">
+          🌊 Karnataka Coast (1)
+        </button>
+      </div>
+      <div class="map-instruction-tag">
+        <span>Click any pin to inspect field notes</span>
+      </div>
+    </div>
+
+    <!-- Map Stage & Container -->
+    <div class="map-wrapper reveal-on-scroll stagger-2">
+      <!-- Leaflet CSS & JS via CDN -->
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+      <div id="travelWorldMap" class="leaflet-travel-map"></div>
+
+      <!-- Active Location Field Dispatch Bar -->
+      <div id="activePinCard" class="active-pin-card" style="display: none;">
+        <div class="pin-card-img-wrap">
+          <img id="pinCardImg" src="" alt="" />
+        </div>
+        <div class="pin-card-content">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px;">
+            <span id="pinCardDates" class="eyebrow" style="color: var(--accent-sage); font-size: 10.5px;"></span>
+            <span id="pinCardRole" class="badge-role"></span>
+          </div>
+          <h4 id="pinCardTitle" style="font-family: var(--font-serif); font-size: 1.15rem; color: #ffffff; margin: 4px 0 6px;"></h4>
+          <p id="pinCardDesc" style="font-size: 13px; color: var(--text-dark-secondary); line-height: 1.45; margin-bottom: 10px;"></p>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span id="pinCardRegion" style="font-size: 11.5px; color: var(--text-dark-muted);"></span>
+            <a id="pinCardLink" href="#" class="accent-link" style="color: #ffffff; font-size: 13px; font-weight: 600;">
+              Read Dispatch <span class="arrow-spring">→</span>
+            </a>
+          </div>
+        </div>
+        <button id="closePinCard" class="btn-close-pin" aria-label="Close field card">✕</button>
+      </div>
+    </div>
+
+    <!-- Footnote / Route Legend -->
+    <div class="reveal-on-scroll stagger-3" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 14px; padding: 0 4px;">
+      <div style="display: flex; gap: 18px; align-items: center; font-size: 12.5px; color: var(--text-dark-muted);">
+        <span style="display: flex; align-items: center; gap: 6px;">
+          <span style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent-terracotta); display: inline-block;"></span>
+          Solo / Friend Explorations
+        </span>
+        <span style="display: flex; align-items: center; gap: 6px;">
+          <span style="width: 10px; height: 10px; border-radius: 50%; background: #E8A850; display: inline-block;"></span>
+          Trip Leader & Raw Diaries
+        </span>
+      </div>
+      <a href="/journal" class="accent-link" style="color: var(--accent-sage); font-size: 13.5px; font-weight: 600;">
+        Browse Complete 14-Trip Archive <span class="arrow-spring">→</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+<script is:inline>
+  // Complete Dataset of Varneet's 14 Journeys with Precise Coordinates
+  const journeyPins = [
+    {
+      id: 1,
+      title: "Gokarna: The First Journey",
+      region: "Karnataka Coast",
+      dates: "January 2023",
+      role: "Participant",
+      groupType: "With Raw Diaries",
+      category: "gokarna",
+      lat: 14.5479,
+      lng: 74.3188,
+      cover: "/images/journeys/gokarna/gokarna-1.jpg",
+      slug: "gokarna-2023",
+      summary: "Where the road began. Wandering along Kudle beach and Om beach cliff paths and ocean sunsets."
+    },
+    {
+      id: 2,
+      title: "Bir Billing: First Taste of Himachal",
+      region: "Kangra Valley, HP",
+      dates: "April 2023 & Jan 2026",
+      role: "Participant & Milestone",
+      groupType: "With Raw Diaries",
+      category: "himachal",
+      lat: 32.0469,
+      lng: 76.7214,
+      cover: "/images/bir/bir-hero.jpg",
+      slug: "bir-billing",
+      summary: "First time entering the Dhauladhar foothills. Monasteries in the Tibetan colony and sunset at Billing landing site."
+    },
+    {
+      id: 3,
+      title: "Chitkul: The Last Village of Kinnaur",
+      region: "Baspa Valley, Kinnaur, HP",
+      dates: "June 2023",
+      role: "Participant",
+      groupType: "With Raw Diaries",
+      category: "himachal",
+      lat: 31.3503,
+      lng: 78.4357,
+      cover: "/images/journeys/chitkul/chitkul-3.jpg",
+      slug: "chitkul-kinnaur",
+      summary: "Last inhabited Indian village near the border. Turquoise glacier melt and ancient Kathkuni Mathi temple at 3,450m."
+    },
+    {
+      id: 4,
+      title: "Jibhi: Seraj Valley Basecamp",
+      region: "Seraj Valley, HP",
+      dates: "Jul 2023 · Jun 2024 · Dec 2024",
+      role: "Trip Leader & OG Gang",
+      groupType: "With Raw Diaries",
+      category: "himachal",
+      lat: 31.6033,
+      lng: 77.3486,
+      cover: "/images/journeys/jibhi-leader/jibhi-leader-1.jpg",
+      slug: "jibhi-trip-leader",
+      summary: "Three distinct seasons in Jibhi: monsoon pine woods, leading group expeditions, and freezing winter NYE reunions."
+    },
+    {
+      id: 5,
+      title: "Manali & Sissu: Through the Snow Tunnel",
+      region: "Kullu & Lahaul Valley, HP",
+      dates: "January 2024 & March 2024",
+      role: "Friend Road Trip & Spring Thaw",
+      groupType: "With Friends",
+      category: "himachal",
+      lat: 32.2432,
+      lng: 77.1892,
+      cover: "/images/journeys/manali-sissu/manali-sissu-2.jpg",
+      slug: "manali-sissu-winter",
+      summary: "Deep winter journey through the Atal Tunnel into glaciated Sissu, and unhurried spring thaw days in Old Manali."
+    },
+    {
+      id: 6,
+      title: "Banaras: River Ghats & Dawn Light",
+      region: "Varanasi, Uttar Pradesh",
+      dates: "16–20 February 2024",
+      role: "Participant",
+      groupType: "With Raw Diaries",
+      category: "ganga",
+      lat: 25.3176,
+      lng: 82.9739,
+      cover: "/images/journeys/banaras/banaras-3.jpg",
+      slug: "banaras-ghats",
+      summary: "Rowing past stone ramparts at 5:30 AM, labyrinthine silk alleys, and floating diyas on the eternal river."
+    },
+    {
+      id: 7,
+      title: "Lucknow: Solo in the City of Nawabs",
+      region: "Lucknow, Uttar Pradesh",
+      dates: "21–22 February 2024",
+      role: "Solo Explorer",
+      groupType: "Solo",
+      category: "ganga",
+      lat: 26.8467,
+      lng: 80.9462,
+      cover: "/images/journeys/lucknow/lucknow-1.jpg",
+      slug: "lucknow-heritage",
+      summary: "Two solitary days wandering past the grand arches of Rumi Darwaza and the sunlit stone terrace of Bara Imambara."
+    },
+    {
+      id: 9,
+      title: "Shangarh: Secret Alpine Meadow",
+      region: "Sainj Valley, HP",
+      dates: "11–13 May 2024",
+      role: "Participant",
+      groupType: "With Raw Diaries",
+      category: "himachal",
+      lat: 31.7686,
+      lng: 77.3789,
+      cover: "/images/shangarh/shangarh-1.jpg",
+      slug: "shangarh-meadows",
+      summary: "A hidden alpine bowl in the Great Himalayan National Park fringe. Unhurried days beside the Sangchul Mahadev temple tower."
+    },
+    {
+      id: 12,
+      title: "Shojha: Solitude at Jalori Pass",
+      region: "Seraj Valley, HP",
+      dates: "11–14 May 2025",
+      role: "Solo Explorer",
+      groupType: "Solo",
+      category: "himachal",
+      lat: 31.5356,
+      lng: 77.3992,
+      cover: "/images/shoja/shoja-4.jpg",
+      slug: "shoja-jalori",
+      summary: "Solo retreat into high deodar heights. Walking the windy ridge of Jalori Pass (3,120m) to sacred Serolsar Lake alone with a book."
+    },
+    {
+      id: 13,
+      title: "Rajasthan: A Two-Week Desert Traverse",
+      region: "Jodhpur, Jaisalmer & Udaipur",
+      dates: "November 2025",
+      role: "Friend Road Trip",
+      groupType: "With Friends",
+      category: "rajasthan",
+      lat: 26.2389,
+      lng: 73.0243,
+      cover: "/images/journeys/rajasthan/rajasthan-1.jpg",
+      slug: "rajasthan-roadtrip",
+      summary: "14 unhurried days across desert highways with two close friends. Golden sandstone fort ramparts and campfires under Thar stars."
+    }
+  ];
+
+  function initMap() {
+    const mapElement = document.getElementById('travelWorldMap');
+    if (!mapElement || typeof L === 'undefined') return;
+
+    // Initialize Map with dark custom tiles (CartoDB Dark Matter with pine tone overlay)
+    const map = L.map('travelWorldMap', {
+      center: [24, 60],
+      zoom: 3,
+      minZoom: 2,
+      maxZoom: 13,
+      scrollWheelZoom: false, // Prevents intercepting page scroll
+      zoomControl: true,
+      attributionControl: false
+    });
+
+    // Clean, public OpenStreetMap tiles without watermarks or API keys
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    // Custom Glowing Beacon Marker
+    function createCustomMarker(pin) {
+      const isLeader = pin.role.includes('Leader');
+      const coreColor = isLeader ? '#E8A850' : '#C85A32';
+      const pingColor = isLeader ? 'rgba(232, 168, 80, 0.45)' : 'rgba(200, 90, 50, 0.45)';
+
+      const html = `
+        <div class="travel-map-marker" data-id="${pin.id}">
+          <div class="marker-ping" style="background: ${pingColor};"></div>
+          <div class="marker-core" style="background: ${coreColor};"></div>
+          <div class="marker-label">${pin.title.split(':')[0]}</div>
+        </div>
+      `;
+
+      return L.divIcon({
+        className: 'custom-leaflet-div-icon',
+        html: html,
+        iconSize: [20, 20],
+        iconAnchor: [10, 10]
+      });
+    }
+
+    const markers = [];
+
+    // UI elements
+    const activePinCard = document.getElementById('activePinCard');
+    const pinCardImg = document.getElementById('pinCardImg');
+    const pinCardDates = document.getElementById('pinCardDates');
+    const pinCardRole = document.getElementById('pinCardRole');
+    const pinCardTitle = document.getElementById('pinCardTitle');
+    const pinCardDesc = document.getElementById('pinCardDesc');
+    const pinCardRegion = document.getElementById('pinCardRegion');
+    const pinCardLink = document.getElementById('pinCardLink');
+    const closePinCard = document.getElementById('closePinCard');
+
+    function showPinDetails(pin) {
+      if (!activePinCard) return;
+      pinCardImg.src = pin.cover;
+      pinCardImg.alt = pin.title;
+      pinCardDates.innerText = pin.dates;
+      pinCardRole.innerText = pin.role;
+      pinCardTitle.innerText = pin.title;
+      pinCardDesc.innerText = pin.summary;
+      pinCardRegion.innerText = `📍 ${pin.region}`;
+      pinCardLink.href = `/journal/${pin.slug}`;
+      activePinCard.style.display = 'flex';
+      activePinCard.classList.add('fade-enter');
+    }
+
+    if (closePinCard) {
+      closePinCard.addEventListener('click', () => {
+        activePinCard.style.display = 'none';
+      });
+    }
+
+    // Add Markers to Map
+    journeyPins.forEach((pin) => {
+      const marker = L.marker([pin.lat, pin.lng], {
+        icon: createCustomMarker(pin)
+      }).addTo(map);
+
+      marker.on('click', () => {
+        map.flyTo([pin.lat, pin.lng], Math.max(map.getZoom(), 7), { duration: 1.2 });
+        showPinDetails(pin);
+      });
+
+      markers.push({ pin, marker });
+    });
+
+    // Handle Region & View Filter Pills
+    const filterButtons = document.querySelectorAll('.map-pill-btn');
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const lat = parseFloat(btn.getAttribute('data-lat'));
+        const lng = parseFloat(btn.getAttribute('data-lng'));
+        const zoom = parseInt(btn.getAttribute('data-zoom'), 10);
+        const view = btn.getAttribute('data-view');
+
+        map.flyTo([lat, lng], zoom, {
+          duration: 1.4,
+          easeLinearity: 0.25
+        });
+
+        // If specific point, auto-open nearest pin
+        if (view === 'gokarna' || view === 'rajasthan') {
+          const match = journeyPins.find(p => p.category === view);
+          if (match) showPinDetails(match);
+        }
+      });
+    });
+  }
+
+  // Load Leaflet map when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMap);
+  } else {
+    initMap();
+  }
+</script>
+
+<style>
+  .expedition-map-section {
+    background: #092019;
+    padding: 72px 0 84px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .map-stats-ticker {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .stat-pill {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 8px 16px;
+    display: flex;
+    flex-direction: column;
+    min-width: 80px;
+  }
+
+  .stat-num {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent-terracotta);
+    line-height: 1.1;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-dark-muted);
+    margin-top: 2px;
+  }
+
+  .map-controls-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .map-filter-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .map-pill-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-dark-secondary);
+    font-size: 12.5px;
+    font-weight: 500;
+    padding: 7px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: var(--font-sans);
+  }
+
+  .map-pill-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .map-pill-btn.active {
+    background: var(--accent-terracotta);
+    color: #ffffff;
+    border-color: var(--accent-terracotta);
+    box-shadow: 0 4px 14px rgba(200, 90, 50, 0.35);
+  }
+
+  .map-instruction-tag {
+    font-size: 11.5px;
+    color: var(--text-dark-muted);
+    letter-spacing: 0.04em;
+  }
+
+  .map-wrapper {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.5);
+    background: #0b1f18;
+  }
+
+  .leaflet-travel-map {
+    width: 100%;
+    height: 520px;
+    background: #0b1f18;
+    z-index: 1;
+  }
+
+  :global(.leaflet-tile-pane) {
+    filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
+  }
+
+  /* Custom Leaflet Map Pin with Tubik Radar Ping */
+  :global(.custom-leaflet-div-icon) {
+    background: transparent !important;
+    border: none !important;
+  }
+
+  :global(.travel-map-marker) {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  :global(.marker-core) {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  :global(.travel-map-marker:hover .marker-core) {
+    transform: scale(1.35);
+  }
+
+  :global(.marker-ping) {
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    animation: markerPulse 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    z-index: 1;
+  }
+
+  :global(.marker-label) {
+    position: absolute;
+    left: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(9, 32, 25, 0.85);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0.85;
+    transition: all 0.2s ease;
+  }
+
+  :global(.travel-map-marker:hover .marker-label) {
+    opacity: 1;
+    border-color: var(--accent-terracotta);
+    background: rgba(9, 32, 25, 0.95);
+  }
+
+  @keyframes markerPulse {
+    0% {
+      transform: scale(0.6);
+      opacity: 0.9;
+    }
+    100% {
+      transform: scale(2.6);
+      opacity: 0;
+    }
+  }
+
+  /* Active Pin Detail Card (Floating in Bottom Right) */
+  .active-pin-card {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    max-width: 380px;
+    background: rgba(14, 46, 37, 0.94);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 14px;
+    padding: 16px;
+    display: flex;
+    gap: 14px;
+    z-index: 1000;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+    animation: slideUpFade 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .pin-card-img-wrap {
+    width: 90px;
+    height: 90px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .pin-card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .pin-card-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .badge-role {
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--text-dark-muted);
+  }
+
+  .btn-close-pin {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: var(--text-dark-muted);
+    font-size: 14px;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .btn-close-pin:hover {
+    color: #ffffff;
+  }
+
+  @keyframes slideUpFade {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .leaflet-travel-map {
+      height: 420px;
+    }
+    .active-pin-card {
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      max-width: none;
+    }
+  }
+</style>
