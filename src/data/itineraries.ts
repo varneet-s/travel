@@ -4,6 +4,7 @@ export interface Itinerary {
   duration: string;
   region: string;
   price: string;
+  image: string;
   overview: string;
   highlights: string[];
   days: {
@@ -21,6 +22,7 @@ export const itineraries: Itinerary[] = [
     duration: '9 Days',
     region: 'Himachal Pradesh',
     price: '₹59',
+    image: '/images/bir/bir-hero.jpg',
     overview: 'A balanced acclimatization route starting from Shimla through Kinnaur, entering Spiti via Tabo and Kaza, and exiting over Kunzum Pass to Manali.',
     highlights: [
       'Gradual elevation gain to avoid acute mountain sickness (AMS)',
@@ -66,6 +68,7 @@ export const itineraries: Itinerary[] = [
     duration: '5 Days',
     region: 'Himachal Pradesh',
     price: '₹59',
+    image: '/images/shoja/shoja-1.jpg',
     overview: 'A quieter alternative to the crowded party strips of Parvati. Focuses on trail walks, pine forests, and village homestays.',
     highlights: [
       'Forest walk from Kasol to the isolated village of Grahan',
@@ -106,6 +109,7 @@ export const itineraries: Itinerary[] = [
     duration: '4 Days',
     region: 'Himachal Pradesh',
     price: '₹59',
+    image: '/images/shangarh/shangarh-1.jpg',
     overview: 'Clean riverbanks, trout streams, and day hikes along the buffer zone of the UNESCO World Heritage Great Himalayan National Park.',
     highlights: [
       'Pekhri to Ropa forest day hike',

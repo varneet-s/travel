@@ -10,71 +10,244 @@ export function getStaticPaths() {
 }
 
 const { itinerary } = Astro.props;
+
+// Schema.org Structured Data (TouristTrip + Product / Offer)
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'TouristTrip',
+    'name': itinerary.title,
+    'description': itinerary.overview,
+    'touristType': ['Backpacker', 'Budget Traveler', 'Solo Traveler'],
+    'offers': {
+      '@type': 'Offer',
+      'price': '59',
+      'priceCurrency': 'INR',
+      'availability': 'https://schema.org/InStock',
+      'url': `https://travel.varneet.in/itineraries/${itinerary.slug}`,
+      'category': 'Travel Guide & GPX Pack'
+    },
+    'itinerary': {
+      '@type': 'ItemList',
+      'numberOfItems': itinerary.days.length,
+      'itemListElement': itinerary.days.map((item, index) => ({
+        '@type': 'ListItem',
+        'position': index + 1,
+        'name': `${item.day}: ${item.title}`,
+        'description': item.description,
+      })),
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    'name': `${itinerary.title} — Offline Field Guide & GPX`,
+    'image': `https://travel.varneet.in${itinerary.image}`,
+    'description': `Complete budget route notes, offline GPX trail markers, local bus timetables, and vetted homestay contacts for ${itinerary.title}.`,
+    'offers': {
+      '@type': 'Offer',
+      'price': '59',
+      'priceCurrency': 'INR',
+      'priceValidUntil': '2026-12-31',
+      'availability': 'https://schema.org/InStock',
+      'url': `https://travel.varneet.in/itineraries/${itinerary.slug}`,
+      'seller': {
+        '@type': 'Person',
+        'name': 'Varneet Singh (@the_musafir_paaji)',
+      },
+    },
+  }
+];
+
+const igCheckoutUrl = `https://ig.me/m/the_musafir_paaji?text=${encodeURIComponent(`Hey Varneet, I want to get the ₹59 ${itinerary.title} field guide (offline GPX + homestay contacts)!`)}`;
+const upiPayUrl = `upi://pay?pa=varneet.travel@upi&pn=Varneet%20Singh&am=59&cu=INR&tn=${encodeURIComponent(`${itinerary.slug} guide`)}`;
+
+// Other itineraries to cross-recommend
+const otherItineraries = itineraries.filter((item) => item.slug !== itinerary.slug);
 ---
 
 <BaseLayout
-  title={`${itinerary.title} — Varneet`}
-  description={itinerary.overview}
+  title={`${itinerary.title} (${itinerary.duration}) — ₹59 Field Guide`}
+  description={`Full route breakdown: ${itinerary.overview} Includes offline GPX markers and verified homestay contacts.`}
+  image={itinerary.image}
   type="article"
+  jsonLd={jsonLd}
 >
   <div class="section-light">
     <article class="content-narrow">
       <div>
-        <a href="/itineraries" class="eyebrow" style="margin-bottom: 12px; display: inline-block;">
+        <a href="/itineraries" class="eyebrow hero-enter hero-delay-1" style="margin-bottom: 12px; display: inline-block;">
           ← Back to Itineraries
         </a>
-        <h1 class="display-title" style="margin-top: 4px; margin-bottom: 8px;">
+        <h1 class="display-title hero-enter hero-delay-2" style="margin-top: 4px; margin-bottom: 8px;">
           {itinerary.title}
         </h1>
-        <span class="eyebrow" style="color: var(--text-light-muted);">
-          {itinerary.region} · {itinerary.duration} · {itinerary.price}
-        </span>
+        <div class="hero-enter hero-delay-3" style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 6px;">
+          <span class="eyebrow" style="color: var(--text-light-muted);">
+            {itinerary.region} · {itinerary.duration}
+          </span>
+          <span class="badge-sage" style="font-size: 11px; padding: 3px 10px;">
+            Field Guide {itinerary.price}
+          </span>
+        </div>
       </div>
 
-      <div class="prose-block" style="margin-top: 24px;">
-        <p>{itinerary.overview}</p>
+      <!-- Route Hero Banner -->
+      <div class="hero-enter hero-delay-3" style="overflow: hidden; border-radius: 16px; margin: 28px 0; box-shadow: 0 16px 36px -12px rgba(15, 61, 48, 0.2);">
+        <img
+          src={itinerary.image}
+          alt={itinerary.title}
+          class="hero-photo-ambient"
+          style="width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block;"
+        />
+      </div>
 
-        <div style="margin-top: 16px;">
+      <div class="prose-block reveal-on-scroll" style="margin-top: 24px;">
+        <p style="font-size: 1.15rem; line-height: 1.6; color: var(--text-light-primary); font-weight: 400;">
+          {itinerary.overview}
+        </p>
+
+        <!-- Instant Checkout & Unlock Banner (Active Buy Flow) -->
+        <div class="itinerary-cta-box" style="margin: 36px 0; background: var(--bg-dark); color: var(--text-dark-primary); border-radius: 16px; padding: 28px; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 14px 32px -8px rgba(14, 46, 37, 0.25);">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+            <span class="eyebrow" style="color: var(--accent-sage);">Instant Field Pack · {itinerary.price}</span>
+            <span style="font-size: 12px; color: var(--text-dark-secondary); background: rgba(255,255,255,0.08); padding: 2px 8px; border-radius: 4px;">
+              Delivered within minutes
+            </span>
+          </div>
+
+          <h3 style="font-family: var(--font-serif); font-size: 1.45rem; color: #ffffff; margin-bottom: 8px;">
+            Unlock Offline GPX + Local Homestay Direct Contacts
+          </h3>
+
+          <p style="font-size: 14.5px; color: var(--text-dark-secondary); margin-bottom: 18px; line-height: 1.55;">
+            Stop overpaying agents or getting stranded without bus schedules. Get the exact field notes I use on this route:
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-bottom: 24px;">
+            <div style="background: rgba(255,255,255,0.05); padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+              <span style="font-size: 13.5px; color: var(--text-dark-primary); font-weight: 500;">📍 Offline GPX Trail & Waypoints</span>
+              <p style="font-size: 12px; color: var(--text-dark-muted); margin-top: 2px;">Works offline in Gaia GPS / OsmAnd / Google Earth</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.05); padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+              <span style="font-size: 13.5px; color: var(--text-dark-primary); font-weight: 500;">🚌 Local Bus & Shared Sumo Timings</span>
+              <p style="font-size: 12px; color: var(--text-dark-muted); margin-top: 2px;">Exact departure stands, timings & fair rates</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.05); padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+              <span style="font-size: 13.5px; color: var(--text-dark-primary); font-weight: 500;">🏡 Vetted Homestay Direct Contacts</span>
+              <p style="font-size: 12px; color: var(--text-dark-muted); margin-top: 2px;">Direct phone numbers, no commission markups</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.05); padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+              <span style="font-size: 13.5px; color: var(--text-dark-primary); font-weight: 500;">⚡ Network & Cash Advisories</span>
+              <p style="font-size: 12px; color: var(--text-dark-muted); margin-top: 2px;">ATM locations and dead-zone warnings</p>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+            <a
+              href={igCheckoutUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-accent"
+              style="padding: 12px 24px; font-size: 15px;"
+            >
+              Get Itinerary on Instagram DM (₹59) <span class="arrow-spring">→</span>
+            </a>
+            <a
+              href={upiPayUrl}
+              class="btn-accent"
+              style="background: rgba(255,255,255,0.12); color: #ffffff; border: 1px solid rgba(255,255,255,0.2); padding: 12px 20px; font-size: 14px;"
+            >
+              Pay ₹59 via UPI App
+            </a>
+          </div>
+          <span style="display: block; font-size: 12px; color: var(--text-dark-muted); margin-top: 10px;">
+            UPI ID: <code style="color: var(--accent-sage); background: rgba(0,0,0,0.25); padding: 2px 6px; border-radius: 4px;">the_musafir_paaji@upi</code> · Instant confirmation via DM.
+          </span>
+        </div>
+
+        <div style="margin-top: 32px;">
           <span class="eyebrow" style="margin-bottom: 12px;">Route Highlights</span>
-          <ul style="list-style-position: inside; padding-left: 4px; display: flex; flex-direction: column; gap: 8px;">
+          <ul style="list-style-position: inside; padding-left: 4px; display: flex; flex-direction: column; gap: 10px;">
             {itinerary.highlights.map((highlight) => (
-              <li>{highlight}</li>
+              <li style="font-size: 16px; color: var(--text-light-secondary);">{highlight}</li>
             ))}
           </ul>
         </div>
 
-        <hr style="border: none; border-top: 1px solid var(--border-on-light); margin: 32px 0;" />
+        <hr style="border: none; border-top: 1px solid var(--border-on-light); margin: 36px 0;" />
 
         <div>
-          <span class="eyebrow" style="margin-bottom: 16px;">Day-by-Day Breakdown</span>
-          <div style="display: flex; flex-direction: column; gap: 24px;">
+          <span class="eyebrow" style="margin-bottom: 18px;">Day-by-Day Route Breakdown</span>
+          <div style="display: flex; flex-direction: column; gap: 28px;">
             {itinerary.days.map((item) => (
-              <div style="display: flex; flex-direction: column; gap: 4px;">
-                <span class="eyebrow" style="color: var(--text-light-muted);">{item.day}</span>
-                <h3 style="font-size: 1.25rem;">{item.title}</h3>
-                <p style="margin-top: 4px;">{item.description}</p>
+              <div style="display: flex; flex-direction: column; gap: 6px; background: #ffffff; padding: 20px 24px; border-radius: 12px; border: 1px solid var(--border-on-light);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                  <span class="eyebrow" style="color: var(--accent-terracotta);">{item.day}</span>
+                </div>
+                <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--text-light-primary); margin: 2px 0;">{item.title}</h3>
+                <p style="margin-top: 4px; font-size: 15px; color: var(--text-light-secondary); line-height: 1.6;">{item.description}</p>
               </div>
             ))}
           </div>
         </div>
 
-        <hr style="border: none; border-top: 1px solid var(--border-on-light); margin: 32px 0;" />
+        <hr style="border: none; border-top: 1px solid var(--border-on-light); margin: 36px 0;" />
 
         <div>
-          <span class="eyebrow" style="margin-bottom: 12px;">Practical Field Notes</span>
-          <ul style="list-style-position: inside; padding-left: 4px; display: flex; flex-direction: column; gap: 8px;">
+          <span class="eyebrow" style="margin-bottom: 14px;">Practical Field Notes</span>
+          <ul style="list-style-position: inside; padding-left: 4px; display: flex; flex-direction: column; gap: 10px;">
             {itinerary.practicalNotes.map((note) => (
-              <li>{note}</li>
+              <li style="font-size: 15.5px; color: var(--text-light-secondary);">{note}</li>
             ))}
           </ul>
         </div>
 
-        <div style="margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border-on-light);">
-          <p style="font-size: 15px; color: var(--text-light-muted);">
-            To request full offline GPX trail markers and homestay contact list for this route, reach out at <a href="/contact" class="accent-link">contact</a> or on Instagram <a href="https://instagram.com/the_musafir_paaji" target="_blank" rel="noopener noreferrer" class="accent-link">@the_musafir_paaji</a>.
+        <!-- Second Buy Trigger at Bottom -->
+        <div style="margin-top: 48px; padding: 28px; background: #ffffff; border: 1px solid var(--border-on-light); border-radius: 14px; text-align: center;">
+          <h3 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-light-primary);">Ready to travel {itinerary.title}?</h3>
+          <p style="margin-top: 8px; font-size: 15px; color: var(--text-light-secondary); max-width: 520px; margin-left: auto; margin-right: auto;">
+            Get the full pack with offline GPX file, bus schedules, and vetted homestay phone numbers for ₹59.
+          </p>
+          <div style="margin-top: 20px;">
+            <a
+              href={igCheckoutUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-accent"
+              style="padding: 12px 28px; font-size: 15px;"
+            >
+              Get Full Pack on Instagram DM (₹59) <span class="arrow-spring">→</span>
+            </a>
+          </div>
+          <p style="font-size: 13.5px; color: var(--text-light-muted); margin-top: 16px;">
+            Questions about trail conditions or season? Send a message on Instagram <a href="https://instagram.com/the_musafir_paaji" target="_blank" rel="noopener noreferrer" class="accent-link">@the_musafir_paaji</a> or view <a href="/about#contact" class="accent-link">contact info</a>.
           </p>
         </div>
+
+        <!-- Related Itineraries Cross-Links -->
+        {otherItineraries.length > 0 && (
+          <div style="margin-top: 56px;">
+            <span class="eyebrow" style="margin-bottom: 16px;">Other Himalayan Route Guides</span>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+              {otherItineraries.map((other) => (
+                <a
+                  href={`/itineraries/${other.slug}`}
+                  class="itinerary-plain-row"
+                  style="flex-direction: column; align-items: flex-start; gap: 8px; padding: 16px;"
+                >
+                  <span class="row-title" style="font-size: 1.05rem;">{other.title}</span>
+                  <div style="display: flex; justify-content: space-between; width: 100%; align-items: center; margin-top: 4px;">
+                    <span class="eyebrow" style="color: var(--text-light-muted);">{other.duration}</span>
+                    <span style="font-size: 13px; color: var(--accent-terracotta); font-weight: 500;">{other.price} guide →</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </article>
   </div>
 </BaseLayout>
+

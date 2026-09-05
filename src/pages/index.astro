@@ -1,12 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { itineraries } from '../data/itineraries';
 ---
 
 <BaseLayout
   title="the_musafir_paaji — Travel, Work & The Long Way Home"
   description="Notes from the road — and the hostels that make it matter. By reKhoj (@the_musafir_paaji)."
+  image="/images/bir/bir-hero.jpg"
 >
-  <!-- 1. Hero Section (Dark Green #0F3D30) with Tubik Hero Animation -->
+  <!-- 1. Hero Section (Dark Green #0E2E25) with Tubik Hero Animation -->
   <section class="section-dark" style="padding-top: 24px;">
     <div class="content-wrap hero-wrap">
       <div class="hero-text-block">
@@ -41,7 +43,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- 2. Volunteering / For Hostels Section (Cream #FBF7EE) -->
+  <!-- 2. Volunteering / For Hostels Section (Mountain Mist #EFF3F0) -->
   <section class="section-light">
     <div class="content-wrap">
       <div class="split-grid-2">
@@ -51,18 +53,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             A guest’s-eye view, with hands-on help.
           </h2>
           <p>
-            I can help shape warm guest experiences, photograph the details that make your place memorable, write story-led social copy, and bring order to the everyday rhythm of a hostel.
+            I can help shape warm guest experiences, photograph the details that make your place memorable, write story-led social copy, and bring order to the everyday rhythm of a mountain stay.
           </p>
           <div style="margin-top: 8px;">
-            <a href="/about#volunteer" class="accent-link">
-              Read volunteering pitch <span class="arrow-spring">→</span>
+            <a href="/about#volunteer" class="accent-link" style="font-weight: 600;">
+              Read volunteering pitch & host benefits <span class="arrow-spring">→</span>
             </a>
           </div>
         </div>
 
-        <a href="/about#volunteer" class="volunteering-bento-card reveal-on-scroll stagger-1">
+        <a href="/about#volunteer" class="volunteering-bento-card reveal-on-scroll stagger-1" style="text-decoration: none;">
           <div class="card-icon-wrap">
-            <!-- Clean SVG Book / Notebook Icon -->
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
               <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
               <path d="M6 6h10"></path>
@@ -73,14 +74,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             A useful pair of hands
           </h3>
           <p>
-            Guest-facing support · photography · copy & storytelling · local research
+            Storytelling that fills rooms · operations that let you breathe · calm hosting presence · trail research
           </p>
+          <span style="font-size: 13.5px; color: var(--accent-sage); font-weight: 500; margin-top: 10px; display: inline-block;">
+            View host collaboration details →
+          </span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- 3. Journeys & Affordable Itineraries Section (Dark Green #0F3D30) -->
+  <!-- 3. Journeys & Affordable Itineraries Section (Dark Pine #0E2E25) -->
   <section class="section-dark">
     <div class="content-wrap">
       <div class="itinerary-section-header reveal-on-scroll">
@@ -90,33 +94,61 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             Go slower. Spend less. See more.
           </h2>
           <p>
-            Photo-led place notes and full, practical itineraries made for a modest budget.
+            Full, practical itineraries made for a modest budget: transit schedules, offline GPX trail markers, and direct homestay contacts.
           </p>
         </div>
         <div class="badge-sage">
-          Starting from ₹59
+          3 Live Guides · ₹59 each
         </div>
       </div>
 
-      <!-- Featured Itinerary Bento Card (Cream Card) -->
-      <a href="/itineraries/parvati-grahan-trail" class="itinerary-bento-card reveal-on-scroll stagger-1">
-        <img
-          src="/images/shoja/shoja-1.jpg"
-          alt="Seraj Valley and misty cedar woods"
-          class="itinerary-card-img"
-          loading="lazy"
-        />
-        <div class="itinerary-card-info">
-          <span class="eyebrow">Seraj Valley, Himachal Pradesh</span>
-          <h3>The quiet side of the Himalayas</h3>
-          <p>
-            Five unhurried days between cedar ridges, morning temple bells, and a tiny mountain homestay.
-          </p>
-          <span class="itinerary-card-link">
-            Full itinerary · ₹59 <span class="arrow-spring">→</span>
-          </span>
-        </div>
-      </a>
+      <!-- All 3 Itineraries Showcase Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 36px;">
+        {itineraries.map((itinerary, idx) => (
+          <article class={`itinerary-bento-card reveal-on-scroll stagger-${idx + 1}`} style="display: flex; flex-direction: column; background: #ffffff;">
+            <div style="height: 180px; overflow: hidden;">
+              <img
+                src={itinerary.image}
+                alt={itinerary.title}
+                class="itinerary-card-img"
+                style="height: 100%; width: 100%; object-fit: cover;"
+                loading="lazy"
+              />
+            </div>
+            <div class="itinerary-card-info" style="display: flex; flex-direction: column; justify-content: space-between; flex: 1; padding: 20px;">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+                  <span class="eyebrow">{itinerary.region}</span>
+                  <span class="badge-sage" style="font-size: 11px; padding: 2px 7px;">
+                    {itinerary.duration}
+                  </span>
+                </div>
+                <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--text-light-primary); margin: 6px 0;">
+                  {itinerary.title}
+                </h3>
+                <p style="font-size: 14px; color: var(--text-light-secondary); line-height: 1.5; margin-bottom: 14px;">
+                  {itinerary.overview}
+                </p>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px solid var(--border-on-light); margin-top: auto;">
+                <span style="font-size: 14px; font-weight: 700; color: var(--accent-terracotta);">
+                  {itinerary.price} Guide
+                </span>
+                <a href={`/itineraries/${itinerary.slug}`} class="accent-link" style="font-size: 14px; font-weight: 600;">
+                  Route & GPX <span class="arrow-spring">→</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="reveal-on-scroll" style="margin-top: 36px; text-align: center;">
+        <a href="/itineraries" class="btn-accent" style="display: inline-block;">
+          Browse All Itineraries & GPX Packs <span class="arrow-spring">→</span>
+        </a>
+      </div>
     </div>
   </section>
 

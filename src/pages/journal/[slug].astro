@@ -18,13 +18,35 @@ const formattedDate = new Date(entry.data.date).toLocaleDateString('en-US', {
   month: 'long',
   day: 'numeric',
 });
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  'headline': entry.data.title,
+  'description': entry.data.description || `Travel notes and photographs from ${entry.data.title}.`,
+  'image': entry.data.images && entry.data.images.length > 0 ? `https://travel.varneet.in${entry.data.images[0]}` : undefined,
+  'datePublished': entry.data.date,
+  'author': {
+    '@type': 'Person',
+    'name': 'Varneet Singh',
+    'alternateName': 'the_musafir_paaji',
+    'url': 'https://travel.varneet.in/about',
+  },
+  'publisher': {
+    '@type': 'Person',
+    'name': 'reKhoj',
+  },
+};
+
+const dmCheckoutUrl = `https://ig.me/m/the_musafir_paaji?text=${encodeURIComponent(`Hey Varneet, I was reading your journal on "${entry.data.title}" and want to get the ₹59 field itinerary guide (offline GPX + homestay contacts)!`)}`;
 ---
 
 <BaseLayout
   title={`${entry.data.title} — Varneet`}
-  description={entry.data.description || `Travel notes from ${entry.data.title}`}
+  description={entry.data.description || `Travel notes and trail insights from ${entry.data.title}.`}
   image={entry.data.images?.[0]}
   type="article"
+  jsonLd={jsonLd}
 >
   <div class="section-light">
     <article class="content-narrow">
@@ -90,14 +112,21 @@ const formattedDate = new Date(entry.data.date).toLocaleDateString('en-US', {
         <p>
           I've compiled the complete day-by-day transit guide, local bus timings, homestay phone numbers, and offline trail markers for this journey for ₹59.
         </p>
-        <div style="margin-top: 10px;">
+        <div style="margin-top: 14px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
           <a
-            href="https://instagram.com/the_musafir_paaji"
+            href={dmCheckoutUrl}
             target="_blank"
             rel="noopener noreferrer"
             class="btn-accent"
           >
-            DM @the_musafir_paaji to get itinerary (₹59) <span class="arrow-spring">→</span>
+            Get Field Guide on Instagram DM (₹59) <span class="arrow-spring">→</span>
+          </a>
+          <a
+            href="/itineraries"
+            class="accent-link"
+            style="color: var(--accent-sage); font-size: 14px; font-weight: 500;"
+          >
+            Browse all 3 itineraries <span class="arrow-spring">→</span>
           </a>
         </div>
       </div>
