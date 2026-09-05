@@ -144,21 +144,13 @@ function getOrdinal(n: number) {
                           alt={`${trip.title} - photograph ${i + 1}`}
                           loading="lazy"
                         />
-                        <div class="photo-cell-overlay">
-                          <span>View Story ↗</span>
-                        </div>
                       </div>
                     ))}
                   </a>
                   <div class="collage-caption-bar">
                     <span class="collage-caption-text">
-                      📷 Field Photographs ({displayImages.length} of {images.length}) · Authentic & face-free
+                      📷 Field Photographs · Authentic & face-free
                     </span>
-                    {trip.journalSlug && (
-                      <a href={`/journal/${trip.journalSlug}`} class="collage-view-all">
-                        View all {images.length} photos →
-                      </a>
-                    )}
                   </div>
                 </div>
               )}
@@ -480,56 +472,12 @@ function getOrdinal(n: number) {
       transform: scale(1.05);
     }
 
-    .photo-cell-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(14, 46, 37, 0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.25s ease;
-    }
-
-    .photo-cell-overlay span {
-      background: #ffffff;
-      color: var(--text-light-primary);
-      font-size: 12px;
-      font-weight: 600;
-      padding: 6px 12px;
-      border-radius: 999px;
-      transform: translateY(4px);
-      transition: transform 0.25s ease;
-    }
-
-    .collage-photo-cell:hover .photo-cell-overlay {
-      opacity: 1;
-    }
-
-    .collage-photo-cell:hover .photo-cell-overlay span {
-      transform: translateY(0);
-    }
-
     .collage-caption-bar {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 6px;
       font-size: 12px;
       color: var(--text-light-muted);
       padding: 0 4px;
-    }
-
-    .collage-view-all {
-      color: var(--accent-terracotta);
-      text-decoration: none;
-      font-weight: 600;
-      transition: opacity 0.2s ease;
-    }
-
-    .collage-view-all:hover {
-      text-decoration: underline;
     }
 
     /* Memories Box */
