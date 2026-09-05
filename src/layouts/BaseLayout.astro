@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { inject } from '@vercel/analytics';
 
 interface Props {
   title?: string;
@@ -20,6 +21,9 @@ const siteUrl = Astro.site ? Astro.site.origin : 'https://travel.varneet.in';
 const canonicalURL = new URL(currentPath, siteUrl).href;
 const ogImageURL = image.startsWith('http') ? image : new URL(image, siteUrl).href;
 const gaId = import.meta.env.PUBLIC_GA_ID || 'G-T0DVT2MZB2';
+
+// Initialize Vercel Analytics
+inject();
 ---
 
 <!doctype html>
