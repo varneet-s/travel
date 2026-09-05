@@ -38,7 +38,7 @@
       </div>
     </div>
 
-    <!-- View & Region Control Filter Pills -->
+    <!-- View & Region Control Filter Pills + Satellite Mode Switcher -->
     <div class="map-controls-row reveal-on-scroll stagger-1">
       <div class="map-filter-group" id="mapFilterPills">
         <button class="map-pill-btn active" data-view="world" data-lat="24" data-lng="55" data-zoom="3">
@@ -60,16 +60,33 @@
           🌊 Karnataka Coast (1)
         </button>
       </div>
-      <div class="map-instruction-tag">
-        <span>Click any pin to inspect field notes</span>
+
+      <!-- Mode Switcher: Google Satellite vs Pine Atlas -->
+      <div class="map-mode-toggle-wrap">
+        <button class="map-mode-btn active" id="btnModeSat" data-mode="satellite" title="Google Maps Satellite Hybrid mode">
+          🛰️ Google Satellite
+        </button>
+        <button class="map-mode-btn" id="btnModePine" data-mode="pine" title="Dark Pine Atlas mode">
+          🌲 Pine Atlas
+        </button>
       </div>
+    </div>
+
+    <!-- Quick Navigation & Gesture Instruction Bar -->
+    <div class="map-gesture-bar reveal-on-scroll stagger-1">
+      <span class="gesture-hint">
+        🔍 <strong>Zoom Enabled:</strong> Scroll with mouse or use 2 fingers on touchpad/screen to zoom in & out · Click any pin for story
+      </span>
+      <span class="satellite-live-pill">
+        🛰️ Google Satellite Active
+      </span>
     </div>
 
     <!-- Map Stage & Container -->
     <div class="map-wrapper reveal-on-scroll stagger-2">
       <!-- Leaflet CSS & JS via CDN -->
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-      <div id="travelWorldMap" class="leaflet-travel-map"></div>
+      <div id="travelWorldMap" class="leaflet-travel-map mode-satellite"></div>
 
       <!-- Active Location Field Dispatch Bar -->
       <div id="activePinCard" class="active-pin-card" style="display: none;">
@@ -264,22 +281,65 @@
     const mapElement = document.getElementById('travelWorldMap');
     if (!mapElement || typeof L === 'undefined') return;
 
-    // Initialize Map with dark custom tiles (CartoDB Dark Matter with pine tone overlay)
+    // Initialize Map with Google Maps Satellite Hybrid + smooth scroll/touchpad zoom
     const map = L.map('travelWorldMap', {
       center: [24, 60],
       zoom: 3,
       minZoom: 2,
-      maxZoom: 13,
-      scrollWheelZoom: false, // Prevents intercepting page scroll
+      maxZoom: 19,
+      scrollWheelZoom: true, // Zoom with mouse scroll or 2 fingers on touchpad
+      wheelPxPerZoomLevel: 100, // Smooth trackpad response
+      zoomDelta: 0.5,
+      zoomSnap: 0.5,
+      touchZoom: true, // Pinch-to-zoom on touchpad / touchscreen
+      doubleClickZoom: true,
+      dragging: true,
       zoomControl: true,
       attributionControl: false
     });
 
-    // Clean, public OpenStreetMap tiles without watermarks or API keys
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    // Google Maps Satellite Layer (Hybrid: crisp satellite photography + place names, topography & roads)
+    const googleSatLayer = L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
+      maxZoom: 20,
+      subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+      attribution: '&copy; Google Maps'
+    });
+
+    // Clean OpenStreetMap Layer (for Dark Pine mode)
+    const osmLayer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
+      attribution: '&copy; OpenStreetMap'
+    });
+
+    // Default to Google Satellite mode
+    googleSatLayer.addTo(map);
+
+    // Mode Toggle Logic (Satellite vs Pine Atlas)
+    const btnModeSat = document.getElementById('btnModeSat');
+    const btnModePine = document.getElementById('btnModePine');
+    const satLivePill = document.querySelector('.satellite-live-pill');
+
+    if (btnModeSat && btnModePine) {
+      btnModeSat.addEventListener('click', () => {
+        btnModeSat.classList.add('active');
+        btnModePine.classList.remove('active');
+        if (map.hasLayer(osmLayer)) map.removeLayer(osmLayer);
+        if (!map.hasLayer(googleSatLayer)) map.addLayer(googleSatLayer);
+        mapElement.classList.remove('mode-pine');
+        mapElement.classList.add('mode-satellite');
+        if (satLivePill) satLivePill.innerText = '🛰️ Google Satellite Active';
+      });
+
+      btnModePine.addEventListener('click', () => {
+        btnModePine.classList.add('active');
+        btnModeSat.classList.remove('active');
+        if (map.hasLayer(googleSatLayer)) map.removeLayer(googleSatLayer);
+        if (!map.hasLayer(osmLayer)) map.addLayer(osmLayer);
+        mapElement.classList.remove('mode-satellite');
+        mapElement.classList.add('mode-pine');
+        if (satLivePill) satLivePill.innerText = '🌲 Pine Atlas Active';
+      });
+    }
 
     // Custom Glowing Beacon Marker
     function createCustomMarker(pin) {
@@ -467,10 +527,65 @@
     box-shadow: 0 4px 14px rgba(200, 90, 50, 0.35);
   }
 
-  .map-instruction-tag {
-    font-size: 11.5px;
+  .map-mode-toggle-wrap {
+    display: flex;
+    gap: 4px;
+    background: rgba(0, 0, 0, 0.45);
+    padding: 3px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .map-mode-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-dark-secondary);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: var(--font-sans);
+  }
+
+  .map-mode-btn:hover {
+    color: #ffffff;
+  }
+
+  .map-mode-btn.active {
+    background: var(--accent-terracotta);
+    color: #ffffff;
+    box-shadow: 0 2px 10px rgba(200, 90, 50, 0.4);
+  }
+
+  .map-gesture-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+    padding: 0 2px;
+  }
+
+  .gesture-hint {
+    font-size: 12.5px;
     color: var(--text-dark-muted);
-    letter-spacing: 0.04em;
+  }
+
+  .gesture-hint strong {
+    color: var(--text-dark-primary);
+  }
+
+  .satellite-live-pill {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #a2d1bb;
+    background: rgba(14, 46, 37, 0.7);
+    border: 1px solid rgba(162, 209, 187, 0.25);
+    padding: 3px 10px;
+    border-radius: 999px;
   }
 
   .map-wrapper {
@@ -489,8 +604,14 @@
     z-index: 1;
   }
 
-  :global(.leaflet-tile-pane) {
+  /* When in Pine mode, apply the dark pine invert filter to OSM tiles */
+  :global(#travelWorldMap.mode-pine .leaflet-tile-pane) {
     filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
+  }
+
+  /* When in Satellite mode, preserve high-res natural photography with subtle rich enhancement */
+  :global(#travelWorldMap.mode-satellite .leaflet-tile-pane) {
+    filter: saturate(1.08) contrast(1.04);
   }
 
   /* Custom Leaflet Map Pin with Tubik Radar Ping */
