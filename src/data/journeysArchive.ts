@@ -16,6 +16,15 @@ export interface JourneyRecord {
   tags: string[];
 }
 
+export function getTripTravelStyle(trip?: { groupType?: string; role?: string } | null): 'With Friends' | 'With Raw Diaries' | 'Solo' {
+  if (!trip) return 'With Raw Diaries';
+  const g = (trip.groupType || '').toLowerCase();
+  const r = (trip.role || '').toLowerCase();
+  if (g.includes('solo') || r.includes('solo')) return 'Solo';
+  if (g.includes('friend') || r.includes('friend')) return 'With Friends';
+  return 'With Raw Diaries';
+}
+
 export const journeysArchive: JourneyRecord[] = [
   {
     id: 1,

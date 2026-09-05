@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import { journeysArchive } from '../../data/journeysArchive';
+import { journeysArchive, getTripTravelStyle } from '../../data/journeysArchive';
 
 const allEntries = await getCollection('journal');
 const entriesMap = new Map(allEntries.map((e) => [e.id, e]));
@@ -41,7 +41,7 @@ function getOrdinal(n: number) {
         </div>
       </div>
 
-      <!-- Year & Style Filter Controls -->
+      <!-- Year & Sort Controls (Roles & Styles filter removed) -->
       <div class="reveal-on-scroll" style="margin-top: 40px; display: flex; flex-direction: column; gap: 14px;">
         <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
           <span class="eyebrow" style="margin-right: 4px;">Filter Year:</span>
@@ -50,15 +50,6 @@ function getOrdinal(n: number) {
           <button class="year-filter-pill" data-year="2025">2025 (2)</button>
           <button class="year-filter-pill" data-year="2024">2024 (7)</button>
           <button class="year-filter-pill" data-year="2023">2023 (4)</button>
-        </div>
-
-        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-          <span class="eyebrow" style="margin-right: 4px;">Role & Style:</span>
-          <button class="style-filter-pill active" data-style="all">All Styles</button>
-          <button class="style-filter-pill" data-style="raw-diaries">With Raw Diaries</button>
-          <button class="style-filter-pill" data-style="trip-leader">Trip Leader</button>
-          <button class="style-filter-pill" data-style="solo">Solo</button>
-          <button class="style-filter-pill" data-style="friends">With Friends</button>
         </div>
 
         <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
@@ -75,26 +66,22 @@ function getOrdinal(n: number) {
           const images = entry?.data?.images || (trip.coverImage ? [trip.coverImage] : []);
           const displayImages = images.slice(0, 3);
           const ordinalText = getOrdinal(trip.id);
+          const travelFormat = getTripTravelStyle(trip);
 
           return (
             <article
               class="journey-unified-card reveal-on-scroll"
               data-id={trip.id}
               data-year={trip.year.toString()}
-              data-style={trip.role.toLowerCase().replace(/\s+/g, '-')}
-              data-group={trip.groupType.toLowerCase().replace(/\s+/g, '-')}
             >
-              {/* Top Meta Bar: Trip Number, Dates, and Role Badges */}
+              {/* Top Meta Bar: Trip Number, Dates, and Travel Companion Badge */}
               <div class="trip-meta-header">
                 <div class="trip-badge-group">
                   <span class="trip-number-pill">
                     Trip #{trip.id.toString().padStart(2, '0')} · {ordinalText} Journey
                   </span>
-                  {trip.role === 'Trip Leader' && (
-                    <span class="trip-lead-pill">Trip Leader</span>
-                  )}
                   <span class="trip-role-pill">
-                    {trip.groupType}
+                    {travelFormat}
                   </span>
                 </div>
 
@@ -192,35 +179,19 @@ function getOrdinal(n: number) {
   <!-- Interactive Timeline Filter & Sorting Script -->
   <script is:inline>
     const yearButtons = document.querySelectorAll('.year-filter-pill');
-    const styleButtons = document.querySelectorAll('.style-filter-pill');
     const sortButtons = document.querySelectorAll('.sort-filter-pill');
     const journeysGrid = document.getElementById('journeysGrid');
     let cards = Array.from(document.querySelectorAll('#journeysGrid .journey-unified-card'));
 
     let activeYear = 'all';
-    let activeStyle = 'all';
     let activeSort = 'desc';
 
     function applyFilters() {
       cards.forEach((card) => {
         const cardYear = card.getAttribute('data-year');
-        const cardStyle = card.getAttribute('data-style') || '';
-        const cardGroup = card.getAttribute('data-group') || '';
-
         const yearMatch = activeYear === 'all' || cardYear === activeYear;
 
-        let styleMatch = true;
-        if (activeStyle === 'raw-diaries') {
-          styleMatch = cardGroup.includes('raw-diaries');
-        } else if (activeStyle === 'trip-leader') {
-          styleMatch = cardStyle.includes('trip-leader');
-        } else if (activeStyle === 'solo') {
-          styleMatch = cardGroup.includes('solo') || cardStyle.includes('solo');
-        } else if (activeStyle === 'friends') {
-          styleMatch = cardGroup.includes('friends') || cardStyle.includes('friend');
-        }
-
-        if (yearMatch && styleMatch) {
+        if (yearMatch) {
           card.style.display = 'flex';
         } else {
           card.style.display = 'none';
@@ -249,15 +220,6 @@ function getOrdinal(n: number) {
       });
     });
 
-    styleButtons.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        styleButtons.forEach((b) => b.classList.remove('active'));
-        btn.classList.add('active');
-        activeStyle = btn.getAttribute('data-style');
-        applyFilters();
-      });
-    });
-
     sortButtons.forEach((btn) => {
       btn.addEventListener('click', () => {
         sortButtons.forEach((b) => b.classList.remove('active'));
@@ -269,7 +231,7 @@ function getOrdinal(n: number) {
   </script>
 
   <style>
-    .year-filter-pill, .style-filter-pill, .sort-filter-pill {
+    .year-filter-pill, .sort-filter-pill {
       background: #ffffff;
       border: 1px solid var(--border-on-light);
       color: var(--text-light-secondary);
