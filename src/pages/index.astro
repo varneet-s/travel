@@ -272,34 +272,45 @@ import TravelMap from '../components/TravelMap.astro';
   <!-- 6. Newsletter / Dispatches Capture (Traffic-First Retention) -->
   <section class="section-light">
     <div class="content-wrap">
-      <div class="reveal-on-scroll" style="background: var(--bg-dark); color: var(--text-dark-primary); border-radius: 18px; padding: 40px 32px; border: 1px solid rgba(255,255,255,0.1); text-align: center; max-width: 680px; margin: 0 auto;">
+      <div class="reveal-on-scroll nl-card-container">
         <span class="eyebrow" style="color: var(--accent-sage);">Dispatches from the Slow Road</span>
-        <h2 style="font-family: var(--font-serif); font-size: 1.8rem; margin-top: 8px; color: #ffffff;">
+        <h2 style="font-family: var(--font-serif); font-size: 1.85rem; margin-top: 8px; color: #ffffff;">
           Letters from the Long Way Home
         </h2>
         <p style="margin-top: 10px; font-size: 15px; color: var(--text-dark-secondary); line-height: 1.6; max-width: 520px; margin-left: auto; margin-right: auto;">
           A quiet, monthly letter with unhurried trail notes, new Himachal bus timetables, book reflections, and photographs. No algorithms, no spam.
         </p>
 
-        <form
-          id="newsletterForm"
-          style="margin-top: 24px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;"
-          onsubmit="event.preventDefault(); document.getElementById('nlMessage').style.display='block'; this.reset();"
-        >
+        <!-- Newsletter Signup Form -->
+        <form id="newsletterForm" class="nl-form">
           <input
+            id="nlEmailInput"
             type="email"
             placeholder="Your email address..."
             required
-            style="padding: 12px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: #ffffff; font-size: 15px; min-width: 260px; font-family: var(--font-sans);"
+            autocomplete="email"
+            class="nl-input"
           />
-          <button type="submit" class="btn-accent" style="padding: 12px 24px; font-size: 15px;">
-            Join the Dispatches <span class="arrow-spring">→</span>
+          <button id="nlSubmitBtn" type="submit" class="btn-accent nl-submit-btn">
+            <span class="btn-text">Join the Road</span> <span class="arrow-spring">→</span>
           </button>
         </form>
 
-        <div id="nlMessage" style="display: none; margin-top: 14px; font-size: 13.5px; color: var(--accent-sage);">
-          ✓ Welcome to the quiet dispatches. You'll hear from me when the next trail is walked.
+        <!-- Dynamic Success Card (Displays upon clicking Join the Road) -->
+        <div id="nlSuccessCard" class="nl-success-card" style="display: none;">
+          <div class="nl-success-icon-badge">✓</div>
+          <h3 class="nl-success-title">You have successfully signed up!</h3>
+          <p class="nl-success-body">
+            Welcome to the road, <strong id="nlSuccessEmail" class="nl-email-highlight"></strong>. You are officially on the dispatch list for quiet field notes, trail updates, and unhurried reflections from the mountains.
+          </p>
+          <div class="nl-success-subtext">
+            <span>📫 First dispatch will arrive in your inbox at the next new trail</span>
+            <span class="nl-dot-sep">·</span>
+            <button id="nlResetBtn" type="button" class="nl-switch-email-btn">Use another email</button>
+          </div>
         </div>
+
+        <div id="nlErrorMsg" class="nl-error-box" style="display: none;"></div>
       </div>
     </div>
   </section>
@@ -362,6 +373,109 @@ import TravelMap from '../components/TravelMap.astro';
         if (resultLink) resultLink.setAttribute('href', btn.getAttribute('data-link'));
       });
     });
+
+    // Newsletter Signup Handler with LocalStorage Persistence & Immediate Visual Confirmation
+    const nlForm = document.getElementById('newsletterForm');
+    const nlEmailInput = document.getElementById('nlEmailInput');
+    const nlSubmitBtn = document.getElementById('nlSubmitBtn');
+    const nlSuccessCard = document.getElementById('nlSuccessCard');
+    const nlSuccessEmail = document.getElementById('nlSuccessEmail');
+    const nlResetBtn = document.getElementById('nlResetBtn');
+    const nlErrorMsg = document.getElementById('nlErrorMsg');
+
+    // Check if visitor has already subscribed on this browser
+    const savedSubscriber = localStorage.getItem('the_musafir_subscriber');
+    if (savedSubscriber) {
+      try {
+        const parsed = JSON.parse(savedSubscriber);
+        if (parsed && parsed.email) {
+          showNlSuccess(parsed.email);
+        }
+      } catch (e) {}
+    }
+
+    function showNlSuccess(email) {
+      if (nlForm) nlForm.style.display = 'none';
+      if (nlSuccessCard) {
+        nlSuccessCard.style.display = 'flex';
+        nlSuccessCard.classList.add('fade-enter');
+      }
+      if (nlSuccessEmail) nlSuccessEmail.innerText = email;
+      if (nlErrorMsg) nlErrorMsg.style.display = 'none';
+    }
+
+    if (nlResetBtn) {
+      nlResetBtn.addEventListener('click', () => {
+        localStorage.removeItem('the_musafir_subscriber');
+        if (nlSuccessCard) nlSuccessCard.style.display = 'none';
+        if (nlForm) {
+          nlForm.style.display = 'flex';
+          if (nlEmailInput) {
+            nlEmailInput.value = '';
+            nlEmailInput.focus();
+          }
+        }
+      });
+    }
+
+    if (nlForm) {
+      nlForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = nlEmailInput ? nlEmailInput.value.trim() : '';
+        if (!email || !email.includes('@')) {
+          if (nlErrorMsg) {
+            nlErrorMsg.innerText = 'Please enter a valid email address.';
+            nlErrorMsg.style.display = 'block';
+          }
+          return;
+        }
+
+        // Tactile button feedback
+        if (nlSubmitBtn) {
+          nlSubmitBtn.disabled = true;
+          nlSubmitBtn.innerHTML = '<span>Joining the road...</span>';
+        }
+
+        // Persist subscriber in localStorage
+        try {
+          const subData = { email, subscribedAt: new Date().toISOString() };
+          localStorage.setItem('the_musafir_subscriber', JSON.stringify(subData));
+
+          // Cumulative list so Varneet can review all subscribers in console or export
+          const currentList = JSON.parse(localStorage.getItem('the_musafir_subscribers_list') || '[]');
+          if (!currentList.some((item) => item.email === email)) {
+            currentList.push(subData);
+            localStorage.setItem('the_musafir_subscribers_list', JSON.stringify(currentList));
+          }
+
+          // Asynchronously forward to FormSubmit notification for live emails
+          fetch('https://formsubmit.co/ajax/varneetsingh45@gmail.com', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+              subject: '🌲 New Road Dispatch Subscriber: ' + email,
+              subscriber_email: email,
+              page: window.location.href,
+              timestamp: new Date().toLocaleString()
+            })
+          }).catch(() => {});
+        } catch (err) {
+          console.error('Storage error', err);
+        }
+
+        // Display immediate, unambiguous success message
+        setTimeout(() => {
+          showNlSuccess(email);
+          if (nlSubmitBtn) {
+            nlSubmitBtn.disabled = false;
+            nlSubmitBtn.innerHTML = '<span class="btn-text">Join the Road</span> <span class="arrow-spring">→</span>';
+          }
+        }, 300);
+      });
+    }
   </script>
 
   <style>
@@ -385,6 +499,153 @@ import TravelMap from '../components/TravelMap.astro';
       background: var(--bg-dark);
       color: #ffffff;
       border-color: var(--bg-dark);
+    }
+
+    /* Newsletter Card & Form Styles */
+    .nl-card-container {
+      background: var(--bg-dark);
+      color: var(--text-dark-primary);
+      border-radius: 18px;
+      padding: 44px 32px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+      box-shadow: 0 16px 40px rgba(7, 25, 20, 0.25);
+    }
+
+    .nl-form {
+      margin-top: 26px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .nl-input {
+      padding: 13px 18px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      font-size: 15px;
+      min-width: 280px;
+      font-family: var(--font-sans);
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .nl-input:focus {
+      border-color: var(--accent-sage);
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 0 0 3px rgba(162, 209, 187, 0.2);
+    }
+
+    .nl-submit-btn {
+      padding: 13px 26px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease;
+    }
+
+    .nl-submit-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    /* Success Card */
+    .nl-success-card {
+      margin-top: 26px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(162, 209, 187, 0.35);
+      border-radius: 14px;
+      padding: 26px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .nl-success-icon-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(162, 209, 187, 0.18);
+      border: 1.5px solid var(--accent-sage);
+      color: var(--accent-sage);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .nl-success-title {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      color: #ffffff;
+      margin: 0;
+    }
+
+    .nl-success-body {
+      font-size: 14.5px;
+      color: var(--text-dark-secondary);
+      line-height: 1.55;
+      margin: 0;
+      max-width: 490px;
+    }
+
+    .nl-email-highlight {
+      color: var(--accent-sage);
+      font-weight: 600;
+    }
+
+    .nl-success-subtext {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+      font-size: 12.5px;
+      color: var(--text-dark-muted);
+    }
+
+    .nl-dot-sep {
+      opacity: 0.5;
+    }
+
+    .nl-switch-email-btn {
+      background: transparent;
+      border: none;
+      color: var(--accent-terracotta);
+      font-size: 12.5px;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      cursor: pointer;
+      padding: 0;
+      font-family: var(--font-sans);
+      transition: opacity 0.2s ease;
+    }
+
+    .nl-switch-email-btn:hover {
+      opacity: 0.8;
+    }
+
+    .nl-error-box {
+      margin-top: 12px;
+      color: #ff9d80;
+      font-size: 13.5px;
+      background: rgba(255, 100, 80, 0.1);
+      border: 1px solid rgba(255, 100, 80, 0.25);
+      border-radius: 6px;
+      padding: 6px 12px;
+      display: inline-block;
     }
   </style>
 </BaseLayout>
