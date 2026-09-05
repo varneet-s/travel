@@ -10,20 +10,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="section-light">
     <div class="content-narrow">
       <div>
-        <span class="eyebrow">About · reKhoj</span>
-        <h1 class="display-title" style="margin-top: 8px;">the_musafir_paaji</h1>
-        <p style="margin-top: 6px; color: var(--text-light-muted); font-size: 14px;">
-          @the_musafir_paaji · Punjab, India
-        </p>
+        <span class="eyebrow hero-enter hero-delay-1">About · reKhoj</span>
+        <h1 class="display-title hero-enter hero-delay-2" style="margin-top: 8px;">the_musafir_paaji</h1>
+        
+        <!-- Mountain GPS Beacon Pill -->
+        <div class="beacon-badge hero-enter hero-delay-3" style="margin-top: 10px; display: inline-flex; align-items: center; gap: 8px; background: rgba(15, 61, 48, 0.06); padding: 5px 14px; border-radius: 999px; border: 1px solid rgba(15, 61, 48, 0.1);">
+          <span class="beacon-dot-wrap">
+            <span class="beacon-dot-ping"></span>
+            <span class="beacon-dot-core"></span>
+          </span>
+          <span style="font-size: 13px; color: var(--text-light-secondary); font-weight: 500;">
+            @the_musafir_paaji · Punjab & Himachal Trails
+          </span>
+        </div>
       </div>
 
-      <img
-        src="/images/varneet/shangarh-about.jpg"
-        alt="reKhoj — the_musafir_paaji in Shangarh"
-        style="width: 100%; border-radius: 16px; margin: 28px 0; aspect-ratio: 16 / 10; object-fit: cover;"
-      />
+      <div class="hero-enter hero-delay-3" style="overflow: hidden; border-radius: 16px; margin: 28px 0; box-shadow: 0 16px 36px -12px rgba(15, 61, 48, 0.18);">
+        <img
+          src="/images/varneet/shangarh-about.jpg"
+          alt="reKhoj — the_musafir_paaji in Shangarh"
+          class="hero-photo-ambient"
+          style="width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block;"
+        />
+      </div>
 
-      <div class="prose-block">
+      <div class="prose-block reveal-on-scroll">
         <p>
           I travel slowly, mostly across Himachal Pradesh, high-altitude passes, and quiet valleys where daily rhythm is shaped by weather, river currents, and seasonal roads.
         </p>
@@ -42,7 +53,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- Section 2: Volunteering Pitch -->
   <div id="volunteer" class="section-dark">
     <div class="content-narrow">
-      <div>
+      <div class="reveal-on-scroll">
         <span class="eyebrow">For Hostels & Homestays</span>
         <h2 class="section-title" style="margin-top: 8px;">
           A guest’s-eye view, with hands-on help.
@@ -53,9 +64,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
 
       <div style="margin-top: 48px;">
-        <span class="eyebrow" style="margin-bottom: 24px;">What I Bring — Ordered by Strength</span>
+        <span class="eyebrow reveal-on-scroll" style="margin-bottom: 24px;">What I Bring — Ordered by Strength</span>
 
-        <div class="pitch-item" style="border-bottom: 1px solid var(--border-on-dark);">
+        <div class="pitch-item reveal-on-scroll stagger-1" style="border-bottom: 1px solid var(--border-on-dark);">
           <div class="pitch-header">
             <span class="pitch-number">01</span>
             <h3 class="card-title" style="color: var(--text-dark-primary);">Content & Digital Presence</h3>
@@ -65,7 +76,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </p>
         </div>
 
-        <div class="pitch-item" style="border-bottom: 1px solid var(--border-on-dark);">
+        <div class="pitch-item reveal-on-scroll stagger-2" style="border-bottom: 1px solid var(--border-on-dark);">
           <div class="pitch-header">
             <span class="pitch-number">02</span>
             <h3 class="card-title" style="color: var(--text-dark-primary);">Front Desk & Operations</h3>
@@ -75,7 +86,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </p>
         </div>
 
-        <div class="pitch-item" style="border-bottom: 1px solid var(--border-on-dark);">
+        <div class="pitch-item reveal-on-scroll stagger-3" style="border-bottom: 1px solid var(--border-on-dark);">
           <div class="pitch-header">
             <span class="pitch-number">03</span>
             <h3 class="card-title" style="color: var(--text-dark-primary);">Care & Presence</h3>
@@ -85,7 +96,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </p>
         </div>
 
-        <div class="pitch-item" style="border-bottom: none;">
+        <div class="pitch-item reveal-on-scroll stagger-4" style="border-bottom: none;">
           <div class="pitch-header">
             <span class="pitch-number">04</span>
             <h3 class="card-title" style="color: var(--text-dark-primary);">Open to Learning</h3>
@@ -101,7 +112,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- Section 3: Direct Contact -->
   <div id="contact" class="section-light">
     <div class="content-narrow">
-      <div>
+      <div class="reveal-on-scroll">
         <span class="eyebrow">Get in Touch</span>
         <h2 class="section-title" style="margin-top: 8px;">
           Say hello or propose a stay.
@@ -111,7 +122,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </p>
       </div>
 
-      <div style="margin-top: 32px;">
+      <div class="reveal-on-scroll stagger-1" style="margin-top: 32px;">
         <span class="eyebrow" style="margin-bottom: 8px;">Instagram Direct</span>
         <a
           href="https://instagram.com/the_musafir_paaji"
@@ -120,7 +131,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           class="accent-link"
           style="font-size: 1.35rem; font-family: var(--font-serif);"
         >
-          @the_musafir_paaji →
+          @the_musafir_paaji <span class="arrow-spring">→</span>
         </a>
       </div>
     </div>

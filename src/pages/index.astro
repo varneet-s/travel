@@ -6,24 +6,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   title="the_musafir_paaji — Travel, Work & The Long Way Home"
   description="Notes from the road — and the hostels that make it matter. By reKhoj (@the_musafir_paaji)."
 >
-  <!-- 1. Hero Section (Dark Green #0F3D30) -->
+  <!-- 1. Hero Section (Dark Green #0F3D30) with Tubik Hero Animation -->
   <section class="section-dark" style="padding-top: 24px;">
     <div class="content-wrap hero-wrap">
       <div class="hero-text-block">
-        <span class="eyebrow">Travel, Work & The Long Way Home</span>
-        <h1 class="display-title">
+        <span class="eyebrow hero-enter hero-delay-1">Travel, Work & The Long Way Home</span>
+        <h1 class="display-title hero-enter hero-delay-2">
           Notes from the road — and the hostels that make it matter.
         </h1>
-        <p class="hero-lead-text">
+        <p class="hero-lead-text hero-enter hero-delay-3">
           I’m reKhoj (@the_musafir_paaji) — a slow traveller, curious volunteer, and keeper of practical routes for anyone who wants to go farther without spending more.
         </p>
+
+        <!-- Live GPS Mountain Beacon (Accent Animation) -->
+        <div class="beacon-badge hero-enter hero-delay-4" style="margin-top: 18px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); padding: 7px 16px; border-radius: 999px; width: fit-content;">
+          <span class="beacon-dot-wrap">
+            <span class="beacon-dot-ping"></span>
+            <span class="beacon-dot-core"></span>
+          </span>
+          <span style="font-size: 13px; color: var(--text-dark-secondary); font-weight: 500; letter-spacing: 0.02em;">
+            Live base · 32.05° N, 76.71° E · Bir Billing, HP
+          </span>
+        </div>
       </div>
 
-      <div class="hero-photo-frame">
+      <div class="hero-photo-frame hero-enter hero-delay-3">
         <img
           src="/images/bir/bir-hero.jpg"
           alt="Mountain ridges and alpine mist in Himachal Pradesh"
-          class="hero-photo"
+          class="hero-photo hero-photo-ambient"
           loading="eager"
         />
       </div>
@@ -34,7 +45,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="section-light">
     <div class="content-wrap">
       <div class="split-grid-2">
-        <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div class="reveal-on-scroll" style="display: flex; flex-direction: column; gap: 16px;">
           <span class="eyebrow">For Hostels & Homestays</span>
           <h2 class="section-title">
             A guest’s-eye view, with hands-on help.
@@ -44,12 +55,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </p>
           <div style="margin-top: 8px;">
             <a href="/about#volunteer" class="accent-link">
-              Read volunteering pitch →
+              Read volunteering pitch <span class="arrow-spring">→</span>
             </a>
           </div>
         </div>
 
-        <a href="/about#volunteer" class="volunteering-bento-card">
+        <a href="/about#volunteer" class="volunteering-bento-card reveal-on-scroll stagger-1">
           <div class="card-icon-wrap">
             <!-- Clean SVG Book / Notebook Icon -->
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
@@ -72,7 +83,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- 3. Journeys & Affordable Itineraries Section (Dark Green #0F3D30) -->
   <section class="section-dark">
     <div class="content-wrap">
-      <div class="itinerary-section-header">
+      <div class="itinerary-section-header reveal-on-scroll">
         <div style="display: flex; flex-direction: column; gap: 12px; max-width: 620px;">
           <span class="eyebrow">Journeys & Affordable Itineraries</span>
           <h2 class="section-title">
@@ -88,7 +99,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
 
       <!-- Featured Itinerary Bento Card (Cream Card) -->
-      <a href="/itineraries/parvati-grahan-trail" class="itinerary-bento-card">
+      <a href="/itineraries/parvati-grahan-trail" class="itinerary-bento-card reveal-on-scroll stagger-1">
         <img
           src="/images/shoja/shoja-1.jpg"
           alt="Seraj Valley and misty cedar woods"
@@ -102,7 +113,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             Five unhurried days between cedar ridges, morning temple bells, and a tiny mountain homestay.
           </p>
           <span class="itinerary-card-link">
-            Full itinerary · ₹59 →
+            Full itinerary · ₹59 <span class="arrow-spring">→</span>
           </span>
         </div>
       </a>
@@ -114,7 +125,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="content-wrap">
       <div class="reading-split-grid">
         <!-- Book Cover Bento Card with Real Goodreads Cover -->
-        <a href="/reading" class="book-cover-bento" aria-label="1984 by George Orwell — Currently Reading on Goodreads">
+        <a href="/reading" class="book-cover-bento reveal-on-scroll" aria-label="1984 by George Orwell — Currently Reading on Goodreads">
           <div class="book-realistic-mockup">
             <img
               src="/images/books/1984.jpg"
@@ -126,7 +137,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </a>
 
         <!-- Reading Description & Status from Goodreads -->
-        <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div class="reveal-on-scroll stagger-1" style="display: flex; flex-direction: column; gap: 16px;">
           <span class="eyebrow">Currently Reading · Goodreads</span>
           <h2 class="section-title">
             1984 by George Orwell
@@ -139,7 +150,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
           <div style="margin-top: 8px; display: flex; gap: 18px; flex-wrap: wrap; align-items: center;">
             <a href="/reading" class="accent-link">
-              Explore reading logs →
+              Explore reading logs <span class="arrow-spring">→</span>
             </a>
             <a
               href="https://www.goodreads.com/user/show/202026328-varneet-singh"
@@ -148,7 +159,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               class="accent-link"
               style="color: var(--text-light-muted); font-size: 14px;"
             >
-              Goodreads profile (389 books) ↗
+              Goodreads profile (389 books) <span class="arrow-spring">↗</span>
             </a>
           </div>
         </div>

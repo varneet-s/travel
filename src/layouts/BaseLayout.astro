@@ -72,6 +72,11 @@ inject();
     )}
   </head>
   <body>
+    <!-- Top Reading / Scroll Progress Bar (Tubik UX Animation) -->
+    <div class="reading-progress-track" aria-hidden="true">
+      <div id="readingProgress" class="reading-progress-bar"></div>
+    </div>
+
     <!-- 3 Core Navigation Items: Journeys, Reading, About & Volunteer -->
     <header class="nav-header">
       <div class="content-wrap">
@@ -107,10 +112,50 @@ inject();
             rel="noopener noreferrer"
             class="footer-action"
           >
-            DM @the_musafir_paaji →
+            DM @the_musafir_paaji <span class="arrow-spring">→</span>
           </a>
         </div>
       </div>
     </footer>
+
+    <!-- Interactive Motion Script (Scroll Reveal + Reading Tracker) -->
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => {
+        // 1. Reading / Scroll Progress Indicator
+        const progressBar = document.getElementById('readingProgress');
+        const updateScrollProgress = () => {
+          if (!progressBar) return;
+          const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+          if (totalHeight <= 0) {
+            progressBar.style.width = '0%';
+            return;
+          }
+          const progress = (window.scrollY / totalHeight) * 100;
+          progressBar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+        };
+        window.addEventListener('scroll', updateScrollProgress, { passive: true });
+        updateScrollProgress();
+
+        // 2. IntersectionObserver for Scroll Reveals
+        const revealElements = document.querySelectorAll('.reveal-on-scroll');
+        if ('IntersectionObserver' in window) {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('is-revealed');
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { rootMargin: '0px 0px -40px 0px', threshold: 0.1 }
+          );
+          revealElements.forEach((el) => observer.observe(el));
+        } else {
+          revealElements.forEach((el) => el.classList.add('is-revealed'));
+        }
+      });
+    </script>
   </body>
+
 </html>

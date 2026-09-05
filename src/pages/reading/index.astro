@@ -54,12 +54,12 @@ const readingHighlights = [
   <div class="section-light">
     <div class="content-narrow">
       <div>
-        <span class="eyebrow">Goodreads Library & Backpack Books</span>
-        <h1 class="display-title" style="margin-top: 8px;">Reading</h1>
-        <p style="margin-top: 12px; color: var(--text-light-secondary);">
+        <span class="eyebrow hero-enter hero-delay-1">Goodreads Library & Backpack Books</span>
+        <h1 class="display-title hero-enter hero-delay-2" style="margin-top: 8px;">Reading</h1>
+        <p class="hero-enter hero-delay-3" style="margin-top: 12px; color: var(--text-light-secondary);">
           Books, memoirs, and essays carried along mountain trails and hostel bunk beds.
         </p>
-        <div style="margin-top: 12px;">
+        <div class="hero-enter hero-delay-4" style="margin-top: 12px;">
           <a
             href="https://www.goodreads.com/user/show/202026328-varneet-singh"
             target="_blank"
@@ -67,25 +67,25 @@ const readingHighlights = [
             class="accent-link"
             style="font-size: 14px;"
           >
-            Tracked live on Goodreads (389 books) ↗
+            Tracked live on Goodreads (389 books) <span class="arrow-spring">↗</span>
           </a>
         </div>
       </div>
 
       <!-- Currently Reading Stack -->
       <div style="margin-top: 48px;">
-        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 20px;">
+        <div class="reveal-on-scroll" style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 20px;">
           <span class="eyebrow">Currently Reading</span>
           <span class="eyebrow" style="color: var(--text-light-muted);">Live Progress</span>
         </div>
 
         <div style="display: flex; flex-direction: column; gap: 20px;">
-          {currentlyReading.map((book) => (
+          {currentlyReading.map((book, idx) => (
             <a
               href={book.link}
               target="_blank"
               rel="noopener noreferrer"
-              class="reading-card-horizontal"
+              class={`reading-card-horizontal reveal-on-scroll stagger-${idx + 1}`}
             >
               <!-- Real Book Cover from Goodreads -->
               <div class="reading-card-thumb">
@@ -113,7 +113,7 @@ const readingHighlights = [
                     {book.progress}
                   </span>
                   <span class="eyebrow" style="font-size: 10px; color: var(--text-light-muted);">
-                    {book.tag} ↗
+                    {book.tag} <span class="arrow-spring">↗</span>
                   </span>
                 </div>
               </div>
@@ -124,10 +124,10 @@ const readingHighlights = [
 
       <!-- Goodreads Reading Shelves -->
       <div style="margin-top: 56px;">
-        <span class="eyebrow" style="margin-bottom: 20px;">Goodreads Shelf Notes</span>
+        <span class="eyebrow reveal-on-scroll" style="margin-bottom: 20px;">Goodreads Shelf Notes</span>
         <div style="display: flex; flex-direction: column; gap: 16px;">
-          {readingHighlights.map((highlight) => (
-            <div style="background: #ffffff; border: 1px solid var(--border-on-light); border-radius: 14px; padding: 20px 24px;">
+          {readingHighlights.map((highlight, idx) => (
+            <div class={`reveal-on-scroll stagger-${idx + 1}`} style="background: #ffffff; border: 1px solid var(--border-on-light); border-radius: 14px; padding: 20px 24px;">
               <h3 style="font-family: var(--font-serif); font-size: 1.2rem; color: var(--text-light-primary);">
                 {highlight.shelf}
               </h3>
@@ -140,7 +140,7 @@ const readingHighlights = [
       </div>
 
       <!-- Direct Goodreads CTA -->
-      <div style="margin-top: 48px; background-color: var(--bg-dark); color: var(--text-dark-primary); border-radius: 18px; padding: 32px 28px; border: 1px solid rgba(255,255,255,0.1); text-align: center;">
+      <div class="reveal-on-scroll" style="margin-top: 48px; background-color: var(--bg-dark); color: var(--text-dark-primary); border-radius: 18px; padding: 32px 28px; border: 1px solid rgba(255,255,255,0.1); text-align: center;">
         <span class="eyebrow" style="color: var(--accent-sage);">Goodreads Profile</span>
         <h3 style="font-family: var(--font-serif); font-size: 1.6rem; margin-top: 8px;">
           389 Books & Year-in-Books Archive
@@ -155,7 +155,7 @@ const readingHighlights = [
             rel="noopener noreferrer"
             class="btn-accent"
           >
-            Explore Varneet's Goodreads Profile ↗
+            Explore Varneet's Goodreads Profile <span class="arrow-spring">↗</span>
           </a>
         </div>
       </div>
