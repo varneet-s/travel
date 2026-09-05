@@ -28,6 +28,8 @@ export const journeysArchive: JourneyRecord[] = [
     monthYear: 'Jan 2023',
     role: 'Participant',
     groupType: 'With Raw Diaries',
+    coverImage: '/images/journeys/gokarna/gokarna-1.jpg',
+    journalSlug: 'gokarna-2023',
     summary: 'The trip where the road began. Wandering along Kudle beach and Om beach cliff paths, ocean sunsets, and learning the rhythm of travel with a group.',
     highlights: ['First ever journey with Raw Diaries', 'Cliff trails between Kudle and Paradise beach', 'Temple lanes and coastal sea breezes'],
     tags: ['#first-trip', '#arabian-sea', '#raw-diaries', '#coast']
@@ -60,6 +62,8 @@ export const journeysArchive: JourneyRecord[] = [
     monthYear: 'Jun 2023',
     role: 'Participant',
     groupType: 'With Raw Diaries',
+    coverImage: '/images/journeys/chitkul/chitkul-3.jpg',
+    journalSlug: 'chitkul-kinnaur',
     summary: 'Traversing the Sutlej and Baspa river valleys to reach the last inhabited Indian village near the border. Wooden houses and turquoise glacier melt.',
     highlights: ['Baspa river gravel banks in Chitkul', 'Centuries-old wooden temples of Sangla', 'Granite cliffs and apple orchards'],
     tags: ['#kinnaur', '#border-village', '#raw-diaries', '#baspa-river']
@@ -75,8 +79,9 @@ export const journeysArchive: JourneyRecord[] = [
     monthYear: 'Jul 2023',
     role: 'Participant',
     groupType: 'With Raw Diaries',
-    coverImage: '/images/shoja/shoja-1.jpg',
-    summary: 'Monsoon lushness in the Seraj valley. Rain dripping from pine eaves, morning walks to Jibhi waterfall, and wooden homestay evenings.',
+    coverImage: '/images/journeys/jibhi-2023/jibhi-2023-3.jpg',
+    journalSlug: 'jibhi-seraj-2023',
+    summary: 'Monsoon lushness in the Seraj valley. Rain dripping from pine eaves, morning walks along rushing trout streams, and wooden homestay evenings.',
     highlights: ['Mist-shrouded cedar canopies', 'Local trout stream strolls', 'Kathkuni village hamlets'],
     tags: ['#seraj-valley', '#monsoon-greens', '#raw-diaries', '#pine-woods']
   },
@@ -91,6 +96,8 @@ export const journeysArchive: JourneyRecord[] = [
     monthYear: 'Jan 2024',
     role: 'Friend Road Trip',
     groupType: 'With Friends',
+    coverImage: '/images/journeys/manali-sissu/manali-sissu-2.jpg',
+    journalSlug: 'manali-sissu-winter',
     summary: 'A deep winter journey with Sahaj. Passing through the Atal Tunnel from snow-dusted Old Manali into the freezing glaciated starkness of Sissu.',
     highlights: ['Frozen Sissu waterfall', 'Stark white Lahaul valley landscape', 'Winter wood fires in Old Manali'],
     tags: ['#winter-snow', '#lahaul', '#with-sahaj', '#atal-tunnel']
@@ -106,7 +113,9 @@ export const journeysArchive: JourneyRecord[] = [
     monthYear: 'Feb 2024',
     role: 'Participant',
     groupType: 'With Raw Diaries',
-    summary: 'Five days along the eternal river. Rowing past ancient stone ghats at 5:30 AM, exploring labyrinthine silk alleyways, and the intense night aarti.',
+    coverImage: '/images/journeys/banaras/banaras-3.jpg',
+    journalSlug: 'banaras-ghats',
+    summary: 'Five days along the eternal river. Rowing past ancient stone ghats at 5:30 AM, exploring labyrinthine silk alleyways, and the quiet rhythm of the evening river.',
     highlights: ['Sunrise rowboat on the Ganga', 'Assi to Manikarnika walking trail', 'Kachori and malaiyo in Thatheri Bazaar'],
     tags: ['#varanasi', '#ganga-ghats', '#raw-diaries', '#old-city']
   },
@@ -121,6 +130,8 @@ export const journeysArchive: JourneyRecord[] = [
     monthYear: 'Feb 2024',
     role: 'Solo Explorer',
     groupType: 'Solo',
+    coverImage: '/images/journeys/lucknow/lucknow-1.jpg',
+    journalSlug: 'lucknow-heritage',
     summary: 'Detouring on my own for two quiet days. Walking past the grand archways of Rumi Darwaza, the whispers of Bara Imambara, and old tea houses.',
     highlights: ['Solo walk through Hazratganj and old Chowk', 'Bara Imambara labyrinth corridor', 'Street food reflections and chai stalls'],
     tags: ['#solo-travel', '#awadh-heritage', '#architecture', '#food-walks']
@@ -136,6 +147,8 @@ export const journeysArchive: JourneyRecord[] = [
     monthYear: 'Mar 2024',
     role: 'Participant',
     groupType: 'With Raw Diaries',
+    coverImage: '/images/journeys/manali-spring/manali-spring-3.jpg',
+    journalSlug: 'manali-spring-thaw',
     summary: 'Snow melting from the high ridges, apple orchards beginning to bud, and unhurried days spent sharing stories across wooden floorboards.',
     highlights: ['Spring thaw walking trails to Goshal village', 'Quiet cafes in Old Manali', 'Snowy Solang ridge views'],
     tags: ['#spring-thaw', '#old-manali', '#raw-diaries', '#kullu']
@@ -168,7 +181,8 @@ export const journeysArchive: JourneyRecord[] = [
     monthYear: 'Jun 2024',
     role: 'Trip Leader',
     groupType: 'With Raw Diaries',
-    coverImage: '/images/shoja/shoja-2.jpg',
+    coverImage: '/images/journeys/jibhi-leader/jibhi-leader-1.jpg',
+    journalSlug: 'jibhi-trip-leader',
     summary: 'A milestone transition from traveler to trip leader. Guiding a full group through the Seraj valley, coordinating logistics, and creating a safe, warm space.',
     highlights: ['First trip leading for Raw Diaries', 'Guiding travelers to hidden waterfalls', 'Managing group rhythm and mountain hosting'],
     tags: ['#trip-leader', '#community', '#milestone', '#raw-diaries']
@@ -184,7 +198,9 @@ export const journeysArchive: JourneyRecord[] = [
     monthYear: 'Dec 2024',
     role: 'Participant',
     groupType: 'Raw Diaries OG Gang',
-    summary: 'Closing out 2024 in the mountains with the core Raw Diaries tribe. Free of commercial hosting pressures — just old friends, cold starlight, and laughter.',
+    coverImage: '/images/journeys/jibhi-nye/jibhi-nye-1.jpg',
+    journalSlug: 'jibhi-nye-gang',
+    summary: 'Closing out 2024 in the mountains with the core Raw Diaries tribe. Free of commercial hosting pressures—just old friends, cold starlight, and laughter.',
     highlights: ['New Year’s Eve beneath freezing deodars', 'Reunion of the original travel gang', 'Woodstove conversations into the night'],
     tags: ['#nye-2024', '#og-gang', '#winter-escape', '#friends']
   },
@@ -216,6 +232,8 @@ export const journeysArchive: JourneyRecord[] = [
     monthYear: 'Nov 2025',
     role: 'Friend Road Trip',
     groupType: 'With Friends',
+    coverImage: '/images/journeys/rajasthan/rajasthan-1.jpg',
+    journalSlug: 'rajasthan-roadtrip',
     summary: 'Two full weeks on the road with two close friends. Traversing sand dunes, historic sandstone forts, roadside dhabas, and golden desert sunsets.',
     highlights: ['14 unhurried days across desert highways', 'Sunsets over ancient sandstone ramparts', 'Campfires under starry Thar desert skies'],
     tags: ['#rajasthan', '#2-week-roadtrip', '#with-friends', '#desert']
@@ -231,7 +249,8 @@ export const journeysArchive: JourneyRecord[] = [
     monthYear: 'Jan 2026',
     role: 'Participant',
     groupType: 'With Friends',
-    coverImage: '/images/varneet/shangarh-about.jpg',
+    coverImage: '/images/journeys/nye-2026/nye-2026-1.jpg',
+    journalSlug: 'nye-bir-2026',
     summary: 'Welcoming 2026 in the cold mountain air. Three years after that first nervous step in Gokarna, the road has become second nature.',
     highlights: ['Ring in 2026 with mountain air', 'Reflecting on 3 full years of travel', 'Marking 14 journeys across India'],
     tags: ['#nye-2026', '#3-years-travel', '#the-long-way-home']
