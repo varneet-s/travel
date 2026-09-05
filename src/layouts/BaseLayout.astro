@@ -112,11 +112,32 @@ inject();
       <slot />
     </main>
 
+    <!-- Mountain Ridgeline & Pine Forest Horizon Illustration Spanning Footer -->
+    <div class="footer-mountain-horizon" aria-hidden="true">
+      <img
+        src="/images/illustrations/mountain-footer-ridge.svg"
+        alt=""
+        class="footer-ridge-svg"
+        loading="lazy"
+      />
+    </div>
+
     <!-- Editorial Footer (No email address) -->
     <footer class="editorial-footer">
       <div class="content-wrap">
         <div class="footer-content-row">
-          <span class="footer-tagline">Slow routes. Useful stays. Open notebooks.</span>
+          <div class="footer-brand-lockup">
+            <img
+              src="/images/illustrations/expedition-compass.svg"
+              alt="Expedition Compass Rose"
+              class="footer-compass-badge"
+              aria-hidden="true"
+            />
+            <div class="footer-text-block">
+              <span class="footer-tagline">Slow routes. Useful stays. Open notebooks.</span>
+              <span class="footer-sub-coord">31.85° N, 77.30° E · Seraj & Parvati Valleys</span>
+            </div>
+          </div>
           <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
             <button id="btnOpenQrModal" class="footer-qr-pill" aria-label="Open Instagram QR code">
               📷 Instagram QR

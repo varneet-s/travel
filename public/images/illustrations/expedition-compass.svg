@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <defs>
+    <style>
+      .comp-line { stroke: #a2d1bb; stroke-opacity: 0.35; stroke-width: 0.8; fill: none; }
+      .comp-ring { stroke: #a2d1bb; stroke-opacity: 0.25; stroke-width: 0.8; fill: none; }
+      .comp-text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', serif; font-size: 7.5px; fill: #a2d1bb; fill-opacity: 0.7; font-weight: 700; text-anchor: middle; letter-spacing: 0.08em; }
+    </style>
+  </defs>
+  <!-- Outer Rings -->
+  <circle cx="60" cy="60" r="54" class="comp-ring" stroke-dasharray="1,2" />
+  <circle cx="60" cy="60" r="48" class="comp-ring" />
+  <circle cx="60" cy="60" r="44" class="comp-ring" stroke-dasharray="2,2" />
+  <circle cx="60" cy="60" r="28" class="comp-ring" stroke-opacity="0.15" />
+  
+  <!-- Cardinal Points -->
+  <text x="60" y="11" class="comp-text">N</text>
+  <text x="111" y="63" class="comp-text">E</text>
+  <text x="60" y="115" class="comp-text">S</text>
+  <text x="9" y="63" class="comp-text">W</text>
+
+  <!-- Compass Star (North Arrow filled accent terracotta, others sage) -->
+  <polygon points="60,16 64,48 60,44" fill="#e07a5f" />
+  <polygon points="60,16 56,48 60,44" fill="#c85a32" />
+
+  <polygon points="60,104 64,72 60,76" fill="#a2d1bb" fill-opacity="0.3" />
+  <polygon points="60,104 56,72 60,76" fill="#a2d1bb" fill-opacity="0.5" />
+
+  <polygon points="104,60 72,64 76,60" fill="#a2d1bb" fill-opacity="0.3" />
+  <polygon points="104,60 72,56 76,60" fill="#a2d1bb" fill-opacity="0.5" />
+
+  <polygon points="16,60 48,64 44,60" fill="#a2d1bb" fill-opacity="0.3" />
+  <polygon points="16,60 48,56 44,60" fill="#a2d1bb" fill-opacity="0.5" />
+
+  <!-- Diagonal smaller pointers -->
+  <polygon points="91,29 67,53 69,51" fill="#a2d1bb" fill-opacity="0.2" />
+  <polygon points="29,91 53,67 51,69" fill="#a2d1bb" fill-opacity="0.2" />
+  <polygon points="91,91 67,67 69,69" fill="#a2d1bb" fill-opacity="0.2" />
+  <polygon points="29,29 53,53 51,51" fill="#a2d1bb" fill-opacity="0.2" />
+
+  <!-- Center Pin -->
+  <circle cx="60" cy="60" r="3.5" fill="#081e18" stroke="#a2d1bb" stroke-width="1.2" />
+  <circle cx="60" cy="60" r="1.2" fill="#e8a850" />
+</svg>

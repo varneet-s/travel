@@ -82,9 +82,13 @@ body {
 
 .section-light {
   background-color: var(--bg-light);
+  background-image: url('/images/illustrations/topographic-contour.svg');
+  background-repeat: repeat;
+  background-size: 700px 500px;
   color: var(--text-light-primary);
   width: 100%;
   padding: 56px 0;
+  position: relative;
 }
 
 @media (min-width: 768px) {
@@ -616,14 +620,42 @@ a:hover {
 
 
 /* ==========================================================================
-   Editorial Footer
+   Editorial Footer & Mountain Horizon
    ========================================================================== */
 
-.editorial-footer {
-  background-color: #0c3227;
-  border-top: 1px solid var(--border-on-dark);
-  padding: 28px 0;
+.footer-mountain-horizon {
   width: 100%;
+  overflow: hidden;
+  background: transparent;
+  line-height: 0;
+  margin-bottom: -1px;
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.footer-ridge-svg {
+  width: 100%;
+  height: 65px;
+  min-width: 800px;
+  object-fit: cover;
+  object-position: bottom;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .footer-ridge-svg {
+    height: 105px;
+  }
+}
+
+.editorial-footer {
+  background-color: #071914;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 24px 0 32px;
+  width: 100%;
+  position: relative;
+  z-index: 3;
 }
 
 .footer-content-row {
@@ -631,14 +663,48 @@ a:hover {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
+}
+
+.footer-brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer-compass-badge {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  opacity: 0.8;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.editorial-footer:hover .footer-compass-badge {
+  transform: rotate(45deg);
+  opacity: 1;
+}
+
+.footer-text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .footer-tagline {
   font-family: var(--font-sans);
-  font-size: 13px;
-  color: var(--text-dark-secondary);
+  font-size: 13.5px;
+  color: var(--text-dark-primary);
   letter-spacing: 0.01em;
+  font-weight: 500;
+}
+
+.footer-sub-coord {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: var(--accent-sage);
+  letter-spacing: 0.05em;
+  opacity: 0.85;
 }
 
 .footer-action {

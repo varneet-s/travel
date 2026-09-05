@@ -1,0 +1,287 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200" preserveAspectRatio="none" fill="none" style="display:block;width:100%;height:auto;">
+  <defs>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#081e18" stop-opacity="0" />
+      <stop offset="100%" stop-color="#081e18" stop-opacity="0.95" />
+    </linearGradient>
+    <linearGradient id="mistGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a2d1bb" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#081e18" stop-opacity="0.6" />
+    </linearGradient>
+  </defs>
+
+  <!-- Distant High Peaks (Layer 1 - Soft Mist Sage) -->
+  <path d="M0,140 L70,110 L130,135 L210,95 L270,125 L340,85 L420,130 L490,90 L570,135 L640,80 L720,125 L810,75 L890,120 L960,85 L1040,130 L1120,95 L1190,130 L1260,80 L1340,120 L1400,95 L1440,115 L1440,200 L0,200 Z" fill="#a2d1bb" fill-opacity="0.09" />
+
+  <!-- Mid-Range Alpine Ridges (Layer 2 - Forest Deep) -->
+  <path d="M0,155 L60,135 L120,150 L180,125 L250,145 L320,115 L390,150 L470,120 L540,148 L620,110 L690,145 L760,118 L840,148 L910,112 L980,145 L1060,122 L1130,150 L1210,115 L1280,142 L1360,118 L1440,145 L1440,200 L0,200 Z" fill="#164235" fill-opacity="0.35" />
+
+  <!-- Subtle Mountain Mist Valley Band -->
+  <path d="M0,165 Q360,140 720,160 T1440,155 L1440,200 L0,200 Z" fill="url(#mistGrad)" />
+
+  <!-- Foreground Alpine Pine Forest Silhouette (Layer 3 - Detailed Evergreens) -->
+  <g fill="#071914" fill-opacity="0.85">
+    <!-- Repeating Pine Tree Silhouettes across width -->
+<polygon points="0,151 -9,166 9,166" />
+    <polygon points="0,162 -14,179 14,179" />
+    <polygon points="0,175 -18,195 18,195" />
+    <polygon points="18,148 8,164 28,164" />
+    <polygon points="18,160 3,177 33,177" />
+    <polygon points="18,173 -1,194 37,194" />
+    <polygon points="36,149 27,164 45,164" />
+    <polygon points="36,160 22,177 50,177" />
+    <polygon points="36,173 18,193 54,193" />
+    <polygon points="54,151 45,165 63,165" />
+    <polygon points="54,161 41,177 67,177" />
+    <polygon points="54,173 37,192 71,192" />
+    <polygon points="72,153 64,166 80,166" />
+    <polygon points="72,162 60,177 84,177" />
+    <polygon points="72,173 57,191 87,191" />
+    <polygon points="90,153 82,165 98,165" />
+    <polygon points="90,161 78,177 102,177" />
+    <polygon points="90,173 75,190 105,190" />
+    <polygon points="108,149 100,163 116,163" />
+    <polygon points="108,159 96,175 120,175" />
+    <polygon points="108,171 92,189 124,189" />
+    <polygon points="126,144 117,159 135,159" />
+    <polygon points="126,155 112,173 140,173" />
+    <polygon points="126,169 108,189 144,189" />
+    <polygon points="144,138 133,155 155,155" />
+    <polygon points="144,151 128,170 160,170" />
+    <polygon points="144,166 123,188 165,188" />
+    <polygon points="162,135 150,153 174,153" />
+    <polygon points="162,149 145,169 179,169" />
+    <polygon points="162,165 140,188 184,188" />
+    <polygon points="180,137 169,154 191,154" />
+    <polygon points="180,150 164,170 196,170" />
+    <polygon points="180,166 159,188 201,188" />
+    <polygon points="198,144 189,159 207,159" />
+    <polygon points="198,155 184,172 212,172" />
+    <polygon points="198,168 180,188 216,188" />
+    <polygon points="216,155 209,166 223,166" />
+    <polygon points="216,162 206,176 226,176" />
+    <polygon points="216,172 203,188 229,188" />
+    <polygon points="234,166 230,173 238,173" />
+    <polygon points="234,169 227,180 241,180" />
+    <polygon points="234,176 225,188 243,188" />
+    <polygon points="252,176 250,180 254,180" />
+    <polygon points="252,176 248,183 256,183" />
+    <polygon points="252,179 247,188 257,188" />
+    <polygon points="270,183 269,185 271,185" />
+    <polygon points="270,181 269,186 271,186" />
+    <polygon points="270,182 268,189 272,189" />
+    <polygon points="288,184 287,186 289,186" />
+    <polygon points="288,182 287,187 289,187" />
+    <polygon points="288,183 286,190 290,190" />
+    <polygon points="306,179 304,182 308,182" />
+    <polygon points="306,178 303,186 309,186" />
+    <polygon points="306,182 302,190 310,190" />
+    <polygon points="324,172 321,178 327,178" />
+    <polygon points="324,174 319,184 329,184" />
+    <polygon points="324,180 317,191 331,191" />
+    <polygon points="342,166 337,175 347,175" />
+    <polygon points="342,171 334,182 350,182" />
+    <polygon points="342,178 332,192 352,192" />
+    <polygon points="360,162 353,172 367,172" />
+    <polygon points="360,168 350,182 370,182" />
+    <polygon points="360,178 347,193 373,193" />
+    <polygon points="378,163 371,174 385,174" />
+    <polygon points="378,170 368,183 388,183" />
+    <polygon points="378,179 365,195 391,195" />
+    <polygon points="396,165 390,175 402,175" />
+    <polygon points="396,171 387,184 405,184" />
+    <polygon points="396,180 384,195 408,195" />
+    <polygon points="414,169 408,178 420,178" />
+    <polygon points="414,174 406,186 422,186" />
+    <polygon points="414,182 403,196 425,196" />
+    <polygon points="432,171 427,180 437,180" />
+    <polygon points="432,176 424,187 440,187" />
+    <polygon points="432,183 422,197 442,197" />
+    <polygon points="450,169 444,179 456,179" />
+    <polygon points="450,175 441,187 459,187" />
+    <polygon points="450,183 438,198 462,198" />
+    <polygon points="468,165 461,176 475,176" />
+    <polygon points="468,172 457,187 479,187" />
+    <polygon points="468,183 454,199 482,199" />
+    <polygon points="486,156 477,171 495,171" />
+    <polygon points="486,167 472,184 500,184" />
+    <polygon points="486,180 468,200 504,200" />
+    <polygon points="504,148 492,166 516,166" />
+    <polygon points="504,162 487,182 521,182" />
+    <polygon points="504,178 482,201 526,201" />
+    <polygon points="522,141 509,162 535,162" />
+    <polygon points="522,158 502,180 542,180" />
+    <polygon points="522,176 497,201 547,201" />
+    <polygon points="540,141 527,162 553,162" />
+    <polygon points="540,158 520,180 560,180" />
+    <polygon points="540,176 515,202 565,202" />
+    <polygon points="558,146 546,165 570,165" />
+    <polygon points="558,161 540,182 576,182" />
+    <polygon points="558,178 535,202 581,202" />
+    <polygon points="576,155 566,171 586,171" />
+    <polygon points="576,167 561,185 591,185" />
+    <polygon points="576,181 557,202 595,202" />
+    <polygon points="594,166 586,178 602,178" />
+    <polygon points="594,174 582,189 606,189" />
+    <polygon points="594,185 579,202 609,202" />
+    <polygon points="612,175 606,184 618,184" />
+    <polygon points="612,180 604,192 620,192" />
+    <polygon points="612,188 601,202 623,202" />
+    <polygon points="630,182 626,189 634,189" />
+    <polygon points="630,185 624,195 636,195" />
+    <polygon points="630,191 622,202 638,202" />
+    <polygon points="648,184 645,190 651,190" />
+    <polygon points="648,186 643,195 653,195" />
+    <polygon points="648,191 641,202 655,202" />
+    <polygon points="666,181 662,188 670,188" />
+    <polygon points="666,184 660,194 672,194" />
+    <polygon points="666,190 658,201 674,201" />
+    <polygon points="684,176 679,184 689,184" />
+    <polygon points="684,180 676,191 692,191" />
+    <polygon points="684,187 674,200 694,200" />
+    <polygon points="702,172 696,181 708,181" />
+    <polygon points="702,177 694,189 710,189" />
+    <polygon points="702,185 691,199 713,199" />
+    <polygon points="720,171 714,180 726,180" />
+    <polygon points="720,176 712,188 728,188" />
+    <polygon points="720,184 709,198 731,198" />
+    <polygon points="738,173 733,181 743,181" />
+    <polygon points="738,177 730,188 746,188" />
+    <polygon points="738,184 728,197 748,197" />
+    <polygon points="756,178 753,184 759,184" />
+    <polygon points="756,180 751,189 761,189" />
+    <polygon points="756,185 749,196 763,196" />
+    <polygon points="774,182 772,186 776,186" />
+    <polygon points="774,182 770,190 778,190" />
+    <polygon points="774,186 769,195 779,195" />
+    <polygon points="792,184 790,187 794,187" />
+    <polygon points="792,183 789,191 795,191" />
+    <polygon points="792,187 788,195 796,195" />
+    <polygon points="810,181 808,185 812,185" />
+    <polygon points="810,181 806,189 814,189" />
+    <polygon points="810,185 805,194 815,194" />
+    <polygon points="828,172 824,179 832,179" />
+    <polygon points="828,175 822,185 834,185" />
+    <polygon points="828,181 820,193 836,193" />
+    <polygon points="846,160 839,171 853,171" />
+    <polygon points="846,167 836,180 856,180" />
+    <polygon points="846,176 833,192 859,192" />
+    <polygon points="864,148 855,163 873,163" />
+    <polygon points="864,159 850,175 878,175" />
+    <polygon points="864,171 846,191 882,191" />
+    <polygon points="882,137 870,155 894,155" />
+    <polygon points="882,151 865,171 899,171" />
+    <polygon points="882,167 860,190 904,190" />
+    <polygon points="900,131 887,151 913,151" />
+    <polygon points="900,147 881,168 919,168" />
+    <polygon points="900,164 876,189 924,189" />
+    <polygon points="918,132 906,151 930,151" />
+    <polygon points="918,147 900,169 936,169" />
+    <polygon points="918,165 895,189 941,189" />
+    <polygon points="936,136 925,154 947,154" />
+    <polygon points="936,150 920,169 952,169" />
+    <polygon points="936,165 915,188 957,188" />
+    <polygon points="954,143 945,158 963,158" />
+    <polygon points="954,154 940,172 968,172" />
+    <polygon points="954,168 936,188 972,188" />
+    <polygon points="972,151 964,163 980,163" />
+    <polygon points="972,159 960,175 984,175" />
+    <polygon points="972,171 957,188 987,188" />
+    <polygon points="990,155 983,166 997,166" />
+    <polygon points="990,162 980,176 1000,176" />
+    <polygon points="990,172 977,188 1003,188" />
+    <polygon points="1008,156 1001,167 1015,167" />
+    <polygon points="1008,163 998,176 1018,176" />
+    <polygon points="1008,172 995,188 1021,188" />
+    <polygon points="1026,153 1019,165 1033,165" />
+    <polygon points="1026,161 1015,175 1037,175" />
+    <polygon points="1026,171 1012,188 1040,188" />
+    <polygon points="1044,151 1036,163 1052,163" />
+    <polygon points="1044,159 1032,175 1056,175" />
+    <polygon points="1044,171 1029,188 1059,188" />
+    <polygon points="1062,151 1054,164 1070,164" />
+    <polygon points="1062,160 1050,175 1074,175" />
+    <polygon points="1062,171 1047,189 1077,189" />
+    <polygon points="1080,155 1073,167 1087,167" />
+    <polygon points="1080,163 1069,177 1091,177" />
+    <polygon points="1080,173 1066,190 1094,190" />
+    <polygon points="1098,162 1092,172 1104,172" />
+    <polygon points="1098,168 1089,180 1107,180" />
+    <polygon points="1098,176 1086,191 1110,191" />
+    <polygon points="1116,172 1112,179 1120,179" />
+    <polygon points="1116,175 1110,185 1122,185" />
+    <polygon points="1116,181 1108,192 1124,192" />
+    <polygon points="1134,183 1132,186 1136,186" />
+    <polygon points="1134,182 1131,189 1137,189" />
+    <polygon points="1134,185 1130,193 1138,193" />
+    <polygon points="1152,190 1152,191 1152,191" />
+    <polygon points="1152,187 1152,192 1152,192" />
+    <polygon points="1152,188 1151,194 1153,194" />
+    <polygon points="1170,192 1170,193 1170,193" />
+    <polygon points="1170,189 1170,193 1170,193" />
+    <polygon points="1170,189 1169,195 1171,195" />
+    <polygon points="1188,187 1187,189 1189,189" />
+    <polygon points="1188,185 1186,192 1190,192" />
+    <polygon points="1188,188 1185,195 1191,195" />
+    <polygon points="1206,178 1203,184 1209,184" />
+    <polygon points="1206,180 1201,189 1211,189" />
+    <polygon points="1206,185 1199,196 1213,196" />
+    <polygon points="1224,168 1218,178 1230,178" />
+    <polygon points="1224,174 1215,186 1233,186" />
+    <polygon points="1224,182 1212,197 1236,197" />
+    <polygon points="1242,160 1234,173 1250,173" />
+    <polygon points="1242,169 1230,184 1254,184" />
+    <polygon points="1242,180 1227,198 1257,198" />
+    <polygon points="1260,155 1251,170 1269,170" />
+    <polygon points="1260,166 1246,183 1274,183" />
+    <polygon points="1260,179 1242,199 1278,199" />
+    <polygon points="1278,154 1268,170 1288,170" />
+    <polygon points="1278,166 1263,183 1293,183" />
+    <polygon points="1278,179 1259,200 1297,200" />
+    <polygon points="1296,157 1287,172 1305,172" />
+    <polygon points="1296,168 1282,185 1310,185" />
+    <polygon points="1296,181 1278,201 1314,201" />
+    <polygon points="1314,162 1306,176 1322,176" />
+    <polygon points="1314,172 1302,188 1326,188" />
+    <polygon points="1314,184 1298,202 1330,202" />
+    <polygon points="1332,165 1324,177 1340,177" />
+    <polygon points="1332,173 1320,189 1344,189" />
+    <polygon points="1332,185 1317,202 1347,202" />
+    <polygon points="1350,165 1342,177 1358,177" />
+    <polygon points="1350,173 1338,189 1362,189" />
+    <polygon points="1350,185 1335,202 1365,202" />
+    <polygon points="1368,161 1359,175 1377,175" />
+    <polygon points="1368,171 1355,187 1381,187" />
+    <polygon points="1368,183 1351,202 1385,202" />
+    <polygon points="1386,156 1376,172 1396,172" />
+    <polygon points="1386,168 1371,185 1401,185" />
+    <polygon points="1386,181 1367,202 1405,202" />
+    <polygon points="1404,151 1393,168 1415,168" />
+    <polygon points="1404,164 1388,184 1420,184" />
+    <polygon points="1404,180 1383,202 1425,202" />
+    <polygon points="1422,149 1410,167 1434,167" />
+    <polygon points="1422,163 1405,183 1439,183" />
+    <polygon points="1422,179 1400,202 1444,202" />
+    <polygon points="1440,151 1429,168 1451,168" />
+    <polygon points="1440,164 1424,183 1456,183" />
+    <polygon points="1440,179 1419,201 1461,201" />
+    <!-- Base fill joining cleanly into footer -->
+    <rect x="0" y="190" width="1440" height="10" />
+  </g>
+
+  <!-- Faint Constellation Stars -->
+  <g fill="#e8a850" fill-opacity="0.4">
+    <circle cx="140" cy="45" r="1.2" />
+    <circle cx="185" cy="38" r="1.8" />
+    <circle cx="230" cy="52" r="1" />
+    <circle cx="380" cy="35" r="1.5" />
+    <circle cx="520" cy="48" r="1.2" />
+    <circle cx="670" cy="30" r="2" />
+    <circle cx="715" cy="42" r="1" />
+    <circle cx="860" cy="34" r="1.4" />
+    <circle cx="990" cy="46" r="1.6" />
+    <circle cx="1120" cy="32" r="1.2" />
+    <circle cx="1260" cy="40" r="1.8" />
+    <circle cx="1340" cy="50" r="1" />
+  </g>
+</svg>

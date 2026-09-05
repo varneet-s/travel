@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="500" viewBox="0 0 700 500" fill="none" opacity="0.28">
+  <defs>
+    <style>
+      .contour-major { stroke: #0e2e25; stroke-width: 0.9; stroke-opacity: 0.18; fill: none; }
+      .contour-minor { stroke: #0e2e25; stroke-width: 0.55; stroke-opacity: 0.1; fill: none; }
+      .contour-index { stroke: #c85a32; stroke-width: 0.8; stroke-opacity: 0.2; stroke-dasharray: 5,4; fill: none; }
+      .contour-text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 7px; fill: #0e2e25; fill-opacity: 0.25; letter-spacing: 0.06em; font-weight: 500; }
+    </style>
+  </defs>
+
+  <!-- Ridge 1 (North-West massif) -->
+  <path class="contour-major" d="M-30,60 Q70,30 160,70 T320,50 T460,90 T600,55 T750,70" />
+  <path class="contour-minor" d="M-30,85 Q80,55 170,95 T330,75 T470,115 T610,80 T750,95" />
+  <path class="contour-minor" d="M-30,110 Q90,80 180,120 T340,100 T480,140 T620,105 T750,120" />
+  <path class="contour-index" d="M-30,135 Q100,105 190,145 T350,125 T490,165 T630,130 T750,145" />
+  <text x="195" y="142" class="contour-text">2,600m</text>
+  <text x="495" y="162" class="contour-text">2,600m</text>
+
+  <!-- Valley & Saddle (Mid elevation) -->
+  <path class="contour-minor" d="M-30,170 Q110,140 210,180 T370,160 T510,200 T650,165 T750,180" />
+  <path class="contour-major" d="M-30,205 Q120,175 230,215 T390,195 T530,235 T670,200 T750,215" />
+  <path class="contour-minor" d="M-30,240 Q130,210 250,250 T410,230 T550,270 T690,235 T750,250" />
+  <path class="contour-index" d="M-30,275 Q140,245 270,285 T430,265 T570,305 T710,270 T750,285" />
+  <text x="275" y="282" class="contour-text">3,120m (Jalori Pass)</text>
+  <text x="575" y="302" class="contour-text">3,120m</text>
+
+  <!-- High Cirque & Serolsar Ridge -->
+  <path class="contour-minor" d="M-30,310 Q150,280 290,320 T450,300 T590,340 T720,305 T750,320" />
+  <path class="contour-major" d="M-30,345 Q160,315 310,355 T470,335 T610,375 T730,340 T750,355" />
+  <path class="contour-minor" d="M-30,380 Q170,350 330,390 T490,370 T630,410 T740,375 T750,390" />
+  <path class="contour-index" d="M-30,415 Q180,385 350,425 T510,405 T650,445 T750,410" />
+  <text x="355" y="422" class="contour-text">3,450m (Chitkul Summit)</text>
+
+  <path class="contour-minor" d="M-30,450 Q190,420 370,460 T530,440 T670,480 T750,445" />
+  <path class="contour-major" d="M-30,485 Q200,455 390,495 T550,475 T690,515 T750,480" />
+
+  <!-- Alpine Peak Summit Spot Elevation -->
+  <circle cx="360" cy="62" r="2" fill="#c85a32" fill-opacity="0.3" />
+  <path d="M357,62 L363,62 M360,59 L360,65" stroke="#c85a32" stroke-width="0.7" stroke-opacity="0.4" />
+  <text x="366" y="65" class="contour-text" style="font-weight: 700; fill: #c85a32; fill-opacity: 0.5;">▲ 3,450m</text>
+</svg>
