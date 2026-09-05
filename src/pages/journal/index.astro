@@ -1,57 +1,248 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { journeysArchive } from '../../data/journeysArchive';
 
 const allEntries = await getCollection('journal');
 const sortedEntries = allEntries.sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
+
+const years = [2026, 2025, 2024, 2023];
 ---
 
 <BaseLayout
-  title="Journeys & Field Notes — Varneet (@the_musafir_paaji)"
-  description="Trip stories, high-altitude trail notes, and photographs from Himachal Pradesh."
+  title="Journeys Archive (14 Trips · 2023–2026) — Varneet"
+  description="Chronological logbook of 14 journeys across 3 years: Gokarna, Himachal trails, Banaras, Lucknow, and Rajasthan. Group trips, solo retreats, and trip leading."
   image="/images/shangarh/shangarh-1.jpg"
 >
   <div class="section-light">
-    <div class="content-narrow">
-      <div>
-        <span class="eyebrow hero-enter hero-delay-1">Trip Stories & Field Notes</span>
-        <h1 class="display-title hero-enter hero-delay-2" style="margin-top: 8px;">Journeys</h1>
-        <p class="hero-enter hero-delay-3" style="margin-top: 12px; color: var(--text-light-secondary);">
-          Photo-led field archives from unhurried Himalayan routes and mountain valleys.
+    <div class="content-wrap">
+      <div style="max-width: var(--reading-max);">
+        <span class="eyebrow hero-enter hero-delay-1">Field Archives · 2023–2026</span>
+        <h1 class="display-title hero-enter hero-delay-2" style="margin-top: 8px;">Journeys & The Road Archive</h1>
+        <p class="hero-enter hero-delay-3" style="margin-top: 12px; color: var(--text-light-secondary); font-size: 1.15rem; line-height: 1.6;">
+          An authentic chronological logbook of 14 trips taken over three years. Starting from that first nervous step in Gokarna, to guiding groups through Jibhi as a trip leader, solo reflections in Shojha, and desert miles across Rajasthan.
         </p>
+
+        <!-- Stats Bar -->
+        <div class="hero-enter hero-delay-4" style="margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+          <div style="background: rgba(14, 46, 37, 0.06); border: 1px solid var(--border-on-light); padding: 5px 14px; border-radius: 999px; font-size: 13px; font-weight: 500; color: var(--text-light-primary);">
+            📍 14 Journeys Recorded
+          </div>
+          <div style="background: rgba(14, 46, 37, 0.06); border: 1px solid var(--border-on-light); padding: 5px 14px; border-radius: 999px; font-size: 13px; font-weight: 500; color: var(--text-light-primary);">
+            🏔️ 4 States (HP, KA, UP, RJ)
+          </div>
+          <div style="background: rgba(14, 46, 37, 0.06); border: 1px solid var(--border-on-light); padding: 5px 14px; border-radius: 999px; font-size: 13px; font-weight: 500; color: var(--text-light-primary);">
+            🎒 Trip Leader & Solo Explorer
+          </div>
+        </div>
       </div>
 
-      <div style="margin-top: 48px; display: flex; flex-direction: column; gap: 48px;">
-        {sortedEntries.map((entry, idx) => {
-          const dateStr = new Date(entry.data.date).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric',
-          });
-          return (
-            <a href={`/journal/${entry.id}`} class={`preview-card-editorial reveal-on-scroll stagger-${(idx % 3) + 1}`}>
-              <div class="preview-photos-3">
-                {entry.data.images.slice(0, 3).map((img, i) => (
-                  <div style="overflow: hidden; border-radius: 8px;">
-                    <img
-                      src={img}
-                      alt={`${entry.data.title} photo ${i + 1}`}
-                      loading="lazy"
-                      style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);"
-                    />
-                  </div>
+      <!-- Year Filter Pills -->
+      <div class="reveal-on-scroll" style="margin-top: 40px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+        <span class="eyebrow" style="margin-right: 4px;">Filter by Year:</span>
+        <button class="year-filter-pill active" data-year="all">All Trips (14)</button>
+        <button class="year-filter-pill" data-year="2026">2026 (1)</button>
+        <button class="year-filter-pill" data-year="2025">2025 (2)</button>
+        <button class="year-filter-pill" data-year="2024">2024 (7)</button>
+        <button class="year-filter-pill" data-year="2023">2023 (4)</button>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="reveal-on-scroll" style="margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+        <span class="eyebrow" style="margin-right: 4px;">Role & Style:</span>
+        <button class="style-filter-pill active" data-style="all">All Styles</button>
+        <button class="style-filter-pill" data-style="raw-diaries">With Raw Diaries</button>
+        <button class="style-filter-pill" data-style="trip-leader">Trip Leader</button>
+        <button class="style-filter-pill" data-style="solo">Solo</button>
+        <button class="style-filter-pill" data-style="friends">With Friends</button>
+      </div>
+
+      <!-- Chronological 14-Trip Timeline Cards -->
+      <div id="journeysGrid" style="margin-top: 36px; display: flex; flex-direction: column; gap: 24px;">
+        {journeysArchive.slice().reverse().map((trip) => (
+          <article
+            class="journey-log-card reveal-on-scroll"
+            data-year={trip.year.toString()}
+            data-style={trip.role.toLowerCase().replace(/\s+/g, '-')}
+            data-group={trip.groupType.toLowerCase().replace(/\s+/g, '-')}
+            style="background: #ffffff; border: 1px solid var(--border-on-light); border-radius: 14px; padding: 24px 28px; display: flex; flex-direction: column; gap: 14px; position: relative;"
+          >
+            <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700; color: var(--accent-terracotta);">
+                  #{trip.id.toString().padStart(2, '0')}
+                </span>
+                <span class="eyebrow" style="color: var(--text-light-muted);">{trip.destination} · {trip.region}</span>
+              </div>
+              <div style="display: flex; gap: 6px; align-items: center;">
+                <span class="badge-sage" style="font-size: 11px; padding: 2px 8px;">
+                  {trip.dates}
+                </span>
+                <span style="font-size: 11px; font-weight: 600; background: var(--bg-light); color: var(--text-light-primary); padding: 2px 8px; border-radius: 4px; border: 1px solid var(--border-on-light);">
+                  {trip.role}
+                </span>
+              </div>
+            </div>
+
+            <div>
+              <h2 style="font-family: var(--font-serif); font-size: 1.45rem; color: var(--text-light-primary); margin: 2px 0 8px;">
+                {trip.title}
+              </h2>
+              <p style="font-size: 15px; color: var(--text-light-secondary); line-height: 1.6;">
+                {trip.summary}
+              </p>
+            </div>
+
+            <!-- Key Highlights of the Trip -->
+            <div style="background: var(--bg-light); border-radius: 8px; padding: 12px 16px; border-left: 3px solid var(--accent-sage);">
+              <span class="eyebrow" style="font-size: 10.5px; color: var(--text-light-muted); margin-bottom: 4px; display: block;">Memories & Field Marks</span>
+              <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 3px;">
+                {trip.highlights.map((h) => (
+                  <li style="font-size: 13.5px; color: var(--text-light-primary); display: flex; align-items: baseline; gap: 6px;">
+                    <span style="color: var(--accent-terracotta);">•</span>
+                    <span>{h}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px solid var(--border-on-light); flex-wrap: wrap; gap: 8px;">
+              <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                {trip.tags.map((tag) => (
+                  <span style="font-size: 11.5px; color: var(--text-light-muted);">
+                    {tag}
+                  </span>
                 ))}
               </div>
-              <div class="preview-meta-row">
-                <h3>{entry.data.title}</h3>
-                <span class="eyebrow" style="color: var(--text-light-muted);">{dateStr} <span class="arrow-spring">→</span></span>
-              </div>
-            </a>
-          );
-        })}
+              {trip.journalSlug && (
+                <a href={`/journal/${trip.journalSlug}`} class="accent-link" style="font-size: 14px; font-weight: 600;">
+                  Read Full Photo Dispatch <span class="arrow-spring">→</span>
+                </a>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- Featured Photo Stories Section -->
+      <div style="margin-top: 72px; padding-top: 48px; border-top: 2px solid var(--border-on-light);">
+        <span class="eyebrow">Curated Field Dispatches</span>
+        <h2 style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--text-light-primary); margin: 6px 0 24px;">
+          Long-form Stories with Photo Galleries
+        </h2>
+
+        <div style="display: flex; flex-direction: column; gap: 36px;">
+          {sortedEntries.map((entry, idx) => {
+            const dateStr = new Date(entry.data.date).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric',
+            });
+            return (
+              <a href={`/journal/${entry.id}`} class={`preview-card-editorial reveal-on-scroll stagger-${(idx % 3) + 1}`}>
+                <div class="preview-photos-3">
+                  {entry.data.images.slice(0, 3).map((img, i) => (
+                    <div style="overflow: hidden; border-radius: 8px;">
+                      <img
+                        src={img}
+                        alt={`${entry.data.title} photo ${i + 1}`}
+                        loading="lazy"
+                        style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);"
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div class="preview-meta-row">
+                  <h3>{entry.data.title}</h3>
+                  <span class="eyebrow" style="color: var(--text-light-muted);">{dateStr} <span class="arrow-spring">→</span></span>
+                </div>
+              </a>
+            );
+          })}
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Interactive Timeline Filter Script -->
+  <script is:inline>
+    const yearButtons = document.querySelectorAll('.year-filter-pill');
+    const styleButtons = document.querySelectorAll('.style-filter-pill');
+    const cards = document.querySelectorAll('#journeysGrid article');
+
+    let activeYear = 'all';
+    let activeStyle = 'all';
+
+    function applyFilters() {
+      cards.forEach((card) => {
+        const cardYear = card.getAttribute('data-year');
+        const cardStyle = card.getAttribute('data-style') || '';
+        const cardGroup = card.getAttribute('data-group') || '';
+
+        const yearMatch = activeYear === 'all' || cardYear === activeYear;
+
+        let styleMatch = true;
+        if (activeStyle === 'raw-diaries') {
+          styleMatch = cardGroup.includes('raw-diaries');
+        } else if (activeStyle === 'trip-leader') {
+          styleMatch = cardStyle.includes('trip-leader');
+        } else if (activeStyle === 'solo') {
+          styleMatch = cardGroup.includes('solo') || cardStyle.includes('solo');
+        } else if (activeStyle === 'friends') {
+          styleMatch = cardGroup.includes('friends') || cardStyle.includes('friend');
+        }
+
+        if (yearMatch && styleMatch) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    yearButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        yearButtons.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeYear = btn.getAttribute('data-year');
+        applyFilters();
+      });
+    });
+
+    styleButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        styleButtons.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeStyle = btn.getAttribute('data-style');
+        applyFilters();
+      });
+    });
+  </script>
+
+  <style>
+    .year-filter-pill, .style-filter-pill {
+      background: #ffffff;
+      border: 1px solid var(--border-on-light);
+      color: var(--text-light-secondary);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: var(--font-sans);
+    }
+    .year-filter-pill:hover, .style-filter-pill:hover {
+      border-color: var(--accent-terracotta);
+      color: var(--accent-terracotta);
+    }
+    .year-filter-pill.active, .style-filter-pill.active {
+      background: var(--bg-dark);
+      color: #ffffff;
+      border-color: var(--bg-dark);
+    }
+  </style>
 </BaseLayout>
+
