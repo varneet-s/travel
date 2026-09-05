@@ -1,11 +1,5 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
-
-const allEntries = await getCollection('reading');
-const sortedEntries = allEntries.sort(
-  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
-);
 
 const currentlyReading = [
   {
@@ -14,6 +8,7 @@ const currentlyReading = [
     note: 'Reading for the 2nd time',
     progress: 'Page 47 of 304 · 15%',
     tag: 'Classic · Dystopia · Philosophy',
+    link: 'https://www.goodreads.com/book/show/61439040-1984',
   },
   {
     title: 'Men Without Women',
@@ -21,6 +16,7 @@ const currentlyReading = [
     note: 'Short stories on solitude and longing',
     progress: 'Page 55 of 228 · 24%',
     tag: 'Literary · Contemporary',
+    link: 'https://www.goodreads.com/book/show/33643994-men-without-women',
   },
   {
     title: 'What I Talk About When I Talk About Running',
@@ -28,6 +24,22 @@ const currentlyReading = [
     note: 'Memoir on running, discipline, and writing',
     progress: 'Currently reading',
     tag: 'Memoir · Non-fiction',
+    link: 'https://www.goodreads.com/book/show/2195464.What_I_Talk_About_When_I_Talk_About_Running',
+  },
+];
+
+const readingHighlights = [
+  {
+    shelf: 'Memoirs & Journeys',
+    desc: 'Writings on solitude, discipline, and the physical weight of movement across terrain.',
+  },
+  {
+    shelf: 'Classics & Modern Fiction',
+    desc: 'Stories that challenge perception, explore existential longing, and stay with you for decades.',
+  },
+  {
+    shelf: 'Philosophy & Human Nature',
+    desc: 'Deep investigations into resilience, societal structures, and inner stillness.',
   },
 ];
 ---
@@ -42,9 +54,9 @@ const currentlyReading = [
         <span class="eyebrow">Goodreads Library & Backpack Books</span>
         <h1 class="display-title" style="margin-top: 8px;">Reading</h1>
         <p style="margin-top: 12px; color: var(--text-light-secondary);">
-          Books, memoirs, and field essays carried along mountain trails. 
+          Books, memoirs, and essays carried along mountain trails and hostel bunk beds.
         </p>
-        <div style="margin-top: 10px;">
+        <div style="margin-top: 12px;">
           <a
             href="https://www.goodreads.com/user/show/202026328-varneet-singh"
             target="_blank"
@@ -59,57 +71,76 @@ const currentlyReading = [
 
       <!-- Currently Reading Stack -->
       <div style="margin-top: 48px;">
-        <span class="eyebrow" style="margin-bottom: 20px;">Currently Reading</span>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 20px;">
+          <span class="eyebrow">Currently Reading</span>
+          <span class="eyebrow" style="color: var(--text-light-muted);">Live Progress</span>
+        </div>
 
         <div style="display: flex; flex-direction: column; gap: 20px;">
           {currentlyReading.map((book) => (
-            <div style="background: #ffffff; border: 1px solid var(--border-on-light); border-radius: 16px; padding: 22px 24px; box-shadow: 0 10px 24px -10px rgba(15, 61, 48, 0.08);">
+            <a
+              href={book.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              style="background: #ffffff; border: 1px solid var(--border-on-light); border-radius: 16px; padding: 22px 24px; box-shadow: 0 10px 24px -10px rgba(15, 61, 48, 0.08); display: block; transition: transform var(--duration-base) var(--ease-spring), border-color var(--duration-base) var(--ease-spring);"
+            >
               <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;">
                 <h3 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-light-primary);">
                   {book.title}
                 </h3>
                 <span class="eyebrow" style="color: var(--text-light-muted);">{book.author}</span>
               </div>
-              <p style="margin-top: 6px; font-size: 14px; color: var(--text-light-secondary);">
+              <p style="margin-top: 6px; font-size: 15px; color: var(--text-light-secondary);">
                 {book.note}
               </p>
-              <div style="margin-top: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
-                <span style="font-size: 13px; font-weight: 500; color: #55756B;">
+              <div style="margin-top: 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                <span style="font-size: 13px; font-weight: 600; color: #55756B;">
                   {book.progress}
                 </span>
                 <span class="eyebrow" style="font-size: 10px; color: var(--text-light-muted);">
-                  {book.tag}
+                  {book.tag} ↗
                 </span>
               </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Goodreads Reading Shelves -->
+      <div style="margin-top: 56px;">
+        <span class="eyebrow" style="margin-bottom: 20px;">Goodreads Shelf Notes</span>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          {readingHighlights.map((highlight) => (
+            <div style="background: #ffffff; border: 1px solid var(--border-on-light); border-radius: 14px; padding: 20px 24px;">
+              <h3 style="font-family: var(--font-serif); font-size: 1.2rem; color: var(--text-light-primary);">
+                {highlight.shelf}
+              </h3>
+              <p style="margin-top: 6px; font-size: 15px; color: var(--text-light-secondary);">
+                {highlight.desc}
+              </p>
             </div>
           ))}
         </div>
       </div>
 
-      <!-- Monthly Reading Logs -->
-      <div style="margin-top: 64px;">
-        <span class="eyebrow" style="margin-bottom: 24px;">Monthly Archive Notes</span>
-
-        <div style="display: flex; flex-direction: column; gap: 40px;">
-          {sortedEntries.map((entry) => {
-            const dateStr = new Date(entry.data.date).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-            });
-            return (
-              <a href={`/reading/${entry.id}`} class="preview-card-editorial">
-                <div class="preview-photos-3">
-                  {entry.data.images.slice(0, 3).map((img, i) => (
-                    <img src={img} alt={`${entry.data.title} photo ${i + 1}`} loading="lazy" />
-                  ))}
-                </div>
-                <div class="preview-meta-row">
-                  <h3>{entry.data.title}</h3>
-                  <span class="eyebrow" style="color: var(--text-light-muted);">{dateStr}</span>
-                </div>
-              </a>
-            );
-          })}
+      <!-- Direct Goodreads CTA -->
+      <div style="margin-top: 48px; background-color: var(--bg-dark); color: var(--text-dark-primary); border-radius: 18px; padding: 32px 28px; border: 1px solid rgba(255,255,255,0.1); text-align: center;">
+        <span class="eyebrow" style="color: var(--accent-sage);">Goodreads Profile</span>
+        <h3 style="font-family: var(--font-serif); font-size: 1.6rem; margin-top: 8px;">
+          389 Books & Year-in-Books Archive
+        </h3>
+        <p style="margin-top: 10px; font-size: 15px; color: var(--text-dark-secondary); max-width: 500px; margin-left: auto; margin-right: auto;">
+          Every book read since 2017, rating breakdown, quotes, and reading challenge progress are tracked live on Goodreads.
+        </p>
+        <div style="margin-top: 24px;">
+          <a
+            href="https://www.goodreads.com/user/show/202026328-varneet-singh"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-accent"
+          >
+            Explore Varneet's Goodreads Profile ↗
+          </a>
         </div>
       </div>
     </div>

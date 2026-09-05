@@ -5,7 +5,6 @@ location: "Seraj Valley, Himachal Pradesh"
 images:
   - "/images/shoja/shoja-1.jpg"
   - "/images/shoja/shoja-2.jpg"
-  - "/images/shoja/shoja-3.jpg"
   - "/images/shoja/shoja-4.jpg"
 ---
 

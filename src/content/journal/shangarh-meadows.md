@@ -6,7 +6,6 @@ images:
   - "/images/shangarh/shangarh-1.jpg"
   - "/images/shangarh/shangarh-2.jpg"
   - "/images/shangarh/shangarh-3.jpg"
-  - "/images/shangarh/shangarh-4.jpg"
 ---
 
 The road up from Aut into Sainj Valley narrows as it winds higher, hugging sheer rock faces before gently opening out into the natural meadow of Shangarh. Sacred to Shangchul Mahadev, the meadow is ringed by towering deodars and timber-framed Kathkuni houses.

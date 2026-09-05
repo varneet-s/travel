@@ -12,14 +12,4 @@ const journal = defineCollection({
   }),
 });
 
-const reading = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/reading' }),
-  schema: z.object({
-    title: z.string(),
-    date: z.coerce.date(),
-    images: z.array(z.string()).min(3),
-    description: z.string().optional(),
-  }),
-});
-
-export const collections = { journal, reading };
+export const collections = { journal };
