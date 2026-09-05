@@ -117,22 +117,67 @@ inject();
       <div class="content-wrap">
         <div class="footer-content-row">
           <span class="footer-tagline">Slow routes. Useful stays. Open notebooks.</span>
-          <a
-            href="https://instagram.com/the_musafir_paaji"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="footer-action"
-          >
-            DM @the_musafir_paaji <span class="arrow-spring">→</span>
-          </a>
+          <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+            <button id="btnOpenQrModal" class="footer-qr-pill" aria-label="Open Instagram QR code">
+              📷 Instagram QR
+            </button>
+            <a
+              href="https://instagram.com/the_musafir_paaji"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-action"
+            >
+              DM @the_musafir_paaji <span class="arrow-spring">→</span>
+            </a>
+          </div>
         </div>
       </div>
     </footer>
 
-    <!-- Interactive Motion Script (Scroll Reveal + Reading Tracker) -->
+    <!-- Global Instagram QR Modal (Magic Tree Edition) -->
+    <div id="qrModal" class="qr-modal-backdrop" style="display: none;">
+      <div class="qr-modal-card">
+        <button id="btnCloseQrModal" class="qr-modal-close" aria-label="Close QR modal">✕</button>
+        <span class="qr-modal-badge">Magic Tree Edition</span>
+        <div class="qr-modal-img-wrap">
+          <img src="/images/instagram-qr.png" alt="Instagram QR Code - @the_musafir_paaji" />
+        </div>
+        <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: #ffffff; margin: 10px 0 4px;">@the_musafir_paaji</h3>
+        <p style="font-size: 12.5px; color: var(--text-dark-secondary); margin-bottom: 14px; line-height: 1.4;">Scan with phone camera or visit link</p>
+        <div style="display: flex; gap: 8px; width: 100%;">
+          <a href="https://instagram.com/the_musafir_paaji" target="_blank" rel="noopener noreferrer" class="btn-accent" style="flex: 1; text-align: center; font-size: 12px; padding: 7px 10px;">
+            Instagram ↗
+          </a>
+          <a href="https://tree.icqr.com/s/MjBodHRwczovL3d3dy5pbnN0YWdyYW0uY29tL3RoZV9tdXNhZmlyX3BhYWppLw" target="_blank" rel="noopener noreferrer" class="footer-qr-pill" style="flex: 1; text-align: center; font-size: 12px; padding: 7px 10px; display: flex; align-items: center; justify-content: center;">
+            3D Tree 🌲
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Motion Script (Scroll Reveal + Reading Tracker + QR Modal) -->
     <script is:inline>
       document.addEventListener('DOMContentLoaded', () => {
-        // 1. Reading / Scroll Progress Indicator
+        // 1. Instagram QR Modal
+        const qrModal = document.getElementById('qrModal');
+        const btnOpenQr = document.getElementById('btnOpenQrModal');
+        const btnCloseQr = document.getElementById('btnCloseQrModal');
+
+        if (btnOpenQr && qrModal) {
+          btnOpenQr.addEventListener('click', () => {
+            qrModal.style.display = 'flex';
+          });
+        }
+        if (btnCloseQr && qrModal) {
+          btnCloseQr.addEventListener('click', () => {
+            qrModal.style.display = 'none';
+          });
+          qrModal.addEventListener('click', (e) => {
+            if (e.target === qrModal) qrModal.style.display = 'none';
+          });
+        }
+
+        // 2. Reading / Scroll Progress Indicator
         const progressBar = document.getElementById('readingProgress');
         const updateScrollProgress = () => {
           if (!progressBar) return;

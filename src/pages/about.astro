@@ -267,46 +267,191 @@ const jsonLd = {
         </p>
       </div>
 
-      <div class="reveal-on-scroll stagger-1" style="margin-top: 32px; display: flex; flex-direction: column; gap: 20px;">
-        <div style="background: #ffffff; border: 1px solid var(--border-on-light); border-radius: 14px; padding: 24px;">
-          <span class="eyebrow" style="color: var(--accent-terracotta); margin-bottom: 6px;">Hosts & Homestays</span>
-          <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--text-light-primary); margin: 4px 0 8px;">
-            Propose a Volunteering Collaboration
-          </h3>
-          <p style="font-size: 14.5px; color: var(--text-light-secondary); line-height: 1.55; margin-bottom: 16px;">
-            Let me know your property location, tentative dates, and what kind of help (storytelling, hosting, operations) would make the biggest difference.
-          </p>
-          <a
-            href="https://ig.me/m/the_musafir_paaji?text=Hey%20Varneet,%20I%20run%20a%20property%20in%20Himachal%20and%20would%20love%20to%20discuss%20a%20volunteering%20stay!"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn-accent"
-            style="font-size: 14px; padding: 10px 20px;"
-          >
-            Propose Volunteering Stay on Instagram <span class="arrow-spring">→</span>
-          </a>
+      <div class="reveal-on-scroll stagger-1 contact-grid-with-qr" style="margin-top: 32px;">
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <div style="background: #ffffff; border: 1px solid var(--border-on-light); border-radius: 14px; padding: 24px;">
+            <span class="eyebrow" style="color: var(--accent-terracotta); margin-bottom: 6px;">Hosts & Homestays</span>
+            <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--text-light-primary); margin: 4px 0 8px;">
+              Propose a Volunteering Collaboration
+            </h3>
+            <p style="font-size: 14.5px; color: var(--text-light-secondary); line-height: 1.55; margin-bottom: 16px;">
+              Let me know your property location, tentative dates, and what kind of help (storytelling, hosting, operations) would make the biggest difference.
+            </p>
+            <a
+              href="https://ig.me/m/the_musafir_paaji?text=Hey%20Varneet,%20I%20run%20a%20property%20in%20Himachal%20and%20would%20love%20to%20discuss%20a%20volunteering%20stay!"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-accent"
+              style="font-size: 14px; padding: 10px 20px;"
+            >
+              Propose Volunteering Stay on Instagram <span class="arrow-spring">→</span>
+            </a>
+          </div>
+
+          <div style="background: #ffffff; border: 1px solid var(--border-on-light); border-radius: 14px; padding: 24px;">
+            <span class="eyebrow" style="color: var(--text-light-muted); margin-bottom: 6px;">Travelers & Backpackers</span>
+            <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--text-light-primary); margin: 4px 0 8px;">
+              Itinerary Questions & Offline Packs
+            </h3>
+            <p style="font-size: 14.5px; color: var(--text-light-secondary); line-height: 1.55; margin-bottom: 16px;">
+              Questions about trail difficulty, local bus junctions, or requesting the free offline GPX markers and homestay contact notes.
+            </p>
+            <a
+              href="https://instagram.com/the_musafir_paaji"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="accent-link"
+              style="font-size: 15px; font-weight: 600;"
+            >
+              DM @the_musafir_paaji on Instagram <span class="arrow-spring">→</span>
+            </a>
+          </div>
         </div>
 
-        <div style="background: #ffffff; border: 1px solid var(--border-on-light); border-radius: 14px; padding: 24px;">
-          <span class="eyebrow" style="color: var(--text-light-muted); margin-bottom: 6px;">Travelers & Backpackers</span>
-          <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--text-light-primary); margin: 4px 0 8px;">
-            Itinerary Questions & Offline Packs
-          </h3>
-          <p style="font-size: 14.5px; color: var(--text-light-secondary); line-height: 1.55; margin-bottom: 16px;">
-            Questions about trail difficulty, local bus junctions, or requesting the free offline GPX markers and homestay contact notes.
-          </p>
+        {/* Official Instagram Magic Tree QR Card */}
+        <div class="instagram-qr-card">
+          <div class="qr-tag">Official Instagram</div>
           <a
             href="https://instagram.com/the_musafir_paaji"
             target="_blank"
             rel="noopener noreferrer"
-            class="accent-link"
-            style="font-size: 15px; font-weight: 600;"
+            class="qr-frame"
+            aria-label="Scan or open Varneet's Instagram profile"
           >
-            DM @the_musafir_paaji on Instagram <span class="arrow-spring">→</span>
+            <img
+              src="/images/instagram-qr.png"
+              alt="Varneet Instagram QR Code - @the_musafir_paaji"
+              class="qr-image"
+              loading="lazy"
+            />
+          </a>
+          <div class="qr-meta">
+            <span class="qr-handle">@the_musafir_paaji</span>
+            <span class="qr-instruction">Scan with your phone camera or click to visit</span>
+          </div>
+          <a
+            href="https://tree.icqr.com/s/MjBodHRwczovL3d3dy5pbnN0YWdyYW0uY29tL3RoZV9tdXNhZmlyX3BhYWppLw"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="qr-magic-tree-link"
+          >
+            🌲 View 3D Magic Tree Edition ↗
           </a>
         </div>
       </div>
     </div>
   </div>
+
+  <style>
+    .contact-grid-with-qr {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .instagram-qr-card {
+      background: #ffffff;
+      border: 1px solid var(--border-on-light);
+      border-radius: 16px;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+    }
+
+    .instagram-qr-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+      border-color: rgba(200, 90, 50, 0.3);
+    }
+
+    .qr-tag {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-terracotta);
+      background: rgba(200, 90, 50, 0.08);
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    .qr-frame {
+      display: block;
+      width: 190px;
+      height: 190px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-on-light);
+      background: #fdfdfc;
+      padding: 8px;
+      box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.03);
+      transition: transform 0.3s ease;
+    }
+
+    .qr-frame:hover {
+      transform: scale(1.03);
+    }
+
+    .qr-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 6px;
+    }
+
+    .qr-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .qr-handle {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-light-primary);
+    }
+
+    .qr-instruction {
+      font-size: 12px;
+      color: var(--text-light-muted);
+      line-height: 1.4;
+      max-width: 220px;
+    }
+
+    .qr-magic-tree-link {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent-terracotta);
+      text-decoration: none;
+      padding-top: 8px;
+      border-top: 1px solid rgba(14, 46, 37, 0.08);
+      width: 100%;
+      transition: color 0.2s ease;
+    }
+
+    .qr-magic-tree-link:hover {
+      color: var(--accent-terracotta-hover, #bf4324);
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid-with-qr {
+        grid-template-columns: 1fr;
+      }
+      .instagram-qr-card {
+        max-width: 320px;
+        margin: 0 auto;
+        width: 100%;
+      }
+    }
+  </style>
 </BaseLayout>
 
