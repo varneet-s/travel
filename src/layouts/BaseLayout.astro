@@ -134,22 +134,54 @@ inject();
       </div>
     </footer>
 
-    <!-- Global Instagram QR Modal (Magic Tree Edition) -->
+    <!-- Global Instagram QR Modal (Live 3D Magic Tree Animation Edition) -->
     <div id="qrModal" class="qr-modal-backdrop" style="display: none;">
       <div class="qr-modal-card">
         <button id="btnCloseQrModal" class="qr-modal-close" aria-label="Close QR modal">✕</button>
-        <span class="qr-modal-badge">Magic Tree Edition</span>
-        <div class="qr-modal-img-wrap">
-          <img src="/images/instagram-qr.png" alt="Instagram QR Code - @the_musafir_paaji" />
+        
+        <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 12px; padding-right: 28px;">
+          <span class="qr-modal-badge">Magic Tree 3D</span>
+          <div class="modal-mode-tabs" id="modalQrTabs">
+            <button class="modal-tab-btn active" data-mode="3d" type="button">🌲 3D Animation</button>
+            <button class="modal-tab-btn" data-mode="static" type="button">📷 Scan</button>
+          </div>
         </div>
-        <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: #ffffff; margin: 10px 0 4px;">@the_musafir_paaji</h3>
-        <p style="font-size: 12.5px; color: var(--text-dark-secondary); margin-bottom: 14px; line-height: 1.4;">Scan with phone camera or visit link</p>
-        <div style="display: flex; gap: 8px; width: 100%;">
-          <a href="https://instagram.com/the_musafir_paaji" target="_blank" rel="noopener noreferrer" class="btn-accent" style="flex: 1; text-align: center; font-size: 12px; padding: 7px 10px;">
-            Instagram ↗
+
+        <!-- 3D Live Animation Frame -->
+        <div id="modalView3d" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+          <div class="qr-modal-iframe-wrap">
+            <iframe
+              id="modalIframe"
+              src="https://tree.icqr.com/s/MjBodHRwczovL3d3dy5pbnN0YWdyYW0uY29tL3RoZV9tdXNhZmlyX3BhYWppLw"
+              title="Instagram Magic Tree 3D Animation - @the_musafir_paaji"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
+              class="modal-live-iframe"
+            ></iframe>
+          </div>
+          <p style="font-size: 11.5px; color: var(--accent-sage); margin: 8px 0 10px; line-height: 1.4;">
+            ✨ Tap the tree above to watch it animate into the QR code
+          </p>
+        </div>
+
+        <!-- 2D High-Contrast Scannable Image -->
+        <div id="modalViewStatic" style="width: 100%; display: none; flex-direction: column; align-items: center; padding: 16px 0;">
+          <div class="qr-modal-img-wrap">
+            <img src="/images/instagram-qr.png" alt="Instagram QR Code - @the_musafir_paaji" />
+          </div>
+          <p style="font-size: 12px; color: var(--text-dark-secondary); margin: 12px 0 6px;">
+            Point your phone camera to open profile directly
+          </p>
+        </div>
+
+        <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: #ffffff; margin: 4px 0 2px;">@the_musafir_paaji</h3>
+        
+        <div style="display: flex; gap: 8px; width: 100%; margin-top: 10px;">
+          <a href="https://instagram.com/the_musafir_paaji" target="_blank" rel="noopener noreferrer" class="btn-accent" style="flex: 1; text-align: center; font-size: 12px; padding: 8px 12px;">
+            DM on Instagram →
           </a>
-          <a href="https://tree.icqr.com/s/MjBodHRwczovL3d3dy5pbnN0YWdyYW0uY29tL3RoZV9tdXNhZmlyX3BhYWppLw" target="_blank" rel="noopener noreferrer" class="footer-qr-pill" style="flex: 1; text-align: center; font-size: 12px; padding: 7px 10px; display: flex; align-items: center; justify-content: center;">
-            3D Tree 🌲
+          <a href="https://tree.icqr.com/s/MjBodHRwczovL3d3dy5pbnN0YWdyYW0uY29tL3RoZV9tdXNhZmlyX3BhYWppLw" target="_blank" rel="noopener noreferrer" class="footer-qr-pill" style="font-size: 12px; padding: 8px 12px; display: flex; align-items: center; justify-content: center;">
+            Fullscreen ↗
           </a>
         </div>
       </div>
@@ -158,14 +190,18 @@ inject();
     <!-- Interactive Motion Script (Scroll Reveal + Reading Tracker + QR Modal) -->
     <script is:inline>
       document.addEventListener('DOMContentLoaded', () => {
-        // 1. Instagram QR Modal
+        // 1. Instagram QR Modal with 3D / 2D Tab Switching
         const qrModal = document.getElementById('qrModal');
         const btnOpenQr = document.getElementById('btnOpenQrModal');
         const btnCloseQr = document.getElementById('btnCloseQrModal');
+        const modalTabs = document.querySelectorAll('#modalQrTabs .modal-tab-btn');
+        const modalView3d = document.getElementById('modalView3d');
+        const modalViewStatic = document.getElementById('modalViewStatic');
 
         if (btnOpenQr && qrModal) {
           btnOpenQr.addEventListener('click', () => {
             qrModal.style.display = 'flex';
+            setTimeout(fitModalIframe, 50);
           });
         }
         if (btnCloseQr && qrModal) {
@@ -174,6 +210,48 @@ inject();
           });
           qrModal.addEventListener('click', (e) => {
             if (e.target === qrModal) qrModal.style.display = 'none';
+          });
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && qrModal.style.display === 'flex') {
+              qrModal.style.display = 'none';
+            }
+          });
+        }
+
+        const modalIframeWrap = document.querySelector('.qr-modal-iframe-wrap');
+        const modalIframe = document.getElementById('modalIframe');
+
+        function fitModalIframe() {
+          if (!modalIframeWrap || !modalIframe) return;
+          const w = modalIframeWrap.clientWidth;
+          if (w <= 0) return;
+          const baseW = 400;
+          const baseH = 640;
+          const scale = w / baseW;
+          modalIframe.style.width = `${baseW}px`;
+          modalIframe.style.height = `${baseH}px`;
+          modalIframe.style.transform = `scale(${scale})`;
+          modalIframe.style.transformOrigin = 'top left';
+          modalIframeWrap.style.height = `${Math.round(baseH * scale)}px`;
+        }
+
+        window.addEventListener('resize', fitModalIframe);
+
+        if (modalTabs.length && modalView3d && modalViewStatic) {
+          modalTabs.forEach((tab) => {
+            tab.addEventListener('click', () => {
+              modalTabs.forEach((t) => t.classList.remove('active'));
+              tab.classList.add('active');
+              const mode = tab.getAttribute('data-mode');
+              if (mode === '3d') {
+                modalView3d.style.display = 'flex';
+                modalViewStatic.style.display = 'none';
+                setTimeout(fitModalIframe, 50);
+              } else {
+                modalView3d.style.display = 'none';
+                modalViewStatic.style.display = 'flex';
+              }
+            });
           });
         }
 
