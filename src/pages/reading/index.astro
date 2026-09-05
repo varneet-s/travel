@@ -5,26 +5,29 @@ const currentlyReading = [
   {
     title: '1984',
     author: 'George Orwell',
-    note: 'Reading for the 2nd time',
+    cover: '/images/books/1984.jpg',
+    note: 'Reading for the 2nd time. An enduring examination of surveillance, language, and memory.',
     progress: 'Page 47 of 304 · 15%',
     tag: 'Classic · Dystopia · Philosophy',
-    link: 'https://www.goodreads.com/book/show/61439040-1984',
+    link: 'https://www.goodreads.com/book/show/230149114-1984',
   },
   {
     title: 'Men Without Women',
     author: 'Haruki Murakami',
-    note: 'Short stories on solitude and longing',
+    cover: '/images/books/men-without-women.jpg',
+    note: 'Short stories on solitude, longing, quiet estrangement, and what remains behind.',
     progress: 'Page 55 of 228 · 24%',
-    tag: 'Literary · Contemporary',
-    link: 'https://www.goodreads.com/book/show/33643994-men-without-women',
+    tag: 'Literary · Contemporary Fiction',
+    link: 'https://www.goodreads.com/book/show/36114337-men-without-women',
   },
   {
     title: 'What I Talk About When I Talk About Running',
     author: 'Haruki Murakami',
-    note: 'Memoir on running, discipline, and writing',
-    progress: 'Currently reading',
-    tag: 'Memoir · Non-fiction',
-    link: 'https://www.goodreads.com/book/show/2195464.What_I_Talk_About_When_I_Talk_About_Running',
+    cover: '/images/books/running-murakami.jpg',
+    note: 'Memoir on daily distance running, physical endurance, routine, and the craft of writing.',
+    progress: 'Page 81 of 180 · 45%',
+    tag: 'Memoir · Non-fiction · Discipline',
+    link: 'https://www.goodreads.com/book/show/57025000-what-i-talk-about-when-i-talk-about-running',
   },
 ];
 
@@ -82,24 +85,37 @@ const readingHighlights = [
               href={book.link}
               target="_blank"
               rel="noopener noreferrer"
-              style="background: #ffffff; border: 1px solid var(--border-on-light); border-radius: 16px; padding: 22px 24px; box-shadow: 0 10px 24px -10px rgba(15, 61, 48, 0.08); display: block; transition: transform var(--duration-base) var(--ease-spring), border-color var(--duration-base) var(--ease-spring);"
+              class="reading-card-horizontal"
             >
-              <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;">
-                <h3 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-light-primary);">
-                  {book.title}
-                </h3>
-                <span class="eyebrow" style="color: var(--text-light-muted);">{book.author}</span>
+              <!-- Real Book Cover from Goodreads -->
+              <div class="reading-card-thumb">
+                <img
+                  src={book.cover}
+                  alt={`${book.title} book cover`}
+                  loading="lazy"
+                />
+                <div class="book-realistic-spine-highlight"></div>
               </div>
-              <p style="margin-top: 6px; font-size: 15px; color: var(--text-light-secondary);">
-                {book.note}
-              </p>
-              <div style="margin-top: 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
-                <span style="font-size: 13px; font-weight: 600; color: #55756B;">
-                  {book.progress}
-                </span>
-                <span class="eyebrow" style="font-size: 10px; color: var(--text-light-muted);">
-                  {book.tag} ↗
-                </span>
+
+              <!-- Book Details -->
+              <div style="flex: 1; min-width: 0;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px;">
+                  <h2 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-light-primary); line-height: 1.25; margin: 0;">
+                    {book.title}
+                  </h2>
+                  <span class="eyebrow" style="color: var(--text-light-muted);">{book.author}</span>
+                </div>
+                <p style="margin-top: 8px; font-size: 14.5px; line-height: 1.5; color: var(--text-light-secondary);">
+                  {book.note}
+                </p>
+                <div style="margin-top: 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                  <span style="font-size: 13px; font-weight: 600; color: #55756B;">
+                    {book.progress}
+                  </span>
+                  <span class="eyebrow" style="font-size: 10px; color: var(--text-light-muted);">
+                    {book.tag} ↗
+                  </span>
+                </div>
               </div>
             </a>
           ))}

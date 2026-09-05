@@ -113,19 +113,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="section-light">
     <div class="content-wrap">
       <div class="reading-split-grid">
-        <!-- Book Cover Bento Card (Dark Green) -->
-        <a href="/reading" class="book-cover-bento">
-          <div class="card-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
-              <path d="M6 6h10"></path>
-            </svg>
-          </div>
-          <div>
-            <span class="eyebrow" style="color: var(--accent-sage); margin-bottom: 8px;">George Orwell</span>
-            <div class="book-cover-title">
-              1984
-            </div>
+        <!-- Book Cover Bento Card with Real Goodreads Cover -->
+        <a href="/reading" class="book-cover-bento" aria-label="1984 by George Orwell — Currently Reading on Goodreads">
+          <div class="book-realistic-mockup">
+            <img
+              src="/images/books/1984.jpg"
+              alt="1984 by George Orwell book cover"
+              loading="lazy"
+            />
+            <div class="book-realistic-spine-highlight"></div>
           </div>
         </a>
 
