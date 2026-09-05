@@ -4,16 +4,18 @@ import { getCollection } from 'astro:content';
 import { journeysArchive } from '../../data/journeysArchive';
 
 const allEntries = await getCollection('journal');
-const sortedEntries = allEntries.sort(
-  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
-);
+const entriesMap = new Map(allEntries.map((e) => [e.id, e]));
 
-const years = [2026, 2025, 2024, 2023];
+function getOrdinal(n: number) {
+  const s = ['th', 'st', 'nd', 'rd'];
+  const v = n % 100;
+  return n + (s[(v - 20) % 10] || s[v] || s[0]);
+}
 ---
 
 <BaseLayout
   title="Journeys Archive (14 Trips · 2023–2026) — Varneet"
-  description="Chronological logbook of 14 journeys across 3 years: Gokarna, Himachal trails, Banaras, Lucknow, and Rajasthan. Group trips, solo retreats, and trip leading."
+  description="Chronological field log of 14 journeys across 3 years: Gokarna, Himachal trails, Banaras, Lucknow, and Rajasthan. Group trips, solo retreats, and trip leading with photo collages."
   image="/images/shangarh/shangarh-1.jpg"
 >
   <div class="section-light">
@@ -22,7 +24,7 @@ const years = [2026, 2025, 2024, 2023];
         <span class="eyebrow hero-enter hero-delay-1">Field Archives · 2023–2026</span>
         <h1 class="display-title hero-enter hero-delay-2" style="margin-top: 8px;">Journeys & The Road Archive</h1>
         <p class="hero-enter hero-delay-3" style="margin-top: 12px; color: var(--text-light-secondary); font-size: 1.15rem; line-height: 1.6;">
-          An authentic chronological logbook of 14 trips taken over three years. Starting from that first nervous step in Gokarna, to guiding groups through Jibhi as a trip leader, solo reflections in Shojha, and desert miles across Rajasthan.
+          An authentic chronological logbook of 14 trips taken over three years. Starting from that first nervous step in Gokarna, to guiding groups through Jibhi as a trip leader, solo reflections in Shojha, and desert miles across Rajasthan. Each entry includes its field story, curated photos, and memories.
         </p>
 
         <!-- Stats Bar -->
@@ -39,141 +41,173 @@ const years = [2026, 2025, 2024, 2023];
         </div>
       </div>
 
-      <!-- Year Filter Pills -->
-      <div class="reveal-on-scroll" style="margin-top: 40px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-        <span class="eyebrow" style="margin-right: 4px;">Filter by Year:</span>
-        <button class="year-filter-pill active" data-year="all">All Trips (14)</button>
-        <button class="year-filter-pill" data-year="2026">2026 (1)</button>
-        <button class="year-filter-pill" data-year="2025">2025 (2)</button>
-        <button class="year-filter-pill" data-year="2024">2024 (7)</button>
-        <button class="year-filter-pill" data-year="2023">2023 (4)</button>
+      <!-- Year & Style Filter Controls -->
+      <div class="reveal-on-scroll" style="margin-top: 40px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+          <span class="eyebrow" style="margin-right: 4px;">Filter Year:</span>
+          <button class="year-filter-pill active" data-year="all">All Trips (14)</button>
+          <button class="year-filter-pill" data-year="2026">2026 (1)</button>
+          <button class="year-filter-pill" data-year="2025">2025 (2)</button>
+          <button class="year-filter-pill" data-year="2024">2024 (7)</button>
+          <button class="year-filter-pill" data-year="2023">2023 (4)</button>
+        </div>
+
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+          <span class="eyebrow" style="margin-right: 4px;">Role & Style:</span>
+          <button class="style-filter-pill active" data-style="all">All Styles</button>
+          <button class="style-filter-pill" data-style="raw-diaries">With Raw Diaries</button>
+          <button class="style-filter-pill" data-style="trip-leader">Trip Leader</button>
+          <button class="style-filter-pill" data-style="solo">Solo</button>
+          <button class="style-filter-pill" data-style="friends">With Friends</button>
+        </div>
+
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+          <span class="eyebrow" style="margin-right: 4px;">Sort Order:</span>
+          <button class="sort-filter-pill active" data-sort="desc">Newest First (Trip #14 → #01)</button>
+          <button class="sort-filter-pill" data-sort="asc">Chronological (Trip #01 → #14)</button>
+        </div>
       </div>
 
-      <!-- Category Filter Pills -->
-      <div class="reveal-on-scroll" style="margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-        <span class="eyebrow" style="margin-right: 4px;">Role & Style:</span>
-        <button class="style-filter-pill active" data-style="all">All Styles</button>
-        <button class="style-filter-pill" data-style="raw-diaries">With Raw Diaries</button>
-        <button class="style-filter-pill" data-style="trip-leader">Trip Leader</button>
-        <button class="style-filter-pill" data-style="solo">Solo</button>
-        <button class="style-filter-pill" data-style="friends">With Friends</button>
-      </div>
+      <!-- Single Entry per Trip with Photo Collage, Location, Dates, and Blog Link -->
+      <div id="journeysGrid" style="margin-top: 36px; display: flex; flex-direction: column; gap: 32px;">
+        {journeysArchive.slice().reverse().map((trip) => {
+          const entry = trip.journalSlug ? entriesMap.get(trip.journalSlug) : null;
+          const images = entry?.data?.images || (trip.coverImage ? [trip.coverImage] : []);
+          const displayImages = images.slice(0, 3);
+          const ordinalText = getOrdinal(trip.id);
 
-      <!-- Chronological 14-Trip Timeline Cards -->
-      <div id="journeysGrid" style="margin-top: 36px; display: flex; flex-direction: column; gap: 24px;">
-        {journeysArchive.slice().reverse().map((trip) => (
-          <article
-            class="journey-log-card reveal-on-scroll"
-            data-year={trip.year.toString()}
-            data-style={trip.role.toLowerCase().replace(/\s+/g, '-')}
-            data-group={trip.groupType.toLowerCase().replace(/\s+/g, '-')}
-            style="background: #ffffff; border: 1px solid var(--border-on-light); border-radius: 14px; padding: 24px 28px; display: flex; flex-direction: column; gap: 14px; position: relative;"
-          >
-            <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;">
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <span style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700; color: var(--accent-terracotta);">
-                  #{trip.id.toString().padStart(2, '0')}
-                </span>
-                <span class="eyebrow" style="color: var(--text-light-muted);">{trip.destination} · {trip.region}</span>
-              </div>
-              <div style="display: flex; gap: 6px; align-items: center;">
-                <span class="badge-sage" style="font-size: 11px; padding: 2px 8px;">
-                  {trip.dates}
-                </span>
-                <span style="font-size: 11px; font-weight: 600; background: var(--bg-light); color: var(--text-light-primary); padding: 2px 8px; border-radius: 4px; border: 1px solid var(--border-on-light);">
-                  {trip.role}
-                </span>
-              </div>
-            </div>
-
-            <div>
-              <h2 style="font-family: var(--font-serif); font-size: 1.45rem; color: var(--text-light-primary); margin: 2px 0 8px;">
-                {trip.title}
-              </h2>
-              <p style="font-size: 15px; color: var(--text-light-secondary); line-height: 1.6;">
-                {trip.summary}
-              </p>
-            </div>
-
-            <!-- Key Highlights of the Trip -->
-            <div style="background: var(--bg-light); border-radius: 8px; padding: 12px 16px; border-left: 3px solid var(--accent-sage);">
-              <span class="eyebrow" style="font-size: 10.5px; color: var(--text-light-muted); margin-bottom: 4px; display: block;">Memories & Field Marks</span>
-              <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 3px;">
-                {trip.highlights.map((h) => (
-                  <li style="font-size: 13.5px; color: var(--text-light-primary); display: flex; align-items: baseline; gap: 6px;">
-                    <span style="color: var(--accent-terracotta);">•</span>
-                    <span>{h}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px solid var(--border-on-light); flex-wrap: wrap; gap: 8px;">
-              <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-                {trip.tags.map((tag) => (
-                  <span style="font-size: 11.5px; color: var(--text-light-muted);">
-                    {tag}
+          return (
+            <article
+              class="journey-unified-card reveal-on-scroll"
+              data-id={trip.id}
+              data-year={trip.year.toString()}
+              data-style={trip.role.toLowerCase().replace(/\s+/g, '-')}
+              data-group={trip.groupType.toLowerCase().replace(/\s+/g, '-')}
+            >
+              {/* Top Meta Bar: Trip Number, Dates, and Role Badges */}
+              <div class="trip-meta-header">
+                <div class="trip-badge-group">
+                  <span class="trip-number-pill">
+                    Trip #{trip.id.toString().padStart(2, '0')} · {ordinalText} Journey
                   </span>
-                ))}
+                  {trip.role === 'Trip Leader' && (
+                    <span class="trip-lead-pill">Trip Leader</span>
+                  )}
+                  <span class="trip-role-pill">
+                    {trip.groupType}
+                  </span>
+                </div>
+
+                <div class="trip-date-badge">
+                  <span class="calendar-icon">🗓️</span>
+                  <strong>{trip.dates}</strong>
+                </div>
               </div>
-              {trip.journalSlug && (
-                <a href={`/journal/${trip.journalSlug}`} class="accent-link" style="font-size: 14px; font-weight: 600;">
-                  Read Full Photo Dispatch <span class="arrow-spring">→</span>
-                </a>
+
+              {/* Location Highlight Banner */}
+              <div class="trip-location-banner">
+                <span class="location-pin">📍</span>
+                <span class="location-destination">{trip.destination}</span>
+                <span class="location-separator">·</span>
+                <span class="location-region">{trip.region}</span>
+                {entry?.data?.location && entry.data.location !== trip.destination && (
+                  <span class="location-trail">({entry.data.location})</span>
+                )}
+              </div>
+
+              {/* Title & Blog Summary */}
+              <div class="trip-title-block">
+                <h2 class="trip-title">
+                  {trip.journalSlug ? (
+                    <a href={`/journal/${trip.journalSlug}`}>{trip.title}</a>
+                  ) : (
+                    trip.title
+                  )}
+                </h2>
+                <p class="trip-summary">
+                  {trip.summary}
+                </p>
+              </div>
+
+              {/* Integrated 3-Photo Collage */}
+              {displayImages.length > 0 && (
+                <div class="trip-collage-container">
+                  <a
+                    href={trip.journalSlug ? `/journal/${trip.journalSlug}` : '#'}
+                    class="trip-photo-collage"
+                    aria-label={`View photo dispatch for ${trip.title}`}
+                  >
+                    {displayImages.map((img, i) => (
+                      <div class="collage-photo-cell">
+                        <img
+                          src={img}
+                          alt={`${trip.title} - photograph ${i + 1}`}
+                          loading="lazy"
+                        />
+                        <div class="photo-cell-overlay">
+                          <span>View Story ↗</span>
+                        </div>
+                      </div>
+                    ))}
+                  </a>
+                  <div class="collage-caption-bar">
+                    <span class="collage-caption-text">
+                      📷 Field Photographs ({displayImages.length} of {images.length}) · Authentic & face-free
+                    </span>
+                    {trip.journalSlug && (
+                      <a href={`/journal/${trip.journalSlug}`} class="collage-view-all">
+                        View all {images.length} photos →
+                      </a>
+                    )}
+                  </div>
+                </div>
               )}
-            </div>
-          </article>
-        ))}
-      </div>
 
-      <!-- Featured Photo Stories Section -->
-      <div style="margin-top: 72px; padding-top: 48px; border-top: 2px solid var(--border-on-light);">
-        <span class="eyebrow">Curated Field Dispatches</span>
-        <h2 style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--text-light-primary); margin: 6px 0 24px;">
-          Long-form Stories with Photo Galleries
-        </h2>
+              {/* Memories & Field Marks */}
+              <div class="trip-memories-box">
+                <span class="memories-label">Memories & Field Marks</span>
+                <ul class="memories-list">
+                  {trip.highlights.map((h) => (
+                    <li>
+                      <span class="bullet-dot">•</span>
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-        <div style="display: flex; flex-direction: column; gap: 36px;">
-          {sortedEntries.map((entry, idx) => {
-            const dateStr = new Date(entry.data.date).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'short',
-              day: 'numeric',
-            });
-            return (
-              <a href={`/journal/${entry.id}`} class={`preview-card-editorial reveal-on-scroll stagger-${(idx % 3) + 1}`}>
-                <div class="preview-photos-3">
-                  {entry.data.images.slice(0, 3).map((img, i) => (
-                    <div style="overflow: hidden; border-radius: 8px;">
-                      <img
-                        src={img}
-                        alt={`${entry.data.title} photo ${i + 1}`}
-                        loading="lazy"
-                        style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);"
-                      />
-                    </div>
+              {/* Card Footer: Tags and Link to Full Dispatch */}
+              <div class="trip-card-footer">
+                <div class="trip-tags">
+                  {trip.tags.map((tag) => (
+                    <span class="trip-tag">{tag}</span>
                   ))}
                 </div>
-                <div class="preview-meta-row">
-                  <h3>{entry.data.title}</h3>
-                  <span class="eyebrow" style="color: var(--text-light-muted);">{dateStr} <span class="arrow-spring">→</span></span>
-                </div>
-              </a>
-            );
-          })}
-        </div>
+                {trip.journalSlug && (
+                  <a href={`/journal/${trip.journalSlug}`} class="read-dispatch-btn">
+                    <span>Read Full Dispatch & Story</span>
+                    <span class="arrow-spring">→</span>
+                  </a>
+                )}
+              </div>
+            </article>
+          );
+        })}
       </div>
     </div>
   </div>
 
-  <!-- Interactive Timeline Filter Script -->
+  <!-- Interactive Timeline Filter & Sorting Script -->
   <script is:inline>
     const yearButtons = document.querySelectorAll('.year-filter-pill');
     const styleButtons = document.querySelectorAll('.style-filter-pill');
-    const cards = document.querySelectorAll('#journeysGrid article');
+    const sortButtons = document.querySelectorAll('.sort-filter-pill');
+    const journeysGrid = document.getElementById('journeysGrid');
+    let cards = Array.from(document.querySelectorAll('#journeysGrid .journey-unified-card'));
 
     let activeYear = 'all';
     let activeStyle = 'all';
+    let activeSort = 'desc';
 
     function applyFilters() {
       cards.forEach((card) => {
@@ -202,6 +236,18 @@ const years = [2026, 2025, 2024, 2023];
       });
     }
 
+    function applySort() {
+      cards.sort((a, b) => {
+        const idA = parseInt(a.getAttribute('data-id') || '0', 10);
+        const idB = parseInt(b.getAttribute('data-id') || '0', 10);
+        return activeSort === 'asc' ? idA - idB : idB - idA;
+      });
+
+      cards.forEach((card) => {
+        journeysGrid.appendChild(card);
+      });
+    }
+
     yearButtons.forEach((btn) => {
       btn.addEventListener('click', () => {
         yearButtons.forEach((b) => b.classList.remove('active'));
@@ -219,10 +265,19 @@ const years = [2026, 2025, 2024, 2023];
         applyFilters();
       });
     });
+
+    sortButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        sortButtons.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeSort = btn.getAttribute('data-sort');
+        applySort();
+      });
+    });
   </script>
 
   <style>
-    .year-filter-pill, .style-filter-pill {
+    .year-filter-pill, .style-filter-pill, .sort-filter-pill {
       background: #ffffff;
       border: 1px solid var(--border-on-light);
       color: var(--text-light-secondary);
@@ -234,14 +289,348 @@ const years = [2026, 2025, 2024, 2023];
       transition: all 0.2s ease;
       font-family: var(--font-sans);
     }
-    .year-filter-pill:hover, .style-filter-pill:hover {
+    .year-filter-pill:hover, .style-filter-pill:hover, .sort-filter-pill:hover {
       border-color: var(--accent-terracotta);
       color: var(--accent-terracotta);
     }
-    .year-filter-pill.active, .style-filter-pill.active {
+    .year-filter-pill.active, .style-filter-pill.active, .sort-filter-pill.active {
       background: var(--bg-dark);
       color: #ffffff;
       border-color: var(--bg-dark);
+    }
+
+    /* Unified Card Styles */
+    .journey-unified-card {
+      background: #ffffff;
+      border: 1px solid var(--border-on-light);
+      border-radius: 16px;
+      padding: 28px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      position: relative;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .journey-unified-card:hover {
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+      border-color: rgba(14, 46, 37, 0.2);
+    }
+
+    .trip-meta-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(14, 46, 37, 0.08);
+    }
+
+    .trip-badge-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .trip-number-pill {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 700;
+      background: var(--accent-terracotta);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      letter-spacing: 0.02em;
+    }
+
+    .trip-lead-pill {
+      font-size: 12px;
+      font-weight: 700;
+      background: #e07a5f;
+      color: #ffffff;
+      padding: 3px 10px;
+      border-radius: 999px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .trip-role-pill {
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--bg-light);
+      color: var(--text-light-primary);
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border-on-light);
+    }
+
+    .trip-date-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text-light-primary);
+      background: rgba(14, 46, 37, 0.05);
+      padding: 4px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border-on-light);
+    }
+
+    .trip-location-banner {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      font-size: 14px;
+      color: var(--text-light-secondary);
+      background: #fafaf8;
+      padding: 8px 14px;
+      border-radius: 8px;
+      border-left: 3px solid var(--accent-sage);
+    }
+
+    .location-pin {
+      font-size: 15px;
+    }
+
+    .location-destination {
+      font-weight: 700;
+      color: var(--text-light-primary);
+    }
+
+    .location-separator {
+      color: var(--text-light-muted);
+    }
+
+    .location-region {
+      color: var(--text-light-secondary);
+    }
+
+    .location-trail {
+      font-style: italic;
+      color: var(--text-light-muted);
+      font-size: 13px;
+    }
+
+    .trip-title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .trip-title {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      line-height: 1.25;
+      color: var(--text-light-primary);
+      margin: 0;
+    }
+
+    .trip-title a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .trip-title a:hover {
+      color: var(--accent-terracotta);
+    }
+
+    .trip-summary {
+      font-size: 15.5px;
+      color: var(--text-light-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Collage styling */
+    .trip-collage-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .trip-photo-collage {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .collage-photo-cell {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      aspect-ratio: 4 / 3;
+      background: #ecebe6;
+      border: 1px solid var(--border-on-light);
+    }
+
+    .collage-photo-cell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .trip-photo-collage:hover .collage-photo-cell img {
+      transform: scale(1.05);
+    }
+
+    .photo-cell-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(14, 46, 37, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .photo-cell-overlay span {
+      background: #ffffff;
+      color: var(--text-light-primary);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 999px;
+      transform: translateY(4px);
+      transition: transform 0.25s ease;
+    }
+
+    .collage-photo-cell:hover .photo-cell-overlay {
+      opacity: 1;
+    }
+
+    .collage-photo-cell:hover .photo-cell-overlay span {
+      transform: translateY(0);
+    }
+
+    .collage-caption-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-light-muted);
+      padding: 0 4px;
+    }
+
+    .collage-view-all {
+      color: var(--accent-terracotta);
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.2s ease;
+    }
+
+    .collage-view-all:hover {
+      text-decoration: underline;
+    }
+
+    /* Memories Box */
+    .trip-memories-box {
+      background: var(--bg-light);
+      border-radius: 10px;
+      padding: 14px 18px;
+      border-left: 3px solid var(--accent-sage);
+    }
+
+    .memories-label {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-light-muted);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .memories-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .memories-list li {
+      font-size: 14px;
+      color: var(--text-light-primary);
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      line-height: 1.5;
+    }
+
+    .bullet-dot {
+      color: var(--accent-terracotta);
+      font-weight: 700;
+    }
+
+    /* Card Footer */
+    .trip-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-on-light);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .trip-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .trip-tag {
+      font-size: 12px;
+      color: var(--text-light-muted);
+      background: rgba(14, 46, 37, 0.04);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .read-dispatch-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent-terracotta);
+      text-decoration: none;
+      transition: gap 0.2s ease, color 0.2s ease;
+    }
+
+    .read-dispatch-btn:hover {
+      color: var(--accent-terracotta-hover, #bf4324);
+      gap: 10px;
+    }
+
+    @media (max-width: 680px) {
+      .journey-unified-card {
+        padding: 20px 18px;
+      }
+      .trip-photo-collage {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .trip-meta-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .trip-card-footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </BaseLayout>
