@@ -38,7 +38,7 @@ const jsonLd = {
   },
 };
 
-const dmCheckoutUrl = `https://ig.me/m/the_musafir_paaji?text=${encodeURIComponent(`Hey Varneet, I was reading your journal on "${entry.data.title}" and want to get the ₹59 field itinerary guide (offline GPX + homestay contacts)!`)}`;
+const dmCheckoutUrl = `https://ig.me/m/the_musafir_paaji?text=${encodeURIComponent(`Hey Varneet, I was reading your journal on "${entry.data.title}" and would love to get the offline GPX trail markers and homestay notes!`)}`;
 ---
 
 <BaseLayout
@@ -102,31 +102,31 @@ const dmCheckoutUrl = `https://ig.me/m/the_musafir_paaji?text=${encodeURICompone
         </div>
       )}
 
-      <!-- Itinerary CTA Box with Interactive Reveal -->
+      <!-- Free Itinerary Guide Box -->
       <div class="itinerary-cta-box reveal-on-scroll">
         <div class="itinerary-cta-header">
-          <span class="eyebrow" style="color: var(--accent-sage);">Field Itinerary Guide · ₹59</span>
-          <span class="badge-sage">Route Notes</span>
+          <span class="eyebrow" style="color: var(--accent-sage);">Free Route Guide · Open Field Notes</span>
+          <span class="badge-sage">Trail Notes</span>
         </div>
         <h3>Want to walk this exact route?</h3>
         <p>
-          I've compiled the complete day-by-day transit guide, local bus timings, homestay phone numbers, and offline trail markers for this journey for ₹59.
+          I've compiled the complete day-by-day transit guide, local bus timings, homestay phone numbers, and offline trail markers for this journey — 100% free and open for independent slow travelers.
         </p>
         <div style="margin-top: 14px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+          <a
+            href="/itineraries"
+            class="btn-accent"
+          >
+            Explore All Route Guides <span class="arrow-spring">→</span>
+          </a>
           <a
             href={dmCheckoutUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="btn-accent"
-          >
-            Get Field Guide on Instagram DM (₹59) <span class="arrow-spring">→</span>
-          </a>
-          <a
-            href="/itineraries"
             class="accent-link"
             style="color: var(--accent-sage); font-size: 14px; font-weight: 500;"
           >
-            Browse all 3 itineraries <span class="arrow-spring">→</span>
+            Ask for Offline GPX File <span class="arrow-spring">→</span>
           </a>
         </div>
       </div>

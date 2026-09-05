@@ -7,6 +7,7 @@ const currentlyReading = [
     author: 'George Orwell',
     cover: '/images/books/1984.jpg',
     note: 'Reading for the 2nd time. An enduring examination of surveillance, language, and memory.',
+    trailConnection: '📍 Carried on the Parvati Valley trail · Read on a wooden balcony in Chalal overlooking the rushing river.',
     progress: 'Page 47 of 304 · 15%',
     tag: 'Classic · Dystopia · Philosophy',
     link: 'https://www.goodreads.com/book/show/230149114-1984',
@@ -16,6 +17,7 @@ const currentlyReading = [
     author: 'Haruki Murakami',
     cover: '/images/books/men-without-women.jpg',
     note: 'Short stories on solitude, longing, quiet estrangement, and what remains behind.',
+    trailConnection: '📍 Read beside the cold green pools of the Tirthan river in Gushaini on a quiet afternoon.',
     progress: 'Page 55 of 228 · 24%',
     tag: 'Literary · Contemporary Fiction',
     link: 'https://www.goodreads.com/book/show/36114337-men-without-women',
@@ -25,6 +27,7 @@ const currentlyReading = [
     author: 'Haruki Murakami',
     cover: '/images/books/running-murakami.jpg',
     note: 'Memoir on daily distance running, physical endurance, routine, and the craft of writing.',
+    trailConnection: '📍 Read on the 8-hour ordinary HRTC bus through the Sutlej river gorge en route to Spiti.',
     progress: 'Page 81 of 180 · 45%',
     tag: 'Memoir · Non-fiction · Discipline',
     link: 'https://www.goodreads.com/book/show/57025000-what-i-talk-about-when-i-talk-about-running',
@@ -110,6 +113,11 @@ const readingHighlights = [
                 <p style="margin-top: 8px; font-size: 14.5px; line-height: 1.5; color: var(--text-light-secondary);">
                   {book.note}
                 </p>
+                {book.trailConnection && (
+                  <div style="margin-top: 8px; font-size: 12.5px; color: #55756B; background: rgba(85, 117, 107, 0.08); padding: 4px 10px; border-radius: 6px; width: fit-content;">
+                    {book.trailConnection}
+                  </div>
+                )}
                 <div style="margin-top: 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
                   <span style="font-size: 13px; font-weight: 600; color: #55756B;">
                     {book.progress}
