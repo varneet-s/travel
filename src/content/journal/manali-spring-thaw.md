@@ -13,4 +13,4 @@ March in Old Manali marks the transition between winter freeze and spring awaken
 
 We stayed in a traditional Kathkuni homestay surrounded by towering deodar cedars. Walking through the forest along narrow pebble trails, the scent of melting snow mixed with damp earth and pine resin. In the village of Goshal, ancient multi-story timber temples stood proud against the cloudless Himalayan sky, their hand-carved balconies catching brilliant midday sunbursts.
 
-This trip was about unhurried presence. After the cold months, sitting in wooden cafes with fellow Raw Diaries travelers—discussing books, photography, and future mountain trails—reminded me why returning to these valleys always feels like coming home.
+This trip was about unhurried presence. After the cold months, sitting in wooden cafes with fellow [Raw Diaries](https://www.instagram.com/rawdiaries.in/) travelers—discussing books, photography, and future mountain trails—reminded me why returning to these valleys always feels like coming home.

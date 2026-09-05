@@ -9,7 +9,7 @@ images:
   - "/images/journeys/jibhi-nye/jibhi-nye-3.jpg"
 ---
 
-At the end of 2024, there was no commercial group to lead, no itineraries to manage, and no schedule to enforce. Just the original core gang of Raw Diaries reuniting in Jibhi to ring in the New Year.
+At the end of 2024, there was no commercial group to lead, no itineraries to manage, and no schedule to enforce. Just the original core gang of [Raw Diaries](https://www.instagram.com/rawdiaries.in/) reuniting in Jibhi to ring in the New Year.
 
 The valley was quiet and bitterly cold. Frost clung to the wooden rails of the homestay courtyard every dawn. We spent unhurried mornings walking the mossy stone trails that snake deep into the deodar forest, sitting on worn wooden benches beside the rushing mountain torrent with mugs of black coffee.
 

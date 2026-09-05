@@ -120,7 +120,7 @@
         </span>
         <span style="display: flex; align-items: center; gap: 6px;">
           <span style="width: 10px; height: 10px; border-radius: 50%; background: #E8A850; display: inline-block;"></span>
-          Trip Leader & Raw Diaries
+          Trip Leader & <a href="https://www.instagram.com/rawdiaries.in/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">Raw Diaries ↗</a>
         </span>
       </div>
       <a href="/journal" class="accent-link" style="color: var(--accent-sage); font-size: 13.5px; font-weight: 600;">
@@ -380,8 +380,12 @@
       if (!activePinCard) return;
       pinCardImg.src = pin.cover;
       pinCardImg.alt = pin.title;
-      pinCardDates.innerText = pin.dates;
-      pinCardRole.innerText = pin.role;
+      const companion = pin.groupType || pin.role;
+      if (companion && companion.includes('Raw Diaries')) {
+        pinCardRole.innerHTML = `<a href="https://www.instagram.com/rawdiaries.in/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">🎒 ${companion} ↗</a>`;
+      } else {
+        pinCardRole.innerText = companion;
+      }
       pinCardTitle.innerText = pin.title;
       pinCardDesc.innerText = pin.summary;
       pinCardRegion.innerText = `📍 ${pin.region}`;

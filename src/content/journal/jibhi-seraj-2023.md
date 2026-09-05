@@ -13,4 +13,4 @@ Returning to Jibhi in the height of the monsoon was like entering an entirely di
 
 Every morning began with the roar of the mountain stream just beyond the wooden porch. We walked the wet trails leading up through terraced orchards, past slate-roofed Kathkuni hamlets where elders sat on carved wooden balconies watching the rain.
 
-The air smelled of damp pine needles, wild mint, and woodsmoke from kitchen hearths. Traveling with the Raw Diaries group taught me how slow time can become when you trade rigid schedules for hot cups of ginger tea and shared laughter beside a roaring wood fire.
+The air smelled of damp pine needles, wild mint, and woodsmoke from kitchen hearths. Traveling with the [Raw Diaries](https://www.instagram.com/rawdiaries.in/) group taught me how slow time can become when you trade rigid schedules for hot cups of ginger tea and shared laughter beside a roaring wood fire.

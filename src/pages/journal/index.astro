@@ -80,9 +80,21 @@ function getOrdinal(n: number) {
                   <span class="trip-number-pill">
                     Trip #{trip.id.toString().padStart(2, '0')} · {ordinalText} Journey
                   </span>
-                  <span class="trip-role-pill">
-                    {travelFormat}
-                  </span>
+                  {travelFormat === 'With Raw Diaries' ? (
+                    <a
+                      href="https://www.instagram.com/rawdiaries.in/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="trip-role-pill raw-diaries-pill-link"
+                      title="Follow Raw Diaries on Instagram (@rawdiaries.in)"
+                    >
+                      🎒 With Raw Diaries <span class="pill-ext-arrow">↗</span>
+                    </a>
+                  ) : (
+                    <span class="trip-role-pill">
+                      {travelFormat === 'Solo' ? '🚶 Solo' : '👥 With Friends'}
+                    </span>
+                  )}
                 </div>
 
                 <div class="trip-date-badge">
@@ -149,7 +161,25 @@ function getOrdinal(n: number) {
                   {trip.highlights.map((h) => (
                     <li>
                       <span class="bullet-dot">•</span>
-                      <span>{h}</span>
+                      <span>
+                        {h.includes('Raw Diaries') ? (
+                          <>
+                            {h.split('Raw Diaries')[0]}
+                            <a
+                              href="https://www.instagram.com/rawdiaries.in/"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              class="highlight-raw-link"
+                              title="Visit @rawdiaries.in on Instagram"
+                            >
+                              Raw Diaries ↗
+                            </a>
+                            {h.split('Raw Diaries')[1]}
+                          </>
+                        ) : (
+                          h
+                        )}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -318,6 +348,47 @@ function getOrdinal(n: number) {
       padding: 3px 10px;
       border-radius: 999px;
       border: 1px solid var(--border-on-light);
+    }
+
+    a.trip-role-pill.raw-diaries-pill-link {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--accent-terracotta);
+      border-color: rgba(200, 90, 50, 0.35);
+      background: rgba(200, 90, 50, 0.06);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    a.trip-role-pill.raw-diaries-pill-link:hover {
+      background: rgba(200, 90, 50, 0.14);
+      border-color: var(--accent-terracotta);
+      color: var(--accent-terracotta);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(200, 90, 50, 0.15);
+    }
+
+    .pill-ext-arrow {
+      font-size: 10px;
+      opacity: 0.8;
+      transition: transform 0.2s ease;
+    }
+
+    a.trip-role-pill.raw-diaries-pill-link:hover .pill-ext-arrow {
+      transform: translate(1px, -1px);
+    }
+
+    .highlight-raw-link {
+      color: var(--accent-terracotta);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-weight: 600;
+      transition: opacity 0.2s ease;
+    }
+
+    .highlight-raw-link:hover {
+      opacity: 0.8;
     }
 
     .trip-date-badge {

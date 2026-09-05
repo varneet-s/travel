@@ -100,7 +100,21 @@ const dmCheckoutUrl = `https://ig.me/m/the_musafir_paaji?text=${encodeURICompone
           <div class="dispatch-meta-cell">
             <span class="meta-cell-label">Format</span>
             <span class="meta-cell-val">
-              {travelFormat === 'Solo' ? '🚶 Solo' : travelFormat === 'With Friends' ? '👥 With Friends' : '🎒 With Raw Diaries'}
+              {travelFormat === 'Solo' ? (
+                '🚶 Solo'
+              ) : travelFormat === 'With Friends' ? (
+                '👥 With Friends'
+              ) : (
+                <a
+                  href="https://www.instagram.com/rawdiaries.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="raw-diaries-dispatch-link"
+                  title="Follow Raw Diaries on Instagram (@rawdiaries.in)"
+                >
+                  🎒 With Raw Diaries <span class="pill-ext-arrow">↗</span>
+                </a>
+              )}
             </span>
           </div>
           {matchingJourney && (
@@ -226,6 +240,31 @@ const dmCheckoutUrl = `https://ig.me/m/the_musafir_paaji?text=${encodeURICompone
       font-size: 13.5px;
       font-weight: 600;
       color: var(--text-light-primary);
+    }
+
+    .raw-diaries-dispatch-link {
+      color: var(--accent-terracotta);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .raw-diaries-dispatch-link:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      color: #a84724;
+    }
+
+    .raw-diaries-dispatch-link .pill-ext-arrow {
+      font-size: 10px;
+      opacity: 0.8;
+      transition: transform 0.2s ease;
+    }
+
+    .raw-diaries-dispatch-link:hover .pill-ext-arrow {
+      transform: translate(1px, -1px);
     }
   </style>
 </BaseLayout>
