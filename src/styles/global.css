@@ -275,11 +275,28 @@ a:hover {
 }
 
 .site-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font-sans);
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.02em;
   color: var(--text-dark-primary);
+  text-decoration: none;
+}
+
+.site-brand-compass {
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+  flex-shrink: 0;
+  transform-origin: center center;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.site-brand:hover .site-brand-compass {
+  transform: rotate(35deg);
 }
 
 .nav-menu {
@@ -623,39 +640,47 @@ a:hover {
    Editorial Footer & Mountain Horizon
    ========================================================================== */
 
-.footer-mountain-horizon {
+.editorial-footer {
+  background: transparent;
+  padding: 0;
+  width: 100%;
+  position: relative;
+  z-index: 3;
+}
+
+.footer-arrow-banner {
   width: 100%;
   overflow: hidden;
-  background: transparent;
   line-height: 0;
-  margin-bottom: -1px;
-  position: relative;
-  z-index: 2;
+  margin-bottom: 0;
   pointer-events: none;
+  background-color: var(--bg-light);
+  background-image: 
+    linear-gradient(to bottom, transparent 50%, #071914 50%),
+    url('/images/illustrations/topographic-contour.svg');
+  background-repeat: no-repeat, repeat;
+  background-size: 100% 100%, 700px 500px;
+}
+
+.footer-bottom-panel {
+  background-color: #071914;
+  padding: 4px 0 32px;
+  width: 100%;
 }
 
 .footer-ridge-svg {
   width: 100%;
-  height: 65px;
+  height: 95px;
   min-width: 800px;
-  object-fit: cover;
-  object-position: bottom;
+  object-fit: contain;
+  object-position: center;
   display: block;
 }
 
 @media (min-width: 768px) {
   .footer-ridge-svg {
-    height: 105px;
+    height: 150px;
   }
-}
-
-.editorial-footer {
-  background-color: #071914;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 24px 0 32px;
-  width: 100%;
-  position: relative;
-  z-index: 3;
 }
 
 .footer-content-row {
@@ -676,12 +701,12 @@ a:hover {
   width: 34px;
   height: 34px;
   flex-shrink: 0;
-  opacity: 0.8;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  opacity: 0.85;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
 }
 
 .editorial-footer:hover .footer-compass-badge {
-  transform: rotate(45deg);
+  transform: rotate(35deg);
   opacity: 1;
 }
 
@@ -1068,6 +1093,160 @@ button:active,
 
 .journal-card:hover .journal-card-img img {
   transform: scale(1.04);
+}
+
+/* ==========================================================================
+   Slow Road Dispatches Newsletter Module
+   ========================================================================== */
+.nl-card-container {
+  background: var(--bg-dark);
+  color: var(--text-dark-primary);
+  border-radius: 18px;
+  padding: 44px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+  box-shadow: 0 16px 40px rgba(7, 25, 20, 0.25);
+  position: relative;
+  z-index: 2;
+}
+
+.nl-form {
+  margin-top: 26px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.nl-input {
+  padding: 13px 18px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-size: 15px;
+  min-width: 280px;
+  font-family: var(--font-sans);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.nl-input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.nl-input:focus {
+  border-color: var(--accent-sage);
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 0 0 3px rgba(162, 209, 187, 0.2);
+}
+
+.nl-submit-btn {
+  padding: 13px 26px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease;
+}
+
+.nl-submit-btn:hover {
+  transform: translateY(-1px);
+}
+
+.nl-success-card {
+  margin-top: 26px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(162, 209, 187, 0.35);
+  border-radius: 14px;
+  padding: 26px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.nl-success-icon-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(162, 209, 187, 0.18);
+  border: 1.5px solid var(--accent-sage);
+  color: var(--accent-sage);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.nl-success-title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin: 0;
+}
+
+.nl-success-body {
+  font-size: 14.5px;
+  color: var(--text-dark-secondary);
+  line-height: 1.55;
+  margin: 0;
+  max-width: 490px;
+}
+
+.nl-email-highlight {
+  color: var(--accent-sage);
+  font-weight: 600;
+}
+
+.nl-success-subtext {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+  font-size: 12.5px;
+  color: var(--text-dark-muted);
+}
+
+.nl-dot-sep {
+  opacity: 0.5;
+}
+
+.nl-switch-email-btn {
+  background: transparent;
+  border: none;
+  color: var(--accent-terracotta);
+  font-size: 12.5px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  padding: 0;
+  font-family: var(--font-sans);
+  transition: opacity 0.2s ease;
+}
+
+.nl-switch-email-btn:hover {
+  opacity: 0.8;
+}
+
+.nl-error-box {
+  margin-top: 12px;
+  color: #ff9d80;
+  font-size: 13.5px;
+  background: rgba(255, 100, 80, 0.1);
+  border: 1px solid rgba(255, 100, 80, 0.25);
+  border-radius: 6px;
+  padding: 6px 12px;
+  display: inline-block;
 }
 
 /* 7. Reduced Motion Accessibility */

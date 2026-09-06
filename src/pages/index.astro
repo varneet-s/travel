@@ -7,7 +7,7 @@ import TravelMap from '../components/TravelMap.astro';
 <BaseLayout
   title="the_musafir_paaji — Travel, Work & The Long Way Home"
   description="Notes from the road — and the hostels that make it matter. By reKhoj (@the_musafir_paaji)."
-  image="/images/bir/bir-hero.jpg"
+  image="/images/og-compass-card.png"
 >
   <!-- 1. Hero Section (Dark Pine #0E2E25) with Live Basecamp Status -->
   <section class="section-dark" style="padding-top: 28px;">
@@ -272,7 +272,10 @@ import TravelMap from '../components/TravelMap.astro';
   <!-- 6. Newsletter / Dispatches Capture (Traffic-First Retention) -->
   <section class="section-light">
     <div class="content-wrap">
-      <div class="reveal-on-scroll nl-card-container">
+      <div
+        class="reveal-on-scroll nl-card-container"
+        style="background: #0E2E25; color: #ffffff; border-radius: 18px; padding: 44px 32px; border: 1px solid rgba(255, 255, 255, 0.14); text-align: center; max-width: 680px; margin: 0 auto; box-shadow: 0 16px 40px rgba(7, 25, 20, 0.35); position: relative; z-index: 2;"
+      >
         <span class="eyebrow" style="color: var(--accent-sage);">Dispatches from the Slow Road</span>
         <h2 style="font-family: var(--font-serif); font-size: 1.85rem; margin-top: 8px; color: #ffffff;">
           Letters from the Long Way Home
@@ -282,7 +285,7 @@ import TravelMap from '../components/TravelMap.astro';
         </p>
 
         <!-- Newsletter Signup Form -->
-        <form id="newsletterForm" class="nl-form">
+        <form id="newsletterForm" class="nl-form" style="margin-top: 26px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
           <input
             id="nlEmailInput"
             type="email"
@@ -290,6 +293,7 @@ import TravelMap from '../components/TravelMap.astro';
             required
             autocomplete="email"
             class="nl-input"
+            style="padding: 13px 18px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.25); background: rgba(255, 255, 255, 0.1); color: #ffffff; font-size: 15px; min-width: 280px; font-family: var(--font-sans); outline: none;"
           />
           <button id="nlSubmitBtn" type="submit" class="btn-accent nl-submit-btn">
             <span class="btn-text">Join the Road</span> <span class="arrow-spring">→</span>
@@ -499,153 +503,6 @@ import TravelMap from '../components/TravelMap.astro';
       background: var(--bg-dark);
       color: #ffffff;
       border-color: var(--bg-dark);
-    }
-
-    /* Newsletter Card & Form Styles */
-    .nl-card-container {
-      background: var(--bg-dark);
-      color: var(--text-dark-primary);
-      border-radius: 18px;
-      padding: 44px 32px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      text-align: center;
-      max-width: 680px;
-      margin: 0 auto;
-      box-shadow: 0 16px 40px rgba(7, 25, 20, 0.25);
-    }
-
-    .nl-form {
-      margin-top: 26px;
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .nl-input {
-      padding: 13px 18px;
-      border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      background: rgba(255, 255, 255, 0.08);
-      color: #ffffff;
-      font-size: 15px;
-      min-width: 280px;
-      font-family: var(--font-sans);
-      outline: none;
-      transition: all 0.2s ease;
-    }
-
-    .nl-input:focus {
-      border-color: var(--accent-sage);
-      background: rgba(255, 255, 255, 0.12);
-      box-shadow: 0 0 0 3px rgba(162, 209, 187, 0.2);
-    }
-
-    .nl-submit-btn {
-      padding: 13px 26px;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease;
-    }
-
-    .nl-submit-btn:hover {
-      transform: translateY(-1px);
-    }
-
-    /* Success Card */
-    .nl-success-card {
-      margin-top: 26px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(162, 209, 187, 0.35);
-      border-radius: 14px;
-      padding: 26px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 10px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    }
-
-    .nl-success-icon-badge {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: rgba(162, 209, 187, 0.18);
-      border: 1.5px solid var(--accent-sage);
-      color: var(--accent-sage);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      font-weight: 700;
-    }
-
-    .nl-success-title {
-      font-family: var(--font-serif);
-      font-size: 1.4rem;
-      color: #ffffff;
-      margin: 0;
-    }
-
-    .nl-success-body {
-      font-size: 14.5px;
-      color: var(--text-dark-secondary);
-      line-height: 1.55;
-      margin: 0;
-      max-width: 490px;
-    }
-
-    .nl-email-highlight {
-      color: var(--accent-sage);
-      font-weight: 600;
-    }
-
-    .nl-success-subtext {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 6px;
-      font-size: 12.5px;
-      color: var(--text-dark-muted);
-    }
-
-    .nl-dot-sep {
-      opacity: 0.5;
-    }
-
-    .nl-switch-email-btn {
-      background: transparent;
-      border: none;
-      color: var(--accent-terracotta);
-      font-size: 12.5px;
-      text-decoration: underline;
-      text-underline-offset: 2px;
-      cursor: pointer;
-      padding: 0;
-      font-family: var(--font-sans);
-      transition: opacity 0.2s ease;
-    }
-
-    .nl-switch-email-btn:hover {
-      opacity: 0.8;
-    }
-
-    .nl-error-box {
-      margin-top: 12px;
-      color: #ff9d80;
-      font-size: 13.5px;
-      background: rgba(255, 100, 80, 0.1);
-      border: 1px solid rgba(255, 100, 80, 0.25);
-      border-radius: 6px;
-      padding: 6px 12px;
-      display: inline-block;
     }
   </style>
 </BaseLayout>

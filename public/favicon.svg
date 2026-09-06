@@ -1,9 +1,63 @@
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 128 128">
-    <path d="M50.4 78.5a75.1 75.1 0 0 0-28.5 6.9l24.2-65.7c.7-2 1.9-3.2 3.4-3.2h29c1.5 0 2.7 1.2 3.4 3.2l24.2 65.7s-11.6-7-28.5-7L67 45.5c-.4-1.7-1.6-2.8-2.9-2.8-1.3 0-2.5 1.1-2.9 2.7L50.4 78.5Zm-1.1 28.2Zm-4.2-20.2c-2 6.6-.6 15.8 4.2 20.2a17.5 17.5 0 0 1 .2-.7 5.5 5.5 0 0 1 5.7-4.5c2.8.1 4.3 1.5 4.7 4.7.2 1.1.2 2.3.2 3.5v.4c0 2.7.7 5.2 2.2 7.4a13 13 0 0 0 5.7 4.9v-.3l-.2-.3c-1.8-5.6-.5-9.5 4.4-12.8l1.5-1a73 73 0 0 0 3.2-2.2 16 16 0 0 0 6.8-11.4c.3-2 .1-4-.6-6l-.8.6-1.6 1a37 37 0 0 1-22.4 2.7c-5-.7-9.7-2-13.2-6.2Z" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Dark Squircle Badge -->
+  <rect width="200" height="200" rx="44" fill="#081e18" />
+  <rect width="196" height="196" x="2" y="2" rx="42" stroke="#a2d1bb" stroke-opacity="0.2" stroke-width="1.5" />
+
+  <defs>
     <style>
-        path { fill: #000; }
-        @media (prefers-color-scheme: dark) {
-            path { fill: #FFF; }
-        }
+      .comp-ring { stroke: #a2d1bb; stroke-opacity: 0.35; stroke-width: 1.2; fill: none; }
+      .comp-ring-dash { stroke: #a2d1bb; stroke-opacity: 0.25; stroke-width: 1; stroke-dasharray: 2.5,2.5; fill: none; }
+      .comp-text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; font-size: 11px; fill: #eff3f0; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
     </style>
+  </defs>
+
+  <circle cx="100" cy="100" r="90" class="comp-ring-dash" />
+  <circle cx="100" cy="100" r="80" class="comp-ring" />
+  <circle cx="100" cy="100" r="72" class="comp-ring-dash" />
+
+  <!-- Cardinal Letters -->
+  <text x="100" y="10" class="comp-text">N</text>
+  <text x="190" y="100" class="comp-text">E</text>
+  <text x="100" y="190" class="comp-text">S</text>
+  <text x="10" y="100" class="comp-text">W</text>
+
+  <!-- Compass Star Needles -->
+  <polygon points="100,42 107,84 100,76" fill="#e07a5f" />
+  <polygon points="100,42 93,84 100,76" fill="#c85a32" />
+
+  <polygon points="100,158 107,116 100,124" fill="#a2d1bb" fill-opacity="0.4" />
+  <polygon points="100,158 93,116 100,124" fill="#a2d1bb" fill-opacity="0.75" />
+
+  <polygon points="158,100 116,107 124,100" fill="#a2d1bb" fill-opacity="0.4" />
+  <polygon points="158,100 116,93 124,100" fill="#a2d1bb" fill-opacity="0.75" />
+
+  <polygon points="42,100 84,107 76,100" fill="#a2d1bb" fill-opacity="0.4" />
+  <polygon points="42,100 84,93 76,100" fill="#a2d1bb" fill-opacity="0.75" />
+
+  <!-- 1. NORTH TIP: MOUNTAIN -->
+  <polygon points="100,16 88,42 100,40" fill="#a84320" />
+  <polygon points="100,16 100,40 112,42" fill="#e07a5f" />
+  <polygon points="100,16 94,27 100,24" fill="#ffffff" />
+  <polygon points="100,16 100,24 106,27" fill="#eff3f0" />
+  <line x1="100" y1="16" x2="100" y2="40" stroke="#ffffff" stroke-width="1.2" />
+
+  <!-- 2. EAST TIP: TEA LEAF -->
+  <path d="M160,98 C166,84 178,82 186,96 C176,98 168,98 160,98 Z" fill="#a2d1bb" stroke="#eff3f0" stroke-width="0.8" />
+  <path d="M162,102 C170,114 180,114 186,104 C176,102 168,102 162,102 Z" fill="#78b99f" stroke="#eff3f0" stroke-width="0.8" />
+  <path d="M182,100 Q187,97 190,100 Q187,103 182,100 Z" fill="#e8a850" />
+
+  <!-- 3. SOUTH TIP: OCEAN WAVE -->
+  <path d="M88,166 C88,180 96,186 100,186 C104,186 112,180 112,166 C108,172 104,170 100,175 C96,170 92,172 88,166 Z" fill="#529e84" stroke="#a2d1bb" stroke-width="1" />
+  <path d="M92,170 C96,162 104,162 108,170 C104,166 96,166 92,170 Z" fill="#eff3f0" />
+
+  <!-- 4. WEST TIP: DESERT DUNE & CAMEL -->
+  <path d="M44,102 Q32,94 14,100 Q28,106 44,102 Z" fill="#c85a32" stroke="#e8a850" stroke-width="1" />
+  <circle cx="28" cy="80" r="4.5" fill="#e8a850" />
+  <g transform="translate(18, 80) scale(0.9)">
+    <path d="M18,17 C16,14 13,11 10,14 C8,16 6,15 4,12 L3,9 L2,10 L3,14 C4,17 6,18 7,19 L7,24 L9,24 L9,20 C11,20 13,21 14,20 L14,24 L16,24 L16,19 C18,19 19,18 18,17 Z" fill="#e8a850" />
+  </g>
+
+  <!-- Pivot Pin -->
+  <circle cx="100" cy="100" r="16" fill="#081e18" stroke="#a2d1bb" stroke-width="1.8" />
+  <circle cx="100" cy="100" r="6.5" fill="#e8a850" stroke="#081e18" stroke-width="1.5" />
 </svg>

@@ -13,7 +13,7 @@ interface Props {
 const {
   title = "the_musafir_paaji — Slow Travel & Field Notes",
   description = "Notes from the road — and the hostels that make it matter. By reKhoj (@the_musafir_paaji).",
-  image = "/images/bir/bir-hero.jpg",
+  image = "/images/og-compass-card.png",
   type = "website",
   jsonLd,
 } = Astro.props;
@@ -36,6 +36,12 @@ inject();
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
+
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={type} />
@@ -88,7 +94,17 @@ inject();
     <header class="nav-header">
       <div class="content-wrap">
         <nav class="nav-row">
-          <a href="/" class="site-brand">the_musafir_paaji</a>
+          <a href="/" class="site-brand">
+            <img
+              src="/images/illustrations/expedition-compass.svg"
+              alt=""
+              class="site-brand-compass"
+              width="22"
+              height="22"
+              aria-hidden="true"
+            />
+            <span>the_musafir_paaji</span>
+          </a>
           <ul class="nav-menu">
             <li>
               <a href="/journal" class={currentPath.startsWith('/journal') ? 'active' : ''}>Journeys</a>
@@ -112,41 +128,40 @@ inject();
       <slot />
     </main>
 
-    <!-- Mountain Ridgeline & Pine Forest Horizon Illustration Spanning Footer -->
-    <div class="footer-mountain-horizon" aria-hidden="true">
-      <img
-        src="/images/illustrations/mountain-footer-ridge.svg"
-        alt=""
-        class="footer-ridge-svg"
-        loading="lazy"
-      />
-    </div>
-
-    <!-- Editorial Footer (No email address) -->
+    <!-- Unified Editorial Footer with Arrow of the Elements -->
     <footer class="editorial-footer">
-      <div class="content-wrap">
-        <div class="footer-content-row">
-          <div class="footer-brand-lockup">
-            <img
-              src="/images/illustrations/expedition-compass.svg"
-              alt="Expedition Compass Rose"
-              class="footer-compass-badge"
-              aria-hidden="true"
-            />
-            <div class="footer-text-block">
-              <span class="footer-tagline">Slow routes. Useful stays. Open notebooks.</span>
-              <span class="footer-sub-coord">31.85° N, 77.30° E · Seraj & Parvati Valleys</span>
+      <div class="footer-arrow-banner" aria-hidden="true">
+        <img
+          src="/images/illustrations/mountain-footer-ridge.svg?v=arrow-horizon"
+          alt=""
+          class="footer-ridge-svg"
+          loading="lazy"
+        />
+      </div>
+      <div class="footer-bottom-panel">
+        <div class="content-wrap">
+          <div class="footer-content-row">
+            <div class="footer-brand-lockup">
+              <img
+                src="/images/illustrations/expedition-compass.svg"
+                alt="Expedition Compass Rose"
+                class="footer-compass-badge"
+                aria-hidden="true"
+              />
+              <div class="footer-text-block">
+                <span class="footer-tagline">Slow routes. Useful stays. Open notebooks.</span>
+              </div>
             </div>
-          </div>
-          <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-            <a
-              href="https://instagram.com/the_musafir_paaji"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="footer-action"
-            >
-              DM @the_musafir_paaji <span class="arrow-spring">→</span>
-            </a>
+            <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+              <a
+                href="https://instagram.com/the_musafir_paaji"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="footer-action"
+              >
+                DM @the_musafir_paaji <span class="arrow-spring">→</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>

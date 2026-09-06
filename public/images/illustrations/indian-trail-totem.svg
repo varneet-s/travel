@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 380" fill="none">
+  <defs>
+    <style>
+      .totem-line { stroke: #a2d1bb; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+      .totem-fine { stroke: #a2d1bb; stroke-width: 0.8; stroke-linecap: round; stroke-linejoin: round; }
+      .totem-accent { stroke: #e07a5f; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+      .totem-sun { stroke: #e8a850; stroke-width: 1.1; stroke-linecap: round; }
+    </style>
+  </defs>
+
+  <!-- ======================================================================
+       CENTRAL CARTOGRAPHIC AXIS & PLUMB-LINE
+       ====================================================================== -->
+  <line x1="80" y1="20" x2="80" y2="340" stroke="#a2d1bb" stroke-width="1.2" stroke-opacity="0.9" />
+
+  <!-- ======================================================================
+       1. TOP: HIMALAYAN DEODAR CEDAR TREE (y: 20 to 115)
+       ====================================================================== -->
+  <g id="deodar-tree">
+    <!-- Apex spire -->
+    <path d="M80,20 L80,36" class="totem-line" />
+    
+    <!-- Branch tier 1 -->
+    <path d="M78,28 L74,32 L80,34 L86,32 L82,28" class="totem-line" />
+    <path d="M76,33 L71,38 M84,33 L89,38" class="totem-fine" />
+
+    <!-- Branch tier 2 -->
+    <path d="M79,38 L72,44 L78,47 L82,47 L88,44 L81,38" class="totem-line" />
+    <path d="M73,43 L67,50 M87,43 L93,50" class="totem-fine" />
+
+    <!-- Branch tier 3 -->
+    <path d="M78,48 L68,58 L77,61 L83,61 L92,58 L82,48" class="totem-line" />
+    <path d="M69,56 L61,64 M91,56 L99,64" class="totem-fine" />
+
+    <!-- Branch tier 4 -->
+    <path d="M78,62 L65,74 L75,78 L85,78 L95,74 L82,62" class="totem-line" />
+    <path d="M66,72 L58,82 M94,72 L102,82" class="totem-fine" />
+
+    <!-- Branch tier 5 (Broad lower boughs) -->
+    <path d="M78,76 L62,90 L74,94 L86,94 L98,90 L82,76" class="totem-line" />
+    <path d="M63,88 L54,98 M97,88 L106,98" class="totem-fine" />
+
+    <!-- Branch tier 6 (Base canopy) -->
+    <path d="M78,92 L60,106 L72,110 L88,110 L100,106 L82,92" class="totem-line" />
+    <path d="M61,104 L52,114 M99,104 L108,114" class="totem-fine" />
+    
+    <!-- Trunk base -->
+    <line x1="80" y1="110" x2="80" y2="120" stroke="#a2d1bb" stroke-width="1.8" />
+  </g>
+
+  <!-- ======================================================================
+       2. MIDDLE LEFT: CRAGGY HIMALAYAN MOUNTAIN RIDGE & CRESCENT MOON (y: 118 to 235)
+       ====================================================================== -->
+  <g id="mountain-ridge-left">
+    <!-- The jagged alpine skyline silhouette -->
+    <path d="M80,118 L74,130 L77,136 L68,148 L72,154 L58,172 L64,180 L52,198 L60,208 L68,218 L80,226" class="totem-accent" />
+    
+    <!-- Mountain internal rocky crag hatching & snow gullies -->
+    <path d="M74,130 L80,136 M77,136 L80,144" class="totem-fine" stroke-opacity="0.6" />
+    <path d="M68,148 L76,158 L80,160" class="totem-fine" stroke-opacity="0.6" />
+    <path d="M58,172 L70,184 L80,186" class="totem-fine" stroke-opacity="0.7" />
+    <path d="M52,198 L66,210 L80,214" class="totem-fine" stroke-opacity="0.7" />
+
+    <!-- Mountain base facets -->
+    <polygon points="52,198 64,180 58,172" fill="#e07a5f" fill-opacity="0.15" />
+    <polygon points="68,148 74,130 80,136 80,160" fill="#a2d1bb" fill-opacity="0.1" />
+
+    <!-- Mountain Night Crescent Moon -->
+    <path d="M56,230 C51,235 51,245 56,250 C54,246 54,238 56,230 Z" fill="#eff3f0" stroke="#eff3f0" stroke-width="0.8" />
+  </g>
+
+  <!-- ======================================================================
+       3. MIDDLE RIGHT: RADIANT VALLEY SUN (y: 132 to 198)
+       ====================================================================== -->
+  <g id="valley-sun-right">
+    <!-- Half Sun disk attached to the central spine -->
+    <path d="M80,142 A22,22 0 0,1 80,186 Z" fill="#e8a850" fill-opacity="0.2" class="totem-sun" stroke-width="1.4" />
+    
+    <!-- Radiating Sunburst Beams -->
+    <!-- 0 deg horizontal -->
+    <line x1="103" y1="164" x2="118" y2="164" class="totem-sun" stroke-width="1.3" />
+    <!-- 20 deg -->
+    <line x1="102" y1="154" x2="116" y2="149" class="totem-sun" />
+    <!-- 40 deg -->
+    <line x1="97" y1="146" x2="110" y2="136" class="totem-sun" stroke-width="1.3" />
+    <!-- 60 deg -->
+    <line x1="89" y1="142" x2="98" y2="129" class="totem-sun" />
+    <!-- -20 deg -->
+    <line x1="102" y1="174" x2="116" y2="179" class="totem-sun" />
+    <!-- -40 deg -->
+    <line x1="97" y1="182" x2="110" y2="192" class="totem-sun" stroke-width="1.3" />
+    <!-- -60 deg -->
+    <line x1="89" y1="186" x2="98" y2="199" class="totem-sun" />
+  </g>
+
+  <!-- ======================================================================
+       4. LOWER: COASTAL OCEAN BREAKER WAVE & SURF (y: 220 to 326)
+       ====================================================================== -->
+  <g id="coastal-waves-bottom">
+    <!-- Wave swell 1: curling from left across spine to right -->
+    <path d="M80,224 C82,216 88,218 90,226 C92,234 86,242 80,248" class="totem-line" />
+    <path d="M88,222 C94,220 96,226 94,232" class="totem-fine" />
+
+    <!-- Wave swell 2: Major Breaker Barrel rolling downward -->
+    <path d="M80,246 C74,256 70,266 74,272 C78,276 86,270 80,262 C76,256 76,250 80,246 Z" fill="#529e84" fill-opacity="0.25" class="totem-line" />
+
+    <!-- Main Dynamic Breaking Crest -->
+    <path d="M80,258 C86,268 96,272 102,266 C106,262 104,254 98,252 C94,250 90,256 94,260 C98,264 104,264 108,276 C110,286 102,298 92,306 L80,326" class="totem-line" stroke-width="1.4" />
+
+    <!-- Ocean wave water lines inside crest -->
+    <path d="M80,274 C86,278 94,280 98,276" class="totem-fine" stroke-opacity="0.6" />
+    <path d="M80,288 C85,292 92,294 94,290" class="totem-fine" stroke-opacity="0.6" />
+    <path d="M80,302 C84,306 88,308 90,306" class="totem-fine" stroke-opacity="0.6" />
+
+    <!-- Left shore foam contour -->
+    <path d="M80,264 C70,276 72,292 80,304" class="totem-fine" stroke-opacity="0.5" />
+    <path d="M80,278 C74,286 76,298 80,314" class="totem-fine" stroke-opacity="0.4" />
+
+    <!-- Sea Spray Droplets -->
+    <circle cx="98" cy="242" r="1.5" fill="#eff3f0" />
+    <circle cx="106" cy="248" r="1.8" fill="#eff3f0" />
+    <circle cx="112" cy="262" r="1.5" fill="#eff3f0" />
+    <circle cx="106" cy="282" r="2.0" fill="#eff3f0" />
+    <circle cx="94" cy="226" r="1.2" fill="#eff3f0" />
+  </g>
+
+  <!-- ======================================================================
+       5. BOTTOM AXIS: TERMINAL SPEAR & THREE COORDINATE DOTS
+       ====================================================================== -->
+  <!-- Axis terminal point -->
+  <line x1="80" y1="326" x2="80" y2="344" stroke="#a2d1bb" stroke-width="1.4" />
+  <!-- Three geodetic dots -->
+  <circle cx="80" cy="353" r="2.2" fill="#eff3f0" />
+  <circle cx="80" cy="362" r="2.2" fill="#e07a5f" />
+  <circle cx="80" cy="371" r="2.2" fill="#e8a850" />
+</svg>
