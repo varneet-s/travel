@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <defs>
+    <style>
+      .comp-ring { stroke: #0E2E25; stroke-opacity: 0.45; stroke-width: 1.2; fill: none; }
+      .comp-ring-dash { stroke: #0E2E25; stroke-opacity: 0.35; stroke-width: 1; stroke-dasharray: 2.5,2.5; fill: none; }
+      .comp-text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; font-size: 11px; fill: #0E2E25; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
+      .real-art { stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <!-- Outer Cartographic Rings -->
+  <circle cx="100" cy="100" r="92" class="comp-ring-dash" />
+  <circle cx="100" cy="100" r="82" class="comp-ring" />
+  <circle cx="100" cy="100" r="74" class="comp-ring-dash" />
+  <circle cx="100" cy="100" r="28" class="comp-ring" stroke-opacity="0.2" />
+
+  <!-- Cardinal Letters -->
+  <text x="100" y="8" class="comp-text">N</text>
+  <text x="194" y="100" class="comp-text">E</text>
+  <text x="100" y="192" class="comp-text">S</text>
+  <text x="6" y="100" class="comp-text">W</text>
+
+  <!-- 4 Diagonal Secondary Pointers -->
+  <polygon points="144,56 109,91 113,87" fill="#2d6a4f" fill-opacity="0.3" />
+  <polygon points="56,144 91,109 87,113" fill="#2d6a4f" fill-opacity="0.3" />
+  <polygon points="144,144 109,109 113,113" fill="#2d6a4f" fill-opacity="0.3" />
+  <polygon points="56,56 91,91 87,87" fill="#2d6a4f" fill-opacity="0.3" />
+
+  <!-- ======================================================================
+       CLASSIC 4-POINT COMPASS NEEDLE STAR
+       ====================================================================== -->
+  <!-- North Arrow (Terracotta) -->
+  <polygon points="100,42 107,84 100,76" fill="#e07a5f" />
+  <polygon points="100,42 93,84 100,76" fill="#c85a32" />
+
+  <!-- South Arrow (Sage) -->
+  <polygon points="100,158 107,116 100,124" fill="#2d6a4f" fill-opacity="0.4" />
+  <polygon points="100,158 93,116 100,124" fill="#2d6a4f" fill-opacity="0.75" />
+
+  <!-- East Arrow (Sage) -->
+  <polygon points="158,100 116,107 124,100" fill="#2d6a4f" fill-opacity="0.4" />
+  <polygon points="158,100 116,93 124,100" fill="#2d6a4f" fill-opacity="0.75" />
+
+  <!-- West Arrow (Sage) -->
+  <polygon points="42,100 84,107 76,100" fill="#2d6a4f" fill-opacity="0.4" />
+  <polygon points="42,100 84,93 76,100" fill="#2d6a4f" fill-opacity="0.75" />
+
+  <!-- ======================================================================
+       REAL ELEMENTS PERCHED DIRECTLY ON THE TIPS OF THE ANGLES
+       ====================================================================== -->
+
+  <!-- 1. NORTH TIP: REAL HIMALAYAN SNOW-CAPPED PEAK (0°) -->
+  <g id="north-tip-mountain">
+    <!-- Mountain Base Silhouette sitting on North needle tip (y: 42 -> 16) -->
+    <!-- Left shadow ridge -->
+    <polygon points="100,16 88,42 100,40" fill="#a84320" />
+    <!-- Right sunlit ridge -->
+    <polygon points="100,16 100,40 112,42" fill="#e07a5f" />
+    
+    <!-- Secondary flanking peaks -->
+    <polygon points="88,42 82,32 87,27 92,36" fill="#2d6a4f" fill-opacity="0.6" />
+    <polygon points="112,42 118,32 113,27 108,36" fill="#2d6a4f" fill-opacity="0.6" />
+
+    <!-- Pure Snow Glacier Peak Cap -->
+    <polygon points="100,16 94,27 100,24" fill="#ffffff" />
+    <polygon points="100,16 100,24 106,27" fill="#0E2E25" />
+    <!-- Center snow spine -->
+    <line x1="100" y1="16" x2="100" y2="40" stroke="#ffffff" stroke-width="1.2" />
+    <!-- Ridge Hatching -->
+    <path d="M96 32 L91 35 M97 36 L93 39" stroke="#ffffff" stroke-width="0.8" stroke-opacity="0.6" />
+  </g>
+
+  <!-- 2. EAST TIP: REAL ASSAM TWO-LEAF TEA SPRIG & BUD (90°) -->
+  <g id="east-tip-tea">
+    <!-- Tea stem emerging from East needle tip (x: 158 -> 186) -->
+    <path d="M156,100 Q168,100 186,100" stroke="#2d6a4f" stroke-width="1.6" class="real-art" />
+    <!-- Upper Young Tea Leaf -->
+    <path d="M160,98 C166,84 178,82 186,96 C176,98 168,98 160,98 Z" fill="#2d6a4f" stroke="#0E2E25" stroke-width="0.8" />
+    <path d="M162,97 Q174,90 184,96" stroke="#081e18" stroke-width="0.8" stroke-opacity="0.6" fill="none" />
+    <!-- Lower Tea Leaf -->
+    <path d="M162,102 C170,114 180,114 186,104 C176,102 168,102 162,102 Z" fill="#78b99f" stroke="#0E2E25" stroke-width="0.8" />
+    <path d="M164,102 Q176,108 184,104" stroke="#081e18" stroke-width="0.8" stroke-opacity="0.6" fill="none" />
+    <!-- Fresh Golden Tea Bud at Tip -->
+    <path d="M182,100 Q187,97 190,100 Q187,103 182,100 Z" fill="#e8a850" stroke="#0E2E25" stroke-width="0.5" />
+  </g>
+
+  <!-- 3. SOUTH TIP: REAL COASTAL OCEAN BREAKER WAVE & FOAM (180°) -->
+  <g id="south-tip-wave">
+    <!-- Rolling swell leading to tip (y: 158 -> 186) -->
+    <path d="M88,162 Q94,154 100,162 Q106,154 112,162" stroke="#2d6a4f" stroke-width="1.4" class="real-art" fill="none" />
+    <!-- Crashing Coastal Breaker Wave -->
+    <path d="M88,166 C88,180 96,186 100,186 C104,186 112,180 112,166 C108,172 104,170 100,175 C96,170 92,172 88,166 Z" fill="#529e84" stroke="#2d6a4f" stroke-width="1" />
+    <!-- Foaming Wave Barrel -->
+    <path d="M92,170 C96,162 104,162 108,170 C104,166 96,166 92,170 Z" fill="#0E2E25" />
+    <!-- Sea Spray Droplets -->
+    <circle cx="94" cy="160" r="1.5" fill="#0E2E25" />
+    <circle cx="106" cy="160" r="1.5" fill="#0E2E25" />
+    <circle cx="100" cy="186" r="2.2" fill="#0E2E25" />
+  </g>
+
+  <!-- 4. WEST TIP: REAL THAR DESERT CAMEL & DUNE (270°) -->
+  <g id="west-tip-desert">
+    <!-- Sand Dune Ridge crest at West needle tip (x: 42 -> 14) -->
+    <path d="M44,102 Q32,94 14,100 Q28,106 44,102 Z" fill="#c85a32" stroke="#e8a850" stroke-width="1" />
+    <!-- Miniature Real Camel Silhouette perched on the dune tip -->
+    <!-- Head, neck, hump, legs -->
+    <g transform="translate(18, 80) scale(0.9)">
+      <!-- Camel Body & Hump -->
+      <path d="M18,17 C16,14 13,11 10,14 C8,16 6,15 4,12 L3,9 L2,10 L3,14 C4,17 6,18 7,19 L7,24 L9,24 L9,20 C11,20 13,21 14,20 L14,24 L16,24 L16,19 C18,19 19,18 18,17 Z" fill="#e8a850" />
+    </g>
+    <!-- Desert Sun over the Dune -->
+    <circle cx="28" cy="80" r="4.5" fill="#e8a850" />
+    <circle cx="28" cy="80" r="6.5" stroke="#e8a850" stroke-width="0.8" stroke-dasharray="1.5,1.5" fill="none" opacity="0.6" />
+  </g>
+
+  <!-- Center Brass Pivot Pin -->
+  <circle cx="100" cy="100" r="16" fill="#0E2E25" stroke="#2d6a4f" stroke-width="1.8" />
+  <circle cx="100" cy="100" r="6.5" fill="#e8a850" stroke="#081e18" stroke-width="1.5" />
+  <circle cx="100" cy="100" r="2.5" fill="#081e18" />
+</svg>
