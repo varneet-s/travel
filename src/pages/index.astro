@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { itineraries } from '../data/itineraries';
 import TravelMap from '../components/TravelMap.astro';
 ---
 
@@ -95,128 +94,6 @@ import TravelMap from '../components/TravelMap.astro';
   <!-- Expedition Atlas / World Journey Map (All 14 Journeys) -->
   <TravelMap />
 
-  <!-- 3. Curated Free Itineraries (All 3 Live, Zero Paywalls) -->
-  <section class="section-dark">
-    <div class="content-wrap">
-      <div class="itinerary-section-header reveal-on-scroll">
-        <div style="display: flex; flex-direction: column; gap: 8px; max-width: 620px;">
-          <span class="eyebrow">Curated Route Guides · 100% Free</span>
-          <h2 class="section-title">
-            Go slower. Spend less. See more.
-          </h2>
-          <p style="color: var(--text-dark-secondary); font-size: 15.5px; line-height: 1.6;">
-            Tested day-by-day transit plans, local bus timetables, and homestay recommendations. Completely free open field guides for independent travelers.
-          </p>
-        </div>
-        <div class="badge-sage">
-          3 Free Route Guides
-        </div>
-      </div>
-
-      <!-- 3 Itineraries Grid -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 36px;">
-        {itineraries.map((itinerary, idx) => (
-          <article class={`itinerary-bento-card reveal-on-scroll stagger-${idx + 1}`} style="display: flex; flex-direction: column; background: #ffffff;">
-            <div style="height: 190px; overflow: hidden;">
-              <img
-                src={itinerary.image}
-                alt={itinerary.title}
-                class="itinerary-card-img"
-                style="height: 100%; width: 100%; object-fit: cover;"
-                loading="lazy"
-              />
-            </div>
-            <div class="itinerary-card-info" style="display: flex; flex-direction: column; justify-content: space-between; flex: 1; padding: 22px;">
-              <div>
-                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
-                  <span class="eyebrow">{itinerary.duration}</span>
-                  <span class="badge-sage" style="font-size: 10.5px; padding: 2px 7px;">
-                    🌿 {itinerary.bestSeason.split('&')[0].trim()}
-                  </span>
-                </div>
-                <h3 style="font-family: var(--font-serif); font-size: 1.3rem; color: var(--text-light-primary); margin: 6px 0 8px;">
-                  <a href={`/itineraries/${itinerary.slug}`} style="color: inherit; text-decoration: none;">
-                    {itinerary.title}
-                  </a>
-                </h3>
-                <p style="font-size: 14px; color: var(--text-light-secondary); line-height: 1.55; margin-bottom: 14px;">
-                  {itinerary.overview}
-                </p>
-                <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px;">
-                  {itinerary.moodTags.slice(0, 3).map((tag) => (
-                    <span style="font-size: 11px; color: var(--text-light-muted); background: var(--bg-light); padding: 2px 7px; border-radius: 4px;">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px solid var(--border-on-light); margin-top: auto;">
-                <span style="font-size: 13px; color: #55756B; font-weight: 600;">
-                  Free Guide & Map
-                </span>
-                <a href={`/itineraries/${itinerary.slug}`} class="accent-link" style="font-size: 14px; font-weight: 600;">
-                  Read Route <span class="arrow-spring">→</span>
-                </a>
-              </div>
-            </div>
-          </article>
-        ))}
-      </div>
-
-      <div class="reveal-on-scroll" style="margin-top: 36px; text-align: center;">
-        <a href="/itineraries" class="btn-accent" style="display: inline-block;">
-          Browse All Route Guides & Day Notes <span class="arrow-spring">→</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4. Interactive Route Matcher: "Which Valley Matches Your Mood?" -->
-  <section class="section-light">
-    <div class="content-wrap">
-      <div class="reveal-on-scroll" style="background: #ffffff; border: 1px solid var(--border-on-light); border-radius: 18px; padding: 36px 32px; box-shadow: 0 10px 30px -10px rgba(14, 46, 37, 0.08);">
-        <div style="max-width: 600px;">
-          <span class="eyebrow" style="color: var(--accent-terracotta);">Interactive Route Matcher</span>
-          <h2 style="font-family: var(--font-serif); font-size: 1.65rem; color: var(--text-light-primary); margin-top: 6px;">
-            Which valley matches your travel mood?
-          </h2>
-          <p style="font-size: 15px; color: var(--text-light-secondary); margin-top: 8px;">
-            Pick what you need right now, and see the best Himalayan route for your pace:
-          </p>
-        </div>
-
-        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px;" id="moodQuizButtons">
-          <button class="mood-choice-btn active" data-valley="tirthan" data-title="Tirthan Valley & GHNP" data-desc="Trout streams, clean riverbanks, and shade walks through ancient cedar woods. Ideal for quiet reading and slow days." data-link="/itineraries/tirthan-gnhp-retreat">
-            🌲 River silence & reading
-          </button>
-          <button class="mood-choice-btn" data-valley="spiti" data-title="Spiti Valley Circuit" data-desc="Stark 4,000m moonscapes, mud-brick monasteries, fossil villages, and sleeping beneath glaciated passes." data-link="/itineraries/spiti-valley-circuit">
-            🏔️ High passes & cold desert
-          </button>
-          <button class="mood-choice-btn" data-valley="parvati" data-title="Parvati: Grahan & Pulga" data-desc="Footpath-only hamlets, rhododendron trails, zero motor noise, and village timber balconies." data-link="/itineraries/parvati-grahan-trail">
-            🥾 Forest footpaths & village life
-          </button>
-        </div>
-
-        <!-- Result Box -->
-        <div id="moodQuizResult" style="margin-top: 24px; background: var(--bg-light); border-radius: 12px; padding: 20px 24px; border-left: 4px solid var(--accent-terracotta); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
-          <div>
-            <span class="eyebrow" style="font-size: 10.5px; color: var(--text-light-muted);">Recommended Route</span>
-            <h4 id="resultTitle" style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-light-primary); margin: 2px 0;">
-              Tirthan Valley & GHNP Retreat
-            </h4>
-            <p id="resultDesc" style="font-size: 14.5px; color: var(--text-light-secondary); margin-top: 4px; max-width: 580px; line-height: 1.5;">
-              Trout streams, clean riverbanks, and shade walks through ancient cedar woods. Ideal for quiet reading and slow days.
-            </p>
-          </div>
-          <a id="resultLink" href="/itineraries/tirthan-gnhp-retreat" class="btn-accent" style="font-size: 14px; padding: 10px 20px; white-space: nowrap;">
-            Open Route Guide <span class="arrow-spring">→</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- 5. Currently Reading Section (Cross-Linked to Trails) -->
   <section class="section-dark">
     <div class="content-wrap">
@@ -284,37 +161,19 @@ import TravelMap from '../components/TravelMap.astro';
           A quiet, monthly letter with unhurried trail notes, new Himachal bus timetables, book reflections, and photographs. No algorithms, no spam.
         </p>
 
-        <!-- Newsletter Signup Form -->
-        <form id="newsletterForm" class="nl-form" style="margin-top: 26px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-          <input
-            id="nlEmailInput"
-            type="email"
-            placeholder="Your email address..."
-            required
-            autocomplete="email"
-            class="nl-input"
-            style="padding: 13px 18px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.25); background: rgba(255, 255, 255, 0.1); color: #ffffff; font-size: 15px; min-width: 280px; font-family: var(--font-sans); outline: none;"
-          />
-          <button id="nlSubmitBtn" type="submit" class="btn-accent nl-submit-btn">
-            <span class="btn-text">Join the Road</span> <span class="arrow-spring">→</span>
-          </button>
-        </form>
-
-        <!-- Dynamic Success Card (Displays upon clicking Join the Road) -->
-        <div id="nlSuccessCard" class="nl-success-card" style="display: none;">
-          <div class="nl-success-icon-badge">✓</div>
-          <h3 class="nl-success-title">You have successfully signed up!</h3>
-          <p class="nl-success-body">
-            Welcome to the road, <strong id="nlSuccessEmail" class="nl-email-highlight"></strong>. You are officially on the dispatch list for quiet field notes, trail updates, and unhurried reflections from the mountains.
-          </p>
-          <div class="nl-success-subtext">
-            <span>📫 First dispatch will arrive in your inbox at the next new trail</span>
-            <span class="nl-dot-sep">·</span>
-            <button id="nlResetBtn" type="button" class="nl-switch-email-btn">Use another email</button>
-          </div>
+        <!-- Substack Newsletter Embed -->
+        <div class="substack-embed-wrapper" style="margin-top: 28px; display: flex; justify-content: center; width: 100%;">
+          <iframe
+            src="https://rekhoj1.substack.com/embed?transparent=1"
+            width="480"
+            height="320"
+            style="border: 0; background: transparent; max-width: 100%;"
+            frameborder="0"
+            scrolling="no"
+            loading="lazy"
+            title="Substack Newsletter Signup"
+          ></iframe>
         </div>
-
-        <div id="nlErrorMsg" class="nl-error-box" style="display: none;"></div>
       </div>
     </div>
   </section>
@@ -360,150 +219,6 @@ import TravelMap from '../components/TravelMap.astro';
     </div>
   </section>
 
-  <!-- Interactive Quiz Script -->
-  <script is:inline>
-    const moodButtons = document.querySelectorAll('.mood-choice-btn');
-    const resultTitle = document.getElementById('resultTitle');
-    const resultDesc = document.getElementById('resultDesc');
-    const resultLink = document.getElementById('resultLink');
 
-    moodButtons.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        moodButtons.forEach((b) => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        if (resultTitle) resultTitle.innerText = btn.getAttribute('data-title');
-        if (resultDesc) resultDesc.innerText = btn.getAttribute('data-desc');
-        if (resultLink) resultLink.setAttribute('href', btn.getAttribute('data-link'));
-      });
-    });
-
-    // Newsletter Signup Handler with LocalStorage Persistence & Immediate Visual Confirmation
-    const nlForm = document.getElementById('newsletterForm');
-    const nlEmailInput = document.getElementById('nlEmailInput');
-    const nlSubmitBtn = document.getElementById('nlSubmitBtn');
-    const nlSuccessCard = document.getElementById('nlSuccessCard');
-    const nlSuccessEmail = document.getElementById('nlSuccessEmail');
-    const nlResetBtn = document.getElementById('nlResetBtn');
-    const nlErrorMsg = document.getElementById('nlErrorMsg');
-
-    // Check if visitor has already subscribed on this browser
-    const savedSubscriber = localStorage.getItem('the_musafir_subscriber');
-    if (savedSubscriber) {
-      try {
-        const parsed = JSON.parse(savedSubscriber);
-        if (parsed && parsed.email) {
-          showNlSuccess(parsed.email);
-        }
-      } catch (e) {}
-    }
-
-    function showNlSuccess(email) {
-      if (nlForm) nlForm.style.display = 'none';
-      if (nlSuccessCard) {
-        nlSuccessCard.style.display = 'flex';
-        nlSuccessCard.classList.add('fade-enter');
-      }
-      if (nlSuccessEmail) nlSuccessEmail.innerText = email;
-      if (nlErrorMsg) nlErrorMsg.style.display = 'none';
-    }
-
-    if (nlResetBtn) {
-      nlResetBtn.addEventListener('click', () => {
-        localStorage.removeItem('the_musafir_subscriber');
-        if (nlSuccessCard) nlSuccessCard.style.display = 'none';
-        if (nlForm) {
-          nlForm.style.display = 'flex';
-          if (nlEmailInput) {
-            nlEmailInput.value = '';
-            nlEmailInput.focus();
-          }
-        }
-      });
-    }
-
-    if (nlForm) {
-      nlForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const email = nlEmailInput ? nlEmailInput.value.trim() : '';
-        if (!email || !email.includes('@')) {
-          if (nlErrorMsg) {
-            nlErrorMsg.innerText = 'Please enter a valid email address.';
-            nlErrorMsg.style.display = 'block';
-          }
-          return;
-        }
-
-        // Tactile button feedback
-        if (nlSubmitBtn) {
-          nlSubmitBtn.disabled = true;
-          nlSubmitBtn.innerHTML = '<span>Joining the road...</span>';
-        }
-
-        // Persist subscriber in localStorage
-        try {
-          const subData = { email, subscribedAt: new Date().toISOString() };
-          localStorage.setItem('the_musafir_subscriber', JSON.stringify(subData));
-
-          // Cumulative list so Varneet can review all subscribers in console or export
-          const currentList = JSON.parse(localStorage.getItem('the_musafir_subscribers_list') || '[]');
-          if (!currentList.some((item) => item.email === email)) {
-            currentList.push(subData);
-            localStorage.setItem('the_musafir_subscribers_list', JSON.stringify(currentList));
-          }
-
-          // Asynchronously forward to FormSubmit notification for live emails
-          fetch('https://formsubmit.co/ajax/varneetsingh45@gmail.com', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-              subject: '🌲 New Road Dispatch Subscriber: ' + email,
-              subscriber_email: email,
-              page: window.location.href,
-              timestamp: new Date().toLocaleString()
-            })
-          }).catch(() => {});
-        } catch (err) {
-          console.error('Storage error', err);
-        }
-
-        // Display immediate, unambiguous success message
-        setTimeout(() => {
-          showNlSuccess(email);
-          if (nlSubmitBtn) {
-            nlSubmitBtn.disabled = false;
-            nlSubmitBtn.innerHTML = '<span class="btn-text">Join the Road</span> <span class="arrow-spring">→</span>';
-          }
-        }, 300);
-      });
-    }
-  </script>
-
-  <style>
-    .mood-choice-btn {
-      background: var(--bg-light);
-      border: 1px solid var(--border-on-light);
-      color: var(--text-light-primary);
-      font-size: 14px;
-      font-weight: 500;
-      padding: 10px 18px;
-      border-radius: 999px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      font-family: var(--font-sans);
-    }
-    .mood-choice-btn:hover {
-      border-color: var(--accent-terracotta);
-      color: var(--accent-terracotta);
-    }
-    .mood-choice-btn.active {
-      background: var(--bg-dark);
-      color: #ffffff;
-      border-color: var(--bg-dark);
-    }
-  </style>
 </BaseLayout>
 

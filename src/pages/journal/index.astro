@@ -11,6 +11,54 @@ function getOrdinal(n: number) {
   const v = n % 100;
   return n + (s[(v - 20) % 10] || s[v] || s[0]);
 }
+
+interface SubstackPost {
+  title: string;
+  link: string;
+  pubDate: string;
+  description: string;
+}
+
+let substackPosts: SubstackPost[] = [];
+
+try {
+  const feedRes = await fetch('https://rekhoj1.substack.com/feed', {
+    headers: { 'User-Agent': 'Mozilla/5.0 (compatible; theMusafirPaaji/1.0)' }
+  });
+  if (feedRes.ok) {
+    const xml = await feedRes.text();
+    const itemRegex = /<item>([\s\S]*?)<\/item>/g;
+    let match;
+    while ((match = itemRegex.exec(xml)) !== null) {
+      const itemContent = match[1];
+      const titleMatch = itemContent.match(/<title><!\[CDATA\[([\s\S]*?)\]\]><\/title>/) || itemContent.match(/<title>([\s\S]*?)<\/title>/);
+      const linkMatch = itemContent.match(/<link>([\s\S]*?)<\/link>/);
+      const pubDateMatch = itemContent.match(/<pubDate>([\s\S]*?)<\/pubDate>/);
+      const descMatch = itemContent.match(/<description><!\[CDATA\[([\s\S]*?)\]\]><\/description>/) || itemContent.match(/<description>([\s\S]*?)<\/description>/);
+
+      const title = titleMatch ? titleMatch[1].trim() : 'Field Dispatch';
+      const link = linkMatch ? linkMatch[1].trim() : 'https://rekhoj1.substack.com';
+      const rawDate = pubDateMatch ? pubDateMatch[1].trim() : '';
+      let pubDate = rawDate;
+      if (rawDate) {
+        try {
+          pubDate = new Date(rawDate).toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
+          });
+        } catch (e) {}
+      }
+
+      let desc = descMatch ? descMatch[1].replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').trim() : '';
+      if (desc.length > 140) desc = desc.slice(0, 140) + '...';
+
+      substackPosts.push({ title, link, pubDate, description: desc });
+    }
+  }
+} catch (e) {
+  // Graceful fallback for offline / build time
+}
 ---
 
 <BaseLayout
@@ -40,6 +88,68 @@ function getOrdinal(n: number) {
           </div>
         </div>
       </div>
+
+      <!-- Substack Publication Dispatches (RSS Feed) -->
+      <section class="substack-feed-container reveal-on-scroll">
+        <div class="substack-feed-header">
+          <div>
+            <span class="eyebrow" style="color: var(--accent-sage);">Substack Publication · Letters from the Long Way Home</span>
+            <h2 style="font-family: var(--font-serif); font-size: 1.5rem; color: #ffffff; margin-top: 4px;">
+              Recent Dispatches on reKhoj
+            </h2>
+          </div>
+          <a
+            href="https://rekhoj1.substack.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="substack-ext-link"
+          >
+            Visit reKhoj Substack <span class="arrow-spring">↗</span>
+          </a>
+        </div>
+
+        <div id="substackCardsList" class="substack-cards-grid">
+          {substackPosts.length > 0 ? (
+            substackPosts.map((post) => (
+              <a
+                href={post.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="substack-post-card"
+              >
+                <div class="substack-post-top">
+                  <span class="substack-badge">Dispatch</span>
+                  <span class="substack-date">{post.pubDate}</span>
+                </div>
+                <h3 class="substack-post-title">{post.title}</h3>
+                <p class="substack-post-desc">{post.description}</p>
+                <span class="substack-read-link">
+                  Read dispatch on Substack <span class="arrow-spring">→</span>
+                </span>
+              </a>
+            ))
+          ) : (
+            <div id="substackEmptyCard" class="substack-empty-state">
+              <div style="font-size: 24px; margin-bottom: 8px;">📬</div>
+              <h3 style="font-family: var(--font-serif); font-size: 1.2rem; color: #ffffff; margin-bottom: 6px;">
+                New letters in the notebook soon
+              </h3>
+              <p style="font-size: 14px; color: var(--text-dark-secondary); max-width: 480px; margin: 0 auto 18px; line-height: 1.6;">
+                Unpublished trail notes, new Himachal bus timetables, and quiet reflections will publish directly to reKhoj on Substack and sync here automatically via RSS.
+              </p>
+              <a
+                href="https://rekhoj1.substack.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-accent"
+                style="display: inline-flex; align-items: center; gap: 6px; font-size: 14px; padding: 9px 18px;"
+              >
+                <span>Read & Subscribe on Substack</span> <span class="arrow-spring">→</span>
+              </a>
+            </div>
+          )}
+        </div>
+      </section>
 
       <!-- Year & Sort Controls (Roles & Styles filter removed) -->
       <div class="reveal-on-scroll" style="margin-top: 40px; display: flex; flex-direction: column; gap: 14px;">
@@ -596,6 +706,126 @@ function getOrdinal(n: number) {
       gap: 10px;
     }
 
+    /* Substack Publication RSS Feed Section */
+    .substack-feed-container {
+      margin-top: 36px;
+      background: #0E2E25;
+      color: #ffffff;
+      border-radius: 18px;
+      padding: 32px 28px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 16px 40px rgba(7, 25, 20, 0.25);
+    }
+
+    .substack-feed-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding-bottom: 16px;
+    }
+
+    .substack-ext-link {
+      color: var(--accent-sage);
+      font-size: 13.5px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.2s ease;
+    }
+
+    .substack-ext-link:hover {
+      color: #ffffff;
+    }
+
+    .substack-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 18px;
+    }
+
+    .substack-post-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 20px;
+      text-decoration: none;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease, border-color 0.25s ease;
+    }
+
+    .substack-post-card:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .substack-post-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .substack-badge {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(200, 168, 107, 0.2);
+      color: var(--accent-ochre, #e8c872);
+      border: 1px solid rgba(200, 168, 107, 0.3);
+    }
+
+    .substack-date {
+      font-size: 12px;
+      color: var(--text-dark-secondary);
+    }
+
+    .substack-post-title {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      line-height: 1.35;
+      color: #ffffff;
+      margin: 0 0 8px 0;
+    }
+
+    .substack-post-desc {
+      font-size: 13.5px;
+      color: var(--text-dark-secondary);
+      line-height: 1.5;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .substack-read-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent-sage);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .substack-empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 36px 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      border: 1px dashed rgba(255, 255, 255, 0.18);
+    }
+
     @media (max-width: 680px) {
       .journey-unified-card {
         padding: 20px 18px;
@@ -614,5 +844,51 @@ function getOrdinal(n: number) {
       }
     }
   </style>
+
+  <!-- Substack Live RSS Hydration Script -->
+  <script is:inline>
+    (function checkSubstackLiveFeed() {
+      const container = document.getElementById('substackCardsList');
+      const emptyState = document.getElementById('substackEmptyCard');
+      if (!container || !emptyState) return;
+
+      fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frekhoj1.substack.com%2Ffeed')
+        .then((res) => res.json())
+        .then((data) => {
+          if (data && data.status === 'ok' && Array.isArray(data.items) && data.items.length > 0) {
+            container.innerHTML = '';
+            data.items.slice(0, 6).forEach((item) => {
+              const card = document.createElement('a');
+              card.href = item.link;
+              card.target = '_blank';
+              card.rel = 'noopener noreferrer';
+              card.className = 'substack-post-card';
+
+              const dateStr = item.pubDate
+                ? new Date(item.pubDate).toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric'
+                  })
+                : '';
+              let desc = item.description ? item.description.replace(/<[^>]+>/g, '').trim() : '';
+              if (desc.length > 140) desc = desc.slice(0, 140) + '...';
+
+              card.innerHTML = `
+                <div class="substack-post-top">
+                  <span class="substack-badge">Dispatch</span>
+                  <span class="substack-date">${dateStr}</span>
+                </div>
+                <h3 class="substack-post-title">${item.title}</h3>
+                <p class="substack-post-desc">${desc}</p>
+                <span class="substack-read-link">Read dispatch on Substack <span class="arrow-spring">→</span></span>
+              `;
+              container.appendChild(card);
+            });
+          }
+        })
+        .catch(() => {});
+    })();
+  </script>
 </BaseLayout>
 
