@@ -44,8 +44,7 @@ Set up these 5 custom sections to mirror the website's taxonomy:
 - **One-line Summary / Subtitle**:
   > Slow travel dispatches, state bus transit logs, honest homestay reviews, and roadside dhaba stories from the open road. By Varneet Singh.
 - **Custom Links in Navigation Bar**:
-  - Add link to Travel Website: Title: `Interactive Atlas ↗` | URL: `https://travel.varneet.in`
-  - Add link to 14-Trip Archive: Title: `Road Archive ↗` | URL: `https://travel.varneet.in/journal`
+  - Add link to Interactive Map: Title: `Interactive Atlas 🗺️` | URL: `https://travel.varneet.in`
   - Add link to Support: Title: `Buy a Chai ☕` | URL: `https://buymeacoffee.com/rekhoj`
 
 ---
@@ -102,7 +101,7 @@ There are no sponsored brand pitches, no undisclosed affiliate traps, and no fak
 ---
 
 ## Explore the Ecosystem
-- 🗺 **Interactive Map & Trip Archive**: [travel.varneet.in](https://travel.varneet.in)
+- 🗺 **Interactive Map & Atlas**: [travel.varneet.in](https://travel.varneet.in)
 - 📸 **Instagram Visuals**: [@the_musafir_paaji](https://instagram.com/the_musafir_paaji)
 - ☕ **Support with a Chai**: [buymeacoffee.com/rekhoj](https://buymeacoffee.com/rekhoj)
 - 🔗 **All Links & Projects**: [linktr.ee/reKhoj462](https://linktr.ee/reKhoj462)
