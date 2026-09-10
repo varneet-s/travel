@@ -319,6 +319,26 @@ a:hover {
   color: var(--text-dark-primary);
 }
 
+.nav-substack-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  background: rgba(200, 90, 50, 0.15);
+  border: 1px solid rgba(200, 90, 50, 0.4);
+  border-radius: 999px;
+  color: var(--accent-terracotta) !important;
+  font-weight: 600;
+  transition: all var(--duration-base) var(--ease-spring);
+}
+
+.nav-substack-pill:hover {
+  background: var(--accent-terracotta);
+  color: #ffffff !important;
+  border-color: var(--accent-terracotta);
+  transform: translateY(-1px);
+}
+
 /* ==========================================================================
    Bento Grids & Cards (Mobile-First)
    ========================================================================== */
@@ -741,6 +761,26 @@ a:hover {
 
 .footer-action:hover {
   color: var(--accent-sage);
+}
+
+.footer-action-substack {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  color: var(--text-dark-primary) !important;
+  font-weight: 600;
+  transition: all var(--duration-base) var(--ease-spring);
+}
+
+.footer-action-substack:hover {
+  background: var(--accent-terracotta);
+  border-color: var(--accent-terracotta);
+  color: #ffffff !important;
+  transform: translateY(-1px);
 }
 
 

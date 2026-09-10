@@ -12,8 +12,10 @@ const jsonLd = {
     'alternateName': 'the_musafir_paaji',
     'image': 'https://travel.varneet.in/images/varneet/shangarh-about.jpg',
     'sameAs': [
+      'https://rekhoj.substack.com',
       'https://instagram.com/the_musafir_paaji',
-      'https://www.goodreads.com/user/show/202026328-varneet-singh'
+      'https://www.goodreads.com/user/show/202026328-varneet-singh',
+      'https://buymeacoffee.com/rekhoj'
     ],
     'jobTitle': 'Slow Traveler & Homestay Volunteer',
     'knowsAbout': ['Himalayan Routes', 'Content Storytelling', 'Homestay Operations', 'Backpacking Logistics']
@@ -34,15 +36,27 @@ const jsonLd = {
         <span class="eyebrow hero-enter hero-delay-1">About · reKhoj</span>
         <h1 class="display-title hero-enter hero-delay-2" style="margin-top: 8px;">the_musafir_paaji</h1>
         
-        <!-- Mountain GPS Beacon Pill -->
-        <div class="beacon-badge hero-enter hero-delay-3" style="margin-top: 10px; display: inline-flex; align-items: center; gap: 8px; background: rgba(15, 61, 48, 0.06); padding: 5px 14px; border-radius: 999px; border: 1px solid rgba(15, 61, 48, 0.1);">
-          <span class="beacon-dot-wrap">
-            <span class="beacon-dot-ping"></span>
-            <span class="beacon-dot-core"></span>
-          </span>
-          <span style="font-size: 13px; color: var(--text-light-secondary); font-weight: 500;">
-            @the_musafir_paaji · Punjab & Himachal Trails
-          </span>
+        <!-- Mountain GPS Beacon Pill & Substack Badge -->
+        <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 10px;">
+          <div class="beacon-badge hero-enter hero-delay-3" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(15, 61, 48, 0.06); padding: 5px 14px; border-radius: 999px; border: 1px solid rgba(15, 61, 48, 0.1);">
+            <span class="beacon-dot-wrap">
+              <span class="beacon-dot-ping"></span>
+              <span class="beacon-dot-core"></span>
+            </span>
+            <span style="font-size: 13px; color: var(--text-light-secondary); font-weight: 500;">
+              @the_musafir_paaji · Punjab & Himachal Trails
+            </span>
+          </div>
+
+          <a
+            href="https://rekhoj.substack.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hero-enter hero-delay-3"
+            style="display: inline-flex; align-items: center; gap: 6px; background: rgba(200, 90, 50, 0.12); padding: 5px 14px; border-radius: 999px; border: 1px solid rgba(200, 90, 50, 0.35); font-size: 13px; color: var(--accent-terracotta); font-weight: 600; text-decoration: none; transition: transform 0.2s ease;"
+          >
+            <span>reKhoj on Substack</span> <span class="arrow-spring">↗</span>
+          </a>
         </div>
       </div>
 
@@ -65,7 +79,7 @@ const jsonLd = {
         </p>
 
         <p>
-          This site is an archive of those miles taken on foot and local buses: unhurried field notes, photographs from trails, book reflections gathered along the way, and practical itineraries for travelers looking to experience the mountains without rushing.
+          This site is an archive of those miles taken on foot and local buses: unhurried field notes, photographs from trails, book reflections gathered along the way, and practical itineraries for travelers looking to experience the mountains without rushing. Ongoing dispatches, transit timetables, and uncut road stories publish directly to <a href="https://rekhoj.substack.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent-terracotta); font-weight: 600; text-decoration: underline; text-underline-offset: 3px;">reKhoj on Substack ↗</a>.
         </p>
 
         <p>
