@@ -9,7 +9,7 @@
 | Token | Travel Website Token | Substack Setting / Match | Value |
 |---|---|---|---|
 | **Publication Title** | `the_musafir_paaji (reKhoj)` | **Publication Name** | `reKhoj | The Musafir Paaji` |
-| **Short Tagline** | *Slow routes. Useful stays. Open notebooks.* | **Substack Tagline** | *Unhurried trail notes, state bus transit logs, chai-stall ledgers, and stories from the open road.* |
+| **Short Tagline** | *Slow routes. Useful stays. Open notebooks.* | **Substack Tagline** | *Unhurried trail notes, state bus transit logs, travel expense ledgers, and stories from the open road.* |
 | **Primary Theme Color** | `--bg-dark-surface` | **Substack Theme Color** | `#0A241D` (Dark Pine) |
 | **Primary Accent Color** | `--accent-terracotta` | **Substack Accent Color** | `#C85A32` (Warm Clay) |
 | **Secondary Accent** | `--accent-sage` | **Substack Highlight/Badges** | `#B4CCC0` / `#A2D1BB` |
@@ -27,12 +27,11 @@
 4. **Dispatches ↗** (`https://rekhoj.substack.com`) — High-visibility terracotta pill pointing directly to the Substack newsletter.
 
 ### Substack Top Navigation Tabs (`Settings > Navigation`)
-Set up these 5 custom sections to mirror the website's taxonomy:
-1. **Paaji Trails** — Deep-dive itineraries, state bus routes, and transit logs across mountains, deserts, and coastlines.
-2. **Chai & Khata** — Transparent budget breakdowns, daily expense ledgers, and transit hacks.
-3. **Dhaba Stories** — Cultural essays, roadside encounters, midnight parathas, and slow travel reflections.
-4. **Musafir Toolbox** — Gear recommendations, packing checklists, bus timetables, and offline GPX notes.
-5. **Field Notes** — Quick, bite-sized updates, photographic dispatches, and Substack Notes.
+Keep the top navigation bar clean, minimal, and uncrowded. Do **not** add extra external links to the navigation bar. Rely on Substack's native tabs:
+- **Home** (`/`)
+- **Notes** (`/notes`)
+- **Archive** (`/archive`)
+- **About** (`/about`)
 
 ---
 
@@ -42,15 +41,12 @@ Set up these 5 custom sections to mirror the website's taxonomy:
 - **Publication Name**: `reKhoj | The Musafir Paaji`
 - **Substack Subdomain**: `rekhoj.substack.com`
 - **One-line Summary / Subtitle**:
-  > Slow travel dispatches, state bus transit logs, honest homestay reviews, and roadside dhaba stories from the open road. By Varneet Singh.
-- **Custom Links in Navigation Bar**:
-  - Add link to Interactive Map: Title: `Interactive Atlas 🗺️` | URL: `https://travel.varneet.in`
-  - Add link to Support: Title: `Buy a Chai ☕` | URL: `https://buymeacoffee.com/rekhoj`
+  > Slow travel dispatches, state bus transit logs, honest homestay reviews, and roadside stories from the open road. By Varneet Singh.
 
 ---
 
 ### B. About Page (`Settings > About`)
-*Copy and paste the following markdown directly into your Substack About Page:*
+*Copy and paste the following markdown directly into your Substack About Page (or use the one-click formatted copy tool at `http://localhost:4321/about_substack.html`):*
 
 ```markdown
 # About reKhoj | The Musafir Paaji
@@ -70,7 +66,7 @@ This publication is the **unfiltered, unhurried engine** behind those miles.
 Every second Sunday evening, a new dispatch arrives in your inbox:
 
 - 🧭 **The Paaji Trail**: Detailed day-by-day transit breakdowns (which bus stand, which platform, what fare) for remote routes across mountains, deserts, and coastlines.
-- ☕ **Chai & Khata**: Itemized, honest trip budgets down to the single rupee. No hidden sponsored luxury, just what it actually costs to travel independently.
+- ☕ **Coffee & Khata**: Itemized, honest trip budgets down to the single rupee. No hidden sponsored luxury, just what it actually costs to travel independently.
 - 🥘 **Dhaba Stories**: The encounters that happen when you don't rush — midnight parathas in Murthal, conversations with orchard keepers in Sainj, temple bells on Banaras ghats, and desert tea in Jaisalmer.
 - 🎒 **Musafir Toolbox**: Offline transit guides, downloadable GPX markers, homestay contacts, and practical packing audits.
 
@@ -103,7 +99,7 @@ There are no sponsored brand pitches, no undisclosed affiliate traps, and no fak
 ## Explore the Ecosystem
 - 🗺 **Interactive Map & Atlas**: [travel.varneet.in](https://travel.varneet.in)
 - 📸 **Instagram Visuals**: [@the_musafir_paaji](https://instagram.com/the_musafir_paaji)
-- ☕ **Support with a Chai**: [buymeacoffee.com/rekhoj](https://buymeacoffee.com/rekhoj)
+- ☕ **Support with a Coffee**: [buymeacoffee.com/rekhoj](https://buymeacoffee.com/rekhoj)
 - 🔗 **All Links & Projects**: [linktr.ee/reKhoj462](https://linktr.ee/reKhoj462)
 ```
 
