@@ -22,7 +22,7 @@ interface SubstackPost {
 let substackPosts: SubstackPost[] = [];
 
 try {
-  const feedRes = await fetch('https://rekhoj1.substack.com/feed', {
+  const feedRes = await fetch('https://rekhoj.substack.com/feed', {
     headers: { 'User-Agent': 'Mozilla/5.0 (compatible; theMusafirPaaji/1.0)' }
   });
   if (feedRes.ok) {
@@ -37,7 +37,7 @@ try {
       const descMatch = itemContent.match(/<description><!\[CDATA\[([\s\S]*?)\]\]><\/description>/) || itemContent.match(/<description>([\s\S]*?)<\/description>/);
 
       const title = titleMatch ? titleMatch[1].trim() : 'Field Dispatch';
-      const link = linkMatch ? linkMatch[1].trim() : 'https://rekhoj1.substack.com';
+      const link = linkMatch ? linkMatch[1].trim() : 'https://rekhoj.substack.com';
       const rawDate = pubDateMatch ? pubDateMatch[1].trim() : '';
       let pubDate = rawDate;
       if (rawDate) {
@@ -99,7 +99,7 @@ try {
             </h2>
           </div>
           <a
-            href="https://rekhoj1.substack.com"
+            href="https://rekhoj.substack.com"
             target="_blank"
             rel="noopener noreferrer"
             class="substack-ext-link"
@@ -138,7 +138,7 @@ try {
                 Unpublished trail notes, new Himachal bus timetables, and quiet reflections will publish directly to reKhoj on Substack and sync here automatically via RSS.
               </p>
               <a
-                href="https://rekhoj1.substack.com"
+                href="https://rekhoj.substack.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="btn-accent"
@@ -852,7 +852,7 @@ try {
       const emptyState = document.getElementById('substackEmptyCard');
       if (!container || !emptyState) return;
 
-      fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frekhoj1.substack.com%2Ffeed')
+      fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frekhoj.substack.com%2Ffeed')
         .then((res) => res.json())
         .then((data) => {
           if (data && data.status === 'ok' && Array.isArray(data.items) && data.items.length > 0) {
