@@ -79,14 +79,17 @@ Every second Sunday evening, a new dispatch arrives in your inbox:
 
 ## Free vs. Wayfarers Guild (Paid)
 
-| Member Perk | Free Wayfarer | Wayfarers Guild (₹499/mo) |
-|---|:---:|:---:|
-| Bi-weekly Sunday Dispatches | ✅ | ✅ |
-| Public Travel Diaries & Essays | ✅ | ✅ |
-| Uncut Field Notes & Audio Dispatches | — | ✅ |
-| Offline PDF Transit Guides & Bus Ledgers | — | ✅ |
-| Verified Homestay Direct Contacts & GPS Pins | — | ✅ |
-| Quarterly Private AMA / Itinerary Review | — | ✅ |
+### Free Wayfarer (Free Forever):
+- Bi-weekly Sunday Dispatches delivered directly to your inbox
+- Full access to public travel diaries, routes, and photographic essays
+- Access to the community discussion on Substack Notes
+
+### Wayfarers Guild (₹499/month or ₹4,999/year):
+- Everything in the Free tier
+- **Uncut Field Notes**: Raw audio dispatches and field recordings straight from the trail
+- **Offline PDF Transit Guides**: Downloadable bus ledgers, road timetables, and packing checklists
+- **Verified Contacts**: Direct WhatsApp/phone contacts of trusted local homestays and village guides
+- **Quarterly Private AMA**: Route audits and 1-on-1 itinerary feedback for your next slow trip
 
 ---
 

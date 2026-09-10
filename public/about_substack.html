@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Substack About Page — Formatted Copy Tool</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      max-width: 760px;
+      margin: 40px auto;
+      padding: 24px;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background: #fdfdfd;
+    }
+    .toolbar {
+      position: sticky;
+      top: 16px;
+      background: #0A241D;
+      color: #ffffff;
+      padding: 14px 20px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      margin-bottom: 32px;
+      z-index: 100;
+    }
+    .btn-copy {
+      background: #C85A32;
+      color: white;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.1s ease;
+    }
+    .btn-copy:hover {
+      background: #b04e29;
+      transform: translateY(-1px);
+    }
+    .preview-container {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+    blockquote {
+      border-left: 3px solid #C85A32;
+      margin: 20px 0;
+      padding: 8px 18px;
+      color: #4a5568;
+      font-style: italic;
+      background: #f8fafc;
+      border-radius: 0 8px 8px 0;
+    }
+    hr {
+      border: 0;
+      height: 1px;
+      background: #e2e8f0;
+      margin: 32px 0;
+    }
+    a {
+      color: #C85A32;
+      text-decoration: underline;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      color: #0A241D;
+    }
+    h2 {
+      font-size: 1.45rem;
+      margin-top: 28px;
+      color: #0A241D;
+    }
+    h3 {
+      font-size: 1.15rem;
+      margin-top: 20px;
+      color: #1a202c;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    .copied-toast {
+      display: none;
+      color: #81e6d9;
+      font-weight: 600;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <div>
+      <strong>Substack About Page</strong>
+      <span style="display: block; font-size: 12px; color: #B4CCC0;">Click the button, then paste (Cmd+V) directly into Substack Settings &gt; About.</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <span id="toast" class="copied-toast">✓ Copied with full Substack formatting!</span>
+      <button class="btn-copy" onclick="copyFormattedAbout()">📋 Copy Formatted Text</button>
+    </div>
+  </div>
+
+  <div id="aboutContent" class="preview-container">
+    <h1>About reKhoj | The Musafir Paaji</h1>
+
+    <blockquote>
+      “The world does not care about your itinerary, and the local state bus leaves when the driver finishes his tea.”
+    </blockquote>
+
+    <p>
+      I’m <strong>Varneet Singh</strong> (@the_musafir_paaji) — a slow traveller, homestay volunteer, and keeper of open notebooks.
+    </p>
+
+    <p>
+      Since January 2023, I’ve logged 14 documented journeys spanning over 3,000 kilometers across Karnataka, Uttar Pradesh, Rajasthan, and Himachal Pradesh. Most of those miles were traveled on foot, in the passenger seats of state transport buses, and on shared local sumos.
+    </p>
+
+    <p>
+      This publication is the <strong>unfiltered, unhurried engine</strong> behind those miles.
+    </p>
+
+    <hr />
+
+    <h2>What You’ll Receive Every Fortnight</h2>
+
+    <p>Every second Sunday evening, a new dispatch arrives in your inbox:</p>
+
+    <ul>
+      <li>🧭 <strong>The Paaji Trail</strong>: Detailed day-by-day transit breakdowns (which bus stand, which platform, what fare) for remote routes across mountains, deserts, and coastlines.</li>
+      <li>☕ <strong>Chai &amp; Khata</strong>: Itemized, honest trip budgets down to the single rupee. No hidden sponsored luxury, just what it actually costs to travel independently.</li>
+      <li>🥘 <strong>Dhaba Stories</strong>: The encounters that happen when you don't rush — midnight parathas in Murthal, conversations with orchard keepers in Sainj, temple bells on Banaras ghats, and roadside tea in Jaisalmer.</li>
+      <li>🎒 <strong>Musafir Toolbox</strong>: Offline transit guides, downloadable GPX markers, homestay contacts, and practical packing audits.</li>
+    </ul>
+
+    <hr />
+
+    <h2>Free vs. Wayfarers Guild (Paid)</h2>
+
+    <h3>Free Wayfarer (Free Forever):</h3>
+    <ul>
+      <li>Bi-weekly Sunday Dispatches delivered directly to your inbox</li>
+      <li>Full access to public travel diaries, routes, and photographic essays</li>
+      <li>Access to the community discussion on Substack Notes</li>
+    </ul>
+
+    <h3>Wayfarers Guild (₹499/month or ₹4,999/year):</h3>
+    <ul>
+      <li>Everything in the Free tier</li>
+      <li><strong>Uncut Field Notes</strong>: Raw audio dispatches and field recordings straight from the trail</li>
+      <li><strong>Offline PDF Transit Guides</strong>: Downloadable bus ledgers, road timetables, and packing checklists</li>
+      <li><strong>Verified Contacts</strong>: Direct WhatsApp/phone contacts of trusted local homestays and village guides</li>
+      <li><strong>Quarterly Private AMA</strong>: Route audits and 1-on-1 itinerary feedback for your next slow trip</li>
+    </ul>
+
+    <hr />
+
+    <h2>The Zero-Sponsorship Manifesto</h2>
+
+    <p>
+      Every room I sleep in, every bus ticket I purchase, and every plate of dal-chawal I eat is paid for out of my own pocket or earned through hands-on volunteering.
+    </p>
+
+    <p>
+      There are no sponsored brand pitches, no undisclosed affiliate traps, and no fake "10 Instagrammable spots you MUST see" listicles.
+    </p>
+
+    <hr />
+
+    <h2>Explore the Ecosystem</h2>
+    <ul>
+      <li>🗺 <strong>Interactive Map &amp; Trip Archive</strong>: <a href="https://travel.varneet.in">travel.varneet.in</a></li>
+      <li>📸 <strong>Instagram Visuals</strong>: <a href="https://instagram.com/the_musafir_paaji">@the_musafir_paaji</a></li>
+      <li>☕ <strong>Support with a Chai</strong>: <a href="https://buymeacoffee.com/rekhoj">buymeacoffee.com/rekhoj</a></li>
+      <li>🔗 <strong>All Links &amp; Projects</strong>: <a href="https://linktr.ee/reKhoj462">linktr.ee/reKhoj462</a></li>
+    </ul>
+  </div>
+
+  <script>
+    async function copyFormattedAbout() {
+      const content = document.getElementById('aboutContent');
+      const html = content.innerHTML;
+      const text = content.innerText;
+      
+      try {
+        const blobHtml = new Blob([html], { type: 'text/html' });
+        const blobText = new Blob([text], { type: 'text/plain' });
+        const item = new ClipboardItem({
+          'text/html': blobHtml,
+          'text/plain': blobText
+        });
+        await navigator.clipboard.write([item]);
+        
+        const toast = document.getElementById('toast');
+        toast.style.display = 'inline';
+        setTimeout(() => {
+          toast.style.display = 'none';
+        }, 3500);
+      } catch (err) {
+        // Fallback: select range
+        const range = document.createRange();
+        range.selectNodeContents(content);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        document.execCommand('copy');
+        selection.removeAllRanges();
+        
+        const toast = document.getElementById('toast');
+        toast.style.display = 'inline';
+        setTimeout(() => {
+          toast.style.display = 'none';
+        }, 3500);
+      }
+    }
+  </script>
+</body>
+</html>
