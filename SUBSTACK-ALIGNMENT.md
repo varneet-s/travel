@@ -9,9 +9,9 @@
 | Token | Travel Website Token | Substack Setting / Match | Value |
 |---|---|---|---|
 | **Publication Title** | `the_musafir_paaji (reKhoj)` | **Publication Name** | `reKhoj | The Musafir Paaji` |
-| **Short Tagline** | *Slow routes. Useful stays. Open notebooks.* | **Substack Tagline** | *Unhurried trail notes, Himachal bus transit logs, chai-stall ledgers, and stories from the high passes.* |
+| **Short Tagline** | *Slow routes. Useful stays. Open notebooks.* | **Substack Tagline** | *Unhurried trail notes, state bus transit logs, chai-stall ledgers, and stories from the open road.* |
 | **Primary Theme Color** | `--bg-dark-surface` | **Substack Theme Color** | `#0A241D` (Dark Pine) |
-| **Primary Accent Color** | `--accent-terracotta` | **Substack Accent Color** | `#C85A32` (Warm Himalayan Clay) |
+| **Primary Accent Color** | `--accent-terracotta` | **Substack Accent Color** | `#C85A32` (Warm Clay) |
 | **Secondary Accent** | `--accent-sage` | **Substack Highlight/Badges** | `#B4CCC0` / `#A2D1BB` |
 | **Headings Font** | `Fraunces` (Editorial Serif) | **Substack Style > Font > Headings** | Set to **Editorial Serif** (e.g. *Georgia* / *Century* / *Caslon* option in Substack style settings) |
 | **Body Font** | `Source Sans 3` (Legible Sans) | **Substack Style > Font > Body** | Set to **Clean Sans** (e.g. *System Sans* or *Helvetica* option) |
@@ -28,7 +28,7 @@
 
 ### Substack Top Navigation Tabs (`Settings > Navigation`)
 Set up these 5 custom sections to mirror the website's taxonomy:
-1. **Paaji Trails** — Deep-dive itineraries, state bus routes, and high-altitude trail logs.
+1. **Paaji Trails** — Deep-dive itineraries, state bus routes, and transit logs across mountains, deserts, and coastlines.
 2. **Chai & Khata** — Transparent budget breakdowns, daily expense ledgers, and transit hacks.
 3. **Dhaba Stories** — Cultural essays, roadside encounters, midnight parathas, and slow travel reflections.
 4. **Musafir Toolbox** — Gear recommendations, packing checklists, bus timetables, and offline GPX notes.
@@ -42,7 +42,7 @@ Set up these 5 custom sections to mirror the website's taxonomy:
 - **Publication Name**: `reKhoj | The Musafir Paaji`
 - **Substack Subdomain**: `rekhoj.substack.com`
 - **One-line Summary / Subtitle**:
-  > Slow travel dispatches, Himachal local bus transit logs, honest homestay reviews, and roadside dhaba stories from the high passes. By Varneet Singh.
+  > Slow travel dispatches, state bus transit logs, honest homestay reviews, and roadside dhaba stories from the open road. By Varneet Singh.
 - **Custom Links in Navigation Bar**:
   - Add link to Travel Website: Title: `Interactive Atlas ↗` | URL: `https://travel.varneet.in`
   - Add link to 14-Trip Archive: Title: `Road Archive ↗` | URL: `https://travel.varneet.in/journal`
@@ -56,13 +56,13 @@ Set up these 5 custom sections to mirror the website's taxonomy:
 ```markdown
 # About reKhoj | The Musafir Paaji
 
-> *“The mountains do not care about your itinerary, and the local HRTC bus leaves when the driver finishes his tea.”*
+> *“The world does not care about your itinerary, and the local state bus leaves when the driver finishes his tea.”*
 
 I’m **Varneet Singh** (@the_musafir_paaji) — a slow traveller, homestay volunteer, and keeper of open notebooks.
 
-Since January 2023, I’ve logged 14 documented journeys spanning over 3,000 kilometers across Himachal Pradesh, Uttar Pradesh, Karnataka, and Rajasthan. Most of those miles were traveled on foot, in the rattling passenger seats of state transport buses, and on shared local sumos.
+Since January 2023, I’ve logged 14 documented journeys spanning over 3,000 kilometers across Himachal Pradesh, Uttar Pradesh, Karnataka, and Rajasthan. Most of those miles were traveled on foot, in the passenger seats of state transport buses, and on shared local sumos.
 
-This Substack is the **unfiltered, unhurried engine** behind those miles.
+This publication is the **unfiltered, unhurried engine** behind those miles.
 
 ---
 
@@ -70,10 +70,10 @@ This Substack is the **unfiltered, unhurried engine** behind those miles.
 
 Every second Sunday evening, a new dispatch arrives in your inbox:
 
-- 🏔 **The Paaji Trail**: Detailed day-by-day transit breakdowns (which bus stand, which platform, what fare) for remote Himalayan routes.
+- 🧭 **The Paaji Trail**: Detailed day-by-day transit breakdowns (which bus stand, which platform, what fare) for remote routes across mountains, deserts, and coastlines.
 - ☕ **Chai & Khata**: Itemized, honest trip budgets down to the single rupee. No hidden sponsored luxury, just what it actually costs to travel independently.
-- 🥘 **Dhaba Stories**: The encounters that happen when you don't rush — midnight parathas in Murthal, conversations with orchard keepers in Sainj, and the quiet comfort of mountain monasteries.
-- 🎒 **Musafir Toolbox**: Offline transit guides, downloadable GPX markers, homestay contacts, and high-altitude packing audits.
+- 🥘 **Dhaba Stories**: The encounters that happen when you don't rush — midnight parathas in Murthal, conversations with orchard keepers in Sainj, temple bells on Banaras ghats, and desert tea in Jaisalmer.
+- 🎒 **Musafir Toolbox**: Offline transit guides, downloadable GPX markers, homestay contacts, and practical packing audits.
 
 ---
 
