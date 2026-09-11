@@ -1,0 +1,53 @@
+{
+  "username": "the_musafir_paaji",
+  "films": [
+    {
+      "id": "into-the-wild",
+      "title": "Into the Wild",
+      "year": "2007",
+      "rating": "★★★★★",
+      "ratingValue": 5,
+      "watchedDate": "Aug 2025",
+      "link": "https://letterboxd.com/film/into-the-wild/",
+      "poster": "https://a.ltrbxd.com/resized/film-poster/4/7/8/4/5/47845-into-the-wild-0-230-0-345-crop.jpg?v=9f3c784742",
+      "note": "Re-watched on a rainy evening in Gushaini. An enduring reflection on Alaskan wilderness, radical simplicity, and the core truth that happiness is only real when shared.",
+      "trailConnection": "📍 Screened on a quiet laptop evening beside the Tirthan river in Seraj valley."
+    },
+    {
+      "id": "the-secret-life-of-walter-mitty",
+      "title": "The Secret Life of Walter Mitty",
+      "year": "2013",
+      "rating": "★★★★½",
+      "ratingValue": 4.5,
+      "watchedDate": "Oct 2025",
+      "link": "https://letterboxd.com/film/the-secret-life-of-walter-mitty/",
+      "poster": "https://a.ltrbxd.com/resized/film-poster/1/0/9/8/3/6/109836-the-secret-life-of-walter-mitty-0-230-0-345-crop.jpg?v=2ebc9ec189",
+      "note": "Longboards across Icelandic fjords and walking into the Afghan mountain pass just to see a snow leopard. A tribute to unhurried presence.",
+      "trailConnection": "📍 Watched at a cafe in Dharamkot while writing bus dispatches."
+    },
+    {
+      "id": "paterson",
+      "title": "Paterson",
+      "year": "2016",
+      "rating": "★★★★★",
+      "ratingValue": 5,
+      "watchedDate": "Dec 2025",
+      "link": "https://letterboxd.com/film/paterson/",
+      "poster": "https://a.ltrbxd.com/resized/film-poster/2/9/3/8/5/4/293854-paterson-0-230-0-345-crop.jpg?v=c7fbc8dca4",
+      "note": "Jim Jarmusch's slow masterpiece on a city bus driver who writes poems during his shifts. The dignity of quiet observation and ordinary routine.",
+      "trailConnection": "📍 Reflected upon on the 9-hour ordinary HRTC bus ride from Mandi to Shimla."
+    },
+    {
+      "id": "drive-my-car",
+      "title": "Drive My Car",
+      "year": "2021",
+      "rating": "★★★★☆",
+      "ratingValue": 4,
+      "watchedDate": "Jan 2026",
+      "link": "https://letterboxd.com/film/drive-my-car/",
+      "poster": "https://a.ltrbxd.com/resized/film-poster/6/8/2/9/9/0/682990-drive-my-car-0-230-0-345-crop.jpg?v=4204ff7df7",
+      "note": "Adapted from Haruki Murakami's 'Men Without Women' (which I carry in the rucksack). Hours spent talking inside a vintage red Saab on long coastal highways.",
+      "trailConnection": "📍 Watched in Bir after finishing the story collection on the paragliding landing ground."
+    }
+  ]
+}

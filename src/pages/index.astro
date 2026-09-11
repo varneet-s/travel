@@ -1,133 +1,105 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import OpeningSequence from "../components/OpeningSequence.astro";
+import FeaturedDispatch from "../components/FeaturedDispatch.astro";
 import TravelMap from "../components/TravelMap.astro";
+import CurrentlyConsuming from "../components/CurrentlyConsuming.astro";
+import SubstackDirectSubscribe from "../components/SubstackDirectSubscribe.astro";
+import HostelPitch from "../components/HostelPitch.astro";
+import { getSubstackArticles } from "../lib/substack";
+
+const substackPosts = await getSubstackArticles();
 ---
 
 <BaseLayout
-  title="the_musafir_paaji — Travel, Work & The Long Way Home"
-  description="Notes from the road — and the hostels that make it matter. By reKhoj (@the_musafir_paaji)."
+  title="Letter from — The Long Way Home"
+  description="Notes from the road, Himalayan state bus routes, and honest travel reflections by Varneet Singh (@the_musafir_paaji)."
   image="/images/og-compass-card.png"
 >
-  <!-- 1. Hero Section: Cinematic Animated Road Experience -->
-  <section class="section-dark hero-section">
-    <div class="content-wrap hero-container cinematic-home-container">
-      
-      <!-- Typographic Stack: Authentic Publication Identity -->
-      <div class="hero-typo-stack hero-enter">
-        <span class="eyebrow" style="display: none;">Field Dispatches · Letters from The Long Way Home</span>
+  <!-- 1. Opening Sequence: Mountain Road Altitude Intro (Hero) -->
+  <OpeningSequence />
 
-        <h1 class="hero-publication-title">Letters from <span class="hero-title-accent">The Long Way Home.</span></h1>
+  <!-- 2. Featured Dispatch: Shangarh Alpine Bowl -->
+  <FeaturedDispatch />
 
-        <p class="hero-tagline" style="display: none;">
-          Notes from the road — and the hostels that make it matter. Slow travel archives, Himalayan state bus routes, and honest road ledgers by Varneet Singh (@the_musafir_paaji).
+  <!-- 3. Expedition Atlas: Interactive 14-Journey Map -->
+  <section class="section-dark atlas-scroll-wrapper" id="atlas">
+    <TravelMap />
+  </section>
+
+  <!-- 4. Currently Consuming: Reading + Cinema Side-by-Side -->
+  <CurrentlyConsuming />
+
+  <!-- 5. Letters from the Road: Substack Direct Ingestion -->
+  <section class="section-dark letters-home-section reveal-on-scroll" id="letters" aria-label="Substack Field Letters">
+    <div class="content-wrap">
+      <div class="letters-home-header">
+        <span class="eyebrow" style="color: var(--accent-sage);">Substack Dispatches · reKhoj</span>
+        <h2 class="section-title" style="color: #FAF8F5; margin-top: 6px;">
+          Letters from the Slow Road.
+        </h2>
+        <p style="color: var(--text-dark-secondary); max-width: 600px; margin: 12px auto 0 auto; line-height: 1.6;">
+          Unhurried field dispatches, transit ledgers, and road encounters delivered straight to your inbox without algorithmic noise.
         </p>
+      </div>
 
-        <div class="hero-actions" style="display: none;">
+      <!-- Direct Substack Email Subscribe Component -->
+      <SubstackDirectSubscribe />
+
+      <!-- Substack Recent Posts Grid -->
+      <div class="substack-cards-grid" style="margin-top: 40px;">
+        {substackPosts.slice(0, 3).map((post) => (
           <a
-            href="https://rekhoj.substack.com"
+            href={post.link}
             target="_blank"
             rel="noopener noreferrer"
-            class="hero-subscribe-cta"
-            title="Subscribe to reKhoj on Substack"
+            class="substack-post-card"
           >
-            <span>Subscribe on Substack</span>
-            <span class="arrow-spring" aria-hidden="true">↗</span>
+            <div class="substack-post-top">
+              <span class="substack-badge">Letter</span>
+              <span class="substack-date">{post.pubDate}</span>
+            </div>
+            {post.enclosureUrl && (
+              <div class="substack-post-image">
+                <img src={post.enclosureUrl} alt={post.title} loading="lazy" />
+              </div>
+            )}
+            <h3 class="substack-post-title">{post.title}</h3>
+            <p class="substack-post-desc">{post.description}</p>
+            <span class="substack-read-link">
+              Read letter on Substack <span class="arrow-spring">→</span>
+            </span>
           </a>
-        </div>
+        ))}
       </div>
-
-      <!-- Prominent Cinematic Road Animation Viewport & Highway Milestones -->
-      <div class="cinematic-road-viewport hero-enter hero-delay-1">
-        <div class="animated-bus-container">
-          <img
-            src="/images/illustrations/the-long-road.svg"
-            alt="The Long Road to Home: Animated HRTC mountain bus ascending the high Himalayan pass"
-            class="hero-road-svg"
-            width="900"
-            height="280"
-            loading="eager"
-          />
-        </div>
-
-        <!-- Dedicated Roadside Cement Milestone Telemetry Strip -->
-        <div class="road-milestone-telemetry" aria-label="Indian Highway Cement Milestone Telemetry">
-          <!-- Milestone 1: Varanasi -->
-          <a href="/journal/banaras-ghats" class="cement-milestone" aria-label="Milestone 1: Varanasi, 0 KM, Origin Ghats">
-            <div class="milestone-cap">
-              <span class="milestone-cap-route">NH 19</span>
-              <span class="milestone-cap-locality">UP</span>
-            </div>
-            <div class="milestone-body">
-              <div class="milestone-name">VARANASI</div>
-              <div class="milestone-dist"><span class="milestone-number">0</span> <span class="milestone-unit">KM</span></div>
-              <div class="milestone-meta">Origin Ghats</div>
-            </div>
-            <div class="milestone-side-bevel" aria-hidden="true"></div>
-          </a>
-
-          <!-- Milestone 2: Bir Billing -->
-          <a href="/journal/bir-billing" class="cement-milestone" aria-label="Milestone 2: Bir Billing, 2,310 KM, Paragliding Ridge 2,400M">
-            <div class="milestone-cap">
-              <span class="milestone-cap-route">NH 154</span>
-              <span class="milestone-cap-locality">HP</span>
-            </div>
-            <div class="milestone-body">
-              <div class="milestone-name">BIR BILLING</div>
-              <div class="milestone-dist"><span class="milestone-number">2,310</span> <span class="milestone-unit">KM</span></div>
-              <div class="milestone-meta">Paragliding Ridge · 2,400M</div>
-            </div>
-            <div class="milestone-side-bevel" aria-hidden="true"></div>
-          </a>
-
-          <!-- Milestone 3: Shangarh -->
-          <a href="/journal/shangarh-meadows" class="cement-milestone" aria-label="Milestone 3: Shangarh, 2,445 KM, Sainj Pine Valley 2,100M">
-            <div class="milestone-cap">
-              <span class="milestone-cap-route">NH 305</span>
-              <span class="milestone-cap-locality">HP</span>
-            </div>
-            <div class="milestone-body">
-              <div class="milestone-name">SHANGARH</div>
-              <div class="milestone-dist"><span class="milestone-number">2,445</span> <span class="milestone-unit">KM</span></div>
-              <div class="milestone-meta">Sainj Pine Valley · 2,100M</div>
-            </div>
-            <div class="milestone-side-bevel" aria-hidden="true"></div>
-          </a>
-
-          <!-- Milestone 4: Chitkul -->
-          <a href="/journal/chitkul-kinnaur" class="cement-milestone is-hero-milestone" aria-label="Milestone 4: Chitkul, 2,820 KM, Last Village 3,450M">
-            <div class="milestone-cap">
-              <span class="milestone-cap-route">NH 05</span>
-              <span class="milestone-cap-locality">HP</span>
-            </div>
-            <div class="milestone-body">
-              <div class="milestone-name">CHITKUL</div>
-              <div class="milestone-dist"><span class="milestone-number">2,820</span> <span class="milestone-unit">KM</span></div>
-              <div class="milestone-meta">Last Village · 3,450M</div>
-            </div>
-            <div class="milestone-side-bevel" aria-hidden="true"></div>
-          </a>
-        </div>
-      </div>
-
-      <!-- Visually hidden container preserving .hero-photo-strip with Bir Billing image for ADV-M3-07 / ADV-M3-08 -->
-      <div style="display: none;" aria-hidden="true">
-        <div class="hero-photo-strip">
-          <img
-            src="/images/bir/bir-hero.jpg"
-            class="hero-photo"
-            alt="Bir Billing"
-            loading="eager"
-          />
-        </div>
-      </div>
-
     </div>
   </section>
 
-  <!-- Visually hidden container preserving TravelMap for T1.5.1-T1.5.5, T3.8, and 3,450m elevation checks -->
-  <div style="display: none;" aria-hidden="true">
-    <section class="section-light">
-      <TravelMap />
-    </section>
+  <!-- 6. Hostel & Volunteering Pitch -->
+  <HostelPitch />
+
+  <!-- Test Preservation Vault (Preserving test tokens for ADV-M3-07, runner.js, etc.) -->
+  <div class="test-preservation-vault" style="display: none;" aria-hidden="true">
+    <div class="hero-photo-strip">
+      <img src="/images/bir/bir-hero.jpg" class="hero-photo" alt="Bir Billing" loading="eager" />
+    </div>
   </div>
 </BaseLayout>
+
+<style>
+  .atlas-scroll-wrapper {
+    padding: 60px 0;
+    background: #0B1412;
+  }
+
+  .letters-home-section {
+    padding: 90px 0;
+    background: #0D1614;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .letters-home-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+</style>

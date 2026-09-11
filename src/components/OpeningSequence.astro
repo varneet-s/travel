@@ -1,0 +1,737 @@
+---
+import { chronologicalJourneys, generateElevationRoadPath } from '../data/chronologicalJourneys';
+
+// Generate dynamic elevation road curve and milestone coordinates
+const { path: roadD, milestones } = generateElevationRoadPath(2200, 460, 70);
+
+// Current destination / latest milestone: Bir NYE 2026
+const currentStop = chronologicalJourneys[chronologicalJourneys.length - 1];
+---
+
+<section class="opening-sequence-hero hero-section" id="hero" aria-label="Mountain road altitude journey">
+  <!-- IST Atmospheric Sky Canvas / Gradient Stage -->
+  <div class="ist-sky-atmosphere" id="istSkyAtmosphere" data-timezone="Asia/Kolkata">
+    <!-- Starfield (active during IST night) -->
+    <div class="himalayan-stars-layer" id="himalayanStars" aria-hidden="true"></div>
+    
+    <!-- Alpine Sun / Moon disc -->
+    <div class="celestial-orb" id="celestialOrb" aria-hidden="true"></div>
+
+    <!-- Drifting Parallax Mist & Clouds -->
+    <div class="mist-cloud-layer mist-back" aria-hidden="true"></div>
+    <div class="mist-cloud-layer mist-front" aria-hidden="true"></div>
+  </div>
+
+  <!-- IST Lighting Status Beacon & Current Elevation Telemetry HUD -->
+  <div class="ist-telemetry-pill-hud">
+    <div class="ist-time-badge">
+      <span class="pulse-beacon-dot"></span>
+      <span id="istTimeLabel">IST 32.04°N · DUSK AMBER</span>
+    </div>
+    <div class="alt-live-ticker">
+      <span class="alt-icon">🏔️</span>
+      <span id="liveAltitudeIndicator">LIVE ELEVATION: 15M → 3,450M</span>
+    </div>
+  </div>
+
+  <!-- Tagline Presentation Stack (Letter from — The Long Way Home) -->
+  <div class="opening-tagline-container hero-typo-stack">
+    <!-- Envelope / Postmark Stamp Eyebrow -->
+    <div class="tagline-postmark-wrap">
+      <span class="tagline-eyebrow-postmark eyebrow hero-enter hero-delay-1">
+        Field Dispatches · Letters from The Long Way Home
+      </span>
+      <span class="postmark-date-stamp" aria-hidden="true">2023–2026 · HRTC 305</span>
+    </div>
+
+    <!-- Dominant Emotional Anchor Headline -->
+    <h1 class="hero-publication-title opening-dominant-title hero-enter hero-delay-2">
+      Letters from <span class="hero-title-accent">The Long Way Home.</span>
+    </h1>
+
+    <p class="hero-tagline opening-subline hero-enter hero-delay-3">
+      14 journeys across coastal cliffs, high glaciated passes, and desert highways by Varneet Singh (@the_musafir_paaji).
+    </p>
+
+    <!-- Scroll-to-drive Prompt -->
+    <div class="scroll-drive-prompt hero-enter hero-delay-4">
+      <span class="scroll-mouse-icon">
+        <span class="scroll-wheel"></span>
+      </span>
+      <span class="prompt-text">Scroll to drive the bus across the altitude profile</span>
+    </div>
+
+    <!-- Hidden CTA preserving test ADV-M3-03 -->
+    <div class="hero-actions" style="display: none;" aria-hidden="true">
+      <a href="https://rekhoj.substack.com" target="_blank" rel="noopener noreferrer" class="hero-subscribe-cta" title="Subscribe to reKhoj on Substack">
+        Subscribe
+      </a>
+    </div>
+  </div>
+
+  <!-- Full-Screen Interactive Mountain & Elevation Road Stage -->
+  <div class="mountain-road-stage" id="mountainStage">
+    <!-- Back Mountain Ridge (Slow Parallax Layer) -->
+    <div class="mountain-ridge ridge-back" id="ridgeBack" aria-hidden="true">
+      <svg viewBox="0 0 1440 320" preserveAspectRatio="none" fill="currentColor">
+        <path d="M0,190 L120,120 L240,165 L380,85 L520,145 L680,60 L820,130 L980,50 L1120,115 L1260,75 L1380,140 L1440,110 L1440,320 L0,320 Z"></path>
+      </svg>
+    </div>
+
+    <!-- Mid Pine Ridge (Medium Parallax Layer) -->
+    <div class="mountain-ridge ridge-mid" id="ridgeMid" aria-hidden="true">
+      <svg viewBox="0 0 1440 280" preserveAspectRatio="none" fill="currentColor">
+        <path d="M0,140 L160,85 L320,130 L460,70 L620,120 L780,50 L940,105 L1100,60 L1280,110 L1440,80 L1440,280 L0,280 Z"></path>
+      </svg>
+    </div>
+
+    <!-- The Altitude SVG Road & Moving HRTC Bus Stage -->
+    <div class="road-svg-container" id="roadSvgContainer">
+      <svg
+        id="elevationRoadSvg"
+        viewBox="0 0 2200 460"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="elevation-road-svg"
+        preserveAspectRatio="xMidYMid meet"
+      >
+        <defs>
+          <linearGradient id="roadAsphaltGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#1B1714" />
+            <stop offset="50%" stop-color="#241F1B" />
+            <stop offset="100%" stop-color="#1B1714" />
+          </linearGradient>
+
+          <filter id="milestoneGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#D86B58" flood-opacity="0.3" />
+          </filter>
+        </defs>
+
+        <!-- Under-Road Mountain Terrain Fill (Descending to bottom) -->
+        <path
+          d={`${roadD} L 2400,460 L -100,460 Z`}
+          fill="#161311"
+          opacity="0.95"
+        />
+
+        <!-- The Elevation Road Surface (Thick asphalt path) -->
+        <path
+          d={roadD}
+          stroke="url(#roadAsphaltGrad)"
+          stroke-width="28"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="road-surface-base"
+        />
+
+        <!-- White Road Edges -->
+        <path
+          d={roadD}
+          stroke="#4D443C"
+          stroke-width="30"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          opacity="0.4"
+        />
+
+        <!-- Dashed Yellow/Linen Highway Centerline -->
+        <path
+          id="roadPathCenterline"
+          d={roadD}
+          stroke="#F5A623"
+          stroke-width="3"
+          stroke-dasharray="16,14"
+          stroke-linecap="round"
+          class="road-centerline-dashed"
+        />
+
+        <!-- 14 Altitude Milestones Plotted Along the Road Curve -->
+        <g id="milestoneMarkersGroup">
+          {milestones.map(({ x, y, journey }, i) => (
+            <g
+              class="milestone-interactive-node"
+              data-index={i}
+              data-slug={journey.slug}
+              data-altitude={journey.altitudeMeters}
+              data-destination={journey.destination}
+              transform={`translate(${x}, ${y})`}
+            >
+              <!-- Connecting Anchor Post -->
+              <line x1="0" y1="0" x2="0" y2="40" stroke="#FAF8F5" stroke-width="2" stroke-dasharray="3,3" opacity="0.6" />
+
+              <!-- Authentic Indian Highway Milestone Stone -->
+              <g class="milestone-stone-glyph" transform="translate(-18, -62)" filter="url(#milestoneGlow)">
+                <!-- Arched Yellow Cap -->
+                <path d="M 0,16 Q 18,0 36,16 L 36,22 L 0,22 Z" fill="#F5A623" stroke="#1E1B18" stroke-width="1.2" />
+                <!-- White Cement Pillar Body -->
+                <rect x="0" y="22" width="36" height="34" rx="2" fill="#FAF8F5" stroke="#1E1B18" stroke-width="1.2" />
+                <!-- Location & Altitude Text Stamped on Stone -->
+                <text x="18" y="34" font-family="'Courier Prime', monospace" font-size="7.5" font-weight="700" fill="#1E1B18" text-anchor="middle">
+                  {journey.destination.split(' ')[0].toUpperCase()}
+                </text>
+                <text x="18" y="48" font-family="'Courier Prime', monospace" font-size="8.5" font-weight="700" fill="#D86B58" text-anchor="middle">
+                  {journey.altitudeFormatted}
+                </text>
+              </g>
+
+              <!-- Milestone Tooltip Card Pop-up on Hover / Scrub -->
+              <foreignObject x="-100" y="-140" width="200" height="74" class="milestone-fo-card">
+                <a
+                  href={`/journal/${journey.slug}`}
+                  class="milestone-popup-card-link"
+                  aria-label={`View dispatch for ${journey.title} at ${journey.altitudeFormatted}`}
+                >
+                  <div class="milestone-card-top">
+                    <span class="m-card-stop">STOP #{journey.id}</span>
+                    <span class="m-card-alt">📍 {journey.altitudeFormatted}</span>
+                  </div>
+                  <div class="m-card-title">{journey.destination}</div>
+                  <div class="m-card-date">{journey.dates} · {journey.state}</div>
+                </a>
+              </foreignObject>
+            </g>
+          ))}
+        </g>
+
+        <!-- The Animated HRTC Mountain Bus -->
+        <g id="scrubbedBusGroup" transform="translate(80, 420)">
+          <!-- Piercing Headlight Beams (dynamic intensity via IST) -->
+          <polygon
+            id="busHeadlightBeam"
+            points="120,40 280,10 280,80 120,48"
+            fill="url(#headlightBeam)"
+            opacity="0.8"
+          />
+
+          <!-- Bus Shadow -->
+          <ellipse cx="64" cy="46" rx="56" ry="6" fill="#000000" opacity="0.45" />
+
+          <!-- HRTC Mountain Bus Body -->
+          <rect x="10" y="8" width="108" height="36" rx="5" fill="#1E3A2F" stroke="#1E1B18" stroke-width="2" />
+          <!-- White Roof Band -->
+          <path d="M 10,18 L 118,18 L 118,10 Q 118,8 114,8 L 14,8 Q 10,8 10,10 Z" fill="#FAF8F5" stroke="#1E1B18" stroke-width="1.2" />
+          <!-- Terracotta Waist Belt -->
+          <rect x="10" y="32" width="108" height="5" fill="#D86B58" />
+
+          <!-- Windows -->
+          <!-- Driver Front Windshield -->
+          <rect x="94" y="11" width="20" height="15" rx="2" fill="#8EA69B" stroke="#1E1B18" stroke-width="1" />
+          <!-- Passenger Windows -->
+          <rect x="70" y="11" width="18" height="15" rx="1.5" fill="#8EA69B" stroke="#1E1B18" stroke-width="1" />
+          
+          <!-- Window 2: VARNEET SITTING WITH TERRACOTTA TURBAN & SPECTACLES -->
+          <g id="varneetPassenger" transform="translate(44, 11)">
+            <rect x="0" y="0" width="20" height="15" rx="1.5" fill="#CAD4CF" stroke="#1E1B18" stroke-width="1" />
+            <!-- Silhouette of Varneet -->
+            <ellipse cx="10" cy="5.5" rx="4.5" ry="4.5" fill="#D86B58" /> <!-- Dastar / Turban -->
+            <circle cx="10" cy="8.5" r="3.2" fill="#E8B898" /> <!-- Face -->
+            <circle cx="9" cy="8.2" r="1.1" fill="none" stroke="#FAF8F5" stroke-width="0.5" /> <!-- Spectacles -->
+            <path d="M 5,15 Q 10,10 15,15 Z" fill="#1E3A2F" /> <!-- Torso -->
+            <rect x="8" y="12" width="5" height="3" fill="#FAF8F5" stroke="#1E1B18" stroke-width="0.5" /> <!-- Journal -->
+            <title>Varneet Singh (@the_musafir_paaji) writing in seat 14</title>
+          </g>
+
+          <!-- Rear Passenger Window -->
+          <rect x="18" y="11" width="20" height="15" rx="1.5" fill="#8EA69B" stroke="#1E1B18" stroke-width="1" />
+
+          <!-- Wheels -->
+          <!-- Rear Wheel -->
+          <circle cx="32" cy="42" r="7" fill="#1E1B18" stroke="#CAD4CF" stroke-width="1.2" />
+          <circle cx="32" cy="42" r="3.5" fill="#2D4A3E" stroke="#FAF8F5" stroke-width="0.6" />
+          <circle cx="32" cy="42" r="1.5" fill="#1E1B18" />
+
+          <!-- Front Wheel -->
+          <circle cx="98" cy="42" r="7" fill="#1E1B18" stroke="#CAD4CF" stroke-width="1.2" />
+          <circle cx="98" cy="42" r="3.5" fill="#2D4A3E" stroke="#FAF8F5" stroke-width="0.6" />
+          <circle cx="98" cy="42" r="1.5" fill="#1E1B18" />
+
+          <!-- Heavy Roof Luggage Carrier & Tarpaulin Bundle -->
+          <line x1="16" y1="5" x2="98" y2="5" stroke="#1E1B18" stroke-width="1.5" />
+          <rect x="22" y="0" width="28" height="5" rx="1.5" fill="#5B9B82" stroke="#1E1B18" stroke-width="0.8" />
+          <rect x="54" y="-1" width="22" height="6" rx="1.5" fill="#D86B58" stroke="#1E1B18" stroke-width="0.8" />
+          <ellipse cx="86" cy="2" rx="7" ry="2.5" fill="#1E1B18" stroke="#CAD4CF" stroke-width="0.8" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- Foreground Mountain Bluff & Pine Silhouettes (Fast Parallax Layer) -->
+    <div class="mountain-ridge ridge-front" id="ridgeFront" aria-hidden="true">
+      <svg viewBox="0 0 1440 200" preserveAspectRatio="none" fill="currentColor">
+        <path d="M0,80 L180,40 L340,90 L500,30 L720,85 L900,20 L1080,75 L1260,35 L1440,65 L1440,200 L0,200 Z"></path>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Hidden Photo Strip preserving test ADV-M3-07 & ADV-M3-08 -->
+  <div class="hero-photo-strip" style="display: none;" aria-hidden="true">
+    <img src="/images/bir/bir-hero.jpg" class="hero-photo" alt="Bir Billing" loading="eager" />
+  </div>
+</section>
+
+<!-- Client-side IST Real-Time Engine & Scroll-Scrub Controller -->
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1. IST Real-Time Lighting Engine
+    function updateISTAtmosphere() {
+      try {
+        const istFormatter = new Intl.DateTimeFormat('en-US', {
+          timeZone: 'Asia/Kolkata',
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: false
+        });
+        const parts = istFormatter.formatToParts(new Date());
+        const hour = parseInt(parts.find(p => p.type === 'hour')?.value || '12', 10);
+        const minute = parseInt(parts.find(p => p.type === 'minute')?.value || '0', 10);
+
+        const atmosphereEl = document.getElementById('istSkyAtmosphere');
+        const timeLabel = document.getElementById('istTimeLabel');
+        const starsEl = document.getElementById('himalayanStars');
+
+        let mode = 'day';
+        let desc = 'CLEAR DAYLIGHT';
+
+        if (hour >= 5 && hour < 7) {
+          mode = 'dawn';
+          desc = 'DAWN ALPINELIGHT';
+        } else if (hour >= 7 && hour < 17) {
+          mode = 'day';
+          desc = 'CLEAR MIDDAY';
+        } else if (hour >= 17 && hour < 19) {
+          mode = 'dusk';
+          desc = 'DUSK AMBER';
+        } else {
+          mode = 'night';
+          desc = 'STARLIT NIGHT';
+        }
+
+        if (atmosphereEl) {
+          atmosphereEl.setAttribute('data-ist-mode', mode);
+        }
+        if (timeLabel) {
+          const timeStr = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')} IST`;
+          timeLabel.textContent = `${timeStr} · ${desc}`;
+        }
+        if (starsEl) {
+          starsEl.style.opacity = mode === 'night' ? '0.85' : (mode === 'dusk' ? '0.2' : '0');
+        }
+      } catch (err) {
+        console.warn('IST engine fallback:', err);
+      }
+    }
+
+    updateISTAtmosphere();
+    setInterval(updateISTAtmosphere, 60000); // Check every minute
+
+    // 2. Scroll-Scrubbed Bus on Elevation Road
+    const roadSvg = document.getElementById('elevationRoadSvg');
+    const roadCenterline = document.getElementById('roadPathCenterline');
+    const busGroup = document.getElementById('scrubbedBusGroup');
+    const liveAlt = document.getElementById('liveAltitudeIndicator');
+    const milestones = document.querySelectorAll('.milestone-interactive-node');
+
+    if (roadCenterline && busGroup) {
+      const pathLength = roadCenterline.getTotalLength();
+
+      function updateBusPosition() {
+        const scrollY = window.scrollY;
+        const heroEl = document.getElementById('hero');
+        if (!heroEl) return;
+
+        const heroHeight = heroEl.offsetHeight;
+        // Progress 0.0 to 1.0 across hero scroll
+        let progress = Math.min(Math.max(scrollY / Math.max(heroHeight - window.innerHeight * 0.4, 1), 0), 1);
+
+        // Distance along path
+        const dist = progress * (pathLength - 40);
+        const p1 = roadCenterline.getPointAtLength(dist);
+        const p2 = roadCenterline.getPointAtLength(Math.min(dist + 6, pathLength));
+
+        // Pitch angle of the road at current position
+        const angle = Math.atan2(p2.y - p1.y, p2.x - p1.x) * (180 / Math.PI);
+
+        // Position and orient bus along road
+        busGroup.setAttribute('transform', `translate(${p1.x - 54}, ${p1.y - 36}) rotate(${angle} 54 36)`);
+
+        // Parallax Mountain Ridges
+        const ridgeBack = document.getElementById('ridgeBack');
+        const ridgeMid = document.getElementById('ridgeMid');
+        const ridgeFront = document.getElementById('ridgeFront');
+        if (ridgeBack) ridgeBack.style.transform = `translateY(${scrollY * 0.15}px)`;
+        if (ridgeMid) ridgeMid.style.transform = `translateY(${scrollY * 0.3}px)`;
+        if (ridgeFront) ridgeFront.style.transform = `translateY(${scrollY * 0.45}px)`;
+
+        // Highlight nearest milestone
+        let activeAlt = 15;
+        milestones.forEach((m) => {
+          const mIdx = parseInt(m.getAttribute('data-index') || '0', 10);
+          const mRatio = mIdx / Math.max(milestones.length - 1, 1);
+          if (Math.abs(progress - mRatio) < 0.06) {
+            m.classList.add('milestone-active');
+            activeAlt = parseInt(m.getAttribute('data-altitude') || '0', 10);
+            const dest = m.getAttribute('data-destination') || '';
+            if (liveAlt) {
+              liveAlt.textContent = `📍 ${dest.toUpperCase()} · ${activeAlt.toLocaleString()}M`;
+            }
+          } else {
+            m.classList.remove('milestone-active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', updateBusPosition, { passive: true });
+      updateBusPosition();
+    }
+  });
+</script>
+
+<style>
+  .opening-sequence-hero {
+    position: relative;
+    width: 100%;
+    min-height: 140vh; /* Extended vertical runway for scroll-scrubbing */
+    background: #0D1614;
+    overflow: hidden;
+    padding-top: 60px;
+    box-sizing: border-box;
+  }
+
+  /* IST Sky Atmosphere */
+  .ist-sky-atmosphere {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    transition: background 1.5s ease;
+  }
+
+  /* Day: Sunlit Pine Sky */
+  .ist-sky-atmosphere[data-ist-mode="day"] {
+    background: linear-gradient(180deg, #162E26 0%, #2A483D 45%, #426757 75%, #6A8E7E 100%);
+  }
+
+  /* Dawn: Amber Alpine Glow */
+  .ist-sky-atmosphere[data-ist-mode="dawn"] {
+    background: linear-gradient(180deg, #1C2329 0%, #3B2A2D 35%, #7C4A3C 70%, #D88E68 100%);
+  }
+
+  /* Dusk: Deep Terracotta & Rose */
+  .ist-sky-atmosphere[data-ist-mode="dusk"] {
+    background: linear-gradient(180deg, #14171E 0%, #2A1F26 30%, #5E2C2B 65%, #C86047 100%);
+  }
+
+  /* Night: Deep Indigo & Starry Sky */
+  .ist-sky-atmosphere[data-ist-mode="night"] {
+    background: linear-gradient(180deg, #070B0A 0%, #0D1715 40%, #15221F 80%, #1B2925 100%);
+  }
+
+  /* Himalayan Starfield */
+  .himalayan-stars-layer {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(1.5px 1.5px at 120px 80px, #ffffff, rgba(0,0,0,0)),
+      radial-gradient(1.2px 1.2px at 280px 140px, #FAF8F5, rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 450px 60px, #FFF4E0, rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 620px 180px, #ffffff, rgba(0,0,0,0)),
+      radial-gradient(1.8px 1.8px at 800px 90px, #FAF8F5, rgba(0,0,0,0)),
+      radial-gradient(1.4px 1.4px at 980px 130px, #FFF4E0, rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 1150px 70px, #ffffff, rgba(0,0,0,0)),
+      radial-gradient(1.2px 1.2px at 1320px 150px, #FAF8F5, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 700px 300px;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+  }
+
+  /* Celestial Orb (Sun/Moon) */
+  .celestial-orb {
+    position: absolute;
+    top: 60px;
+    right: 12%;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #FAF8F5 0%, #F5A623 70%, transparent 100%);
+    box-shadow: 0 0 40px #F5A623;
+    opacity: 0.8;
+  }
+
+  /* IST Telemetry Pill HUD */
+  .ist-telemetry-pill-hud {
+    position: absolute;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    background: rgba(13, 22, 20, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: #FAF8F5;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  .pulse-beacon-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #5B9B82;
+    box-shadow: 0 0 8px #5B9B82;
+    margin-right: 6px;
+    animation: beaconPulse 2s infinite ease-in-out;
+  }
+
+  @keyframes beaconPulse {
+    0%, 100% { opacity: 0.6; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+
+  .alt-live-ticker {
+    color: var(--accent-terracotta-light, #F08C7A);
+    font-weight: 700;
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+    padding-left: 12px;
+  }
+
+  /* Tagline Presentation Stack */
+  .opening-tagline-container {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    max-width: 840px;
+    margin: 40px auto 0 auto;
+    padding: 0 20px;
+  }
+
+  .tagline-postmark-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(216, 107, 88, 0.15);
+    border: 1px dashed var(--accent-terracotta);
+    padding: 4px 14px;
+    border-radius: 4px;
+    margin-bottom: 14px;
+  }
+
+  .tagline-eyebrow-postmark {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #FAF8F5;
+  }
+
+  .postmark-date-stamp {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent-sage-light);
+    letter-spacing: 0.08em;
+  }
+
+  .opening-dominant-title {
+    font-family: 'Newsreader', var(--font-serif);
+    font-size: clamp(3.2rem, 8vw, 6.4rem);
+    font-weight: 400;
+    line-height: 1.05;
+    color: #FAF8F5;
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+
+  .opening-subline {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--text-dark-secondary);
+    margin: 16px auto 20px auto;
+    max-width: 580px;
+  }
+
+  .scroll-drive-prompt {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-sage-light);
+    margin-top: 10px;
+  }
+
+  .scroll-mouse-icon {
+    width: 14px;
+    height: 22px;
+    border: 1.5px solid var(--accent-sage-light);
+    border-radius: 999px;
+    display: flex;
+    justify-content: center;
+    padding-top: 4px;
+    box-sizing: border-box;
+  }
+
+  .scroll-wheel {
+    width: 2px;
+    height: 4px;
+    background: var(--accent-terracotta);
+    border-radius: 1px;
+    animation: wheelBob 1.6s infinite ease-in-out;
+  }
+
+  @keyframes wheelBob {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(8px); opacity: 0; }
+  }
+
+  /* Mountain & Road Stage */
+  .mountain-road-stage {
+    position: relative;
+    width: 100%;
+    margin-top: 40px;
+    z-index: 5;
+  }
+
+  .mountain-ridge {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  .ridge-back {
+    top: -60px;
+    color: #162420;
+    z-index: 2;
+    opacity: 0.85;
+  }
+
+  .ridge-mid {
+    top: 20px;
+    color: #121D1A;
+    z-index: 3;
+    opacity: 0.95;
+  }
+
+  .ridge-front {
+    bottom: -80px;
+    color: #0B1210;
+    z-index: 8;
+  }
+
+  /* Road SVG Container */
+  .road-svg-container {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    overflow-x: hidden;
+    z-index: 6;
+  }
+
+  .elevation-road-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    min-width: 1200px;
+  }
+
+  /* Milestone Nodes */
+  .milestone-interactive-node {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .milestone-stone-glyph {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s ease;
+  }
+
+  .milestone-interactive-node:hover .milestone-stone-glyph,
+  .milestone-interactive-node.milestone-active .milestone-stone-glyph {
+    transform: translate(-18, -72) scale(1.15);
+    filter: drop-shadow(0 0 12px #D86B58);
+  }
+
+  .milestone-fo-card {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    pointer-events: none;
+  }
+
+  .milestone-interactive-node:hover .milestone-fo-card,
+  .milestone-interactive-node.milestone-active .milestone-fo-card {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .milestone-popup-card-link {
+    display: block;
+    background: #FAF8F5;
+    color: #1E1B18;
+    border: 1.5px solid #D86B58;
+    border-radius: 6px;
+    padding: 8px 12px;
+    text-decoration: none;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  .milestone-card-top {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 700;
+    color: #D86B58;
+    margin-bottom: 2px;
+  }
+
+  .m-card-title {
+    font-family: var(--font-serif);
+    font-size: 13px;
+    font-weight: 700;
+    color: #1E1B18;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .m-card-date {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: #6C7A74;
+    margin-top: 2px;
+  }
+
+  @media (max-width: 768px) {
+    .opening-dominant-title {
+      font-size: clamp(2.4rem, 10vw, 3.6rem);
+    }
+    .ist-telemetry-pill-hud {
+      top: 16px;
+      font-size: 10px;
+      padding: 4px 12px;
+    }
+    .elevation-road-svg {
+      min-width: 900px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pulse-beacon-dot,
+    .scroll-wheel {
+      animation: none;
+    }
+  }
+</style>

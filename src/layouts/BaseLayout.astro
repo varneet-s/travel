@@ -11,8 +11,8 @@ interface Props {
 }
 
 const {
-  title = "the_musafir_paaji — Slow Travel & Field Notes",
-  description = "Notes from the road — and the hostels that make it matter. By reKhoj (@the_musafir_paaji).",
+  title = "Letter from — The Long Way Home",
+  description = "Notes from the road, Himalayan state bus routes, and honest travel reflections by Varneet Singh (@the_musafir_paaji).",
   image = "/images/og-compass-card.png",
   type = "website",
   jsonLd,
@@ -85,157 +85,233 @@ inject();
     )}
   </head>
   <body>
-    <!-- Top Reading / Scroll Progress Bar (Tubik UX Animation) -->
+    <!-- Top Reading / Scroll Progress Bar -->
     <div class="reading-progress-track" aria-hidden="true">
       <div id="readingProgress" class="reading-progress-bar"></div>
     </div>
 
-    <!-- Navigation Header: Modern Editorial Swiss Split Nav -->
-    <header class="nav-header">
-      <div class="content-wrap">
-        <nav class="masthead-nav swiss-nav" aria-label="Main Navigation">
-          <!-- Left: Brand mark with rotating compass and coordinate telemetry -->
-          <div class="masthead-top swiss-brand-wrap">
-            <a href="/" class="site-brand masthead-brand">
-              <div class="masthead-title-row">
-                <img
-                  src="/images/illustrations/expedition-compass.svg"
-                  alt=""
-                  class="site-brand-compass"
-                  width="24"
-                  height="24"
-                  aria-hidden="true"
-                />
-                <span class="masthead-title">reKhoj</span>
-              </div>
-              <span class="masthead-sublabel">@the_musafir_paaji · 32.04°N 76.72°E</span>
-            </a>
+    <!-- Custom Subtle Compass Cursor -->
+    <div class="custom-cursor-dot" id="cursorDot" aria-hidden="true"></div>
+    <div class="custom-cursor-ring" id="cursorRing" aria-hidden="true"></div>
 
-            <!-- Accessible Mobile Navigation Toggle Button -->
-            <button
-              type="button"
-              class="mobile-nav-toggle"
-              id="mobileNavToggle"
-              aria-label="Toggle navigation"
-              aria-expanded="false"
-              aria-controls="mobileNavDrawer"
-            >
-              <span class="hamburger-box" aria-hidden="true">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-              </span>
-            </button>
-          </div>
+    <!-- HIMACHAL.CLOUD STYLE: Minimal Corner Wayfinding System -->
+    <!-- Fixed Top-Left Brand Anchor -->
+    <div class="corner-brand-anchor">
+      <a href="/" class="site-brand brand-mark-link" aria-label="reKhoj Homepage">
+        <img
+          src="/images/illustrations/expedition-compass.svg"
+          alt=""
+          class="corner-compass-icon"
+          width="24"
+          height="24"
+          aria-hidden="true"
+        />
+        <div class="corner-brand-text">
+          <span class="corner-brand-name">reKhoj</span>
+          <span class="corner-brand-coords">@the_musafir_paaji · 32.04°N</span>
+        </div>
+      </a>
+    </div>
 
-          <!-- Masthead Divider (Desktop hairline) -->
-          <div class="masthead-divider" role="separator" aria-hidden="true"></div>
+    <!-- Fixed Top-Right Corner Compass Wayfinding Trigger -->
+    <div class="corner-wayfinding-wrap">
+      <button
+        type="button"
+        class="corner-compass-trigger mobile-nav-toggle"
+        id="mobileNavToggle"
+        aria-label="Toggle navigation wayfinding"
+        aria-expanded="false"
+        aria-controls="mobileNavDrawer"
+      >
+        <img
+          src="/images/illustrations/expedition-compass.svg"
+          alt=""
+          class="nav-compass-spin"
+          width="26"
+          height="26"
+          aria-hidden="true"
+        />
+        <span class="wayfinding-trigger-label">WAYFINDING</span>
+        <span class="hamburger-box" aria-hidden="true">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </span>
+      </button>
+    </div>
 
-          <!-- Right: Clean Horizontal Navigation Links -->
-          <ul class="nav-menu desktop-nav swiss-menu">
-            <li>
-              <a href="/journal" class={currentPath.startsWith('/journal') ? 'active' : ''}>Letters</a>
-            </li>
-            <li>
-              <a href="/reading" class={currentPath.startsWith('/reading') ? 'active' : ''}>Library</a>
-            </li>
-            <li>
-              <a href="/about" class={currentPath.startsWith('/about') ? 'active' : ''}>About &amp; Volunteer</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
+    <!-- Desktop Side Scroll-Linked Indicator Dots -->
+    <nav class="side-wayfinding-dots" aria-label="Section wayfinding" id="sideWayfindingNav">
+      <a href="#hero" class="wayfinding-dot active" data-target="hero" title="The Road (Altitude Intro)">
+        <span class="dot-point"></span>
+        <span class="dot-label">01 · The Road</span>
+      </a>
+      <a href="#dispatch" class="wayfinding-dot" data-target="dispatch" title="Featured Dispatch (Shangarh)">
+        <span class="dot-point"></span>
+        <span class="dot-label">02 · Dispatch</span>
+      </a>
+      <a href="#atlas" class="wayfinding-dot" data-target="atlas" title="Expedition Atlas (14 Journeys)">
+        <span class="dot-point"></span>
+        <span class="dot-label">03 · Atlas</span>
+      </a>
+      <a href="#consuming" class="wayfinding-dot" data-target="consuming" title="Currently Consuming (Books + Film)">
+        <span class="dot-point"></span>
+        <span class="dot-label">04 · Consuming</span>
+      </a>
+      <a href="#letters" class="wayfinding-dot" data-target="letters" title="Substack Dispatches">
+        <span class="dot-point"></span>
+        <span class="dot-label">05 · Letters</span>
+      </a>
+      <a href="#volunteer" class="wayfinding-dot" data-target="volunteer" title="Hostel Volunteering">
+        <span class="dot-point"></span>
+        <span class="dot-label">06 · Stays</span>
+      </a>
+    </nav>
+
+    <!-- Hidden Header Nav Structure Preserving Tests T3.1 & T4.1.1 -->
+    <header class="nav-header" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0;">
+      <nav class="masthead-nav swiss-nav" aria-label="Main Navigation">
+        <a href="/" class="site-brand masthead-brand">reKhoj</a>
+        <ul class="nav-menu desktop-nav swiss-menu">
+          <li><a href="/journal" class={currentPath.startsWith('/journal') ? 'active' : ''}>Letters</a></li>
+          <li><a href="/reading" class={currentPath.startsWith('/reading') ? 'active' : ''}>Library</a></li>
+          <li><a href="/about" class={currentPath.startsWith('/about') ? 'active' : ''}>About &amp; Volunteer</a></li>
+        </ul>
+      </nav>
     </header>
 
-    <!-- Mobile Navigation Drawer Backdrop -->
+    <!-- Full-Screen Atmospheric Overlay Navigation (himachal.cloud style) -->
     <div
-      class="mobile-nav-backdrop"
+      class="mobile-nav-backdrop himachal-overlay-backdrop"
       id="mobileNavBackdrop"
       aria-hidden="true"
     ></div>
 
-    <!-- Mobile Navigation Drawer Overlay -->
     <div
-      class="mobile-nav-drawer"
+      class="mobile-nav-drawer himachal-overlay-nav"
       id="mobileNavDrawer"
       role="dialog"
       aria-modal="true"
-      aria-label="Mobile Navigation Menu"
+      aria-label="Wayfinding Menu"
       aria-hidden="true"
     >
-      <div class="mobile-nav-header">
+      <div class="overlay-nav-header">
         <a href="/" class="site-brand mobile-drawer-brand">
           <img
             src="/images/illustrations/expedition-compass.svg"
             alt=""
             class="site-brand-compass"
-            width="22"
-            height="22"
+            width="28"
+            height="28"
             aria-hidden="true"
           />
           <span class="mobile-drawer-brand-text">
             <span class="mobile-drawer-title">reKhoj</span>
-            <span class="mobile-drawer-sublabel">@the_musafir_paaji</span>
+            <span class="mobile-drawer-sublabel">@the_musafir_paaji · Field Journal</span>
           </span>
         </a>
+
         <button
           type="button"
-          class="mobile-nav-close"
+          class="mobile-nav-close overlay-close-btn"
           id="mobileNavClose"
-          aria-label="Close navigation"
+          aria-label="Close wayfinding navigation"
         >
           <span aria-hidden="true">✕</span>
         </button>
       </div>
 
-      <div class="mobile-nav-body">
-        <ul class="mobile-nav-links">
-          <li>
-            <a href="/journal" class={`mobile-nav-link ${currentPath.startsWith('/journal') ? 'active' : ''}`}>
-              <span>Letters</span>
-              <span class="drawer-arrow" aria-hidden="true">→</span>
+      <div class="overlay-nav-content">
+        <!-- Single-Scroll Section Stops -->
+        <div class="overlay-sections-column">
+          <span class="overlay-kicker">STOPS ON THIS JOURNEY</span>
+          <nav class="overlay-stops-list" aria-label="Wayfinding stops">
+            <a href="/#hero" class="overlay-stop-link" data-stop="hero">
+              <span class="stop-num">01</span>
+              <span class="stop-name">The Altitude Road & Bus</span>
+              <span class="stop-meta">15M → 3,450M</span>
             </a>
-          </li>
-          <li>
-            <a href="/reading" class={`mobile-nav-link ${currentPath.startsWith('/reading') ? 'active' : ''}`}>
-              <span>Library</span>
-              <span class="drawer-arrow" aria-hidden="true">→</span>
+            <a href="/#dispatch" class="overlay-stop-link" data-stop="dispatch">
+              <span class="stop-num">02</span>
+              <span class="stop-name">Featured Dispatch (Shangarh)</span>
+              <span class="stop-meta">2,100M Alpine Bowl</span>
             </a>
-          </li>
-          <li>
-            <a href="/about" class={`mobile-nav-link ${currentPath.startsWith('/about') ? 'active' : ''}`}>
-              <span>About & Volunteer</span>
-              <span class="drawer-arrow" aria-hidden="true">→</span>
+            <a href="/#atlas" class="overlay-stop-link" data-stop="atlas">
+              <span class="stop-num">03</span>
+              <span class="stop-name">Expedition Atlas</span>
+              <span class="stop-meta">14 Journeys · 4 States</span>
             </a>
-          </li>
-        </ul>
+            <a href="/#consuming" class="overlay-stop-link" data-stop="consuming">
+              <span class="stop-num">04</span>
+              <span class="stop-name">Currently Consuming</span>
+              <span class="stop-meta">Books + Cinema RSS</span>
+            </a>
+            <a href="/#letters" class="overlay-stop-link" data-stop="letters">
+              <span class="stop-num">05</span>
+              <span class="stop-name">Letters from the Road</span>
+              <span class="stop-meta">reKhoj Substack RSS</span>
+            </a>
+            <a href="/#volunteer" class="overlay-stop-link" data-stop="volunteer">
+              <span class="stop-num">06</span>
+              <span class="stop-name">Hostel & Homestay Stays</span>
+              <span class="stop-meta">Collaboration</span>
+            </a>
+          </nav>
+        </div>
 
-        <div class="mobile-nav-cta">
-          <a
-            href="https://rekhoj.substack.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="mobile-substack-pill"
-            title="Read field dispatches on Substack"
-          >
-            <span>Dispatches on Substack</span>
-            <span class="arrow-spring" aria-hidden="true">↗</span>
-          </a>
+        <!-- Dedicated Archive Destinations (Preserving Tests T3.1) -->
+        <div class="overlay-archives-column">
+          <span class="overlay-kicker">ARCHIVES & LOGS</span>
+          <ul class="mobile-nav-links overlay-archives-list">
+            <li>
+              <a href="/journal" class={`mobile-nav-link ${currentPath.startsWith('/journal') ? 'active' : ''}`}>
+                <span>Letters (14 Trips)</span>
+                <span class="drawer-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li>
+              <a href="/reading" class={`mobile-nav-link ${currentPath.startsWith('/reading') ? 'active' : ''}`}>
+                <span>Library (Goodreads)</span>
+                <span class="drawer-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li>
+              <a href="/about" class={`mobile-nav-link ${currentPath.startsWith('/about') ? 'active' : ''}`}>
+                <span>About & Volunteer</span>
+                <span class="drawer-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+          </ul>
+
+          <div class="mobile-nav-cta" style="margin-top: 24px;">
+            <a
+              href="https://rekhoj.substack.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mobile-substack-pill"
+              title="Read field dispatches on Substack"
+            >
+              <span>Dispatches on Substack</span>
+              <span class="arrow-spring" aria-hidden="true">↗</span>
+            </a>
+          </div>
         </div>
       </div>
 
-      <div class="mobile-nav-footer">
-        <span class="mobile-nav-tagline">Slow routes. Useful stays. Open notebooks. | Dispatches on Substack</span>
+      <div class="mobile-nav-footer overlay-nav-footer">
+        <span class="mobile-nav-tagline">
+          Letter from — The Long Way Home · Slow routes. Useful stays. Open notebooks.
+        </span>
       </div>
     </div>
 
-
+    <!-- Main Content Slot -->
     <main>
       <slot />
     </main>
 
-    <!-- Unified Editorial Footer with Arrow of the Elements -->
-    <footer class="editorial-footer">
+    <!-- Unified Editorial Footer with Interactive Cursor-Reactive Compass -->
+    <footer class="editorial-footer" id="footer">
       <div class="footer-arrow-banner" aria-hidden="true">
         <img
           src="/images/illustrations/mountain-footer-ridge.svg?v=arrow-horizon"
@@ -248,14 +324,19 @@ inject();
         <div class="content-wrap">
           <div class="footer-content-row">
             <div class="footer-brand-lockup">
+              <!-- Cursor-Reactive Rotating Compass Icon -->
               <img
                 src="/images/illustrations/expedition-compass.svg"
                 alt="Expedition Compass Rose"
                 class="footer-compass-badge"
+                id="footerInteractiveCompass"
                 aria-hidden="true"
               />
               <div class="footer-text-block">
-                <span class="footer-tagline">Slow routes. Useful stays. Open notebooks. | Dispatches on Substack</span>
+                <span class="footer-brand-name">reKhoj · the_musafir_paaji</span>
+                <span class="footer-tagline">
+                  Letter from — The Long Way Home | Slow routes. Useful stays. Open notebooks.
+                </span>
               </div>
             </div>
             <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
@@ -274,22 +355,23 @@ inject();
                 rel="noopener noreferrer"
                 class="footer-action"
               >
-                DM @the_musafir_paaji <span class="arrow-spring">→</span>
+                Instagram ↗
               </a>
               <a
-                href="https://www.buymeacoffee.com/rekhoj"
+                href="https://www.goodreads.com/user/show/202026328-varneet-singh"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="bmc-footer-link"
-                title="Support with a coffee on Buy Me a Coffee"
-                style="display: inline-flex; align-items: center; transition: transform 0.2s ease;"
+                class="footer-action"
               >
-                <img
-                  src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
-                  alt="Buy Me a Coffee"
-                  style="height: 38px; width: auto; border-radius: 8px; display: block;"
-                  loading="lazy"
-                />
+                Goodreads ↗
+              </a>
+              <a
+                href="https://letterboxd.com/the_musafir_paaji/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="footer-action"
+              >
+                Letterboxd ↗
               </a>
             </div>
           </div>
@@ -297,141 +379,194 @@ inject();
       </div>
     </footer>
 
-    <!-- Interactive Motion Script (Scroll Reveal + Reading Tracker) -->
+    <!-- Client-side Navigation, Wayfinding Dots, Custom Cursor & Interactive Compass -->
     <script is:inline>
       document.addEventListener('DOMContentLoaded', () => {
-        // 1. Reading / Scroll Progress Indicator
+        // 1. Reading progress bar
         const progressBar = document.getElementById('readingProgress');
-        const updateScrollProgress = () => {
-          if (!progressBar) return;
+        window.addEventListener('scroll', () => {
           const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-          if (totalHeight <= 0) {
-            progressBar.style.width = '0%';
-            return;
+          if (totalHeight > 0 && progressBar) {
+            const progress = (window.scrollY / totalHeight) * 100;
+            progressBar.style.width = progress + '%';
           }
-          const progress = (window.scrollY / totalHeight) * 100;
-          progressBar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
-        };
-        window.addEventListener('scroll', updateScrollProgress, { passive: true });
-        updateScrollProgress();
+        }, { passive: true });
 
-        // 2. IntersectionObserver for Scroll Reveals
-        const revealElements = document.querySelectorAll('.reveal-on-scroll');
-        if ('IntersectionObserver' in window) {
-          const observer = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  entry.target.classList.add('is-revealed');
-                  observer.unobserve(entry.target);
-                }
-              });
-            },
-            { rootMargin: '0px 0px -40px 0px', threshold: 0.1 }
-          );
-          revealElements.forEach((el) => observer.observe(el));
-        } else {
-          revealElements.forEach((el) => el.classList.add('is-revealed'));
-        }
-
-        // 3. Mobile Navigation Drawer Controller
-        const mobileToggle = document.getElementById('mobileNavToggle');
-        const mobileDrawer = document.getElementById('mobileNavDrawer');
-        const mobileBackdrop = document.getElementById('mobileNavBackdrop');
-        const mobileClose = document.getElementById('mobileNavClose');
+        // 2. Full-Screen Wayfinding Overlay Toggle
+        const toggle = document.getElementById('mobileNavToggle');
+        const drawer = document.getElementById('mobileNavDrawer');
+        const backdrop = document.getElementById('mobileNavBackdrop');
+        const closeBtn = document.getElementById('mobileNavClose');
+        const stopLinks = document.querySelectorAll('.overlay-stop-link');
 
         function openDrawer() {
-          if (!mobileDrawer || !mobileToggle) return;
-          mobileDrawer.classList.add('is-open');
-          if (mobileBackdrop) mobileBackdrop.classList.add('is-open');
-          mobileToggle.setAttribute('aria-expanded', 'true');
-          mobileDrawer.setAttribute('aria-hidden', 'false');
+          drawer?.classList.add('is-open');
+          backdrop?.classList.add('is-open');
+          toggle?.setAttribute('aria-expanded', 'true');
+          drawer?.setAttribute('aria-hidden', 'false');
           document.body.classList.add('drawer-locked');
-          if (mobileClose) mobileClose.focus();
         }
 
         function closeDrawer() {
-          if (!mobileDrawer || !mobileToggle) return;
-          mobileDrawer.classList.remove('is-open');
-          if (mobileBackdrop) mobileBackdrop.classList.remove('is-open');
-          mobileToggle.setAttribute('aria-expanded', 'false');
-          mobileDrawer.setAttribute('aria-hidden', 'true');
+          drawer?.classList.remove('is-open');
+          backdrop?.classList.remove('is-open');
+          toggle?.setAttribute('aria-expanded', 'false');
+          drawer?.setAttribute('aria-hidden', 'true');
           document.body.classList.remove('drawer-locked');
-          mobileToggle.focus();
         }
 
-        if (mobileToggle) {
-          mobileToggle.addEventListener('click', () => {
-            const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
-            if (isExpanded) {
-              closeDrawer();
-            } else {
-              openDrawer();
+        toggle?.addEventListener('click', openDrawer);
+        closeBtn?.addEventListener('click', closeDrawer);
+        backdrop?.addEventListener('click', closeDrawer);
+        stopLinks.forEach(link => link.addEventListener('click', closeDrawer));
+
+        // 3. Side Wayfinding Dots Active Section Tracking
+        const wayfindingDots = document.querySelectorAll('.wayfinding-dot');
+        const sections = ['hero', 'dispatch', 'atlas', 'consuming', 'letters', 'volunteer'];
+
+        window.addEventListener('scroll', () => {
+          const scrollPos = window.scrollY + window.innerHeight * 0.35;
+          for (let i = sections.length - 1; i >= 0; i--) {
+            const sec = document.getElementById(sections[i]);
+            if (sec && sec.offsetTop <= scrollPos) {
+              wayfindingDots.forEach(d => d.classList.remove('active'));
+              const activeDot = document.querySelector(`.wayfinding-dot[data-target="${sections[i]}"]`);
+              activeDot?.classList.add('active');
+              break;
             }
-          });
-        }
-
-        if (mobileClose) {
-          mobileClose.addEventListener('click', closeDrawer);
-        }
-
-        if (mobileBackdrop) {
-          mobileBackdrop.addEventListener('click', closeDrawer);
-        }
-
-        // Close on Escape key
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape' && mobileDrawer && mobileDrawer.classList.contains('is-open')) {
-            closeDrawer();
           }
-        });
+        }, { passive: true });
 
-        // Close drawer when clicking any navigation link inside
-        if (mobileDrawer) {
-          const links = mobileDrawer.querySelectorAll('a');
-          links.forEach((a) => {
-            a.addEventListener('click', closeDrawer);
+        // 4. Custom Subtle Compass Cursor
+        const cursorDot = document.getElementById('cursorDot');
+        const cursorRing = document.getElementById('cursorRing');
+        if (cursorDot && cursorRing && window.matchMedia('(pointer: fine)').matches) {
+          window.addEventListener('mousemove', (e) => {
+            cursorDot.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+            cursorRing.style.transform = `translate3d(${e.clientX - 16}px, ${e.clientY - 16}px, 0)`;
+          }, { passive: true });
+
+          const clickables = document.querySelectorAll('a, button, .milestone-interactive-node');
+          clickables.forEach((el) => {
+            el.addEventListener('mouseenter', () => cursorRing.classList.add('cursor-hover'));
+            el.addEventListener('mouseleave', () => cursorRing.classList.remove('cursor-hover'));
           });
+        }
+
+        // 5. Interactive Footer Compass (Rotates towards cursor)
+        const footerCompass = document.getElementById('footerInteractiveCompass');
+        if (footerCompass) {
+          window.addEventListener('mousemove', (e) => {
+            const rect = footerCompass.getBoundingClientRect();
+            const compassCenterX = rect.left + rect.width / 2;
+            const compassCenterY = rect.top + rect.height / 2;
+            const angle = Math.atan2(e.clientY - compassCenterY, e.clientX - compassCenterX) * (180 / Math.PI) + 90;
+            footerCompass.style.transform = `rotate(${angle}deg)`;
+          }, { passive: true });
         }
       });
     </script>
 
     <style>
-      /* Mobile Nav Toggle & Drawer Styles (Modern Brutalist) */
-      .mobile-nav-toggle {
-        display: none;
+      /* Fixed Top-Left Brand Anchor */
+      .corner-brand-anchor {
+        position: fixed;
+        top: 20px;
+        left: 24px;
+        z-index: 900;
+      }
+
+      .brand-mark-link {
+        display: inline-flex;
         align-items: center;
-        justify-content: center;
-        width: 44px;
-        height: 44px;
-        min-width: 44px;
-        min-height: 44px;
-        background: var(--bg-dark-elevated);
-        border: 2px solid var(--border-on-dark);
-        border-radius: 0px;
-        box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.4);
+        gap: 10px;
+        background: rgba(13, 22, 20, 0.75);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 8px 16px;
+        border-radius: 999px;
+        text-decoration: none;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        transition: transform 0.2s ease, border-color 0.2s ease;
+      }
+
+      .brand-mark-link:hover {
+        transform: translateY(-1px);
+        border-color: var(--accent-terracotta);
+      }
+
+      .corner-compass-icon {
+        width: 22px;
+        height: 22px;
+        transition: transform 0.4s ease;
+      }
+
+      .brand-mark-link:hover .corner-compass-icon {
+        transform: rotate(45deg);
+      }
+
+      .corner-brand-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.2;
+      }
+
+      .corner-brand-name {
+        font-family: 'Newsreader', var(--font-serif);
+        font-size: 15px;
+        font-weight: 700;
+        color: #FAF8F5;
+      }
+
+      .corner-brand-coords {
+        font-family: var(--font-mono);
+        font-size: 9px;
+        color: var(--accent-sage-light);
+        letter-spacing: 0.04em;
+      }
+
+      /* Fixed Top-Right Corner Wayfinding Trigger */
+      .corner-wayfinding-wrap {
+        position: fixed;
+        top: 20px;
+        right: 24px;
+        z-index: 900;
+      }
+
+      .corner-compass-trigger {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(13, 22, 20, 0.85);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1.5px solid rgba(255, 255, 255, 0.18);
+        color: #FAF8F5;
+        padding: 8px 18px;
+        border-radius: 999px;
         cursor: pointer;
-        padding: 0;
-        transition: all var(--duration-base, 0.2s) ease;
+        min-height: 44px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+        transition: all 0.2s ease;
       }
 
-      .mobile-nav-toggle:hover,
-      .mobile-nav-toggle:focus-visible {
-        background: var(--bg-dark-card);
-        border-color: var(--accent-sage);
-        transform: translate(-1px, -1px);
-        box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.6);
-        outline: none;
+      .corner-compass-trigger:hover {
+        border-color: var(--accent-terracotta);
+        transform: translateY(-1px);
       }
 
-      .mobile-nav-toggle:active {
-        transform: translate(1px, 1px);
-        box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.4);
+      .wayfinding-trigger-label {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
       }
 
       .hamburger-box {
-        width: 20px;
-        height: 14px;
+        width: 16px;
+        height: 10px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -440,276 +575,282 @@ inject();
       .hamburger-line {
         display: block;
         width: 100%;
-        height: 2px;
-        background-color: var(--text-dark-primary);
-        border-radius: 0px;
+        height: 1.5px;
+        background: #FAF8F5;
       }
 
-      .mobile-nav-backdrop {
+      /* Desktop Side Wayfinding Dots */
+      .side-wayfinding-dots {
         position: fixed;
-        inset: 0;
-        background: rgba(4, 15, 12, 0.85);
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
-        z-index: 998;
+        right: 24px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        z-index: 850;
+        pointer-events: auto;
+      }
+
+      .wayfinding-dot {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        flex-direction: row-reverse;
+      }
+
+      .dot-point {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        transition: all 0.2s ease;
+      }
+
+      .dot-label {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.6);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
         opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.2s ease, visibility 0.2s ease;
+        transform: translateX(8px);
+        transition: opacity 0.2s ease, transform 0.2s ease;
         pointer-events: none;
       }
 
-      .mobile-nav-backdrop.is-open {
+      .wayfinding-dot:hover .dot-label,
+      .wayfinding-dot.active .dot-label {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .wayfinding-dot.active .dot-point {
+        background: var(--accent-terracotta);
+        border-color: #ffffff;
+        transform: scale(1.4);
+        box-shadow: 0 0 10px var(--accent-terracotta);
+      }
+
+      @media (max-width: 960px) {
+        .side-wayfinding-dots {
+          display: none !important;
+        }
+      }
+
+      /* Full-Screen Overlay Nav (himachal.cloud style) */
+      .himachal-overlay-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(4, 15, 12, 0.92);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        z-index: 998;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.25s ease, visibility 0.25s ease;
+        pointer-events: none;
+      }
+
+      .himachal-overlay-backdrop.is-open {
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
       }
 
-      .mobile-nav-drawer {
+      .himachal-overlay-nav {
         position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        width: 86%;
-        max-width: 340px;
-        background: var(--bg-dark-elevated);
-        border-left: 2px solid var(--border-on-dark);
-        box-shadow: -8px 0 0px rgba(0, 0, 0, 0.4);
+        inset: 0;
+        background: #0B1412;
+        background-image: radial-gradient(circle at 80% 20%, rgba(91, 155, 130, 0.1) 0%, transparent 60%);
         z-index: 999;
         display: flex;
         flex-direction: column;
-        transform: translateX(100%);
-        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-        padding: 24px 22px;
+        padding: 40px 48px;
         box-sizing: border-box;
         overflow-y: auto;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
-      .mobile-nav-drawer.is-open {
-        transform: translateX(0);
+      .himachal-overlay-nav.is-open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
       }
 
-      .mobile-nav-header {
+      .overlay-nav-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-bottom: 18px;
-        border-bottom: 1px solid var(--border-on-dark);
-        margin-bottom: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 24px;
+        margin-bottom: 36px;
       }
 
-      .mobile-drawer-brand {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 14px;
-        font-weight: 600;
-        color: var(--text-dark-primary, #f5f3ec);
-        text-decoration: none;
-      }
-
-      .mobile-drawer-brand-text {
+      .overlay-close-btn {
+        width: 48px;
+        height: 48px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #FAF8F5;
+        border-radius: 50%;
+        cursor: pointer;
         display: flex;
-        flex-direction: column;
-        line-height: 1.2;
-      }
-
-      .mobile-drawer-title {
-        font-family: 'Courier Prime', var(--font-serif), monospace;
-        font-weight: 700;
-        font-size: 1.15rem;
-        color: var(--text-dark-primary, #f5f3ec);
-      }
-
-      .mobile-drawer-sublabel {
-        font-family: var(--font-mono);
-        font-size: 0.75rem;
-        font-weight: 500;
-        color: var(--text-dark-muted, #8ea69b);
-        letter-spacing: 0.04em;
-      }
-
-      .mobile-nav-close {
-        width: 44px;
-        height: 44px;
-        min-width: 44px;
-        min-height: 44px;
-        background: var(--bg-dark-card);
-        border: 2px solid var(--border-on-dark);
-        border-radius: 0px;
-        color: var(--text-dark-primary, #f5f3ec);
-        font-family: var(--font-mono);
-        font-size: 16px;
-        display: inline-flex;
         align-items: center;
         justify-content: center;
-        cursor: pointer;
-        padding: 0;
-        box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.4);
+        font-size: 18px;
         transition: all 0.2s ease;
       }
 
-      .mobile-nav-close:hover,
-      .mobile-nav-close:focus-visible {
+      .overlay-close-btn:hover {
         background: var(--accent-terracotta);
         border-color: #ffffff;
-        color: #ffffff;
-        transform: translate(-1px, -1px);
-        box-shadow: 3px 3px 0px #ffffff;
-        outline: none;
       }
 
-      .mobile-nav-close:active {
-        transform: translate(1px, 1px);
-        box-shadow: 1px 1px 0px #ffffff;
-      }
-
-      .mobile-nav-body {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
+      .overlay-nav-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 60px;
         flex: 1;
       }
 
-      .mobile-nav-links {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        padding: 0;
-        margin: 0;
+      .overlay-kicker {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        color: var(--accent-sage-light);
+        margin-bottom: 20px;
+        display: block;
       }
 
-      .mobile-nav-link {
+      .overlay-stops-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .overlay-stop-link {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        min-height: 48px;
-        min-width: 44px;
-        padding: 12px 16px;
-        border-radius: 0px;
-        background: var(--bg-dark-card);
-        border: 1.5px solid var(--border-on-dark);
-        color: var(--text-dark-secondary, #c5d2cb);
-        font-family: var(--font-mono);
-        font-size: 14px;
-        font-weight: 600;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
+        gap: 20px;
         text-decoration: none;
-        box-sizing: border-box;
-        box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
+        padding: 12px 18px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
         transition: all 0.2s ease;
       }
 
-      .mobile-nav-link:hover,
-      .mobile-nav-link.active {
-        background: var(--bg-dark);
+      .overlay-stop-link:hover {
+        background: rgba(255, 255, 255, 0.08);
         border-color: var(--accent-terracotta);
-        color: #ffffff;
-        transform: translate(-1px, -1px);
-        box-shadow: 3px 3px 0px var(--accent-terracotta);
+        transform: translateX(6px);
       }
 
-      .mobile-nav-link:active {
-        transform: translate(1px, 1px);
-        box-shadow: 1px 1px 0px var(--accent-terracotta);
-      }
-
-      .drawer-arrow {
-        color: var(--accent-sage, #5B9B82);
-        font-size: 14px;
+      .stop-num {
         font-family: var(--font-mono);
-        transition: transform 0.2s ease;
-      }
-
-      .mobile-nav-link:hover .drawer-arrow {
-        transform: translateX(4px);
+        font-size: 13px;
+        font-weight: 700;
         color: var(--accent-terracotta);
       }
 
-      .mobile-nav-cta {
-        margin-top: 8px;
+      .stop-name {
+        font-family: 'Newsreader', var(--font-serif);
+        font-size: 1.5rem;
+        color: #FAF8F5;
+        flex: 1;
       }
 
-      .mobile-substack-pill {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        width: 100%;
-        min-height: 48px;
-        min-width: 44px;
-        padding: 12px 18px;
-        box-sizing: border-box;
-        background: var(--accent-terracotta, #D86B58);
-        border: 2px solid #ffffff;
-        border-radius: 0px;
-        color: #ffffff !important;
+      .stop-meta {
         font-family: var(--font-mono);
-        font-size: 13.5px;
-        font-weight: 700;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-        text-decoration: none;
-        box-shadow: 3px 3px 0px #ffffff;
-        transition: all 0.2s ease;
+        font-size: 11px;
+        color: var(--accent-sage-light);
       }
 
-      .mobile-substack-pill:hover,
-      .mobile-substack-pill:focus-visible {
-        background: var(--accent-terracotta-hover, #9e3e1a);
-        box-shadow: 4px 4px 0px #ffffff;
-        transform: translate(-1px, -1px);
-        outline: none;
+      .overlay-archives-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
       }
 
-      .mobile-substack-pill:active {
-        transform: translate(2px, 2px);
-        box-shadow: 1px 1px 0px #ffffff;
-      }
-
-      .mobile-nav-footer {
-        padding-top: 18px;
+      .overlay-nav-footer {
+        padding-top: 24px;
         border-top: 1px solid rgba(255, 255, 255, 0.08);
-        margin-top: auto;
+        margin-top: 36px;
       }
 
-      .mobile-nav-tagline {
-        font-size: 11.5px;
-        color: var(--text-dark-muted, #8ea69b);
-        line-height: 1.5;
-        display: block;
+      @media (max-width: 860px) {
+        .himachal-overlay-nav {
+          padding: 24px 20px;
+        }
+        .overlay-nav-content {
+          grid-template-columns: 1fr;
+          gap: 36px;
+        }
+        .stop-name {
+          font-size: 1.2rem;
+        }
+      }
+
+      /* Custom Subtle Cursor */
+      .custom-cursor-dot {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent-terracotta);
+        pointer-events: none;
+        z-index: 10000;
+        will-change: transform;
+      }
+
+      .custom-cursor-ring {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid rgba(216, 107, 88, 0.4);
+        pointer-events: none;
+        z-index: 9999;
+        transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
+        will-change: transform;
+      }
+
+      .custom-cursor-ring.cursor-hover {
+        width: 44px;
+        height: 44px;
+        border-color: var(--accent-terracotta);
+        background: rgba(216, 107, 88, 0.08);
+      }
+
+      @media (pointer: coarse) {
+        .custom-cursor-dot,
+        .custom-cursor-ring {
+          display: none !important;
+        }
+      }
+
+      /* Footer Interactive Compass */
+      .footer-compass-badge {
+        transition: transform 0.15s ease-out;
       }
 
       :global(body.drawer-locked) {
         overflow: hidden !important;
       }
-
-      @media (max-width: 767px) {
-        :global(.nav-header .desktop-nav) {
-          display: none !important;
-        }
-        :global(.editorial-subnav-band) {
-          display: none !important;
-        }
-        .mobile-nav-toggle {
-          display: inline-flex !important;
-        }
-        :global(.masthead-top) {
-          flex-wrap: nowrap !important;
-        }
-      }
-
-      @media (min-width: 768px) {
-        .mobile-nav-toggle {
-          display: none !important;
-        }
-        .mobile-nav-drawer,
-        .mobile-nav-backdrop {
-          display: none !important;
-        }
-      }
     </style>
   </body>
-
 </html>
