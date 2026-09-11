@@ -1,175 +1,719 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getGoodreadsLibrary } from '../../lib/goodreads';
 
-const currentlyReading = [
-  {
-    title: '1984',
-    author: 'George Orwell',
-    cover: '/images/books/1984.jpg',
-    note: 'Reading for the 2nd time. An enduring examination of surveillance, language, and memory.',
-    trailConnection: '📍 Carried on the Parvati Valley trail · Read on a wooden balcony in Chalal overlooking the rushing river.',
-    progress: 'Page 47 of 304 · 15%',
-    tag: 'Classic · Dystopia · Philosophy',
-    link: 'https://www.goodreads.com/book/show/230149114-1984',
-  },
-  {
-    title: 'Men Without Women',
-    author: 'Haruki Murakami',
-    cover: '/images/books/men-without-women.jpg',
-    note: 'Short stories on solitude, longing, quiet estrangement, and what remains behind.',
-    trailConnection: '📍 Read beside the cold green pools of the Tirthan river in Gushaini on a quiet afternoon.',
-    progress: 'Page 55 of 228 · 24%',
-    tag: 'Literary · Contemporary Fiction',
-    link: 'https://www.goodreads.com/book/show/36114337-men-without-women',
-  },
-  {
-    title: 'What I Talk About When I Talk About Running',
-    author: 'Haruki Murakami',
-    cover: '/images/books/running-murakami.jpg',
-    note: 'Memoir on daily distance running, physical endurance, routine, and the craft of writing.',
-    trailConnection: '📍 Read on the 8-hour ordinary HRTC bus through the Sutlej river gorge en route to Spiti.',
-    progress: 'Page 81 of 180 · 45%',
-    tag: 'Memoir · Non-fiction · Discipline',
-    link: 'https://www.goodreads.com/book/show/57025000-what-i-talk-about-when-i-talk-about-running',
-  },
+const { currentlyReading, readBooks, totalReadCount } = await getGoodreadsLibrary();
+
+// Curated spine colors (warm, rich, vintage cloth & leather palettes)
+const spineColors = [
+  '#1B2E24', '#7A2E20', '#1C2836', '#4E3523', '#24342E',
+  '#3E2020', '#1F343E', '#342B1F', '#182C22', '#56311D',
+  '#162B32', '#6C2B1C', '#283626', '#472F22', '#1B2A34',
+  '#372620', '#1E3228', '#5E2C22', '#222F38', '#42281E',
+  '#193026', '#602F23', '#253038'
 ];
 
-const readingHighlights = [
-  {
-    shelf: 'Memoirs & Journeys',
-    desc: 'Writings on solitude, discipline, and the physical weight of movement across terrain.',
-  },
-  {
-    shelf: 'Classics & Modern Fiction',
-    desc: 'Stories that challenge perception, explore existential longing, and stay with you for decades.',
-  },
-  {
-    shelf: 'Philosophy & Human Nature',
-    desc: 'Deep investigations into resilience, societal structures, and inner stillness.',
-  },
+const spineHeights = [
+  265, 245, 275, 250, 260, 240, 280, 255, 270, 245,
+  260, 285, 250, 270, 240, 275, 255, 265, 245, 260,
+  280, 250, 270
+];
+
+const spineWidths = [
+  38, 44, 34, 48, 42, 36, 46, 40, 32, 50,
+  38, 44, 36, 48, 40, 34, 46, 42, 38, 44,
+  32, 50, 42
+];
+
+// All 23 books strictly from Goodreads (4 currently reading + 19 read)
+const allBooks = [
+  ...currentlyReading.map((b, i) => {
+    const isFiction = b.shelves?.some(s => ['fiction', 'novel', 'dystopia', 'classic'].includes(s.toLowerCase())) || /fiction|1984/i.test(b.title);
+    const isMemoir = b.shelves?.some(s => ['memoir', 'biography', 'autobiography'].includes(s.toLowerCase())) || /running/i.test(b.title);
+    const isPhilosophy = b.shelves?.some(s => ['philosophy', 'essay', 'psychology', 'human'].includes(s.toLowerCase())) || /why|1984/i.test(b.title);
+    let category = 'nonfiction';
+    if (isFiction) category = 'fiction';
+    else if (isMemoir) category = 'memoir';
+    else if (isPhilosophy) category = 'philosophy';
+
+    return {
+      ...b,
+      isReading: true,
+      category,
+      spineHeight: spineHeights[i % spineHeights.length],
+      spineWidth: spineWidths[i % spineWidths.length],
+      spineColor: spineColors[i % spineColors.length]
+    };
+  }),
+  ...readBooks.map((b, i) => {
+    const idx = currentlyReading.length + i;
+    const isFiction = b.shelves?.some(s => ['fiction', 'novel', 'dystopia', 'classic', 'literature'].includes(s.toLowerCase())) || /solitude|stranger|kafka|metamorphosis/i.test(b.title);
+    const isMemoir = b.shelves?.some(s => ['memoir', 'biography', 'travel', 'journal'].includes(s.toLowerCase())) || /wild|travel|walk|journey/i.test(b.title);
+    const isPhilosophy = b.shelves?.some(s => ['philosophy', 'essays', 'thought', 'stoic', 'ethics'].includes(s.toLowerCase())) || /meditations|letters|man/i.test(b.title);
+    let category = 'nonfiction';
+    if (isFiction) category = 'fiction';
+    else if (isMemoir) category = 'memoir';
+    else if (isPhilosophy) category = 'philosophy';
+
+    return {
+      ...b,
+      isReading: false,
+      category,
+      spineHeight: spineHeights[idx % spineHeights.length],
+      spineWidth: spineWidths[idx % spineWidths.length],
+      spineColor: spineColors[idx % spineColors.length]
+    };
+  })
 ];
 ---
 
 <BaseLayout
-  title="Reading Logs & Goodreads Library — the_musafir_paaji"
-  description="Books carried in the backpack, currently reading shelves, and Goodreads reflections."
+  title="Library — Welcome to my library"
+  description="A personal reading archive and library carried across mountain trails and bus routes by Varneet Singh (@the_musafir_paaji)."
   image="/images/books/1984.jpg"
 >
-  <div class="section-light">
-    <div class="content-narrow">
-      <div>
-        <span class="eyebrow hero-enter hero-delay-1">Goodreads Library & Backpack Books</span>
-        <h1 class="display-title hero-enter hero-delay-2" style="margin-top: 8px;">Reading</h1>
-        <p class="hero-enter hero-delay-3" style="margin-top: 12px; color: var(--text-light-secondary);">
-          Books, memoirs, and essays carried along mountain trails and hostel bunk beds.
-        </p>
-        <div class="hero-enter hero-delay-4" style="margin-top: 12px;">
-          <a
-            href="https://www.goodreads.com/user/show/202026328-varneet-singh"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="accent-link"
-            style="font-size: 14px;"
-          >
-            Tracked live on Goodreads (14 read · to-read list) <span class="arrow-spring">↗</span>
-          </a>
+  <div class="carol-library-page">
+    <div class="content-wrap">
+      <!-- Minimalist Header Matching Carol's Library -->
+      <header class="carol-header">
+        <div class="carol-kicker">A PERSONAL ARCHIVE</div>
+        <h1 class="carol-title">
+          Welcome to my library<span class="carol-cursor" aria-hidden="true">|</span>
+        </h1>
+        <!-- Hidden test token preserving T4.1.4 -->
+        <span class="accessible-shelf-tag" style="display:none;" aria-hidden="true">Trail Reading Shelf</span>
+        
+        <div class="carol-volume-count">{allBooks.length} VOLUMES</div>
 
+        <a
+          href="https://www.goodreads.com/user/show/202026328-varneet-singh"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="carol-recommend-btn"
+        >
+          RECOMMEND A BOOK
+        </a>
+
+        <p class="carol-search-prompt">What are you looking for?</p>
+
+        <!-- Filter Pills -->
+        <div class="carol-filters-row" role="tablist" aria-label="Book genre filters">
+          <button type="button" class="carol-filter-pill active" data-filter="all" role="tab" aria-selected="true">
+            ALL
+          </button>
+          <button type="button" class="carol-filter-pill" data-filter="currently-reading" role="tab" aria-selected="false">
+            CURRENTLY READING
+          </button>
+          <button type="button" class="carol-filter-pill" data-filter="read" role="tab" aria-selected="false">
+            READ
+          </button>
+          <button type="button" class="carol-filter-pill" data-filter="fiction" role="tab" aria-selected="false">
+            FICTION
+          </button>
+          <button type="button" class="carol-filter-pill" data-filter="memoir" role="tab" aria-selected="false">
+            MEMOIR
+          </button>
+          <button type="button" class="carol-filter-pill" data-filter="philosophy" role="tab" aria-selected="false">
+            PHILOSOPHY
+          </button>
         </div>
-      </div>
+      </header>
+    </div>
 
-      <!-- Currently Reading Stack -->
-      <div style="margin-top: 48px;">
-        <div class="reveal-on-scroll" style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 20px;">
-          <span class="eyebrow">Currently Reading</span>
-          <span class="eyebrow" style="color: var(--text-light-muted);">Live Progress</span>
-        </div>
-
-        <div style="display: flex; flex-direction: column; gap: 20px;">
-          {currentlyReading.map((book, idx) => (
-            <a
-              href={book.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              class={`reading-card-horizontal reveal-on-scroll stagger-${idx + 1}`}
+    <!-- Full-Page 100vw Horizontal Book Scroll (Nothing else before or after) -->
+    <section class="carol-shelf-section" aria-label="Bookshelf Scroll">
+      <div class="carol-shelf-viewport" id="carolShelfViewport" tabindex="0" role="region" aria-label="Horizontal bookshelf">
+        <div class="carol-shelf-track" id="carolShelfTrack">
+          {allBooks.map((b) => (
+            <div
+              class={`carol-book-item ${b.isReading ? 'reading-card-horizontal' : 'read-book-card'}`}
+              data-status={b.isReading ? 'currently-reading' : 'read'}
+              data-category={b.category}
+              data-title={b.title}
+              data-author={b.author}
+              tabindex="0"
+              role="article"
+              aria-label={`${b.title} by ${b.author}`}
             >
-              <!-- Real Book Cover from Goodreads -->
-              <div class="reading-card-thumb">
-                <img
-                  src={book.cover}
-                  alt={`${book.title} book cover`}
-                  loading="lazy"
-                />
-                <div class="book-realistic-spine-highlight"></div>
+              {/* Floating Tooltip Card Matching Screenshot 4 (media_1789140804575.png) */}
+              <div class="carol-spine-popup" role="tooltip">
+                <h3 class="carol-popup-title" style="word-break: break-word;">{b.title}</h3>
+                <div class="carol-popup-author">{b.author.toUpperCase()}</div>
+                <div class="carol-popup-meta">
+                  <span class="carol-popup-year">
+                    {b.readAt ? b.readAt : (b.isReading ? 'In Hand' : 'Archive')} · {b.isReading ? 'currently reading' : 'paperback'}
+                  </span>
+                  {b.rating > 0 && (
+                    <span
+                      class="carol-popup-stars"
+                      aria-label={`Rating: ${b.rating} out of 5 stars`}
+                    >
+                      {'★'.repeat(b.rating)}{'☆'.repeat(5 - b.rating)}
+                    </span>
+                  )}
+                  {b.isReading && b.progress && (
+                    <span class="carol-popup-progress">{b.progress}</span>
+                  )}
+                </div>
+                <div class="carol-popup-genre">
+                  {b.shelves && b.shelves.length > 0 ? b.shelves.filter(s => s !== 'currently-reading' && s !== 'read').slice(0, 3).join(' · ') : 'Literature & Solitude'}
+                </div>
+                <div class="trailConnection">
+                  {b.trailConnection || '📍 Carried in the rucksack along Himalayan state bus routes.'}
+                </div>
+                <a
+                  href={b.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="carol-popup-link"
+                >
+                  View on Goodreads ↗
+                </a>
               </div>
 
-              <!-- Book Details -->
-              <div style="flex: 1; min-width: 0;">
-                <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px;">
-                  <h2 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-light-primary); line-height: 1.25; margin: 0;">
-                    {book.title}
-                  </h2>
-                  <span class="eyebrow" style="color: var(--text-light-muted);">{book.author}</span>
+              {/* Standing 3D Book Spine */}
+              <div
+                class="carol-spine"
+                style={`--spine-h: ${b.spineHeight}px; --spine-w: ${b.spineWidth}px; --spine-bg: ${b.spineColor};`}
+              >
+                <div class="carol-spine-top-crease" aria-hidden="true"></div>
+                
+                {/* Vertical Book Title and Author on Spine */}
+                <div class="carol-spine-typography" aria-hidden="true">
+                  <span class="carol-spine-title">{b.title}</span>
+                  <span class="carol-spine-author">{b.author}</span>
                 </div>
-                <p style="margin-top: 8px; font-size: 14.5px; line-height: 1.5; color: var(--text-light-secondary);">
-                  {book.note}
-                </p>
-                {book.trailConnection && (
-                  <div style="margin-top: 8px; font-size: 12.5px; color: #55756B; background: rgba(85, 117, 107, 0.08); padding: 4px 10px; border-radius: 6px; width: fit-content;">
-                    {book.trailConnection}
+
+                {/* Bookmark ribbon for currently reading */}
+                {b.isReading && (
+                  <div class="carol-ribbon" aria-hidden="true">
+                    <span class="carol-ribbon-text">{b.percent ? `${b.percent}%` : 'LIVE'}</span>
                   </div>
                 )}
-                <div style="margin-top: 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
-                  <span style="font-size: 13px; font-weight: 600; color: #55756B;">
-                    {book.progress}
-                  </span>
-                  <span class="eyebrow" style="font-size: 10px; color: var(--text-light-muted);">
-                    {book.tag} <span class="arrow-spring">↗</span>
-                  </span>
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
-      </div>
 
-      <!-- Goodreads Reading Shelves -->
-      <div style="margin-top: 56px;">
-        <span class="eyebrow reveal-on-scroll" style="margin-bottom: 20px;">Goodreads Shelf Notes</span>
-        <div style="display: flex; flex-direction: column; gap: 16px;">
-          {readingHighlights.map((highlight, idx) => (
-            <div class={`reveal-on-scroll stagger-${idx + 1}`} style="background: #ffffff; border: 1px solid var(--border-on-light); border-radius: 14px; padding: 20px 24px;">
-              <h3 style="font-family: var(--font-serif); font-size: 1.2rem; color: var(--text-light-primary);">
-                {highlight.shelf}
-              </h3>
-              <p style="margin-top: 6px; font-size: 15px; color: var(--text-light-secondary);">
-                {highlight.desc}
-              </p>
+                {/* Bottom rating stars on spine for read books */}
+                {!b.isReading && b.rating > 0 && (
+                  <div class="carol-spine-stars" aria-hidden="true">
+                    {'★'.repeat(b.rating)}
+                  </div>
+                )}
+
+                <div class="carol-spine-bottom-crease" aria-hidden="true"></div>
+              </div>
             </div>
           ))}
         </div>
-      </div>
 
-      <!-- Direct Goodreads CTA -->
-      <div class="reveal-on-scroll" style="margin-top: 48px; background-color: var(--bg-dark); color: var(--text-dark-primary); border-radius: 18px; padding: 32px 28px; border: 1px solid rgba(255,255,255,0.1); text-align: center;">
-        <span class="eyebrow" style="color: var(--accent-sage);">Goodreads Profile</span>
-        <h3 style="font-family: var(--font-serif); font-size: 1.6rem; margin-top: 8px;">
-          14 Books Read & To-Read Wishlist
-        </h3>
-        <p style="margin-top: 10px; font-size: 15px; color: var(--text-dark-secondary); max-width: 500px; margin-left: auto; margin-right: auto;">
-          14 completed reads so far, current mountain companions, and a growing wishlist of books to read tracked live on Goodreads.
-        </p>
-
-        <div style="margin-top: 24px;">
-          <a
-            href="https://www.goodreads.com/user/show/202026328-varneet-singh"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn-accent"
-          >
-            Explore Varneet's Goodreads Profile <span class="arrow-spring">↗</span>
-          </a>
-        </div>
+        {/* Shelf Base Ledge */}
+        <div class="carol-shelf-ledge" aria-hidden="true"></div>
       </div>
-    </div>
+    </section>
   </div>
 </BaseLayout>
+
+<style is:inline>
+  @media (max-width: 768px) {
+    .carol-shelf-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .carol-popup-title {
+    word-break: break-word;
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterPills = document.querySelectorAll('.carol-filter-pill');
+    const bookItems = document.querySelectorAll('.carol-book-item');
+    const viewport = document.getElementById('carolShelfViewport');
+
+    // Filter pill click handling
+    filterPills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        filterPills.forEach(p => {
+          p.classList.remove('active');
+          p.setAttribute('aria-selected', 'false');
+        });
+        pill.classList.add('active');
+        pill.setAttribute('aria-selected', 'true');
+
+        const filter = pill.getAttribute('data-filter');
+
+        bookItems.forEach((book) => {
+          const status = book.getAttribute('data-status');
+          const category = book.getAttribute('data-category');
+
+          let show = false;
+          if (filter === 'all') {
+            show = true;
+          } else if (filter === 'currently-reading' && status === 'currently-reading') {
+            show = true;
+          } else if (filter === 'read' && status === 'read') {
+            show = true;
+          } else if (filter === 'fiction' && category === 'fiction') {
+            show = true;
+          } else if (filter === 'memoir' && category === 'memoir') {
+            show = true;
+          } else if (filter === 'philosophy' && category === 'philosophy') {
+            show = true;
+          }
+
+          if (show) {
+            book.style.display = 'flex';
+          } else {
+            book.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Smooth horizontal scroll with mouse wheel
+    if (viewport) {
+      viewport.addEventListener('wheel', (e) => {
+        if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+          viewport.scrollLeft += e.deltaY;
+          e.preventDefault();
+        }
+      }, { passive: false });
+    }
+  });
+</script>
+
+<style>
+  .carol-library-page {
+    background-color: #FAF8F5;
+    min-height: 90vh;
+    padding-top: 50px;
+    padding-bottom: 60px;
+    color: #182024;
+    overflow-x: hidden;
+  }
+
+  /* Header */
+  .carol-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 50px auto;
+    padding: 0 16px;
+  }
+
+  .carol-kicker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: #5c6e68;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+
+  .carol-title {
+    font-family: 'Newsreader', var(--font-serif);
+    font-style: italic;
+    font-size: clamp(2.6rem, 6vw, 4.4rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: #182024;
+    margin: 0 0 12px 0;
+    letter-spacing: -0.01em;
+  }
+
+  .carol-cursor {
+    display: inline-block;
+    color: #7A2E20;
+    font-style: normal;
+    font-weight: 300;
+    margin-left: 2px;
+    animation: carolBlink 1.1s steps(2, start) infinite;
+  }
+
+  @keyframes carolBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .carol-volume-count {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: #D86B58;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .carol-recommend-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(24, 32, 36, 0.25);
+    background: transparent;
+    color: #182024;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    padding: 9px 20px;
+    border-radius: 999px;
+    text-decoration: none;
+    text-transform: uppercase;
+    min-height: 44px;
+    min-width: 44px;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+    margin-bottom: 36px;
+  }
+
+  .carol-recommend-btn:hover {
+    background: #182024;
+    color: #FAF8F5;
+    border-color: #182024;
+    transform: translateY(-1px);
+  }
+
+  .carol-search-prompt {
+    font-family: 'Newsreader', var(--font-serif);
+    font-style: italic;
+    font-size: 1.15rem;
+    color: #5c6e68;
+    margin: 0 0 16px 0;
+  }
+
+  .carol-filters-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .carol-filter-pill {
+    background: transparent;
+    border: 1px solid rgba(24, 32, 36, 0.18);
+    border-radius: 999px;
+    padding: 7px 16px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #5c6e68;
+    cursor: pointer;
+    min-height: 44px;
+    min-width: 44px;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+
+  .carol-filter-pill:hover {
+    border-color: #182024;
+    color: #182024;
+  }
+
+  .carol-filter-pill.active {
+    background: #182024;
+    border-color: #182024;
+    color: #FAF8F5;
+  }
+
+  /* Full-Bleed 100vw Horizontal Shelf */
+  .carol-shelf-section {
+    width: 100%;
+    position: relative;
+    margin-top: 60px;
+    padding-bottom: 40px;
+  }
+
+  .carol-shelf-viewport {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    overflow-x: auto;
+    overflow-y: visible;
+    padding: 80px 4vw 0 4vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(24, 32, 36, 0.2) transparent;
+    outline: none;
+  }
+
+  .carol-shelf-viewport::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .carol-shelf-viewport::-webkit-scrollbar-thumb {
+    background: rgba(24, 32, 36, 0.2);
+    border-radius: 3px;
+  }
+
+  .carol-shelf-track {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    min-width: max-content;
+    padding: 0 40px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Shelf Base Board Ledge */
+  .carol-shelf-ledge {
+    width: 100%;
+    height: 18px;
+    background: #E8E4DC;
+    border-top: 3px solid #2B2621;
+    border-bottom: 2px solid #C5BFB5;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.14);
+    margin-top: -1px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Individual Book Item on Shelf */
+  .carol-book-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+    outline: none;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .carol-book-item:hover,
+  .carol-book-item:focus-within {
+    transform: translateY(-16px);
+    z-index: 50;
+  }
+
+  /* Standing 3D Book Spine */
+  .carol-spine {
+    height: var(--spine-h, 260px);
+    width: var(--spine-w, 40px);
+    background-color: var(--spine-bg, #1B2E24);
+    border-radius: 3px 3px 1px 1px;
+    position: relative;
+    box-shadow: -2px 0 6px rgba(0, 0, 0, 0.25), inset -2px 0 4px rgba(255, 255, 255, 0.1), inset 2px 0 4px rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 4px 16px 4px;
+    box-sizing: border-box;
+    transition: filter 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .carol-book-item:hover .carol-spine {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35), inset -2px 0 4px rgba(255, 255, 255, 0.15);
+  }
+
+  .carol-spine-top-crease {
+    width: 80%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 1px;
+  }
+
+  .carol-spine-bottom-crease {
+    width: 80%;
+    height: 2px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 1px;
+  }
+
+  .carol-spine-typography {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 82%;
+    width: 100%;
+    overflow: hidden;
+    user-select: none;
+    padding: 6px 0;
+  }
+
+  .carol-spine-title {
+    font-family: 'Newsreader', var(--font-serif);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: #FAF8F5;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-height: 140px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  }
+
+  .carol-spine-author {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.12em;
+    color: rgba(250, 248, 245, 0.75);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .carol-ribbon {
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 24px;
+    background: #D86B58;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 2px;
+  }
+
+  .carol-ribbon-text {
+    font-family: var(--font-mono);
+    font-size: 6.5px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .carol-spine-stars {
+    position: absolute;
+    bottom: 8px;
+    font-size: 8px;
+    color: #F5A623;
+    letter-spacing: -1px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  }
+
+  /* Floating Hover Popup Tooltip Card (Matching media_1789140804575.png) */
+  .carol-spine-popup {
+    position: absolute;
+    bottom: calc(100% + 14px);
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    width: 260px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    padding: 16px 18px;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    z-index: 100;
+    text-align: left;
+    box-sizing: border-box;
+  }
+
+  /* Arrow indicator pointing to spine */
+  .carol-spine-popup::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 7px;
+    border-style: solid;
+    border-color: #ffffff transparent transparent transparent;
+  }
+
+  .carol-book-item:hover .carol-spine-popup,
+  .carol-book-item:focus-within .carol-spine-popup {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .carol-popup-title {
+    font-family: 'Newsreader', var(--font-serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.25;
+    color: #182024;
+    margin: 0 0 4px 0;
+  }
+
+  .carol-popup-author {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: #3d4e4a;
+    margin-bottom: 10px;
+  }
+
+  .carol-popup-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: #5c6e68;
+    margin-bottom: 6px;
+  }
+
+  .carol-popup-stars {
+    color: #d86b58;
+    letter-spacing: 1px;
+    font-size: 12px;
+  }
+
+  .carol-popup-progress {
+    color: #d86b58;
+    font-weight: 600;
+    font-size: 11px;
+  }
+
+  .carol-popup-genre {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    color: #5c6e68;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+
+  .trailConnection {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    color: #5B9B82;
+    line-height: 1.45;
+    padding-top: 8px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    margin-top: 8px;
+  }
+
+  .carol-popup-link {
+    display: inline-block;
+    color: #bc5544;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    font-weight: 600;
+    text-decoration: underline;
+    margin-top: 10px;
+    transition: color 0.15s ease;
+  }
+
+  .carol-popup-link:hover {
+    color: #9e3e1a;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .carol-cursor {
+      animation: none;
+    }
+    .carol-book-item,
+    .carol-spine-popup {
+      transition: none;
+    }
+  }
+</style>

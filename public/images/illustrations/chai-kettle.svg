@@ -1,0 +1,80 @@
+<!--
+  License: MIT / CC0 (Public Domain)
+  Nordic Alpine Ledger Linecraft: Mountain Chai Kettle & Glass
+  Palette Tokens: #D86B58 (Amber), #5B9B82 (Fjord Slate), #1E1B18 / #182024 (Navy), #CAD4CF (Mist)
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 140" fill="none" role="img" aria-label="Enamel kettle pouring steaming spiced chai into a cutting chai glass with mountain backdrop">
+  <defs>
+    <style>
+      .chai-amber { stroke: #D86B58; stroke-linecap: round; stroke-linejoin: round; }
+      .chai-slate { stroke: #5B9B82; stroke-linecap: round; stroke-linejoin: round; }
+      .chai-navy { stroke: #1E1B18; stroke-linecap: round; stroke-linejoin: round; }
+      .chai-mist { stroke: #CAD4CF; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <!-- Distant Himalayan Peak Silhouette in soft mist -->
+  <path d="M8,68 L36,36 L58,54 L84,24 L112,50 L138,32 L172,68" class="chai-mist" stroke-width="1.2" stroke-dasharray="3,3" />
+  <path d="M84,24 L90,44 L96,58" class="chai-mist" stroke-width="1" stroke-dasharray="2,2" />
+
+  <!-- Wooden Trailside Dhaba Plank -->
+  <line x1="12" y1="124" x2="168" y2="124" stroke="#1E1B18" stroke-opacity="0.25" stroke-width="1.5" stroke-linecap="round" />
+  <line x1="24" y1="128" x2="156" y2="128" stroke="#CAD4CF" stroke-opacity="0.3" stroke-width="1" stroke-dasharray="4,4" />
+
+  <!-- Enamel Kettle (Angled pouring posture) -->
+  <g id="kettle" transform="rotate(16, 75, 78)">
+    <!-- Kettle Base & Belly -->
+    <path d="M42,50 L36,88 Q36,96 46,98 L92,98 Q102,96 100,88 L92,50 Z" fill="#FAF8F5" stroke="#1E1B18" stroke-width="2" class="chai-navy" />
+    <!-- Blue enamel belly accent stripe -->
+    <path d="M38,72 L96,72 L95,82 L37,82 Z" fill="#5B9B82" fill-opacity="0.25" />
+    
+    <!-- Kettle Lid & Knob -->
+    <ellipse cx="67" cy="50" rx="26" ry="6" fill="#FFFFFF" stroke="#1E1B18" stroke-width="1.5" />
+    <ellipse cx="67" cy="46" rx="6" ry="3" fill="#D86B58" stroke="#1E1B18" stroke-width="1.2" />
+
+    <!-- Arched Overhead Handle with Wooden Grip -->
+    <path d="M40,54 C34,26 96,26 92,54" class="chai-navy" stroke-width="2.5" fill="none" />
+    <!-- Wooden Grip Center -->
+    <rect x="52" y="24" width="28" height="8" rx="3" fill="#D86B58" stroke="#D86B58" stroke-width="1" />
+    <line x1="58" y1="25" x2="58" y2="31" stroke="#1E1B18" stroke-width="1" />
+    <line x1="66" y1="25" x2="66" y2="31" stroke="#1E1B18" stroke-width="1" />
+    <line x1="74" y1="25" x2="74" y2="31" stroke="#1E1B18" stroke-width="1" />
+
+    <!-- Spout (Welded to right belly) -->
+    <path d="M96,62 Q112,60 118,52 L120,44 Q114,54 98,72 Z" fill="#FAF8F5" stroke="#1E1B18" stroke-width="1.75" />
+  </g>
+
+  <!-- Pouring Stream of Spiced Chai (Amber curve falling into glass) -->
+  <path d="M124,56 Q138,72 137,96" class="chai-amber" stroke-width="2.8" stroke-linecap="round" />
+  <path d="M124,56 Q137,70 135,96" stroke="#F4A89A" stroke-width="1.2" stroke-linecap="round" />
+
+  <!-- Fluted Chai Glass (Cutting Chai) on plank -->
+  <g id="chai-glass">
+    <!-- Glass body taper -->
+    <path d="M126,94 L129,122 Q130,124 134,124 L146,124 Q150,124 151,122 L154,94 Z" fill="#FFFFFF" fill-opacity="0.8" stroke="#1E1B18" stroke-width="1.5" class="chai-navy" />
+    <!-- Glass Rim -->
+    <ellipse cx="140" cy="94" rx="14" ry="3" fill="#CAD4CF" fill-opacity="0.4" stroke="#1E1B18" stroke-width="1.2" />
+    
+    <!-- Warm Tea Fill inside glass -->
+    <path d="M128,102 L130,121 Q131,123 134,123 L146,123 Q149,123 150,121 L152,102 Z" fill="#D86B58" fill-opacity="0.45" />
+    <!-- Fluted vertical glass facets -->
+    <line x1="133" y1="98" x2="134" y2="120" stroke="#CAD4CF" stroke-width="1" stroke-opacity="0.6" />
+    <line x1="140" y1="98" x2="140" y2="122" stroke="#CAD4CF" stroke-width="1" stroke-opacity="0.6" />
+    <line x1="147" y1="98" x2="146" y2="120" stroke="#CAD4CF" stroke-width="1" stroke-opacity="0.6" />
+    
+    <!-- Tea Level line -->
+    <ellipse cx="140" cy="102" rx="12" ry="2.2" fill="#D86B58" stroke="#D86B58" stroke-width="1" />
+  </g>
+
+  <!-- Fragrant Chai Steam Tendrils (Rising swirling lines) -->
+  <path d="M136,88 Q132,74 138,62 T134,44" class="chai-amber" stroke-width="1.2" stroke-dasharray="2,2" stroke-opacity="0.75" />
+  <path d="M144,86 Q150,72 144,58 T148,40" class="chai-amber" stroke-width="1.2" stroke-dasharray="2,2" stroke-opacity="0.65" />
+  <path d="M130,84 Q124,72 128,60" class="chai-mist" stroke-width="1" stroke-dasharray="2,2" />
+
+  <!-- Pine Sprig Resting Beside Glass -->
+  <path d="M22,122 Q38,116 52,120" class="chai-slate" stroke-width="1.5" />
+  <line x1="28" y1="120" x2="25" y2="113" class="chai-slate" stroke-width="1.2" />
+  <line x1="34" y1="119" x2="33" y2="111" class="chai-slate" stroke-width="1.2" />
+  <line x1="40" y1="119" x2="40" y2="110" class="chai-slate" stroke-width="1.2" />
+  <line x1="46" y1="120" x2="48" y2="112" class="chai-slate" stroke-width="1.2" />
+</svg>

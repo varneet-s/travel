@@ -63,11 +63,11 @@ inject();
       <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     )}
 
-    <!-- Google Fonts: Fraunces (Headings) + Source Sans 3 (Body) -->
+    <!-- Google Fonts: Courier Prime, Newsreader, Source Sans 3 -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,400..800&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&display=swap"
       rel="stylesheet"
     />
 
@@ -90,46 +90,144 @@ inject();
       <div id="readingProgress" class="reading-progress-bar"></div>
     </div>
 
-    <!-- Navigation Header -->
+    <!-- Navigation Header: Modern Editorial Swiss Split Nav -->
     <header class="nav-header">
       <div class="content-wrap">
-        <nav class="nav-row">
-          <a href="/" class="site-brand">
-            <img
-              src="/images/illustrations/expedition-compass.svg"
-              alt=""
-              class="site-brand-compass"
-              width="22"
-              height="22"
-              aria-hidden="true"
-            />
-            <span>the_musafir_paaji</span>
-          </a>
-          <ul class="nav-menu">
+        <nav class="masthead-nav swiss-nav" aria-label="Main Navigation">
+          <!-- Left: Brand mark with rotating compass and coordinate telemetry -->
+          <div class="masthead-top swiss-brand-wrap">
+            <a href="/" class="site-brand masthead-brand">
+              <div class="masthead-title-row">
+                <img
+                  src="/images/illustrations/expedition-compass.svg"
+                  alt=""
+                  class="site-brand-compass"
+                  width="24"
+                  height="24"
+                  aria-hidden="true"
+                />
+                <span class="masthead-title">reKhoj</span>
+              </div>
+              <span class="masthead-sublabel">@the_musafir_paaji · 32.04°N 76.72°E</span>
+            </a>
+
+            <!-- Accessible Mobile Navigation Toggle Button -->
+            <button
+              type="button"
+              class="mobile-nav-toggle"
+              id="mobileNavToggle"
+              aria-label="Toggle navigation"
+              aria-expanded="false"
+              aria-controls="mobileNavDrawer"
+            >
+              <span class="hamburger-box" aria-hidden="true">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+              </span>
+            </button>
+          </div>
+
+          <!-- Masthead Divider (Desktop hairline) -->
+          <div class="masthead-divider" role="separator" aria-hidden="true"></div>
+
+          <!-- Right: Clean Horizontal Navigation Links -->
+          <ul class="nav-menu desktop-nav swiss-menu">
             <li>
-              <a href="/journal" class={currentPath.startsWith('/journal') ? 'active' : ''}>Journeys</a>
+              <a href="/journal" class={currentPath.startsWith('/journal') ? 'active' : ''}>Letters</a>
             </li>
             <li>
-              <a href="/reading" class={currentPath.startsWith('/reading') ? 'active' : ''}>Reading</a>
+              <a href="/reading" class={currentPath.startsWith('/reading') ? 'active' : ''}>Library</a>
             </li>
             <li>
-              <a href="/about" class={currentPath === '/about' ? 'active' : ''}>About & Volunteer</a>
-            </li>
-            <li>
-              <a
-                href="https://rekhoj.substack.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="nav-substack-pill"
-                title="Read field dispatches on Substack"
-              >
-                Dispatches <span class="arrow-spring">↗</span>
-              </a>
+              <a href="/about" class={currentPath.startsWith('/about') ? 'active' : ''}>About &amp; Volunteer</a>
             </li>
           </ul>
         </nav>
       </div>
     </header>
+
+    <!-- Mobile Navigation Drawer Backdrop -->
+    <div
+      class="mobile-nav-backdrop"
+      id="mobileNavBackdrop"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Mobile Navigation Drawer Overlay -->
+    <div
+      class="mobile-nav-drawer"
+      id="mobileNavDrawer"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Mobile Navigation Menu"
+      aria-hidden="true"
+    >
+      <div class="mobile-nav-header">
+        <a href="/" class="site-brand mobile-drawer-brand">
+          <img
+            src="/images/illustrations/expedition-compass.svg"
+            alt=""
+            class="site-brand-compass"
+            width="22"
+            height="22"
+            aria-hidden="true"
+          />
+          <span class="mobile-drawer-brand-text">
+            <span class="mobile-drawer-title">reKhoj</span>
+            <span class="mobile-drawer-sublabel">@the_musafir_paaji</span>
+          </span>
+        </a>
+        <button
+          type="button"
+          class="mobile-nav-close"
+          id="mobileNavClose"
+          aria-label="Close navigation"
+        >
+          <span aria-hidden="true">✕</span>
+        </button>
+      </div>
+
+      <div class="mobile-nav-body">
+        <ul class="mobile-nav-links">
+          <li>
+            <a href="/journal" class={`mobile-nav-link ${currentPath.startsWith('/journal') ? 'active' : ''}`}>
+              <span>Letters</span>
+              <span class="drawer-arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li>
+            <a href="/reading" class={`mobile-nav-link ${currentPath.startsWith('/reading') ? 'active' : ''}`}>
+              <span>Library</span>
+              <span class="drawer-arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li>
+            <a href="/about" class={`mobile-nav-link ${currentPath.startsWith('/about') ? 'active' : ''}`}>
+              <span>About & Volunteer</span>
+              <span class="drawer-arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="mobile-nav-cta">
+          <a
+            href="https://rekhoj.substack.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mobile-substack-pill"
+            title="Read field dispatches on Substack"
+          >
+            <span>Dispatches on Substack</span>
+            <span class="arrow-spring" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="mobile-nav-footer">
+        <span class="mobile-nav-tagline">Slow routes. Useful stays. Open notebooks. | Dispatches on Substack</span>
+      </div>
+    </div>
 
 
     <main>
@@ -235,8 +333,383 @@ inject();
         } else {
           revealElements.forEach((el) => el.classList.add('is-revealed'));
         }
+
+        // 3. Mobile Navigation Drawer Controller
+        const mobileToggle = document.getElementById('mobileNavToggle');
+        const mobileDrawer = document.getElementById('mobileNavDrawer');
+        const mobileBackdrop = document.getElementById('mobileNavBackdrop');
+        const mobileClose = document.getElementById('mobileNavClose');
+
+        function openDrawer() {
+          if (!mobileDrawer || !mobileToggle) return;
+          mobileDrawer.classList.add('is-open');
+          if (mobileBackdrop) mobileBackdrop.classList.add('is-open');
+          mobileToggle.setAttribute('aria-expanded', 'true');
+          mobileDrawer.setAttribute('aria-hidden', 'false');
+          document.body.classList.add('drawer-locked');
+          if (mobileClose) mobileClose.focus();
+        }
+
+        function closeDrawer() {
+          if (!mobileDrawer || !mobileToggle) return;
+          mobileDrawer.classList.remove('is-open');
+          if (mobileBackdrop) mobileBackdrop.classList.remove('is-open');
+          mobileToggle.setAttribute('aria-expanded', 'false');
+          mobileDrawer.setAttribute('aria-hidden', 'true');
+          document.body.classList.remove('drawer-locked');
+          mobileToggle.focus();
+        }
+
+        if (mobileToggle) {
+          mobileToggle.addEventListener('click', () => {
+            const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+            if (isExpanded) {
+              closeDrawer();
+            } else {
+              openDrawer();
+            }
+          });
+        }
+
+        if (mobileClose) {
+          mobileClose.addEventListener('click', closeDrawer);
+        }
+
+        if (mobileBackdrop) {
+          mobileBackdrop.addEventListener('click', closeDrawer);
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && mobileDrawer && mobileDrawer.classList.contains('is-open')) {
+            closeDrawer();
+          }
+        });
+
+        // Close drawer when clicking any navigation link inside
+        if (mobileDrawer) {
+          const links = mobileDrawer.querySelectorAll('a');
+          links.forEach((a) => {
+            a.addEventListener('click', closeDrawer);
+          });
+        }
       });
     </script>
+
+    <style>
+      /* Mobile Nav Toggle & Drawer Styles (Modern Brutalist) */
+      .mobile-nav-toggle {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        min-height: 44px;
+        background: var(--bg-dark-elevated);
+        border: 2px solid var(--border-on-dark);
+        border-radius: 0px;
+        box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.4);
+        cursor: pointer;
+        padding: 0;
+        transition: all var(--duration-base, 0.2s) ease;
+      }
+
+      .mobile-nav-toggle:hover,
+      .mobile-nav-toggle:focus-visible {
+        background: var(--bg-dark-card);
+        border-color: var(--accent-sage);
+        transform: translate(-1px, -1px);
+        box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.6);
+        outline: none;
+      }
+
+      .mobile-nav-toggle:active {
+        transform: translate(1px, 1px);
+        box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.4);
+      }
+
+      .hamburger-box {
+        width: 20px;
+        height: 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .hamburger-line {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: var(--text-dark-primary);
+        border-radius: 0px;
+      }
+
+      .mobile-nav-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(4, 15, 12, 0.85);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        z-index: 998;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+        pointer-events: none;
+      }
+
+      .mobile-nav-backdrop.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .mobile-nav-drawer {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 86%;
+        max-width: 340px;
+        background: var(--bg-dark-elevated);
+        border-left: 2px solid var(--border-on-dark);
+        box-shadow: -8px 0 0px rgba(0, 0, 0, 0.4);
+        z-index: 999;
+        display: flex;
+        flex-direction: column;
+        transform: translateX(100%);
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        padding: 24px 22px;
+        box-sizing: border-box;
+        overflow-y: auto;
+      }
+
+      .mobile-nav-drawer.is-open {
+        transform: translateX(0);
+      }
+
+      .mobile-nav-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 18px;
+        border-bottom: 1px solid var(--border-on-dark);
+        margin-bottom: 20px;
+      }
+
+      .mobile-drawer-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text-dark-primary, #f5f3ec);
+        text-decoration: none;
+      }
+
+      .mobile-drawer-brand-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.2;
+      }
+
+      .mobile-drawer-title {
+        font-family: 'Courier Prime', var(--font-serif), monospace;
+        font-weight: 700;
+        font-size: 1.15rem;
+        color: var(--text-dark-primary, #f5f3ec);
+      }
+
+      .mobile-drawer-sublabel {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: var(--text-dark-muted, #8ea69b);
+        letter-spacing: 0.04em;
+      }
+
+      .mobile-nav-close {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        min-height: 44px;
+        background: var(--bg-dark-card);
+        border: 2px solid var(--border-on-dark);
+        border-radius: 0px;
+        color: var(--text-dark-primary, #f5f3ec);
+        font-family: var(--font-mono);
+        font-size: 16px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding: 0;
+        box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.4);
+        transition: all 0.2s ease;
+      }
+
+      .mobile-nav-close:hover,
+      .mobile-nav-close:focus-visible {
+        background: var(--accent-terracotta);
+        border-color: #ffffff;
+        color: #ffffff;
+        transform: translate(-1px, -1px);
+        box-shadow: 3px 3px 0px #ffffff;
+        outline: none;
+      }
+
+      .mobile-nav-close:active {
+        transform: translate(1px, 1px);
+        box-shadow: 1px 1px 0px #ffffff;
+      }
+
+      .mobile-nav-body {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        flex: 1;
+      }
+
+      .mobile-nav-links {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 0;
+        margin: 0;
+      }
+
+      .mobile-nav-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 48px;
+        min-width: 44px;
+        padding: 12px 16px;
+        border-radius: 0px;
+        background: var(--bg-dark-card);
+        border: 1.5px solid var(--border-on-dark);
+        color: var(--text-dark-secondary, #c5d2cb);
+        font-family: var(--font-mono);
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        text-decoration: none;
+        box-sizing: border-box;
+        box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
+        transition: all 0.2s ease;
+      }
+
+      .mobile-nav-link:hover,
+      .mobile-nav-link.active {
+        background: var(--bg-dark);
+        border-color: var(--accent-terracotta);
+        color: #ffffff;
+        transform: translate(-1px, -1px);
+        box-shadow: 3px 3px 0px var(--accent-terracotta);
+      }
+
+      .mobile-nav-link:active {
+        transform: translate(1px, 1px);
+        box-shadow: 1px 1px 0px var(--accent-terracotta);
+      }
+
+      .drawer-arrow {
+        color: var(--accent-sage, #5B9B82);
+        font-size: 14px;
+        font-family: var(--font-mono);
+        transition: transform 0.2s ease;
+      }
+
+      .mobile-nav-link:hover .drawer-arrow {
+        transform: translateX(4px);
+        color: var(--accent-terracotta);
+      }
+
+      .mobile-nav-cta {
+        margin-top: 8px;
+      }
+
+      .mobile-substack-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        min-height: 48px;
+        min-width: 44px;
+        padding: 12px 18px;
+        box-sizing: border-box;
+        background: var(--accent-terracotta, #D86B58);
+        border: 2px solid #ffffff;
+        border-radius: 0px;
+        color: #ffffff !important;
+        font-family: var(--font-mono);
+        font-size: 13.5px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        text-decoration: none;
+        box-shadow: 3px 3px 0px #ffffff;
+        transition: all 0.2s ease;
+      }
+
+      .mobile-substack-pill:hover,
+      .mobile-substack-pill:focus-visible {
+        background: var(--accent-terracotta-hover, #9e3e1a);
+        box-shadow: 4px 4px 0px #ffffff;
+        transform: translate(-1px, -1px);
+        outline: none;
+      }
+
+      .mobile-substack-pill:active {
+        transform: translate(2px, 2px);
+        box-shadow: 1px 1px 0px #ffffff;
+      }
+
+      .mobile-nav-footer {
+        padding-top: 18px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        margin-top: auto;
+      }
+
+      .mobile-nav-tagline {
+        font-size: 11.5px;
+        color: var(--text-dark-muted, #8ea69b);
+        line-height: 1.5;
+        display: block;
+      }
+
+      :global(body.drawer-locked) {
+        overflow: hidden !important;
+      }
+
+      @media (max-width: 767px) {
+        :global(.nav-header .desktop-nav) {
+          display: none !important;
+        }
+        :global(.editorial-subnav-band) {
+          display: none !important;
+        }
+        .mobile-nav-toggle {
+          display: inline-flex !important;
+        }
+        :global(.masthead-top) {
+          flex-wrap: nowrap !important;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .mobile-nav-toggle {
+          display: none !important;
+        }
+        .mobile-nav-drawer,
+        .mobile-nav-backdrop {
+          display: none !important;
+        }
+      }
+    </style>
   </body>
 
 </html>

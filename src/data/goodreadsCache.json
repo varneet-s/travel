@@ -1,0 +1,365 @@
+{
+  "currentlyReading": [
+    {
+      "title": "1984",
+      "author": "George Orwell",
+      "bookId": "230149114",
+      "link": "https://www.goodreads.com/book/show/230149114",
+      "cover": "/images/books/1984.jpg",
+      "rating": 0,
+      "readAt": "",
+      "shelf": "currently-reading",
+      "shelves": [
+        "currently-reading",
+        "owned",
+        "philosophy",
+        "classic",
+        "dystopia"
+      ],
+      "numPages": 304,
+      "description": "1984 tells us about a world ruled by a totalitarian in the novel, society is dominated by \"Big Brother,\" a mysterious character whom no one has ever met in person and who constantly spies on citizens' lives through the use of special telescreens. In this world where freedom has been completely abolished, the protagonist of the novel, Winston Smith, decides to rebel and, although aware that this is considered a highly subversive activity, begins to write a diary. And when Winston falls in love with Julia, he must choose whether to submit to power or fight for a different world, one in which history is not rewritten by the ruling Party and in which even people's thoughts are controlled. 1984 is one of the greatest political novels of the last century, capable of shaking our conscience with its visionary nature. It is both a denunciation of totalitarianism and a strenuous defense of individual integrity. The entire novel focuses on the contradictions of power, the conflict between the individual and society, and the deceptions of utopia. Never before, in the age of the Internet, has it been so surprisingly relevant.",
+      "note": "Reading for the 2nd time. An enduring examination of surveillance, language, and memory.",
+      "trailConnection": "📍 Carried on the Parvati Valley trail · Read on a wooden balcony in Chalal overlooking the rushing river.",
+      "progress": "Page 47 of 304 · 15%",
+      "percent": 15,
+      "tag": "Classic · Dystopia · Philosophy"
+    },
+    {
+      "title": "Men Without Women",
+      "author": "Haruki Murakami",
+      "bookId": "36114337",
+      "link": "https://www.goodreads.com/book/show/36114337",
+      "cover": "/images/books/men-without-women.jpg",
+      "rating": 0,
+      "readAt": "",
+      "shelf": "currently-reading",
+      "shelves": [
+        "currently-reading",
+        "owned"
+      ],
+      "numPages": 228,
+      "description": "Across seven tales, Haruki Murakami brings his powers of observation to bear on the lives of men who, in their own ways, find themselves alone. Here are vanishing cats and smoky bars, lonely hearts and mysterious women, baseball and the Beatles, woven together to tell stories that speak to us all. Marked by the same wry humor that has defined his entire body of work, in this collection Murakami has crafted another contemporary classic",
+      "note": "Short stories on solitude, longing, quiet estrangement, and what remains behind.",
+      "trailConnection": "📍 Read beside the cold green pools of the Tirthan river in Gushaini on a quiet afternoon.",
+      "progress": "Page 55 of 228 · 24%",
+      "percent": 24,
+      "tag": "Literary · Contemporary Fiction"
+    },
+    {
+      "title": "What I Talk About When I Talk About Running",
+      "author": "Haruki Murakami",
+      "bookId": "57025000",
+      "link": "https://www.goodreads.com/book/show/57025000",
+      "cover": "/images/books/running-murakami.jpg",
+      "rating": 0,
+      "readAt": "",
+      "shelf": "currently-reading",
+      "shelves": [
+        "currently-reading"
+      ],
+      "numPages": 180,
+      "description": "A compelling mediation on the power of running and a fascinating insight into the life of this internationally bestselling writer. In 1982, having sold his jazz bar to devote himself to writing, Murakami began running to keep fit. A year later, he'd completed a solo course from Athens to Marathon, and now, after dozens of such races, he reflects upon the influence the sport has had on his life and on his writing. Equal parts travelogue, training log and reminiscence, this revealing memoir covers his four-month preparation for the 2005 New York City Marathon and settings ranging from Tokyo's Jingu Gaien gardens, where he once shared the course with an Olympian, to the Charles River in Boston. By turns funny and sobering, playful and philosophical, this is a must-read for fans of this masterful yet private writer as well as for the exploding population of athletes who find similar satisfaction in distance running. An alternative cover edition for this ISBN can be found here .",
+      "note": "Memoir on daily distance running, physical endurance, routine, and the craft of writing.",
+      "trailConnection": "📍 Read on the 8-hour ordinary HRTC bus through the Sutlej river gorge en route to Spiti.",
+      "progress": "Page 81 of 180 · 45%",
+      "percent": 45,
+      "tag": "Memoir · Non-fiction · Discipline"
+    },
+    {
+      "title": "Start With Why",
+      "author": "Simon Sinek",
+      "bookId": "230830455",
+      "link": "https://www.goodreads.com/book/show/230830455",
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1743496131l/230830455._SY475_.jpg",
+      "rating": 0,
+      "readAt": "",
+      "shelf": "currently-reading",
+      "shelves": [
+        "currently-reading",
+        "owned"
+      ],
+      "numPages": 272,
+      "description": "\"A powerful and penetrating exploration of what separates great companies and great leaders from the rest.\" -Polly LaBarre, coauthor of Mavericks at Work Why are some people and organizations more innovative, more influential, and more profitable than others? Why do some command greater loyalty? In studying the leaders who've had the greatest influence in the world, Simon Sinek discovered that they all think, act, and communicate in the exact same way-and it's the complete opposite of what everyone else does. People like Martin Luther King Jr., Steve Jobs, and the Wright brothers might have little in common, but they all started with why. Drawing on a wide range of real-life stories, Sinek weaves together a clear vision of what it truly takes to lead and inspire.",
+      "note": "Framework on purpose, authentic leadership, and intentional work while navigating remote mountain hostels.",
+      "trailConnection": "📍 Read under deodar pines at a quiet cafe in Dharamkot during monsoon work hours.",
+      "progress": "Page 62 of 256 · 24%",
+      "percent": 24,
+      "tag": "Leadership · Purpose · Mindset"
+    }
+  ],
+  "readBooks": [
+    {
+      "title": "Before We Say Goodbye (Before the Coffee Gets Cold, #4)",
+      "author": "Toshikazu Kawaguchi",
+      "bookId": "175740802",
+      "link": "https://www.goodreads.com/book/show/175740802",
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1691689343l/175740802._SY475_.jpg",
+      "rating": 3,
+      "readAt": "Aug 2026",
+      "shelf": "read",
+      "shelves": [
+        "magical-realism",
+        "owned"
+      ],
+      "numPages": 176,
+      "description": "Toshikazu Kawaguchi’s poignant Before We Say Goodbye , translated from Japanese by Geoffrey Trousselot, explores the age-old question: what would you do if you could travel back in time? More importantly, who would you want to meet, maybe for one last time? The regulars at the magical Cafe Funiculi Funicula are well acquainted with its famous legend and extraordinary, secret menu time travel offering. Many patrons have reunited with old flames, made amends with estranged family, and visited loved ones. But the journey is not without risks and there are rules to follow. Travellers must have visited the cafe previously and most importantly, must return to the present in the time it takes for their coffee to go cold. In the tradition of Toshikazu Kawaguchi’s sensational 'Before the Coffee Gets Cold' series, readers will once again be introduced to a new set of visitors: The husband with something important left to say The woman who couldn’t bid her dog farewell The woman who couldn’t answer a proposal The daughter who drove her father away . . . In the hauntingly beautiful Before We Say Goodbye , Kawaguchi invites us to join his characters as they embark on a journey to revisit one crucial moment in time."
+    },
+    {
+      "title": "My Friends",
+      "author": "Fredrik Backman",
+      "bookId": "217163697",
+      "link": "https://www.goodreads.com/book/show/217163697",
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1734625930l/217163697._SY475_.jpg",
+      "rating": 3,
+      "readAt": "Jan 2026",
+      "shelf": "read",
+      "shelves": [],
+      "numPages": 436,
+      "description": "The beautiful new novel that will make you laugh and cry, from the global bestselling author of Anxious People and A Man Called Ove . Fredrik Backman returns with an unforgettably funny, deeply moving tale of four teenagers whose friendship creates a bond so powerful that it changes a complete stranger’s life twenty-five years later… You have to take life for granted, the artist thinks, the whole thing: sunrises and slow Sunday mornings and water balloons and another person’s breath against your neck. That’s the only courageous thing a person can do. In the corner of one of the most famous paintings in the world three tiny figures sit at the end of a pier. Most people don’t even notice them. Most people think it’s just a depiction of the sea. But Louisa, an aspiring artist herself, knows otherwise. Twenty-five years earlier, in a distant seaside town, a group of teenagers seek refuge from their bruising home lives by spending long summer days together. They tell jokes, they share secrets, and they commit small acts of rebellion. These lost souls find in each other a reason to get up each morning, a reason to dream, a reason to love. Out of that summer emerges a transcendent work of art, a painting that will unexpectedly be placed into 18-year-old Louisa’s care. Determined to learn how it came to be and to decide what to do with it, Louisa embarks on a cross-country journey. But the closer she gets to the painting’s birthplace, the more nervous she becomes. In this stunning testament to the transformative, timeless power of friendship and art, Louisa is proof that happy endings don’t always take the form we expect."
+    },
+    {
+      "title": "Teething",
+      "author": "Megha Rao",
+      "bookId": "59846668",
+      "link": "https://www.goodreads.com/book/show/59846668",
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1639844901l/59846668._SY475_.jpg",
+      "rating": 4,
+      "readAt": "Jan 2022",
+      "shelf": "read",
+      "shelves": [
+        "owned"
+      ],
+      "numPages": 88,
+      "description": "A story told in verse, Teething begins when Kochu, a young boy in Kerala, is caught kissing the neighbour’s son. All hell breaks loose, ending in Kochu taking his own life. Years after the scandal, after discovering his suicide note, his oldest sister, Achu, sets out to uncover the mysteries of their dysfunctional family by putting pieces of their past back together. Along the way, she discovers things she never noticed – their mother’s brokenness and obsession with the church, their father’s disturbing secrecy inside the bedroom, and, of course, their own individual traumas that stopped time altogether. Soon, Achu realizes that none of them will ever truly grow up until they live their lives all over again, from the very beginning."
+    },
+    {
+      "title": "Chronicle of a Death Foretold",
+      "author": "Gabriel García Márquez",
+      "bookId": "825539",
+      "link": "https://www.goodreads.com/book/show/825539",
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1378198220l/825539.jpg",
+      "rating": 4,
+      "readAt": "Jul 2026",
+      "shelf": "read",
+      "shelves": [],
+      "numPages": 122,
+      "description": "\"ON THE DAY THEY WERE GOING TO KILL HIM, SANTIAGO NASAR GOT UP AT FIVE-THIRTY IN THE MORNING TO WAIT FOR THE BOAT THE BISHOP WAS COMING ON.\" When newlywed Angela Vicario and Bayardo San Román are left to their wedding night, Bayardo discovers that his new wife is no virgin. Disgusted, he returns Angela to her family home that very night, where her humiliated mother beats her savagely and her two brothers demand to know her violator, whom she names as Santiago Nasar. As he wakes to thoughts of the previous night's revelry, Santiago is unaware of the slurs that have been cast against him. But with Angela's brothers set on avenging their family honour, soon the whole town knows who they plan to kill, where, when and why."
+    },
+    {
+      "title": "Deewar Mein Ek Khidki Rahti Thi  (दीवार में एक खिड़की रहती थी)",
+      "author": "Vinod Kumar Shukla",
+      "bookId": "220599602",
+      "link": "https://www.goodreads.com/book/show/220599602",
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1729436348l/220599602._SY475_.jpg",
+      "rating": 4,
+      "readAt": "Mar 2026",
+      "shelf": "read",
+      "shelves": [],
+      "numPages": 248,
+      "description": "भाषा पर तो विनोद कुमार शुक्ल का अपने ढंग का अधिकार है ही-प्रेमचंद और जैनेंद्र के बाद इतनी सादा, रोज़मर्रा भाषा में शायद ही किसी और में अभिव्यक्ति की ऐसी क्षमता हो– लेकिन इस उपन्यास में उन्होंने संभाषण की कई भाषाएँ और शैलियाँ ईजाद की हैं–एक वह जिसमें रघुवर प्रसाद लोगों से बोलते हैं, दूसरी वह जिसमें वे ख़ुद से बोलते हैं, तीसरी वह जिसमें रघुवर प्रसाद और सोनसी अपने एकांत में बोलते हैं और चौथी वह जिसमें रघुवर प्रसाद परिवार आपस में बात करता है जिसमें हल्की-सी आंचलिकता मिली हुई है, और पाँचवीं वह जिसमें विभागाध्यक्ष और पाचार्य बोलते हैं–सबसे ‘ठेठ’ वही है। एक और अद्भुत भाषा वह है जिसमें बोलने वाला और सुननेवाला बारी-बारी कहते कुछ हैं और सुनते कुछ और हैं और यह एक और ही अर्थबाहुल्य स्निग्धता को जन्म देता है। -विष्णु खरे"
+    },
+    {
+      "title": "Anxious People",
+      "author": "Fredrik Backman",
+      "bookId": "210217484",
+      "link": "https://www.goodreads.com/book/show/210217484",
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1711001965l/210217484.jpg",
+      "rating": 4,
+      "readAt": "May 2024",
+      "shelf": "read",
+      "shelves": [],
+      "numPages": 400,
+      "description": "In a small town in Sweden it appears to be an ordinary day. But look more closely, and you'll see a mysterious masked figure approaching a bank... Two hours later, chaos has descended. A bungled attempted robbery has developed into a hostage situation - and the offender is refusing to communicate their demands to the police. Within the building, fear quickly turns to irritation for the seven strangers trapped inside. If this is to be their last day on earth, shouldn't it be a bit more dramatic? But as the minutes tick by, they begin to suspect that the criminal mastermind holding them hostage might be more in need of rescuing than they are..."
+    },
+    {
+      "title": "A Man Called Ove",
+      "author": "Fredrik Backman",
+      "bookId": "25555839",
+      "link": "https://www.goodreads.com/book/show/25555839",
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1496137759l/25555839.jpg",
+      "rating": 4,
+      "readAt": "Dec 2024",
+      "shelf": "read",
+      "shelves": [
+        "owned"
+      ],
+      "numPages": 295,
+      "description": "Alternate cover edition can be found here and here . At first sight, Ove is almost certainly the grumpiest man you will ever meet. He thinks himself surrounded by idiots - neighbours who can't reverse a trailer properly, joggers, shop assistants who talk in code, and the perpetrators of the vicious coup d'etat that ousted him as Chairman of the Residents' Association. He will persist in making his daily inspection rounds of the local streets. But isn't it rare, these days, to find such old-fashioned clarity of belief and deed? Such unswerving conviction about what the world should be, and a lifelong dedication to making it just so? In the end, you will see, there is something about Ove that is quite irresistible... The word-of-mouth bestseller causing a sensation across Europe, Fredrik Backman's heartwarming debut is a funny, moving, uplifting tale of love and community that will leave you with a spring in your step - and less ready to judge on first impressions a man you might one day wish to have as your dearest friend."
+    },
+    {
+      "title": "Tales from the Cafe (Before the Coffee Gets Cold, #2)",
+      "author": "Toshikazu Kawaguchi",
+      "bookId": "54373691",
+      "link": "https://www.goodreads.com/book/show/54373691",
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1593780745l/54373691._SY475_.jpg",
+      "rating": 3,
+      "readAt": "Feb 2026",
+      "shelf": "read",
+      "shelves": [
+        "owned"
+      ],
+      "numPages": 192,
+      "description": "The second book in the multi-million-copy bestselling series about a cosy Japanese cafe that offers its visitors the chance to travel back in time. Toshikazu Kawaguchi’s heartwarming Tales from the Cafe , translated from Japanese by Geoffrey Trousselot, explores the age-old question: what would you do if you could travel back in time? More importantly, who would you want to meet, maybe for one last time? In a small back alley in Tokyo, there is a cafe which has been serving carefully brewed coffee for more than one hundred years. But this coffee shop offers its customers a unique experience: the chance to travel back in time . . . From the author of Before the Coffee Gets Cold comes a story of four new customers each of whom is hoping to take advantage of Cafe Funiculi Funicula's time-travelling offer. Among some faces that will be familiar to readers, we will be introduced to: The man who goes back to see his best friend who died 22 years ago The son who was unable to attend his own mother’s funeral The man who travelled to see the girl who he could not marry The old detective who never gave his wife that gift . . . This beautiful tale tells the story of people who must face up to their past, in order to move on with their lives."
+    },
+    {
+      "title": "Man's Search for Meaning",
+      "author": "Viktor E. Frankl",
+      "bookId": "26147",
+      "link": "https://www.goodreads.com/book/show/26147",
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1543481265l/26147.jpg",
+      "rating": 3,
+      "readAt": "Jan 2022",
+      "shelf": "read",
+      "shelves": [],
+      "numPages": 156,
+      "description": "One of the outstanding classics to emerge from the Holocaust, Man's Search for Meaning is Viktor Frankl's story of his struggle for survival in Auschwitz and other Nazi concentration camps. Today, this remarkable tribute to hope offers us an avenue to finding greater meaning and purpose in our own lives. (back cover)"
+    },
+    {
+      "title": "My Grandmother Sends Her Regards and Apologises",
+      "author": "Fredrik Backman",
+      "bookId": "32178327",
+      "link": "https://www.goodreads.com/book/show/32178327",
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1474503835l/32178327._SY475_.jpg",
+      "rating": 4,
+      "readAt": "May 2026",
+      "shelf": "read",
+      "shelves": [
+        "owned"
+      ],
+      "numPages": 342,
+      "description": "Elsa is seven years old and different. Her grandmother is seventy-seven years old and crazy, standing-on-the-balcony-firing-paintball-guns-at-men-who-want-to-talk-about-Jesus-crazy. She is also Elsa's best, and only, friend. At night Elsa takes refuge in her grandmother's stories, in the Land of Almost-Awake and the Kingdom of Miamas where everybody is different and nobody needs to be normal. When Elsa's grandmother dies and leaves behind a series of letters apologizing to people she has wronged, Elsa's greatest adventure begins. Her grandmother's letters lead her to an apartment building full of drunks, monsters, attack dogs, and totally ordinary old crones, but also to the truth about fairytales and kingdoms and a grandmother like no other."
+    },
+    {
+      "title": "The Humans",
+      "author": "Matt Haig",
+      "bookId": "21265230",
+      "link": "https://www.goodreads.com/book/show/21265230",
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1394426213l/21265230.jpg",
+      "rating": 3,
+      "readAt": "Jun 2026",
+      "shelf": "read",
+      "shelves": [],
+      "numPages": 294,
+      "description": "After an 'incident' one wet Friday night where Professor Andrew Martin is found walking naked through the streets of Cambridge, he is not feeling quite himself. Food sickens him. Clothes confound him. Even his loving wife and teenage son are repulsive to him. He feels lost amongst a crazy alien species and hates everyone on the planet. Everyone, that is, except Newton, and he's a dog. Who is he really? And what could make someone change their mind about the human race. . . ?"
+    },
+    {
+      "title": "Before Your Memory Fades (Before the Coffee Gets Cold, #3)",
+      "author": "Toshikazu Kawaguchi",
+      "bookId": "61348712",
+      "link": "https://www.goodreads.com/book/show/61348712",
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1656140836l/61348712._SX318_.jpg",
+      "rating": 3,
+      "readAt": "Jul 2026",
+      "shelf": "read",
+      "shelves": [],
+      "numPages": 237,
+      "description": "The million-copy bestselling series Toshikazu Kawaguchi's touching Before your memory fades, translated from Japanese by Geoffrey Trousselot, explores the age-old question: what would you do if you could travel back in time? More importantly, who would you want to meet, maybe for one last time? On the hillside of Mount Hakodate in northern Japan, Cafe Donna Donna is fabled for its dazzling views of Hakodate port. But that's not all. Like the charming Tokyo cafe Funiculi Funicula, Cafe Donna Donna offers its customers the extraordinary experience of traveling through time. From the author of Before the coffee gets cold and Tales from the cafe comes another heartfelt story of lost souls hoping to take advantage of the cafe's time-traveling offer. Among some familiar faces, readers will also be introduced to: The daughter who begrudges her deceased parents for leaving her orphaned The comedian who aches for his beloved and their shared dreams The younger sister whose grief has become all-consuming The young man who realizes his love for his childhood friend too late . . . Featuring Kawaguchi's signature wistful storytelling, Before your memory fades is full of heart and emotion."
+    },
+    {
+      "title": "The Midnight Library (The Midnight World, #1)",
+      "author": "Matt Haig",
+      "bookId": "52578297",
+      "link": "https://www.goodreads.com/book/show/52578297",
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1602190253l/52578297.jpg",
+      "rating": 4,
+      "readAt": "Jan 2022",
+      "shelf": "read",
+      "shelves": [
+        "owned"
+      ],
+      "numPages": 288,
+      "description": "Between life and death there is a library. When Nora Seed finds herself in the Midnight Library, she has a chance to make things right. Up until now, her life has been full of misery and regret. She feels she has let everyone down, including herself. But things are about to change. The books in the Midnight Library enable Nora to live as if she had done things differently. With the help of an old friend, she can now undo every one of her regrets as she tries to work out her perfect life. But things aren't always what she imagined they'd be, and soon her choices place the library and herself in extreme danger. Before time runs out, she must answer the ultimate question: what is the best way to live?"
+    },
+    {
+      "title": "Before the Coffee Gets Cold (Before the Coffee Gets Cold, #1)",
+      "author": "Toshikazu Kawaguchi",
+      "bookId": "44421460",
+      "link": "https://www.goodreads.com/book/show/44421460",
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1704153539l/44421460._SY475_.jpg",
+      "rating": 3,
+      "readAt": "Jan 2026",
+      "shelf": "read",
+      "shelves": [
+        "owned"
+      ],
+      "numPages": 213,
+      "description": "What would you change if you could go back in time? In a small back alley in Tokyo, there is a café which has been serving carefully brewed coffee for more than one hundred years. But this coffee shop offers its customers a unique experience: the chance to travel back in time. In Before the Coffee Gets Cold , we meet four visitors, each of whom is hoping to make use of the café’s time-travelling offer, in order to: confront the man who left them, receive a letter from their husband whose memory has been taken by early onset Alzheimer's, to see their sister one last time, and to meet the daughter they never got the chance to know. But the journey into the past does not come without risks: customers must sit in a particular seat, they cannot leave the café, and finally, they must return to the present before the coffee gets cold . . . Toshikazu Kawaguchi’s beautiful, moving story explores the age-old question: what would you change if you could travel back in time? More importantly, who would you want to meet, maybe for one last time?"
+    },
+    {
+      "title": "The Boy, the Mole, the Fox and the Horse",
+      "author": "Charlie Mackesy",
+      "bookId": "43708884",
+      "link": "https://www.goodreads.com/book/show/43708884",
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1579017235l/43708884._SX318_.jpg",
+      "rating": 3,
+      "readAt": "Sep 2024",
+      "shelf": "read",
+      "shelves": [
+        "owned"
+      ],
+      "numPages": 128,
+      "description": "Enter the world of Charlie's four unlikely friends, discover their story and their most important life lessons. The boy, the mole, the fox and the horse have been shared millions of times online - perhaps you've seen them? They've also been recreated by children in schools and hung on hospital walls. They sometimes even appear on lamp posts and on cafe and bookshop windows. Perhaps you saw the boy and mole on the Comic Relief T-shirt, Love Wins? Here, you will find them together in this book of Charlie's most-loved drawings, adventuring into the Wild and exploring the thoughts and feelings that unite us all."
+    },
+    {
+      "title": "A Crazy Kind of Love",
+      "author": "Megha Rao",
+      "bookId": "32328960",
+      "link": "https://www.goodreads.com/book/show/32328960",
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1475386557l/32328960._SY475_.jpg",
+      "rating": 4,
+      "readAt": "Jan 2022",
+      "shelf": "read",
+      "shelves": [
+        "owned"
+      ],
+      "numPages": 157,
+      "description": "Love means, you needn’t be perfect She couldn’t remember her past. He wanted to forget his present. They could see right through each other. They wanted to be together And yet it took them long to figure that there is nothing perfect about love! You just need to be together. If you’ve ever been in love you will find Crazy Kind of Love funny, mad and a completely adorable read."
+    },
+    {
+      "title": "Music To Flame Lilies",
+      "author": "Megha Rao",
+      "bookId": "51924156",
+      "link": "https://www.goodreads.com/book/show/51924156",
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1565891934l/51924156._SX318_SY475_.jpg",
+      "rating": 4,
+      "readAt": "Jan 2022",
+      "shelf": "read",
+      "shelves": [
+        "owned"
+      ],
+      "numPages": 213,
+      "description": "I miss you. When Noor gets a message from her best friend, months after her death, she cannot help but go back to her hometown in search of answers, and perhaps even her best friend. Noor isn't prepared for the village that seems deeply rooted in magic where villagers pray to local ghosts, spend their evenings watching live possessions in the middle of a forest clearing, have innumerable stories of encounters with demons, or where she is told of people who are haunted to death. Then there's Kalki, the boy from the wrong side of the tracks, the local black magician, who is always in her way. He may be trouble, but Noor knows he can help her unravel the mystery of her friend s death, or so she tells herself. Caught between magic and reality, Noor is increasingly drawn to the mysticism and drama of her hometown, even as dark forces gather and danger closes in on her. Will she be able to run away? Will she want to?"
+    },
+    {
+      "title": "The Answer Is No",
+      "author": "Fredrik Backman",
+      "bookId": "219876684",
+      "link": "https://www.goodreads.com/book/show/219876684",
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1727897163l/219876684._SY475_.jpg",
+      "rating": 3,
+      "readAt": "Jun 2026",
+      "shelf": "read",
+      "shelves": [
+        "owned"
+      ],
+      "numPages": 68,
+      "description": "Lucas knows the perfect night entails just three things: video games, wine, and pad thai. Peanuts are a must! Other people? Not so much. Why complicate things when he’s happy alone? Then one day the apartment board, a vexing trio of authority, rings his doorbell. And Lucas’s solitude takes a startling hike. They demand to see his frying pan. Someone left one next to the recycling room overnight, and instead of removing the errant object, as Lucas suggests, they insist on finding the guilty party. But their plan backfires. Colossally. Told in Fredrik Backman’s singular witty style with sharply drawn characters and relatable antics, The Answer Is No is a laugh-out-loud portrait of a man struggling to keep to himself in a world that won’t leave him alone."
+    },
+    {
+      "title": "Days at the Morisaki Bookshop (Days at the Morisaki Bookshop, #1)",
+      "author": "Satoshi Yagisawa",
+      "bookId": "62047992",
+      "link": "https://www.goodreads.com/book/show/62047992",
+      "cover": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1671208761l/62047992.jpg",
+      "rating": 4,
+      "readAt": "Jun 2026",
+      "shelf": "read",
+      "shelves": [
+        "owned"
+      ],
+      "numPages": 150,
+      "description": "The moving international sensation about new beginnings, human connection, and the joy of reading. Hidden in Jimbocho, Tokyo, is a booklover's paradise. On a quiet corner in an old wooden building lies a shop filled with hundreds of second-hand books. Twenty-five-year-old Takako has never liked reading, although the Morisaki bookshop has been in her family for three generations. It is the pride and joy of her uncle Satoru, who has devoted his life to the bookshop since his wife Momoko left him five years earlier. When Takako's boyfriend reveals he's marrying someone else, she reluctantly accepts her eccentric uncle's offer to live rent-free in the tiny room above the shop. Hoping to nurse her broken heart in peace, Takako is surprised to encounter new worlds within the stacks of books lining the Morisaki bookshop. As summer fades to autumn, Satoru and Takako discover they have more in common than they first thought. The Morisaki bookshop has something to teach them both about life, love, and the healing power of books."
+    }
+  ],
+  "totalReadCount": 19
+}

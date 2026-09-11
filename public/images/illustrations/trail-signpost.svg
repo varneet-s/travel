@@ -1,0 +1,104 @@
+<!--
+  License: MIT / CC0 (Public Domain)
+  Nordic Alpine Ledger Linecraft: Trail Signpost & Pass Elevations
+  Palette Tokens: #D86B58 (Amber), #5B9B82 (Fjord Slate), #1E1B18 / #182024 (Navy), #CAD4CF (Mist)
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 160" fill="none" role="img" aria-label="Rustic wooden trail signpost pointing towards mountain passes with elevation stamps">
+  <defs>
+    <style>
+      .sign-slate { stroke: #5B9B82; stroke-linecap: round; stroke-linejoin: round; }
+      .sign-amber { stroke: #D86B58; stroke-linecap: round; stroke-linejoin: round; }
+      .sign-navy { stroke: #1E1B18; stroke-linecap: round; stroke-linejoin: round; }
+      .sign-mist { stroke: #CAD4CF; stroke-linecap: round; stroke-linejoin: round; }
+      .sign-text { font-family: 'Courier Prime', -apple-system, monospace; font-size: 6.5px; font-weight: 700; letter-spacing: 0.05em; }
+      .sign-elev { font-family: 'Courier Prime', -apple-system, monospace; font-size: 5.5px; font-weight: 700; fill: #D86B58; }
+    </style>
+  </defs>
+
+  <!-- Distant Mountain Pass Saddle (Col) in Background -->
+  <path d="M6,48 L28,20 L52,38 L70,28 L94,40 L116,16 L134,44" class="sign-mist" stroke-width="1.2" stroke-dasharray="3,3" />
+  <polygon points="18,48 28,20 44,48" fill="#5B9B82" fill-opacity="0.08" />
+  <polygon points="106,44 116,16 128,44" fill="#5B9B82" fill-opacity="0.08" />
+
+  <!-- Trail Ground Line -->
+  <line x1="8" y1="148" x2="132" y2="148" class="sign-navy" stroke-width="1.5" stroke-opacity="0.3" />
+
+  <!-- Stone Cairn Stack (Base) -->
+  <!-- Bottom Tier Rocks -->
+  <ellipse cx="48" cy="146" rx="14" ry="5.5" fill="#CAD4CF" stroke="#1E1B18" stroke-width="1.4" />
+  <ellipse cx="70" cy="147" rx="16" ry="6" fill="#5B9B82" fill-opacity="0.3" stroke="#1E1B18" stroke-width="1.5" />
+  <ellipse cx="92" cy="146" rx="13" ry="5" fill="#CAD4CF" stroke="#1E1B18" stroke-width="1.4" />
+  <!-- Middle Tier Rocks -->
+  <ellipse cx="58" cy="140" rx="11" ry="4.5" fill="#CAD4CF" stroke="#1E1B18" stroke-width="1.3" />
+  <ellipse cx="80" cy="140" rx="12" ry="4.8" fill="#CAD4CF" stroke="#1E1B18" stroke-width="1.3" />
+  <!-- Top Anchor Stone -->
+  <ellipse cx="70" cy="135" rx="9" ry="3.8" fill="#5B9B82" fill-opacity="0.35" stroke="#1E1B18" stroke-width="1.4" />
+
+  <!-- Wild Alpine Grass Tufts -->
+  <path d="M36,148 Q33,140 30,138" class="sign-slate" stroke-width="1.2" />
+  <path d="M38,148 Q39,141 42,139" class="sign-slate" stroke-width="1.2" />
+  <path d="M102,148 Q105,142 108,139" class="sign-slate" stroke-width="1.2" />
+
+  <!-- Vertical Wooden Timber Post -->
+  <!-- Post Timber Body -->
+  <polygon points="65,34 70,30 75,34 75,138 65,138" fill="#E6EBF0" stroke="#1E1B18" stroke-width="1.8" />
+  <!-- Wood Grain Lines -->
+  <line x1="68" y1="36" x2="68" y2="135" class="sign-slate" stroke-width="0.8" stroke-opacity="0.5" />
+  <line x1="72" y1="36" x2="72" y2="135" class="sign-slate" stroke-width="0.8" stroke-opacity="0.5" />
+
+  <!-- Trail Blaze Paint Marker on Post (Amber & Slate) -->
+  <rect x="65.5" y="114" width="9" height="5" fill="#D86B58" stroke="#1E1B18" stroke-width="0.8" />
+  <rect x="65.5" y="119" width="9" height="5" fill="#5B9B82" stroke="#1E1B18" stroke-width="0.8" />
+
+  <!-- ======================================================================
+       DIRECTIONAL SIGNBOARDS (SLATS)
+       ====================================================================== -->
+
+  <!-- BOARD 1: POINTING LEFT (HAMPTA PASS · 4,270M) -->
+  <g>
+    <!-- Arrow Slat -->
+    <polygon points="18,48 28,38 90,38 90,58 28,58" fill="#FAF8F5" stroke="#1E1B18" stroke-width="1.6" stroke-linejoin="round" />
+    <!-- Wood grain detail on board -->
+    <line x1="32" y1="42" x2="86" y2="42" class="sign-mist" stroke-width="0.8" />
+    <!-- Iron Nails -->
+    <circle cx="68" cy="43" r="1.1" fill="#1E1B18" />
+    <circle cx="72" cy="53" r="1.1" fill="#1E1B18" />
+    <!-- Direction Arrow Icon -->
+    <path d="M26,48 L29,45 M26,48 L29,51" class="sign-navy" stroke-width="1.3" />
+    <!-- Lettering -->
+    <text x="33" y="47" class="sign-text" fill="#182024">HAMPTA PASS</text>
+    <text x="33" y="55" class="sign-elev">▲ 4,270 M</text>
+  </g>
+
+  <!-- BOARD 2: POINTING RIGHT (SHANGARH · 2,100M) -->
+  <g>
+    <!-- Arrow Slat -->
+    <polygon points="50,65 112,65 122,75 112,85 50,85" fill="#5B9B82" fill-opacity="0.18" stroke="#1E1B18" stroke-width="1.6" stroke-linejoin="round" />
+    <!-- Wood grain detail on board -->
+    <line x1="54" y1="69" x2="108" y2="69" class="sign-mist" stroke-width="0.8" />
+    <!-- Iron Nails -->
+    <circle cx="68" cy="70" r="1.1" fill="#1E1B18" />
+    <circle cx="72" cy="80" r="1.1" fill="#1E1B18" />
+    <!-- Direction Arrow Icon -->
+    <path d="M115,75 L112,72 M115,75 L112,78" class="sign-navy" stroke-width="1.3" />
+    <!-- Lettering -->
+    <text x="56" y="74" class="sign-text" fill="#182024">SHANGARH</text>
+    <text x="56" y="82" class="sign-elev">▲ 2,100 M</text>
+  </g>
+
+  <!-- BOARD 3: POINTING LEFT (CHANDRATAL · 4,300M) -->
+  <g>
+    <!-- Arrow Slat -->
+    <polygon points="14,92 24,82 86,82 86,102 24,102" fill="#FAF8F5" stroke="#1E1B18" stroke-width="1.6" stroke-linejoin="round" />
+    <!-- Wood grain detail on board -->
+    <line x1="28" y1="86" x2="82" y2="86" class="sign-mist" stroke-width="0.8" />
+    <!-- Iron Nails -->
+    <circle cx="68" cy="87" r="1.1" fill="#1E1B18" />
+    <circle cx="72" cy="97" r="1.1" fill="#1E1B18" />
+    <!-- Direction Arrow Icon -->
+    <path d="M22,92 L25,89 M22,92 L25,95" class="sign-navy" stroke-width="1.3" />
+    <!-- Lettering -->
+    <text x="29" y="91" class="sign-text" fill="#182024">CHANDRATAL</text>
+    <text x="29" y="99" class="sign-elev">▲ 4,300 M</text>
+  </g>
+</svg>

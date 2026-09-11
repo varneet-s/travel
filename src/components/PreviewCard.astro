@@ -1,14 +1,18 @@
 ---
+/**
+ * @deprecated PreviewCard is deprecated and superseded by JourneyCard and editorial preview grids.
+ * Retained with brand token alignment and safe defaults for backwards compatibility.
+ */
 interface Props {
-  href: string;
-  title: string;
-  date: Date | string;
-  images: string[];
+  href?: string;
+  title?: string;
+  date?: Date | string;
+  images?: string[];
 }
 
-const { href, title, date, images } = Astro.props;
+const { href = '#', title = '', date = new Date(), images = [] } = Astro.props;
 
-const dateObj = new Date(date);
+const dateObj = typeof date === 'string' ? new Date(date) : (date || new Date());
 const formattedDate = dateObj.toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'short',
@@ -16,14 +20,18 @@ const formattedDate = dateObj.toLocaleDateString('en-US', {
 });
 ---
 
-<a href={href} class="preview-card">
-  <div class="preview-grid-3">
-    {images.slice(0, 3).map((img, i) => (
-      <img src={img} alt={`${title} photo ${i + 1}`} loading="lazy" />
-    ))}
-  </div>
-  <div class="preview-meta">
-    <h3 class="preview-title">{title}</h3>
-    <span class="date-label">{formattedDate}</span>
-  </div>
-</a>
+{href && (
+  <a href={href} class="preview-card-editorial">
+    {images && images.length > 0 && (
+      <div class="preview-photos-3">
+        {images.slice(0, 3).map((img, i) => (
+          <img src={img} alt={`${title} photo ${i + 1}`} loading="lazy" />
+        ))}
+      </div>
+    )}
+    <div class="preview-meta">
+      <h3 class="card-title">{title}</h3>
+      <span class="date-label">{formattedDate}</span>
+    </div>
+  </a>
+)}

@@ -1,0 +1,770 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 280" fill="none" role="img" aria-label="Authentic Himalayan mountain pass illustration with winding switchback road, HRTC state bus, milestones, snow peaks, and pine ridges">
+  <defs>
+    <style>
+      .road-bedrock { stroke: #1E1B18; stroke-linecap: round; stroke-linejoin: round; }
+      .road-coral   { stroke: #D86B58; stroke-linecap: round; stroke-linejoin: round; }
+      .road-seafoam { stroke: #5B9B82; stroke-linecap: round; stroke-linejoin: round; }
+      .road-mist    { stroke: #CAD4CF; stroke-linecap: round; stroke-linejoin: round; }
+      .road-linen   { stroke: #FAF8F5; stroke-linecap: round; stroke-linejoin: round; }
+      .road-text    { font-family: 'Courier Prime', -apple-system, BlinkMacSystemFont, 'Segoe UI', monospace; font-weight: 700; text-anchor: middle; }
+
+      @keyframes beamPulse {
+        0%, 100% { opacity: 0.75; }
+        50% { opacity: 1.0; }
+      }
+
+      .bus-headlight-sweep {
+        animation: beamPulse 2.4s ease-in-out infinite;
+      }
+
+      @keyframes milestonePulse1 {
+        0%, 7% { opacity: 0; }
+        11.5% { opacity: 1; }
+        16%, 100% { opacity: 0; }
+      }
+
+      @keyframes milestonePulse2 {
+        0%, 30% { opacity: 0; }
+        34.5% { opacity: 1; }
+        39%, 100% { opacity: 0; }
+      }
+
+      @keyframes milestonePulse3 {
+        0%, 55% { opacity: 0; }
+        60% { opacity: 1; }
+        65%, 100% { opacity: 0; }
+      }
+
+      @keyframes milestonePulse4 {
+        0%, 78% { opacity: 0; }
+        83% { opacity: 1; }
+        88%, 100% { opacity: 0; }
+      }
+
+      .milestone-glow-pulse-1 { animation: milestonePulse1 18s linear infinite; }
+      .milestone-glow-pulse-2 { animation: milestonePulse2 18s linear infinite; }
+      .milestone-glow-pulse-3 { animation: milestonePulse3 18s linear infinite; }
+      .milestone-glow-pulse-4 { animation: milestonePulse4 18s linear infinite; }
+
+      @media (prefers-reduced-motion: reduce) {
+        #hrtcBus {
+          transform: translate(408px, 162px) rotate(-3.5deg) !important;
+        }
+        .bus-scale-perspective {
+          transform: scale(0.85) !important;
+        }
+        .bus-headlight-sweep {
+          animation: none !important;
+          opacity: 0.85 !important;
+        }
+        .milestone-glow-pulse-1,
+        .milestone-glow-pulse-2,
+        .milestone-glow-pulse-3,
+        .milestone-glow-pulse-4 {
+          animation: none !important;
+          opacity: 0.25 !important;
+        }
+      }
+    </style>
+
+    <!-- Glowing Amber & Coral Headlight Beam Gradients -->
+    <linearGradient id="headlightBeamGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FAF8F5" stop-opacity="0.9" />
+      <stop offset="20%" stop-color="#FAF8F5" stop-opacity="0.6" />
+      <stop offset="55%" stop-color="#D86B58" stop-opacity="0.35" />
+      <stop offset="85%" stop-color="#D86B58" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#D86B58" stop-opacity="0" />
+    </linearGradient>
+    <radialGradient id="headlightAura" cx="30%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#FAF8F5" stop-opacity="0.95" />
+      <stop offset="45%" stop-color="#D86B58" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#D86B58" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Highway Cement Milestone Amber Pulse Gradients -->
+    <radialGradient id="milestoneAmberAura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F5A623" stop-opacity="0.9" />
+      <stop offset="45%" stop-color="#F5A623" stop-opacity="0.5" />
+      <stop offset="80%" stop-color="#D86B58" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#F5A623" stop-opacity="0" />
+    </radialGradient>
+    <filter id="amberGlowFilter" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="3.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Deep Mountain Twilight Sky Canvas -->
+  <rect width="900" height="280" fill="#1E1B18" />
+
+  <!-- ======================================================================
+       SKY ACCENTS: HIGH-ALTITUDE STARS & CONSTELLATIONS WITH TWILIGHT FLICKER
+       ====================================================================== -->
+  <!-- 4-point Celestial Cross Stars -->
+  <path d="M120,24 L121.5,28.5 L126,30 L121.5,31.5 L120,36 L118.5,31.5 L114,30 L118.5,28.5 Z" fill="#D86B58" fill-opacity="0.9">
+    <animate attributeName="opacity" values="0.6; 1.0; 0.55; 0.9; 0.6" dur="3.2s" repeatCount="indefinite" />
+  </path>
+  <path d="M460,16 L461.2,19.8 L465,21 L461.2,22.2 L460,26 L458.8,22.2 L455,21 L458.8,19.8 Z" fill="#FAF8F5" fill-opacity="0.85">
+    <animate attributeName="opacity" values="0.85; 0.4; 0.95; 0.85" dur="4.1s" repeatCount="indefinite" />
+  </path>
+  <path d="M810,22 L811.5,26.5 L816,28 L811.5,29.5 L810,34 L808.5,29.5 L804,28 L808.5,26.5 Z" fill="#D86B58" fill-opacity="0.75">
+    <animate attributeName="opacity" values="0.5; 0.9; 0.6; 1.0; 0.5" dur="3.7s" repeatCount="indefinite" />
+  </path>
+  <path d="M685,38 L686,41 L689,42 L686,43 L685,46 L684,43 L681,42 L684,41 Z" fill="#CAD4CF" fill-opacity="0.9">
+    <animate attributeName="opacity" values="0.9; 0.5; 0.85; 0.9" dur="2.9s" repeatCount="indefinite" />
+  </path>
+  <path d="M250,32 L251,35 L254,36 L251,37 L250,40 L249,37 L246,36 L249,35 Z" fill="#5B9B82" fill-opacity="0.8">
+    <animate attributeName="opacity" values="0.7; 1.0; 0.6; 0.7" dur="3.5s" repeatCount="indefinite" />
+  </path>
+
+  <!-- Starlight Field with Subtle Flickering -->
+  <circle cx="58" cy="38" r="1.2" fill="#CAD4CF" fill-opacity="0.7" />
+  <circle cx="190" cy="18" r="1.5" fill="#FAF8F5" fill-opacity="0.8">
+    <animate attributeName="opacity" values="0.8; 0.3; 0.8" dur="2.6s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="330" cy="28" r="1" fill="#CAD4CF" fill-opacity="0.6" />
+  <circle cx="395" cy="14" r="1.3" fill="#CAD4CF" fill-opacity="0.7">
+    <animate attributeName="opacity" values="0.7; 1.0; 0.5; 0.7" dur="3.1s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="560" cy="26" r="1.4" fill="#FAF8F5" fill-opacity="0.8" />
+  <circle cx="630" cy="18" r="1" fill="#CAD4CF" fill-opacity="0.5" />
+  <circle cx="740" cy="30" r="1.2" fill="#CAD4CF" fill-opacity="0.6">
+    <animate attributeName="opacity" values="0.6; 0.2; 0.7; 0.6" dur="2.4s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="865" cy="18" r="1.5" fill="#FAF8F5" fill-opacity="0.7" />
+
+  <!-- High Himalayan Crest Thin Crescent Moon -->
+  <path d="M848,42 A12,12 0 0,0 860,30 A10,10 0 1,1 848,42 Z" fill="#FAF8F5" fill-opacity="0.9" />
+
+  <!-- ======================================================================
+       5. DRIFTING HIGH HIMALAYAN CLOUDS & FOG BANKS (LAYER 1 - HIGH CIRRUS)
+       Looping smoothly left-to-right across the high mountain sky
+       ====================================================================== -->
+  <g id="driftingHighClouds">
+    <animateTransform
+      attributeName="transform"
+      type="translate"
+      from="-900, 0"
+      to="0, 0"
+      dur="48s"
+      repeatCount="indefinite"
+    />
+    <!-- Segment 1 (Base 0 to 900) -->
+    <g opacity="0.45">
+      <!-- High Cirrus Cloud 1 -->
+      <path d="M50,42 Q90,30 145,36 Q180,24 220,32 Q255,42 280,40 Q225,52 145,48 Q90,54 50,42 Z" fill="#FAF8F5" fill-opacity="0.3" />
+      <path d="M110,34 Q145,24 185,30 Q215,36 235,36 Q195,44 140,40 Z" fill="#CAD4CF" fill-opacity="0.35" />
+
+      <!-- High Cirrus Cloud 2 -->
+      <path d="M370,38 Q420,26 475,32 Q515,22 560,30 Q600,38 625,38 Q565,50 480,44 Q420,48 370,38 Z" fill="#FAF8F5" fill-opacity="0.25" />
+
+      <!-- High Cirrus Cloud 3 -->
+      <path d="M670,32 Q715,20 765,26 Q805,18 845,24 Q875,32 900,32 Q850,42 770,38 Q715,44 670,32 Z" fill="#CAD4CF" fill-opacity="0.3" />
+    </g>
+    <!-- Segment 2 (Identical wrap +900 to ensure 100% seamless loop) -->
+    <g opacity="0.45">
+      <path d="M950,42 Q990,30 1045,36 Q1080,24 1120,32 Q1155,42 1180,40 Q1125,52 1045,48 Q990,54 950,42 Z" fill="#FAF8F5" fill-opacity="0.3" />
+      <path d="M1010,34 Q1045,24 1085,30 Q1115,36 1135,36 Q1095,44 1040,40 Z" fill="#CAD4CF" fill-opacity="0.35" />
+
+      <path d="M1270,38 Q1320,26 1375,32 Q1415,22 1460,30 Q1500,38 1525,38 Q1465,50 1380,44 Q1320,48 1270,38 Z" fill="#FAF8F5" fill-opacity="0.25" />
+
+      <path d="M1570,32 Q1615,20 1665,26 Q1705,18 1745,24 Q1775,32 1800,32 Q1750,42 1670,38 Q1615,44 1570,32 Z" fill="#CAD4CF" fill-opacity="0.3" />
+    </g>
+  </g>
+
+  <!-- ======================================================================
+       FAR DISTANT GLACIATED HIMALAYAN PEAKS (Kinner Kailash Range)
+       ====================================================================== -->
+  <!-- Glaciated Peak 1 (West Shoulder) -->
+  <polygon points="20,108 95,44 165,108" fill="#5B9B82" fill-opacity="0.12" />
+  <polygon points="95,44 125,72 95,108" fill="#FAF8F5" fill-opacity="0.08" />
+  <path d="M10,112 L95,44 L175,106" class="road-mist" stroke-width="1.6" />
+  <!-- Snow Arête & Couloir Lines -->
+  <path d="M95,44 L102,74 L112,106" class="road-mist" stroke-width="1.2" stroke-dasharray="4,2" />
+  <path d="M72,62 L80,78 L85,102" class="road-mist" stroke-width="0.8" stroke-dasharray="3,3" stroke-opacity="0.6" />
+
+  <!-- Grand Central Peak (Shivling / Kinner Horn) -->
+  <polygon points="210,112 315,22 410,112" fill="#5B9B82" fill-opacity="0.16" />
+  <polygon points="315,22 360,68 315,112" fill="#FAF8F5" fill-opacity="0.14" />
+  <!-- Sharp Knife-Edge Crest -->
+  <path d="M175,110 L315,22 L425,110" class="road-linen" stroke-width="2" />
+  <!-- Mountain Spine Arête -->
+  <path d="M315,22 L326,62 L345,95 L352,112" class="road-seafoam" stroke-width="1.5" />
+  <!-- Glacial Couloirs and Cirque Crevasses -->
+  <path d="M280,52 L290,76 L298,110" class="road-mist" stroke-width="1" stroke-dasharray="4,3" />
+  <path d="M252,76 L265,94 L272,110" class="road-mist" stroke-width="0.8" stroke-dasharray="3,2" />
+  <path d="M348,54 L375,80 L395,110" class="road-mist" stroke-width="1" stroke-dasharray="4,2" />
+
+  <!-- Col / High Pass Saddle Ridge -->
+  <path d="M425,110 Q485,92 535,112" class="road-mist" stroke-width="1.5" stroke-dasharray="5,3" />
+
+  <!-- Grand East Peak (Kinnaur Crown) -->
+  <polygon points="500,115 585,34 665,115" fill="#5B9B82" fill-opacity="0.14" />
+  <polygon points="585,34 620,72 585,115" fill="#FAF8F5" fill-opacity="0.1" />
+  <path d="M495,115 L585,34 L675,115" class="road-linen" stroke-width="1.8" />
+  <path d="M585,34 L596,72 L612,115" class="road-seafoam" stroke-width="1.4" />
+  <path d="M552,64 L562,88 L570,115" class="road-mist" stroke-width="0.9" stroke-dasharray="4,3" />
+
+  <!-- Far East Pinnacles -->
+  <polygon points="650,115 730,48 795,115" fill="#5B9B82" fill-opacity="0.1" />
+  <path d="M665,115 L730,48 L805,115" class="road-mist" stroke-width="1.5" />
+  <path d="M730,48 L742,82 L755,115" class="road-mist" stroke-width="1" stroke-dasharray="3,3" />
+  <polygon points="785,115 845,56 895,115" fill="#5B9B82" fill-opacity="0.08" />
+  <path d="M795,115 L845,56 L895,115" class="road-mist" stroke-width="1.4" />
+
+  <!-- ======================================================================
+       5. DRIFTING MOUNTAIN PASS MIST & VALLEY FOG (LAYER 2 - RIDGE MIST)
+       Drifting smoothly across the mountain col & pine forests
+       ====================================================================== -->
+  <g id="driftingRidgeMist">
+    <animateTransform
+      attributeName="transform"
+      type="translate"
+      from="-900, 0"
+      to="0, 0"
+      dur="32s"
+      repeatCount="indefinite"
+    />
+    <!-- Segment 1 -->
+    <g opacity="0.38">
+      <!-- Low Pass Mist 1 -->
+      <path d="M30,102 Q90,92 170,96 Q230,88 290,95 Q350,103 390,98 Q310,112 210,107 Q110,112 30,102 Z" fill="#CAD4CF" fill-opacity="0.3" />
+      <!-- Central Col Mist hugging saddle -->
+      <path d="M380,108 Q440,94 510,100 Q570,92 630,98 Q690,106 740,102 Q650,115 550,111 Q460,117 380,108 Z" fill="#FAF8F5" fill-opacity="0.25" />
+      <!-- East Pass Fog -->
+      <path d="M760,102 Q810,92 860,98 Q900,90 940,96 Q880,110 800,108 Z" fill="#CAD4CF" fill-opacity="0.28" />
+    </g>
+    <!-- Segment 2 (Seamless +900 Wrap) -->
+    <g opacity="0.38">
+      <path d="M930,102 Q990,92 1070,96 Q1130,88 1190,95 Q1250,103 1290,98 Q1210,112 1110,107 Q1010,112 930,102 Z" fill="#CAD4CF" fill-opacity="0.3" />
+      <path d="M1280,108 Q1340,94 1410,100 Q1470,92 1530,98 Q1590,106 1640,102 Q1550,115 1450,111 Q1360,117 1280,108 Z" fill="#FAF8F5" fill-opacity="0.25" />
+      <path d="M1660,102 Q1710,92 1760,98 Q1800,90 1840,96 Q1780,110 1700,108 Z" fill="#CAD4CF" fill-opacity="0.28" />
+    </g>
+  </g>
+
+  <!-- Atmospheric Mountain Ridge Mist Ribbon -->
+  <path d="M0,116 Q180,102 360,112 T720,108 T900,114" class="road-mist" stroke-width="1.2" stroke-opacity="0.4" stroke-dasharray="8,4" />
+
+  <!-- ======================================================================
+       MIDGROUND ALPINE RIDGES & PINE CONIFER FORESTS
+       ====================================================================== -->
+  <!-- High Ridge Spur Left -->
+  <path d="M0,146 Q80,126 170,132 T310,140" class="road-seafoam" stroke-width="1.6" />
+  <polygon points="0,146 170,132 310,140 310,175 0,175" fill="#1E1B18" fill-opacity="0.55" />
+
+  <!-- Alpine Pine Tree Silhouettes along Left Ridge -->
+  <!-- Pine 1 -->
+  <path d="M42,142 L42,120 M42,120 L35,129 L38,129 L32,136 L37,136 L30,142 L54,142 L47,136 L52,136 L46,129 L49,129 Z" fill="#5B9B82" fill-opacity="0.35" class="road-seafoam" stroke-width="1" />
+  <!-- Pine 2 (Taller) -->
+  <path d="M65,138 L65,110 M65,110 L56,120 L60,120 L53,128 L58,128 L50,136 L80,136 L72,128 L77,128 L70,120 L74,120 Z" fill="#5B9B82" fill-opacity="0.45" class="road-seafoam" stroke-width="1.1" />
+  <!-- Pine 3 -->
+  <path d="M92,135 L92,116 M92,116 L85,124 L88,124 L82,130 L87,130 L81,135 L103,135 L97,130 L102,130 L96,124 L99,124 Z" fill="#5B9B82" fill-opacity="0.35" class="road-seafoam" stroke-width="1" />
+  <!-- Pine 4 -->
+  <path d="M125,133 L125,112 M125,112 L117,121 L121,121 L115,128 L120,128 L113,133 L137,133 L130,128 L135,128 L129,121 L133,121 Z" fill="#5B9B82" fill-opacity="0.4" class="road-seafoam" stroke-width="1.1" />
+  <!-- Pine 5 -->
+  <path d="M158,134 L158,120 M158,120 L152,126 L155,126 L150,131 L154,131 L149,134 L167,134 L162,131 L166,131 L161,126 L164,126 Z" fill="#5B9B82" fill-opacity="0.3" class="road-seafoam" stroke-width="0.9" />
+
+  <!-- Midground Ridge Right (Connecting Pass) -->
+  <path d="M560,138 Q670,124 770,128 T900,132" class="road-seafoam" stroke-width="1.6" />
+  <!-- Pine Silhouettes Right Ridge -->
+  <!-- Pine R1 -->
+  <path d="M620,136 L620,114 M620,114 L612,123 L616,123 L609,130 L614,130 L607,136 L633,136 L626,130 L631,130 L624,123 L628,123 Z" fill="#5B9B82" fill-opacity="0.35" class="road-seafoam" stroke-width="1" />
+  <!-- Pine R2 (Grand Himalayan Deodar) -->
+  <path d="M652,134 L652,104 M652,104 L642,116 L646,116 L639,125 L644,125 L636,134 L668,134 L660,125 L665,125 L658,116 L662,116 Z" fill="#5B9B82" fill-opacity="0.45" class="road-seafoam" stroke-width="1.2" />
+  <!-- Pine R3 -->
+  <path d="M686,132 L686,116 M686,116 L680,123 L683,123 L677,129 L681,129 L676,132 L696,132 L691,129 L695,129 L689,123 L692,123 Z" fill="#5B9B82" fill-opacity="0.35" class="road-seafoam" stroke-width="1" />
+  <!-- Pine R4 -->
+  <path d="M724,130 L724,110 M724,110 L716,119 L719,119 L713,126 L717,126 L711,130 L737,130 L731,126 L735,126 L729,119 L732,119 Z" fill="#5B9B82" fill-opacity="0.4" class="road-seafoam" stroke-width="1.1" />
+  <!-- Pine R5 -->
+  <path d="M820,132 L820,115 M820,115 L813,122 L816,122 L810,128 L814,128 L808,132 L832,132 L826,128 L830,128 L824,122 L827,122 Z" fill="#5B9B82" fill-opacity="0.35" class="road-seafoam" stroke-width="1" />
+
+  <!-- Tibetan Buddhist Lungta Prayer Flags strung across mountain saddle -->
+  <path d="M312,138 Q355,128 395,134" class="road-bedrock" stroke-width="1" stroke-opacity="0.8" />
+  <polygon points="324,135 328,135 326,142" fill="#D86B58" />
+  <polygon points="334,133 338,133 336,140" fill="#FAF8F5" />
+  <polygon points="344,132 348,132 346,139" fill="#5B9B82" />
+  <polygon points="354,132 358,132 356,139" fill="#CAD4CF" />
+  <polygon points="364,133 368,133 366,140" fill="#D86B58" />
+  <polygon points="374,134 378,134 376,141" fill="#5B9B82" />
+  <polygon points="384,135 388,135 386,142" fill="#FAF8F5" />
+
+  <!-- ======================================================================
+       UPPER ROAD SWITCHBACK & RETAINING WALL (Elev: 3,100m)
+       ====================================================================== -->
+  <!-- Upper Switchback Road Bed (from x=210 to x=600) -->
+  <polygon points="210,158 600,146 600,166 210,182" fill="#27231F" />
+  <path d="M210,158 L600,146" class="road-seafoam" stroke-width="1.6" />
+  <path d="M210,182 L600,166" class="road-seafoam" stroke-width="1.8" />
+  <!-- Upper Road Dashed Centerline with Animated Forward Flow -->
+  <path d="M225,170 L585,156" class="road-linen" stroke-width="1.6" stroke-dasharray="8,6" stroke-opacity="0.75">
+    <animate attributeName="stroke-dashoffset" from="0" to="-14" dur="1.2s" repeatCount="indefinite" />
+  </path>
+
+  <!-- Dry-Stone Masonry Retaining Wall (Upper Shelf) -->
+  <path d="M210,182 L600,166 L600,174 L210,192 Z" fill="#1E1B18" stroke="#5B9B82" stroke-width="1.2" />
+  <!-- Masonry Block Hatching -->
+  <line x1="260" y1="180" x2="260" y2="190" class="road-mist" stroke-width="0.8" stroke-opacity="0.5" />
+  <line x1="310" y1="178" x2="310" y2="188" class="road-mist" stroke-width="0.8" stroke-opacity="0.5" />
+  <line x1="360" y1="176" x2="360" y2="185" class="road-mist" stroke-width="0.8" stroke-opacity="0.5" />
+  <line x1="410" y1="174" x2="410" y2="183" class="road-mist" stroke-width="0.8" stroke-opacity="0.5" />
+  <line x1="460" y1="172" x2="460" y2="181" class="road-mist" stroke-width="0.8" stroke-opacity="0.5" />
+  <line x1="510" y1="170" x2="510" y2="178" class="road-mist" stroke-width="0.8" stroke-opacity="0.5" />
+  <line x1="560" y1="168" x2="560" y2="176" class="road-mist" stroke-width="0.8" stroke-opacity="0.5" />
+
+  <!-- Hairpin Turn at Left Edge (Ghat Road Curve) -->
+  <path d="M210,158 C150,162 135,200 185,218" class="road-seafoam" stroke-width="2" />
+  <path d="M210,182 C170,186 160,206 185,218" class="road-seafoam" stroke-width="1.5" />
+
+  <!-- Rocky Cliff Shoulder with Topographic Contours -->
+  <path d="M0,170 Q110,172 165,190 T210,215" class="road-seafoam" stroke-width="1.5" />
+  <path d="M15,185 Q95,186 150,202" class="road-mist" stroke-width="0.9" stroke-opacity="0.4" stroke-dasharray="3,3" />
+
+  <!-- ======================================================================
+       THE HRTC MOUNTAIN BUS (Himachal Road Transport Corporation)
+       Rich, real, continuous animations with SMIL animateMotion & animateTransform
+       ====================================================================== -->
+  <!-- Reference Path Definition -->
+  <path
+    id="busRoadMotionPath"
+    d="M -80,252 C 60,244 160,230 260,210 C 320,195 360,172 408,162 C 490,152 570,148 660,142 C 750,135 840,128 950,120"
+    fill="none"
+    stroke="none"
+  />
+
+  <!-- 1. Bus Motion Path: Native SVG animateMotion for 100% reliable continuous travel in all browsers & <img> tags -->
+  <g id="hrtcBus">
+    <animateMotion
+      dur="18s"
+      repeatCount="indefinite"
+      rotate="auto"
+      path="M -80,252 C 60,244 160,230 260,210 C 320,195 360,172 408,162 C 490,152 570,148 660,142 C 750,135 840,128 950,120"
+    />
+
+    <!-- Perspective Scaling: scales smoothly from 1.1 down to 0.5 as it ascends into the high pass -->
+    <g class="bus-scale-perspective">
+      <animateTransform
+        attributeName="transform"
+        type="scale"
+        values="1.1; 0.98; 0.82; 0.66; 0.5"
+        keyTimes="0; 0.28; 0.52; 0.76; 1"
+        dur="18s"
+        repeatCount="indefinite"
+      />
+
+      <!-- 2. Bus Suspension & Road Bounce: subtle vertical road shudder -->
+      <g id="busChassisBounce">
+        <animateTransform
+          attributeName="transform"
+          type="translate"
+          values="0,0; 0,-1.5; 0,0.5; 0,0"
+          dur="0.45s"
+          repeatCount="indefinite"
+          additive="sum"
+        />
+
+        <g id="hrtc-mountain-bus" transform="translate(-68, -48)">
+          <!-- Bus Shadow on Asphalt -->
+          <ellipse cx="68" cy="48" rx="68" ry="4" fill="#000000" fill-opacity="0.55" />
+
+          <!-- Bus Main Chassis Body -->
+          <!-- Lower Body / Himachal Green (Alpine Seafoam) -->
+          <rect x="6" y="16" width="124" height="26" rx="3" fill="#5B9B82" stroke="#1E1B18" stroke-width="1.8" />
+
+          <!-- Heritage Coral Accent Racing Stripe -->
+          <rect x="6" y="27" width="124" height="4" fill="#D86B58" />
+
+          <!-- Upper Cabin / Alabaster Linen Cream Roof Line -->
+          <path d="M8,16 L18,7 L122,7 L128,16 Z" fill="#FAF8F5" stroke="#1E1B18" stroke-width="1.6" />
+
+          <!-- Front Cabin Hood & Grille (Climbing forward to the right) -->
+          <!-- Front Windscreen Glass (Split Pane) -->
+          <polygon points="106,9 122,9 127,18 106,18" fill="#1E1B18" stroke="#FAF8F5" stroke-width="1" />
+          <line x1="116" y1="9" x2="117" y2="18" stroke="#FAF8F5" stroke-width="0.9" />
+
+          <!-- Side Passenger Windows (5 Classic Bus Sliders) -->
+          <rect x="14" y="10" width="14" height="9" rx="1.5" fill="#1E1B18" stroke="#CAD4CF" stroke-width="0.8" />
+          <rect x="32" y="10" width="14" height="9" rx="1.5" fill="#1E1B18" stroke="#CAD4CF" stroke-width="0.8" />
+          <rect x="50" y="10" width="14" height="9" rx="1.5" fill="#1E1B18" stroke="#CAD4CF" stroke-width="0.8" />
+          <rect x="68" y="10" width="14" height="9" rx="1.5" fill="#1E1B18" stroke="#CAD4CF" stroke-width="0.8" />
+          <rect x="86" y="10" width="14" height="9" rx="1.5" fill="#1E1B18" stroke="#CAD4CF" stroke-width="0.8" />
+
+          <!-- Passenger Silhouettes & Reflections -->
+          <circle cx="21" cy="15" r="2.2" fill="#CAD4CF" fill-opacity="0.75" />
+
+          <!-- 7. Author Varneet Singh (@the_musafir_paaji, Sikh traveler) in Window 2 / Seat 14 -->
+          <g id="varneet-seat14" cursor="pointer">
+            <title>Varneet Singh (@the_musafir_paaji) writing in seat 14</title>
+            <!-- Shoulders & Mountain Jacket -->
+            <path d="M34,19 C34.5,16.8 36,16 39,16 C42,16 43.5,16.8 44,19 Z" fill="#2D4A3E" stroke="#1E1B18" stroke-width="0.4" />
+            <!-- Face Profile -->
+            <ellipse cx="39" cy="14.8" rx="2.2" ry="2" fill="#D86B58" fill-opacity="0.35" />
+            <!-- Terracotta Turban / Dastar (#D86B58) -->
+            <path d="M36,13.6 C35.8,11.2 37.2,10.1 39,10.1 C41.2,10.1 42.4,11.2 42.2,13.6 C41.5,14.3 39.8,14.5 39,14.5 C37.8,14.5 36.5,14.2 36,13.6 Z" fill="#D86B58" stroke="#1E1B18" stroke-width="0.5" />
+            <!-- Dastar Folds & Peak Detailing -->
+            <path d="M37.2,12.2 C38.2,11.4 40.5,11.6 41.5,12.5" stroke="#FAF8F5" stroke-width="0.35" stroke-linecap="round" fill="none" opacity="0.8" />
+            <path d="M36.6,13.2 C37.8,12.5 40.2,12.7 41.2,13.5" stroke="#1E1B18" stroke-width="0.3" stroke-linecap="round" fill="none" opacity="0.5" />
+            <!-- Trimmed Beard & Mustache -->
+            <path d="M37.5,14.6 C37.5,16.5 40.5,16.5 40.5,14.6 Z" fill="#1E1B18" />
+            <!-- Spectacles (#FAF8F5 Wireframes) -->
+            <circle cx="38" cy="14" r="0.9" fill="none" stroke="#FAF8F5" stroke-width="0.4" />
+            <circle cx="40" cy="14" r="0.9" fill="none" stroke="#FAF8F5" stroke-width="0.4" />
+            <line x1="38.9" y1="14" x2="39.1" y2="14" stroke="#FAF8F5" stroke-width="0.4" />
+            <line x1="40.9" y1="14" x2="41.7" y2="13.7" stroke="#FAF8F5" stroke-width="0.35" />
+            <!-- Arm & Writing Journal / Moleskine in Hand -->
+            <path d="M35,18 L36.8,16.4 L38.2,17.4" fill="none" stroke="#FAF8F5" stroke-width="0.6" stroke-linecap="round" opacity="0.9" />
+            <rect x="34.5" y="16.2" width="3.6" height="2.6" rx="0.3" transform="rotate(-12 34.5 16.2)" fill="#FAF8F5" stroke="#1E1B18" stroke-width="0.35" />
+            <line x1="36.1" y1="16" x2="36.1" y2="18.8" stroke="#D86B58" stroke-width="0.3" />
+            <line x1="38.2" y1="15.8" x2="36.8" y2="17.2" stroke="#1E1B18" stroke-width="0.45" stroke-linecap="round" />
+          </g>
+
+          <circle cx="57" cy="15" r="2.2" fill="#D86B58" fill-opacity="0.85" />
+          <circle cx="75" cy="15" r="2.2" fill="#CAD4CF" fill-opacity="0.75" />
+          <circle cx="93" cy="15" r="2.2" fill="#FAF8F5" fill-opacity="0.85" />
+          <!-- Driver Silhouette -->
+          <circle cx="112" cy="14" r="2.4" fill="#FAF8F5" fill-opacity="0.9" />
+
+          <!-- Destination Indicator Board above Windscreen -->
+          <rect x="104" y="4" width="22" height="4.5" rx="1" fill="#1E1B18" stroke="#D86B58" stroke-width="0.8" />
+          <text x="115" y="7.6" class="road-text" font-size="3.2" fill="#FAF8F5" letter-spacing="0.08em">CHITKUL</text>
+
+          <!-- Side Livery Lettering: HRTC / HIMACHAL -->
+          <text x="68" y="24" class="road-text" font-size="4.8" fill="#FAF8F5" letter-spacing="0.16em">HRTC · HIMACHAL</text>
+          <text x="68" y="37" class="road-text" font-size="3.2" fill="#FAF8F5" letter-spacing="0.1em">STATE TRANSPORT</text>
+
+          <!-- Front Radiator Grille & Headlight -->
+          <rect x="127" y="22" width="3" height="14" rx="1" fill="#1E1B18" stroke="#CAD4CF" stroke-width="0.8" />
+          <line x1="127" y1="25" x2="130" y2="25" stroke="#CAD4CF" stroke-width="0.6" />
+          <line x1="127" y1="28" x2="130" y2="28" stroke="#CAD4CF" stroke-width="0.6" />
+          <line x1="127" y1="31" x2="130" y2="31" stroke="#CAD4CF" stroke-width="0.6" />
+
+          <!-- 6. Piercing Amber & Coral Sweeping Headlight Beams Piercing Twilight -->
+          <g class="bus-headlight-sweep">
+            <!-- Extended Far-Cutting Fog Beam -->
+            <polygon points="131,37 320,10 335,55" fill="url(#headlightBeamGlow)" opacity="0.35">
+              <animate attributeName="opacity" values="0.2; 0.5; 0.25; 0.55; 0.2" dur="2.4s" repeatCount="indefinite" />
+            </polygon>
+            <!-- Wide Atmospheric Sweeping Beam Cone -->
+            <polygon points="131,37 255,15 270,62" fill="url(#headlightBeamGlow)" />
+            <!-- Concentrated Core Beam -->
+            <polygon points="131,37 215,23 225,50" fill="#FAF8F5" fill-opacity="0.25" />
+            <!-- Upper & Lower Guiding Beams -->
+            <line x1="131" y1="37" x2="255" y2="15" stroke="#FAF8F5" stroke-width="1" stroke-opacity="0.45" stroke-dasharray="4,2" />
+            <line x1="131" y1="37" x2="270" y2="62" stroke="#D86B58" stroke-width="1.2" stroke-opacity="0.5" stroke-dasharray="5,3" />
+            <!-- Road Surface Elliptical Light Pool -->
+            <ellipse cx="205" cy="49" rx="34" ry="7.5" fill="#D86B58" fill-opacity="0.25" />
+            <ellipse cx="195" cy="47" rx="20" ry="4.5" fill="#FAF8F5" fill-opacity="0.3" />
+            <!-- Dynamic Sweeping Pulse Animation -->
+            <animate attributeName="opacity" values="0.75; 1.0; 0.7; 0.95; 0.75" dur="2.4s" repeatCount="indefinite" />
+          </g>
+
+          <!-- Bright Headlight & Amber Indicator Lens with Shimmer -->
+          <circle cx="129" cy="37" r="5" fill="url(#headlightAura)">
+            <animate attributeName="r" values="4.6; 5.6; 4.6; 5.4; 4.6" dur="1.8s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="129" cy="37" r="2.4" fill="#FAF8F5" stroke="#D86B58" stroke-width="1.2" />
+          <!-- Roof Amber Marker Light with Twilight Flicker -->
+          <circle cx="129" cy="20" r="1.6" fill="#F5A623">
+            <animate attributeName="fill" values="#F5A623; #D86B58; #F5A623" dur="1.5s" repeatCount="indefinite" />
+          </circle>
+
+          <!-- Front & Rear Heavy Mudguards & Wheel Arches -->
+          <path d="M22,42 A8,8 0 0,1 38,42" fill="#1E1B18" />
+          <path d="M98,42 A8,8 0 0,1 114,42" fill="#1E1B18" />
+
+          <!-- 3. Wheels Spinning: Front and Rear Wheels with Rotating Spokes & Hub Accents -->
+          <!-- Rear Dual Wheels -->
+          <g id="busRearWheel">
+            <!-- Static Outer Rubber Tire Rim -->
+            <circle cx="30" cy="43" r="7.5" fill="#1E1B18" stroke="#CAD4CF" stroke-width="1.4" />
+            <circle cx="30" cy="43" r="4.2" fill="#2D4A3E" stroke="#FAF8F5" stroke-width="0.7" />
+            <!-- Spinning Wheel Spokes, Rim Marks & Hub Accents -->
+            <g id="busRearWheelSpokes">
+              <animateTransform
+                attributeName="transform"
+                type="rotate"
+                from="0 30 43"
+                to="360 30 43"
+                dur="0.7s"
+                repeatCount="indefinite"
+              />
+              <!-- Spoke Lines -->
+              <line x1="30" y1="36" x2="30" y2="50" stroke="#FAF8F5" stroke-width="0.9" stroke-linecap="round" />
+              <line x1="23" y1="43" x2="37" y2="43" stroke="#FAF8F5" stroke-width="0.9" stroke-linecap="round" />
+              <line x1="25" y1="38" x2="35" y2="48" stroke="#D86B58" stroke-width="0.8" stroke-linecap="round" />
+              <line x1="25" y1="48" x2="35" y2="38" stroke="#D86B58" stroke-width="0.8" stroke-linecap="round" />
+              <!-- Rim Nut Accents -->
+              <circle cx="30" cy="39.5" r="0.7" fill="#FAF8F5" />
+              <circle cx="30" cy="46.5" r="0.7" fill="#FAF8F5" />
+              <circle cx="26.5" cy="43" r="0.7" fill="#FAF8F5" />
+              <circle cx="33.5" cy="43" r="0.7" fill="#FAF8F5" />
+            </g>
+            <!-- Heavy Center Axle Hub Cap -->
+            <circle cx="30" cy="43" r="1.8" fill="#1E1B18" stroke="#FAF8F5" stroke-width="0.6" />
+          </g>
+
+          <!-- Front Wheel -->
+          <g id="busFrontWheel">
+            <!-- Static Outer Rubber Tire Rim -->
+            <circle cx="106" cy="43" r="7.5" fill="#1E1B18" stroke="#CAD4CF" stroke-width="1.4" />
+            <circle cx="106" cy="43" r="4.2" fill="#2D4A3E" stroke="#FAF8F5" stroke-width="0.7" />
+            <!-- Spinning Wheel Spokes, Rim Marks & Hub Accents -->
+            <g id="busFrontWheelSpokes">
+              <animateTransform
+                attributeName="transform"
+                type="rotate"
+                from="0 106 43"
+                to="360 106 43"
+                dur="0.7s"
+                repeatCount="indefinite"
+              />
+              <!-- Spoke Lines -->
+              <line x1="106" y1="36" x2="106" y2="50" stroke="#FAF8F5" stroke-width="0.9" stroke-linecap="round" />
+              <line x1="99" y1="43" x2="113" y2="43" stroke="#FAF8F5" stroke-width="0.9" stroke-linecap="round" />
+              <line x1="101" y1="38" x2="111" y2="48" stroke="#D86B58" stroke-width="0.8" stroke-linecap="round" />
+              <line x1="101" y1="48" x2="111" y2="38" stroke="#D86B58" stroke-width="0.8" stroke-linecap="round" />
+              <!-- Rim Nut Accents -->
+              <circle cx="106" cy="39.5" r="0.7" fill="#FAF8F5" />
+              <circle cx="106" cy="46.5" r="0.7" fill="#FAF8F5" />
+              <circle cx="102.5" cy="43" r="0.7" fill="#FAF8F5" />
+              <circle cx="109.5" cy="43" r="0.7" fill="#FAF8F5" />
+            </g>
+            <!-- Heavy Center Axle Hub Cap -->
+            <circle cx="106" cy="43" r="1.8" fill="#1E1B18" stroke="#FAF8F5" stroke-width="0.6" />
+          </g>
+
+          <!-- Heavy Mountain Luggage Carrier Rack on Roof -->
+          <line x1="16" y1="7" x2="102" y2="7" stroke="#1E1B18" stroke-width="1.6" />
+          <line x1="16" y1="3" x2="102" y2="3" stroke="#1E1B18" stroke-width="1.2" />
+          <line x1="20" y1="7" x2="20" y2="3" stroke="#1E1B18" stroke-width="1.2" />
+          <line x1="40" y1="7" x2="40" y2="3" stroke="#1E1B18" stroke-width="1.2" />
+          <line x1="60" y1="7" x2="60" y2="3" stroke="#1E1B18" stroke-width="1.2" />
+          <line x1="80" y1="7" x2="80" y2="3" stroke="#1E1B18" stroke-width="1.2" />
+          <line x1="100" y1="7" x2="100" y2="3" stroke="#1E1B18" stroke-width="1.2" />
+
+          <!-- Loaded Baggage, Canvas Tarpaulin & Spare Tire on Roof -->
+          <!-- Green Canvas Tarpaulin Bundle -->
+          <rect x="22" y="-1" width="26" height="4.5" rx="1.5" fill="#5B9B82" stroke="#1E1B18" stroke-width="1" />
+          <!-- Terracotta Expedition Duffel -->
+          <rect x="50" y="-2" width="22" height="5.5" rx="1.5" fill="#D86B58" stroke="#1E1B18" stroke-width="1" />
+          <!-- Spare Tire on Carrier -->
+          <ellipse cx="82" cy="0.5" rx="7" ry="2.5" fill="#1E1B18" stroke="#CAD4CF" stroke-width="1" />
+          <ellipse cx="82" cy="0.5" rx="3" ry="1.2" fill="#5B9B82" />
+          <!-- Tarpaulin Lashing Cords -->
+          <line x1="24" y1="-1" x2="32" y2="3" stroke="#FAF8F5" stroke-width="0.7" />
+          <line x1="32" y1="-1" x2="40" y2="3" stroke="#FAF8F5" stroke-width="0.7" />
+          <line x1="52" y1="-2" x2="62" y2="3" stroke="#FAF8F5" stroke-width="0.7" />
+          <line x1="62" y1="-2" x2="70" y2="3" stroke="#FAF8F5" stroke-width="0.7" />
+
+          <!-- Rear Climbing Ladder -->
+          <line x1="9" y1="7" x2="9" y2="38" stroke="#CAD4CF" stroke-width="1" />
+          <line x1="6.5" y1="14" x2="11.5" y2="14" stroke="#CAD4CF" stroke-width="0.8" />
+          <line x1="6.5" y1="20" x2="11.5" y2="20" stroke="#CAD4CF" stroke-width="0.8" />
+          <line x1="6.5" y1="26" x2="11.5" y2="26" stroke="#CAD4CF" stroke-width="0.8" />
+          <line x1="6.5" y1="32" x2="11.5" y2="32" stroke="#CAD4CF" stroke-width="0.8" />
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- ======================================================================
+       FOREGROUND MOUNTAIN HIGHWAY & CRASH BARRIERS (The Long Road)
+       ====================================================================== -->
+  <!-- Main Foreground Highway Surface (sweeping from x=0, y=218 across to x=900, y=204) -->
+  <polygon points="0,218 240,202 520,196 900,204 900,280 0,280" fill="#27231F" />
+  <!-- Asphalt Upper Edge -->
+  <path d="M0,218 Q260,200 520,196 T900,204" class="road-seafoam" stroke-width="2" />
+
+  <!-- Roadside Highway Parapet Wall & Stone Boundary Markers -->
+  <path d="M0,222 Q260,204 520,200 T900,208" class="road-bedrock" stroke-width="3" stroke-opacity="0.8" />
+
+  <!-- Authentic Indian Highway Parapet Crash Stones (Hazard Pattern: Coral & Linen) -->
+  <g id="parapet-stones">
+    <rect x="25" y="210" width="10" height="9" rx="1" fill="#FAF8F5" stroke="#1E1B18" stroke-width="1" />
+    <rect x="65" y="207" width="10" height="9" rx="1" fill="#D86B58" stroke="#1E1B18" stroke-width="1" />
+    <rect x="105" y="204" width="10" height="9" rx="1" fill="#FAF8F5" stroke="#1E1B18" stroke-width="1" />
+    <rect x="145" y="202" width="10" height="9" rx="1" fill="#D86B58" stroke="#1E1B18" stroke-width="1" />
+    <rect x="185" y="200" width="10" height="9" rx="1" fill="#FAF8F5" stroke="#1E1B18" stroke-width="1" />
+    <rect x="225" y="198" width="10" height="9" rx="1" fill="#D86B58" stroke="#1E1B18" stroke-width="1" />
+    <rect x="265" y="197" width="10" height="9" rx="1" fill="#FAF8F5" stroke="#1E1B18" stroke-width="1" />
+    <rect x="305" y="196" width="10" height="9" rx="1" fill="#D86B58" stroke="#1E1B18" stroke-width="1" />
+    <rect x="590" y="196" width="10" height="9" rx="1" fill="#FAF8F5" stroke="#1E1B18" stroke-width="1" />
+    <rect x="630" y="197" width="10" height="9" rx="1" fill="#D86B58" stroke="#1E1B18" stroke-width="1" />
+    <rect x="670" y="199" width="10" height="9" rx="1" fill="#FAF8F5" stroke="#1E1B18" stroke-width="1" />
+    <rect x="710" y="201" width="10" height="9" rx="1" fill="#D86B58" stroke="#1E1B18" stroke-width="1" />
+    <rect x="750" y="203" width="10" height="9" rx="1" fill="#FAF8F5" stroke="#1E1B18" stroke-width="1" />
+  </g>
+
+  <!-- 4. Moving Road Centerline: Animated stroke-dashoffset creating continuous forward road motion -->
+  <path d="M0,248 Q260,230 520,224 T900,232" class="road-linen" stroke-width="2.5" stroke-dasharray="14,12">
+    <animate attributeName="stroke-dashoffset" from="0" to="-26" dur="0.8s" repeatCount="indefinite" />
+  </path>
+
+  <!-- Roadside Elevation & Route Markings (Chalked Road Notation) -->
+  <g transform="translate(180, 266)">
+    <text x="0" y="0" class="road-text" font-size="9" fill="#CAD4CF" fill-opacity="0.6" letter-spacing="0.12em">NH-05 · HINDUSTAN-TIBET ROAD</text>
+  </g>
+  <g transform="translate(480, 266)">
+    <text x="0" y="0" class="road-text" font-size="9" fill="#D86B58" fill-opacity="0.75" letter-spacing="0.14em">PASS ELEVATION 3,450M</text>
+  </g>
+
+  <!-- ======================================================================
+       8. AUTHENTIC INDIAN HIGHWAY CEMENT MILESTONES
+       (Mustard Yellow Arched Caps & White Concrete Bodies, with Synchronized Amber Glow)
+       ====================================================================== -->
+
+  <!-- Milestone 1: VARANASI / 0 KM (x=35, y=200) -->
+  <g id="highway-milestone-1" transform="translate(35, 200)">
+    <title>Milestone 1: VARANASI · 0 KM (NH 19)</title>
+    <!-- Base Ground Shadow -->
+    <ellipse cx="16" cy="40" rx="18" ry="4" fill="#000000" fill-opacity="0.5" />
+
+    <!-- Synchronized Amber Glow Pulse Aura as Bus Passes -->
+    <g class="milestone-glow-pulse-1">
+      <path d="M-2,14 A16,16 0 0,1 30,14 L34,40 L-2,40 Z" fill="url(#milestoneAmberAura)" opacity="0" filter="url(#amberGlowFilter)">
+        <animate attributeName="opacity" values="0; 0; 0.95; 0.95; 0; 0" keyTimes="0; 0.08; 0.115; 0.15; 0.19; 1" dur="18s" repeatCount="indefinite" />
+      </path>
+    </g>
+
+    <!-- Subtle 3D Shadow Side Bevel (Right Edge) -->
+    <path d="M28,14 A14,14 0 0,0 21,3 L25,1 A14,14 0 0,1 32,14 Z" fill="#D68A14" stroke="#1E1B18" stroke-width="0.8" />
+    <rect x="28" y="14" width="4" height="25" fill="#CAD4CF" stroke="#1E1B18" stroke-width="0.8" />
+
+    <!-- Rectangular White Cement Pillar Body (#FAF8F5) -->
+    <rect x="0" y="14" width="28" height="25" fill="#FAF8F5" stroke="#1E1B18" stroke-width="1.2" />
+
+    <!-- Semicircular Arched Dome Top in Mustard Yellow (#F5A623) -->
+    <path d="M0,14 A14,14 0 0,1 28,14 Z" fill="#F5A623" stroke="#1E1B18" stroke-width="1.2" />
+    <line x1="0" y1="14" x2="28" y2="14" stroke="#1E1B18" stroke-width="1.2" />
+
+    <!-- Bold Crisp Text -->
+    <text x="14" y="10" class="road-text" font-size="4.2" fill="#1E1B18" letter-spacing="0.06em">NH 19</text>
+    <text x="14" y="22" class="road-text" font-size="4.6" fill="#1E1B18" letter-spacing="0.04em">VARANASI</text>
+    <line x1="4" y1="25" x2="24" y2="25" stroke="#CAD4CF" stroke-width="0.6" />
+    <text x="14" y="34" class="road-text" font-size="5.2" fill="#1E1B18" letter-spacing="0.08em">0 KM</text>
+  </g>
+
+  <!-- Milestone 2: BIR / 2,310 KM (x=270, y=182) -->
+  <g id="highway-milestone-2" transform="translate(270, 182)">
+    <title>Milestone 2: BIR · 2,310 KM (NH 154)</title>
+    <!-- Base Ground Shadow -->
+    <ellipse cx="14" cy="35" rx="15" ry="3.5" fill="#000000" fill-opacity="0.45" />
+
+    <!-- Synchronized Amber Glow Pulse Aura as Bus Passes -->
+    <g class="milestone-glow-pulse-2">
+      <path d="M-2,12 A14,14 0 0,1 26,12 L30,35 L-2,35 Z" fill="url(#milestoneAmberAura)" opacity="0" filter="url(#amberGlowFilter)">
+        <animate attributeName="opacity" values="0; 0; 0.95; 0.95; 0; 0" keyTimes="0; 0.30; 0.34; 0.38; 0.42; 1" dur="18s" repeatCount="indefinite" />
+      </path>
+    </g>
+
+    <!-- Subtle 3D Shadow Side Bevel (Right Edge) -->
+    <path d="M24,12 A12,12 0 0,0 18,2 L21,0.5 A12,12 0 0,1 27.5,12 Z" fill="#D68A14" stroke="#1E1B18" stroke-width="0.8" />
+    <rect x="24" y="12" width="3.5" height="22" fill="#CAD4CF" stroke="#1E1B18" stroke-width="0.8" />
+
+    <!-- Rectangular White Cement Pillar Body (#FAF8F5) -->
+    <rect x="0" y="12" width="24" height="22" fill="#FAF8F5" stroke="#1E1B18" stroke-width="1.2" />
+
+    <!-- Semicircular Arched Dome Top in Mustard Yellow (#F5A623) -->
+    <path d="M0,12 A12,12 0 0,1 24,12 Z" fill="#F5A623" stroke="#1E1B18" stroke-width="1.2" />
+    <line x1="0" y1="12" x2="24" y2="12" stroke="#1E1B18" stroke-width="1.2" />
+
+    <!-- Bold Crisp Text -->
+    <text x="12" y="8.5" class="road-text" font-size="3.6" fill="#1E1B18" letter-spacing="0.06em">NH 154</text>
+    <text x="12" y="19" class="road-text" font-size="4.2" fill="#1E1B18" letter-spacing="0.06em">BIR</text>
+    <line x1="3" y1="21.5" x2="21" y2="21.5" stroke="#CAD4CF" stroke-width="0.5" />
+    <text x="12" y="29.5" class="road-text" font-size="4" fill="#1E1B18" letter-spacing="0.04em">2,310 KM</text>
+  </g>
+
+  <!-- Milestone 3: SHANGARH / 2,445 KM (x=530, y=176) -->
+  <g id="highway-milestone-3" transform="translate(530, 176)">
+    <title>Milestone 3: SHANGARH · 2,445 KM (NH 305)</title>
+    <!-- Base Ground Shadow -->
+    <ellipse cx="14" cy="35" rx="15" ry="3.5" fill="#000000" fill-opacity="0.45" />
+
+    <!-- Synchronized Amber Glow Pulse Aura as Bus Passes -->
+    <g class="milestone-glow-pulse-3">
+      <path d="M-2,12 A14,14 0 0,1 26,12 L30,35 L-2,35 Z" fill="url(#milestoneAmberAura)" opacity="0" filter="url(#amberGlowFilter)">
+        <animate attributeName="opacity" values="0; 0; 0.95; 0.95; 0; 0" keyTimes="0; 0.55; 0.59; 0.63; 0.67; 1" dur="18s" repeatCount="indefinite" />
+      </path>
+    </g>
+
+    <!-- Subtle 3D Shadow Side Bevel (Right Edge) -->
+    <path d="M24,12 A12,12 0 0,0 18,2 L21,0.5 A12,12 0 0,1 27.5,12 Z" fill="#D68A14" stroke="#1E1B18" stroke-width="0.8" />
+    <rect x="24" y="12" width="3.5" height="22" fill="#CAD4CF" stroke="#1E1B18" stroke-width="0.8" />
+
+    <!-- Rectangular White Cement Pillar Body (#FAF8F5) -->
+    <rect x="0" y="12" width="24" height="22" fill="#FAF8F5" stroke="#1E1B18" stroke-width="1.2" />
+
+    <!-- Semicircular Arched Dome Top in Mustard Yellow (#F5A623) -->
+    <path d="M0,12 A12,12 0 0,1 24,12 Z" fill="#F5A623" stroke="#1E1B18" stroke-width="1.2" />
+    <line x1="0" y1="12" x2="24" y2="12" stroke="#1E1B18" stroke-width="1.2" />
+
+    <!-- Bold Crisp Text -->
+    <text x="12" y="8.5" class="road-text" font-size="3.5" fill="#1E1B18" letter-spacing="0.04em">NH 305</text>
+    <text x="12" y="19" class="road-text" font-size="3.5" fill="#1E1B18" letter-spacing="0.02em">SHANGARH</text>
+    <line x1="2.5" y1="21.5" x2="21.5" y2="21.5" stroke="#CAD4CF" stroke-width="0.5" />
+    <text x="12" y="29.5" class="road-text" font-size="3.8" fill="#1E1B18" letter-spacing="0.04em">2,445 KM</text>
+  </g>
+
+  <!-- Milestone 4: CHITKUL / 2,820 KM (x=775, y=152 - Foreground Hero Stone) -->
+  <g id="highway-milestone-hero" transform="translate(775, 152)">
+    <title>Milestone 4: CHITKUL · 2,820 KM (NH 05 Foreground Hero Stone)</title>
+    <!-- Drop Shadow on Berm -->
+    <ellipse cx="50" cy="116" rx="38" ry="6" fill="#000000" fill-opacity="0.6" />
+
+    <!-- Supporting Stone Cairn & Roadside Gravel Base -->
+    <ellipse cx="32" cy="114" rx="14" ry="5.5" fill="#CAD4CF" stroke="#1E1B18" stroke-width="1.4" />
+    <ellipse cx="68" cy="115" rx="16" ry="6" fill="#5B9B82" fill-opacity="0.4" stroke="#1E1B18" stroke-width="1.4" />
+    <ellipse cx="50" cy="117" rx="20" ry="7" fill="#CAD4CF" stroke="#1E1B18" stroke-width="1.5" />
+    <ellipse cx="18" cy="115" rx="9" ry="4" fill="#5B9B82" stroke="#1E1B18" stroke-width="1.2" />
+    <ellipse cx="82" cy="116" rx="10" ry="4.5" fill="#CAD4CF" stroke="#1E1B18" stroke-width="1.2" />
+
+    <!-- Alpine Grass / Lichen Tufts at Stone Base -->
+    <path d="M12,114 Q10,106 7,103" class="road-seafoam" stroke-width="1.3" />
+    <path d="M15,114 Q17,105 20,103" class="road-seafoam" stroke-width="1.3" />
+    <path d="M88,114 Q85,106 82,104" class="road-seafoam" stroke-width="1.3" />
+    <path d="M92,114 Q95,107 98,105" class="road-seafoam" stroke-width="1.3" />
+
+    <!-- Synchronized Amber Glow Pulse Aura as Bus Passes -->
+    <g class="milestone-glow-pulse-4">
+      <path d="M10,38 A38,38 0 0,1 90,38 L98,114 L10,114 Z" fill="url(#milestoneAmberAura)" opacity="0" filter="url(#amberGlowFilter)">
+        <animate attributeName="opacity" values="0; 0; 0.95; 0.95; 0; 0" keyTimes="0; 0.79; 0.83; 0.87; 0.91; 1" dur="18s" repeatCount="indefinite" />
+      </path>
+    </g>
+
+    <!-- Subtle 3D Shadow Side Bevel (Right Edge) -->
+    <path d="M84,38 A34,34 0 0,0 68,12 L75,7 A34,34 0 0,1 92,38 Z" fill="#D68A14" stroke="#1E1B18" stroke-width="1.6" />
+    <rect x="84" y="38" width="8" height="74" fill="#CAD4CF" stroke="#1E1B18" stroke-width="1.6" />
+
+    <!-- Rectangular White Cement Pillar Body (#FAF8F5) -->
+    <rect x="16" y="38" width="68" height="74" fill="#FAF8F5" stroke="#1E1B18" stroke-width="2.2" />
+
+    <!-- Semicircular Arched Dome Top in Mustard Yellow (#F5A623) -->
+    <path d="M16,38 A34,34 0 0,1 84,38 Z" fill="#F5A623" stroke="#1E1B18" stroke-width="2.2" />
+
+    <!-- Milestone Cap Header: Highway Number -->
+    <text x="50" y="27" class="road-text" font-size="11" fill="#1E1B18" letter-spacing="0.12em">NH 05</text>
+
+    <!-- Divider Line below cap -->
+    <line x1="16" y1="38" x2="84" y2="38" stroke="#1E1B18" stroke-width="2" />
+
+    <!-- Main Title Lines -->
+    <text x="50" y="50" class="road-text" font-size="6.8" fill="#1E1B18" letter-spacing="0.08em">LETTERS FROM</text>
+    <text x="50" y="60" class="road-text" font-size="7.4" fill="#D86B58" letter-spacing="0.1em">THE LONG WAY HOME</text>
+
+    <!-- Thin Ornamental Separator -->
+    <line x1="24" y1="65" x2="76" y2="65" stroke="#CAD4CF" stroke-width="1" />
+
+    <!-- Destination & Terminal Elevation Stamp -->
+    <text x="50" y="79" class="road-text" font-size="10.5" fill="#1E1B18" letter-spacing="0.1em">CHITKUL</text>
+    <text x="50" y="93" class="road-text" font-size="9.5" fill="#D86B58" letter-spacing="0.08em">2,820 KM</text>
+    <line x1="28" y1="97" x2="72" y2="97" stroke="#5B9B82" stroke-width="0.8" stroke-dasharray="3,2" />
+    <text x="50" y="106" class="road-text" font-size="6.2" fill="#5B9B82" letter-spacing="0.06em">LAST VILLAGE · 3,450M</text>
+
+    <!-- Milestone Edge Weathering / Shadowing -->
+    <line x1="18" y1="40" x2="18" y2="110" stroke="#CAD4CF" stroke-width="1.2" stroke-opacity="0.8" />
+    <line x1="82" y1="40" x2="82" y2="110" stroke="#1E1B18" stroke-width="1.2" stroke-opacity="0.3" />
+  </g>
+
+  <!-- Linecraft Frame Border -->
+  <rect x="1" y="1" width="898" height="278" fill="none" stroke="#FAF8F5" stroke-opacity="0.12" stroke-width="2" />
+</svg>

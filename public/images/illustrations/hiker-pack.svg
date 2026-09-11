@@ -1,0 +1,102 @@
+<!--
+  License: MIT / CC0 (Public Domain)
+  Nordic Alpine Ledger Linecraft: Hiker Rucksack & Boots
+  Palette Tokens: #D86B58 (Amber), #5B9B82 (Fjord Slate), #1E1B18 / #182024 (Navy), #CAD4CF (Mist)
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" fill="none" role="img" aria-label="Vintage canvas rucksack, bedroll, trail mug, and hiking boots">
+  <defs>
+    <style>
+      .pack-amber { stroke: #D86B58; stroke-linecap: round; stroke-linejoin: round; }
+      .pack-slate { stroke: #5B9B82; stroke-linecap: round; stroke-linejoin: round; }
+      .pack-navy { stroke: #1E1B18; stroke-linecap: round; stroke-linejoin: round; }
+      .pack-mist { stroke: #CAD4CF; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <!-- Ground Line / Wooden Cabin Floorboards -->
+  <line x1="12" y1="148" x2="148" y2="148" stroke="#1E1B18" stroke-opacity="0.25" stroke-width="1.5" stroke-linecap="round" />
+  <line x1="28" y1="152" x2="132" y2="152" stroke="#CAD4CF" stroke-opacity="0.3" stroke-width="1" stroke-dasharray="4,4" />
+
+  <!-- Rolled Bedroll / Canvas Mat on top of pack -->
+  <g id="bedroll">
+    <rect x="42" y="24" width="76" height="16" rx="8" fill="#5B9B82" fill-opacity="0.14" stroke="#5B9B82" stroke-width="1.5" class="pack-slate" />
+    <!-- Straps cinching bedroll -->
+    <line x1="58" y1="24" x2="58" y2="40" class="pack-amber" stroke-width="2" />
+    <line x1="102" y1="24" x2="102" y2="40" class="pack-amber" stroke-width="2" />
+    <!-- Rolled swirl end -->
+    <ellipse cx="46" cy="32" rx="4" ry="7" fill="#CAD4CF" fill-opacity="0.3" stroke="#5B9B82" stroke-width="1.2" />
+    <path d="M46,29 Q43,32 46,35" class="pack-slate" stroke-width="1" />
+  </g>
+
+  <!-- Main Rucksack Body -->
+  <g id="pack-body">
+    <!-- Pack outline -->
+    <path d="M46,40 L114,40 L118,108 Q118,114 110,114 L50,114 Q42,114 42,108 Z" fill="#FAF8F5" stroke="#1E1B18" stroke-width="2" class="pack-navy" />
+    <!-- Flap top -->
+    <path d="M42,40 L118,40 L114,64 Q80,72 46,64 Z" fill="#5B9B82" fill-opacity="0.18" stroke="#5B9B82" stroke-width="1.5" />
+    <!-- Twin Leather Straps with Brass Buckles -->
+    <line x1="58" y1="40" x2="58" y2="108" class="pack-amber" stroke-width="2" />
+    <line x1="102" y1="40" x2="102" y2="108" class="pack-amber" stroke-width="2" />
+    <!-- Buckles -->
+    <rect x="55" y="66" width="6" height="8" rx="1" fill="#D86B58" fill-opacity="0.4" stroke="#D86B58" stroke-width="1.2" />
+    <rect x="99" y="66" width="6" height="8" rx="1" fill="#D86B58" fill-opacity="0.4" stroke="#D86B58" stroke-width="1.2" />
+
+    <!-- Center Front Utility Pocket -->
+    <rect x="62" y="78" width="36" height="30" rx="3" fill="#FFFFFF" stroke="#5B9B82" stroke-width="1.4" />
+    <!-- Pocket Flap -->
+    <path d="M62,78 L98,78 L94,88 L66,88 Z" fill="#CAD4CF" fill-opacity="0.35" stroke="#5B9B82" stroke-width="1.2" />
+    <!-- Pocket button / rivet -->
+    <circle cx="80" cy="94" r="2" fill="#D86B58" />
+
+    <!-- Diamond Leather Lash Tab (Pig Snout) -->
+    <polygon points="80,48 87,54 80,60 73,54" fill="#D86B58" fill-opacity="0.3" stroke="#D86B58" stroke-width="1.2" />
+    <line x1="77" y1="52" x2="77" y2="56" stroke="#1E1B18" stroke-width="1" />
+    <line x1="83" y1="52" x2="83" y2="56" stroke="#1E1B18" stroke-width="1" />
+  </g>
+
+  <!-- Clipped Enamel Camp Mug on Side Strap -->
+  <g id="side-mug">
+    <!-- Carabiner clip -->
+    <path d="M117,66 Q122,64 125,68 Q127,72 124,76 L120,77" class="pack-amber" stroke-width="1.5" />
+    <!-- Mug Body -->
+    <path d="M122,76 L124,96 Q124,100 128,100 L138,100 Q142,100 142,96 L144,76 Z" fill="#FFFFFF" stroke="#1E1B18" stroke-width="1.4" />
+    <ellipse cx="133" cy="76" rx="11" ry="2.5" fill="#D86B58" fill-opacity="0.2" stroke="#1E1B18" stroke-width="1.2" />
+    <!-- Handle -->
+    <path d="M143,80 Q152,80 152,87 Q152,94 142,94" class="pack-navy" stroke-width="1.3" />
+    <!-- Rim accent -->
+    <path d="M122,77 Q133,79 144,77" class="pack-amber" stroke-width="1.2" />
+  </g>
+
+  <!-- Sturdy Hiking Boots Resting on Ground -->
+  <g id="trail-boots">
+    <!-- Left Boot -->
+    <path d="M18,148 L18,128 Q22,124 28,124 L36,128 L40,132 L48,136 Q52,138 52,143 L52,148 Z" fill="#5B9B82" fill-opacity="0.2" stroke="#1E1B18" stroke-width="1.5" class="pack-navy" />
+    <!-- Lug sole -->
+    <line x1="16" y1="148" x2="54" y2="148" stroke="#1E1B18" stroke-width="2.5" stroke-linecap="square" />
+    <line x1="22" y1="148" x2="22" y2="145" stroke="#1E1B18" stroke-width="1.5" />
+    <line x1="30" y1="148" x2="30" y2="145" stroke="#1E1B18" stroke-width="1.5" />
+    <line x1="38" y1="148" x2="38" y2="145" stroke="#1E1B18" stroke-width="1.5" />
+    <line x1="46" y1="148" x2="46" y2="145" stroke="#1E1B18" stroke-width="1.5" />
+    <!-- Boot Laces (Amber) -->
+    <path d="M26,128 L34,132 M27,132 L35,136 M28,136 L36,140" class="pack-amber" stroke-width="1.2" />
+
+    <!-- Right Boot (Angled slightly) -->
+    <path d="M46,148 L48,126 Q52,122 58,123 L65,127 L70,131 L80,136 Q84,138 84,143 L84,148 Z" fill="#D86B58" fill-opacity="0.15" stroke="#1E1B18" stroke-width="1.5" class="pack-navy" />
+    <!-- Lug sole -->
+    <line x1="44" y1="148" x2="86" y2="148" stroke="#1E1B18" stroke-width="2.5" stroke-linecap="square" />
+    <line x1="52" y1="148" x2="52" y2="145" stroke="#1E1B18" stroke-width="1.5" />
+    <line x1="62" y1="148" x2="62" y2="145" stroke="#1E1B18" stroke-width="1.5" />
+    <line x1="72" y1="148" x2="72" y2="145" stroke="#1E1B18" stroke-width="1.5" />
+    <line x1="80" y1="148" x2="80" y2="145" stroke="#1E1B18" stroke-width="1.5" />
+    <!-- Boot Laces -->
+    <path d="M55,127 L64,131 M57,131 L65,135 M59,136 L67,140" class="pack-amber" stroke-width="1.2" />
+  </g>
+
+  <!-- Walking Pole leaning on the pack -->
+  <line x1="28" y1="20" x2="42" y2="146" class="pack-slate" stroke-width="2" />
+  <!-- Pole grip -->
+  <line x1="28" y1="20" x2="31" y2="44" class="pack-amber" stroke-width="3.5" stroke-linecap="round" />
+  <circle cx="28" cy="18" r="2.5" fill="#D86B58" />
+  <!-- Basket -->
+  <ellipse cx="41" cy="136" rx="4" ry="1.5" fill="#1E1B18" />
+</svg>

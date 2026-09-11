@@ -55,7 +55,7 @@ const dmCheckoutUrl = `https://ig.me/m/the_musafir_paaji?text=${encodeURICompone
   <div class="section-light">
     <article class="content-narrow">
       <div>
-        <a href="/journal" class="eyebrow hero-enter hero-delay-1" style="margin-bottom: 12px; display: inline-block;">
+        <a href="/journal" class="eyebrow hero-enter hero-delay-1" style="margin-bottom: 12px; display: inline-flex; align-items: center; min-height: 44px;">
           ← Back to Journeys
         </a>
         <h1 class="display-title hero-enter hero-delay-2" style="margin-top: 4px; margin-bottom: 8px;">
@@ -84,7 +84,7 @@ const dmCheckoutUrl = `https://ig.me/m/the_musafir_paaji?text=${encodeURICompone
       </div>
 
       {entry.data.images && entry.data.images.length > 0 && (
-        <div class="hero-enter hero-delay-3" style="overflow: hidden; border-radius: 16px; margin: 24px 0 16px; box-shadow: 0 16px 36px -12px rgba(15, 61, 48, 0.2);">
+        <div class="hero-enter hero-delay-3" style="overflow: hidden; border-radius: var(--radius-sharp); border: 2px solid var(--border-on-light); margin: 24px 0 16px; box-shadow: 4px 4px 0px rgba(24, 34, 30, 0.1);">
           <img
             src={entry.data.images[0]}
             alt={entry.data.title}
@@ -94,7 +94,7 @@ const dmCheckoutUrl = `https://ig.me/m/the_musafir_paaji?text=${encodeURICompone
         </div>
       )}
 
-      {/* Dispatch Meta Strip */}
+      {/* Dispatch Meta Strip (Brutalist Ledger Grid) */}
       {travelFormat && (
         <div class="blog-dispatch-meta reveal-on-scroll">
           <div class="dispatch-meta-cell">
@@ -143,13 +143,13 @@ const dmCheckoutUrl = `https://ig.me/m/the_musafir_paaji?text=${encodeURICompone
       {entry.data.images && entry.data.images.length > 1 && (
         <div class="prose-gallery-grid" style="margin-top: 32px;">
           {entry.data.images.slice(1).map((img, i) => (
-            <div class={`reveal-on-scroll stagger-${(i % 3) + 1}`} style="overflow: hidden; border-radius: 12px; box-shadow: 0 10px 24px -8px rgba(15, 61, 48, 0.15);">
+            <div class={`reveal-on-scroll stagger-${(i % 3) + 1}`} style="overflow: hidden; border-radius: var(--radius-sharp); border: 1.5px solid var(--border-on-light); box-shadow: 3px 3px 0px rgba(24, 34, 30, 0.08);">
               <img
                 src={img}
                 alt={`${entry.data.title} gallery photo ${i + 2}`}
                 loading="lazy"
                 style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);"
-                onmouseover="this.style.transform='scale(1.05)'"
+                onmouseover="this.style.transform='scale(1.04)'"
                 onmouseout="this.style.transform='scale(1)'"
               />
             </div>
@@ -173,22 +173,23 @@ const dmCheckoutUrl = `https://ig.me/m/the_musafir_paaji?text=${encodeURICompone
             target="_blank"
             rel="noopener noreferrer"
             class="btn-accent"
+            style="min-height: 44px; display: inline-flex; align-items: center; justify-content: center;"
           >
             Get Dispatches on Substack <span class="arrow-spring">↗</span>
           </a>
           <a
             href="/journal"
             class="accent-link"
-            style="color: var(--text-dark-primary); font-size: 14px; font-weight: 500;"
+            style="color: var(--text-dark-primary); font-size: 14px; font-weight: 500; min-height: 44px; display: inline-flex; align-items: center;"
           >
-            Explore All Journeys <span class="arrow-spring">→</span>
+            Explore All Letters <span class="arrow-spring">→</span>
           </a>
           <a
             href={dmCheckoutUrl}
             target="_blank"
             rel="noopener noreferrer"
             class="accent-link"
-            style="color: var(--accent-sage); font-size: 14px; font-weight: 500;"
+            style="color: var(--accent-sage); font-size: 14px; font-weight: 500; min-height: 44px; display: inline-flex; align-items: center;"
           >
             Ask for Route Notes / GPX via DM <span class="arrow-spring">↗</span>
           </a>
@@ -202,20 +203,22 @@ const dmCheckoutUrl = `https://ig.me/m/the_musafir_paaji?text=${encodeURICompone
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(14, 46, 37, 0.06);
+      background: var(--bg-light-surface);
       border: 1px solid var(--border-on-light);
       color: var(--text-light-primary);
-      font-size: 12px;
-      font-weight: 600;
-      padding: 3px 10px;
-      border-radius: 999px;
-      letter-spacing: 0.02em;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: var(--radius-sharp);
+      letter-spacing: 0.04em;
     }
 
     .companion-dot {
       width: 6px;
       height: 6px;
-      border-radius: 50%;
+      border-radius: 0px;
       background: var(--accent-terracotta);
     }
 
@@ -224,11 +227,11 @@ const dmCheckoutUrl = `https://ig.me/m/the_musafir_paaji?text=${encodeURICompone
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
       gap: 12px;
       background: #ffffff;
-      border: 1px solid var(--border-on-light);
-      border-radius: 12px;
-      padding: 14px 18px;
+      border: 2px solid var(--border-on-light);
+      border-radius: var(--radius-sharp);
+      padding: 16px 20px;
       margin: 20px 0 28px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+      box-shadow: 4px 4px 0px rgba(24, 34, 30, 0.08);
     }
 
     .dispatch-meta-cell {
@@ -238,16 +241,18 @@ const dmCheckoutUrl = `https://ig.me/m/the_musafir_paaji?text=${encodeURICompone
     }
 
     .meta-cell-label {
-      font-size: 11px;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       color: var(--text-light-muted);
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .meta-cell-val {
-      font-size: 13.5px;
-      font-weight: 600;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
       color: var(--text-light-primary);
     }
 
@@ -263,7 +268,7 @@ const dmCheckoutUrl = `https://ig.me/m/the_musafir_paaji?text=${encodeURICompone
     .raw-diaries-dispatch-link:hover {
       text-decoration: underline;
       text-underline-offset: 3px;
-      color: #a84724;
+      color: var(--accent-terracotta-hover, #9e3e1a);
     }
 
     .raw-diaries-dispatch-link .pill-ext-arrow {

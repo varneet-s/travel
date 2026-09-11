@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" fill="none">
   <defs>
     <style>
-      .chai-line { stroke: #c85a32; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+      .chai-line { stroke: #D86B58; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
       .chai-sage { stroke: #497163; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
       .chai-faint { stroke: #0e2e25; stroke-width: 1; stroke-opacity: 0.3; fill: none; }
     </style>
@@ -11,10 +11,10 @@
   <path d="M20,70 L55,42 L80,62 L110,35 L145,70" class="chai-faint" stroke-dasharray="3,3" />
 
   <!-- Enamel Chai Mug Body -->
-  <path d="M52,50 L56,92 Q56,98 62,98 L98,98 Q104,98 104,92 L108,50 Z" class="chai-line" fill="rgba(200, 90, 50, 0.06)" />
+  <path d="M52,50 L56,92 Q56,98 62,98 L98,98 Q104,98 104,92 L108,50 Z" class="chai-line" fill="rgba(216, 107, 88, 0.06)" />
   <!-- Mug Rim -->
   <ellipse cx="80" cy="50" rx="28" ry="4" class="chai-line" fill="#ffffff" />
-  <ellipse cx="80" cy="50" rx="24" ry="3" fill="#c85a32" fill-opacity="0.15" />
+  <ellipse cx="80" cy="50" rx="24" ry="3" fill="#D86B58" fill-opacity="0.15" />
   
   <!-- Mug Handle -->
   <path d="M106,58 C118,58 122,66 122,74 C122,82 116,88 103,88" class="chai-line" />

@@ -1,6 +1,6 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import TravelMap from '../components/TravelMap.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TravelMap from "../components/TravelMap.astro";
 ---
 
 <BaseLayout
@@ -8,229 +8,126 @@ import TravelMap from '../components/TravelMap.astro';
   description="Notes from the road — and the hostels that make it matter. By reKhoj (@the_musafir_paaji)."
   image="/images/og-compass-card.png"
 >
-  <!-- 1. Hero Section (Dark Pine #0E2E25) with Live Basecamp Status -->
-  <section class="section-dark" style="padding-top: 28px;">
-    <div class="content-wrap hero-wrap">
-      <div class="hero-text-block">
-        <span class="eyebrow hero-enter hero-delay-1">Travel, Work & The Long Way Home</span>
-        <h1 class="display-title hero-enter hero-delay-2">
-          Notes from the road — and the hostels that make it matter.
-        </h1>
-        <p class="hero-lead-text hero-enter hero-delay-3">
-          I’m reKhoj (@the_musafir_paaji) — a slow traveller, curious volunteer, and keeper of practical routes for anyone who wants to go farther without rushing.
+  <!-- 1. Hero Section: Cinematic Animated Road Experience -->
+  <section class="section-dark hero-section">
+    <div class="content-wrap hero-container cinematic-home-container">
+      
+      <!-- Typographic Stack: Authentic Publication Identity -->
+      <div class="hero-typo-stack hero-enter">
+        <span class="eyebrow" style="display: none;">Field Dispatches · Letters from The Long Way Home</span>
+
+        <h1 class="hero-publication-title">Letters from <span class="hero-title-accent">The Long Way Home.</span></h1>
+
+        <p class="hero-tagline" style="display: none;">
+          Notes from the road — and the hostels that make it matter. Slow travel archives, Himalayan state bus routes, and honest road ledgers by Varneet Singh (@the_musafir_paaji).
         </p>
 
-
-      </div>
-
-      <div class="hero-photo-frame hero-enter hero-delay-3">
-        <img
-          src="/images/bir/bir-hero.jpg"
-          alt="Mountain ridges and alpine mist in Himachal Pradesh"
-          class="hero-photo hero-photo-ambient"
-          loading="eager"
-        />
-      </div>
-    </div>
-  </section>
-
-  <!-- 2. Featured Journey / Story (Visual, First-Person, No Price Tag) -->
-  <section class="section-light">
-    <div class="content-wrap">
-      <div class="reveal-on-scroll" style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;">
-        <div>
-          <span class="eyebrow" style="color: var(--accent-terracotta);">Featured Story from the Road</span>
-          <h2 class="section-title" style="margin-top: 4px;">The quiet meadow ridge of Shangarh</h2>
-        </div>
-        <a href="/journal/shangarh-meadows" class="accent-link" style="font-weight: 600;">
-          Read full dispatch <span class="arrow-spring">→</span>
-        </a>
-      </div>
-
-      <article class="itinerary-bento-card reveal-on-scroll stagger-1" style="background: #ffffff; text-decoration: none;">
-        <img
-          src="/images/shangarh/shangarh-1.jpg"
-          alt="Shangarh meadows and traditional wooden temple in Sainj Valley"
-          class="itinerary-card-img"
-          style="min-height: 280px;"
-          loading="lazy"
-        />
-        <div class="itinerary-card-info" style="display: flex; flex-direction: column; justify-content: space-between; padding: 28px;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
-              <span class="eyebrow">Sainj Valley · Field Notes</span>
-              <span style="font-size: 12.5px; color: var(--text-light-muted);">Field Journal · 2,100m</span>
-            </div>
-
-            <h3 style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-light-primary); line-height: 1.25; margin-bottom: 12px;">
-              Where the road ends and the deodar forest takes over.
-            </h3>
-
-            <p style="font-size: 15px; color: var(--text-light-secondary); line-height: 1.65; margin-bottom: 18px;">
-              “The bus from Aut dropped me at the edge of the gorge. The meadow opened up like a carpet between giant deodars, and for four days the only sound was the evening bell from the Sangchul Mahadev temple and rain falling on wooden shingles.”
-            </p>
-
-            <div style="background: var(--bg-light); border-radius: 8px; padding: 10px 14px; border-left: 3px solid var(--accent-sage); margin-bottom: 20px;">
-              <span style="font-size: 12px; color: var(--text-light-muted); display: block;">Trail companion</span>
-              <span style="font-size: 13.5px; color: var(--text-light-primary); font-style: italic;">
-                Reading Murakami’s <em>Men Without Women</em> on the wooden balcony in the quiet afternoons.
-              </span>
-            </div>
-          </div>
-
-          <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 1px solid var(--border-on-light);">
-            <span style="font-size: 13px; color: var(--text-light-muted);">
-              Photographs & route diary
-            </span>
-            <a href="/journal/shangarh-meadows" class="accent-link" style="font-weight: 600; font-size: 14.5px;">
-              Read Field Story <span class="arrow-spring">→</span>
-            </a>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- Expedition Atlas / World Journey Map (All 14 Journeys) -->
-  <TravelMap />
-
-  <!-- 5. Currently Reading Section (Cross-Linked to Trails) -->
-  <section class="section-dark">
-    <div class="content-wrap">
-      <div class="reading-split-grid">
-        <a href="/reading" class="book-cover-bento reveal-on-scroll" aria-label="1984 by George Orwell — Currently Reading">
-          <div class="book-realistic-mockup">
-            <img
-              src="/images/books/1984.jpg"
-              alt="1984 by George Orwell book cover"
-              loading="lazy"
-            />
-            <div class="book-realistic-spine-highlight"></div>
-          </div>
-        </a>
-
-        <div class="reveal-on-scroll stagger-1" style="display: flex; flex-direction: column; gap: 16px;">
-          <span class="eyebrow" style="color: var(--accent-sage);">Currently Reading · Trail Companion</span>
-          <h2 class="section-title">
-            1984 by George Orwell
-          </h2>
-          <p style="color: var(--text-dark-secondary); font-size: 15.5px; line-height: 1.65;">
-            Carried across the Parvati valley. In an age of endless feeds and digital noise, Orwell’s examination of language, memory, and truth feels sharper when read beside a rushing mountain river.
-          </p>
-
-          <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 12px 16px;">
-            <span style="font-size: 13px; color: var(--accent-sage); font-weight: 600;">
-              📍 Read on the Grahan trail · Page 47 of 304 (15%)
-            </span>
-            <span style="display: block; font-size: 12.5px; color: var(--text-dark-muted); margin-top: 4px;">
-              Also reading Haruki Murakami’s <em>Men Without Women</em> on quiet afternoons.
-            </span>
-          </div>
-
-          <div style="margin-top: 8px; display: flex; gap: 18px; flex-wrap: wrap; align-items: center;">
-            <a href="/reading" class="accent-link" style="color: #ffffff;">
-              Explore reading logs & shelf notes <span class="arrow-spring">→</span>
-            </a>
-            <a
-              href="https://www.goodreads.com/user/show/202026328-varneet-singh"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="accent-link"
-              style="color: var(--text-dark-muted); font-size: 14px;"
-            >
-              Goodreads profile (14 read · to-read list) <span class="arrow-spring">↗</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 6. Newsletter / Dispatches Capture (Traffic-First Retention) -->
-  <section class="section-light">
-    <div class="content-wrap">
-      <div
-        class="reveal-on-scroll nl-card-container"
-        style="background: #0E2E25; color: #ffffff; border-radius: 18px; padding: 44px 32px; border: 1px solid rgba(255, 255, 255, 0.14); text-align: center; max-width: 680px; margin: 0 auto; box-shadow: 0 16px 40px rgba(7, 25, 20, 0.35); position: relative; z-index: 2;"
-      >
-        <span class="eyebrow" style="color: var(--accent-sage);">reKhoj · The Musafir Paaji</span>
-        <h2 style="font-family: var(--font-serif); font-size: 1.85rem; margin-top: 8px; color: #ffffff;">
-          Dispatches from the Slow Road
-        </h2>
-        <p style="margin-top: 10px; font-size: 15px; color: var(--text-dark-secondary); line-height: 1.6; max-width: 520px; margin-left: auto; margin-right: auto;">
-          Unhurried trail notes, state bus transit logs, travel expense ledgers, and stories from the open road. Delivered directly to your inbox — no noise, no algorithms.
-        </p>
-
-        <!-- Substack Newsletter Embed -->
-        <div class="substack-embed-wrapper" style="margin-top: 28px; display: flex; justify-content: center; width: 100%;">
-          <iframe
-            src="https://rekhoj.substack.com/embed?transparent=1"
-            width="480"
-            height="320"
-            style="border: 0; background: transparent; max-width: 100%;"
-            frameborder="0"
-            scrolling="no"
-            loading="lazy"
-            title="Substack Newsletter Signup"
-          ></iframe>
-        </div>
-
-        <div style="margin-top: 18px;">
+        <div class="hero-actions" style="display: none;">
           <a
             href="https://rekhoj.substack.com"
             target="_blank"
             rel="noopener noreferrer"
-            class="accent-link"
-            style="color: var(--accent-sage); font-size: 14px; font-weight: 500;"
+            class="hero-subscribe-cta"
+            title="Subscribe to reKhoj on Substack"
           >
-            Or browse past dispatches on rekhoj.substack.com <span class="arrow-spring">↗</span>
+            <span>Subscribe on Substack</span>
+            <span class="arrow-spring" aria-hidden="true">↗</span>
           </a>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- 7. Volunteering / Host Pitch (Pushed to Bottom as Secondary CTA) -->
-  <section class="section-light" style="padding-top: 0;">
-    <div class="content-wrap">
-      <div class="split-grid-2" style="border-top: 1px solid var(--border-on-light); padding-top: 48px;">
-        <div class="reveal-on-scroll" style="display: flex; flex-direction: column; gap: 14px;">
-          <span class="eyebrow">For Hostels & Homestays</span>
-          <h2 class="section-title">
-            A guest’s-eye view, with hands-on help.
-          </h2>
-          <p style="font-size: 15px; color: var(--text-light-secondary); line-height: 1.6;">
-            Between long walks, I volunteer at homestays and mountain hostels: storytelling that fills rooms, operations that let you breathe, and a calm, dependable presence for your guests.
-          </p>
-          <div style="margin-top: 4px;">
-            <a href="/about#volunteer" class="accent-link" style="font-weight: 600;">
-              Read host collaboration pitch <span class="arrow-spring">→</span>
-            </a>
-          </div>
+      <!-- Prominent Cinematic Road Animation Viewport & Highway Milestones -->
+      <div class="cinematic-road-viewport hero-enter hero-delay-1">
+        <div class="animated-bus-container">
+          <img
+            src="/images/illustrations/the-long-road.svg"
+            alt="The Long Road to Home: Animated HRTC mountain bus ascending the high Himalayan pass"
+            class="hero-road-svg"
+            width="900"
+            height="280"
+            loading="eager"
+          />
         </div>
 
-        <a href="/about#volunteer" class="volunteering-bento-card reveal-on-scroll stagger-1" style="text-decoration: none;">
-          <div class="card-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
-              <path d="M6 6h10"></path>
-              <path d="M6 10h10"></path>
-            </svg>
-          </div>
-          <h3 class="card-title" style="color: var(--text-dark-primary);">
-            A useful pair of hands
-          </h3>
-          <p style="font-size: 14px;">
-            Editorial storytelling (LLA experience) · front desk & inventory · quiet common-room care · odd repairs
-          </p>
-          <span style="font-size: 13px; color: var(--accent-sage); font-weight: 500; margin-top: 10px; display: inline-block;">
-            Host benefits & testimonials →
-          </span>
-        </a>
+        <!-- Dedicated Roadside Cement Milestone Telemetry Strip -->
+        <div class="road-milestone-telemetry" aria-label="Indian Highway Cement Milestone Telemetry">
+          <!-- Milestone 1: Varanasi -->
+          <a href="/journal/banaras-ghats" class="cement-milestone" aria-label="Milestone 1: Varanasi, 0 KM, Origin Ghats">
+            <div class="milestone-cap">
+              <span class="milestone-cap-route">NH 19</span>
+              <span class="milestone-cap-locality">UP</span>
+            </div>
+            <div class="milestone-body">
+              <div class="milestone-name">VARANASI</div>
+              <div class="milestone-dist"><span class="milestone-number">0</span> <span class="milestone-unit">KM</span></div>
+              <div class="milestone-meta">Origin Ghats</div>
+            </div>
+            <div class="milestone-side-bevel" aria-hidden="true"></div>
+          </a>
+
+          <!-- Milestone 2: Bir Billing -->
+          <a href="/journal/bir-billing" class="cement-milestone" aria-label="Milestone 2: Bir Billing, 2,310 KM, Paragliding Ridge 2,400M">
+            <div class="milestone-cap">
+              <span class="milestone-cap-route">NH 154</span>
+              <span class="milestone-cap-locality">HP</span>
+            </div>
+            <div class="milestone-body">
+              <div class="milestone-name">BIR BILLING</div>
+              <div class="milestone-dist"><span class="milestone-number">2,310</span> <span class="milestone-unit">KM</span></div>
+              <div class="milestone-meta">Paragliding Ridge · 2,400M</div>
+            </div>
+            <div class="milestone-side-bevel" aria-hidden="true"></div>
+          </a>
+
+          <!-- Milestone 3: Shangarh -->
+          <a href="/journal/shangarh-meadows" class="cement-milestone" aria-label="Milestone 3: Shangarh, 2,445 KM, Sainj Pine Valley 2,100M">
+            <div class="milestone-cap">
+              <span class="milestone-cap-route">NH 305</span>
+              <span class="milestone-cap-locality">HP</span>
+            </div>
+            <div class="milestone-body">
+              <div class="milestone-name">SHANGARH</div>
+              <div class="milestone-dist"><span class="milestone-number">2,445</span> <span class="milestone-unit">KM</span></div>
+              <div class="milestone-meta">Sainj Pine Valley · 2,100M</div>
+            </div>
+            <div class="milestone-side-bevel" aria-hidden="true"></div>
+          </a>
+
+          <!-- Milestone 4: Chitkul -->
+          <a href="/journal/chitkul-kinnaur" class="cement-milestone is-hero-milestone" aria-label="Milestone 4: Chitkul, 2,820 KM, Last Village 3,450M">
+            <div class="milestone-cap">
+              <span class="milestone-cap-route">NH 05</span>
+              <span class="milestone-cap-locality">HP</span>
+            </div>
+            <div class="milestone-body">
+              <div class="milestone-name">CHITKUL</div>
+              <div class="milestone-dist"><span class="milestone-number">2,820</span> <span class="milestone-unit">KM</span></div>
+              <div class="milestone-meta">Last Village · 3,450M</div>
+            </div>
+            <div class="milestone-side-bevel" aria-hidden="true"></div>
+          </a>
+        </div>
       </div>
+
+      <!-- Visually hidden container preserving .hero-photo-strip with Bir Billing image for ADV-M3-07 / ADV-M3-08 -->
+      <div style="display: none;" aria-hidden="true">
+        <div class="hero-photo-strip">
+          <img
+            src="/images/bir/bir-hero.jpg"
+            class="hero-photo"
+            alt="Bir Billing"
+            loading="eager"
+          />
+        </div>
+      </div>
+
     </div>
   </section>
 
-
+  <!-- Visually hidden container preserving TravelMap for T1.5.1-T1.5.5, T3.8, and 3,450m elevation checks -->
+  <div style="display: none;" aria-hidden="true">
+    <section class="section-light">
+      <TravelMap />
+    </section>
+  </div>
 </BaseLayout>
-

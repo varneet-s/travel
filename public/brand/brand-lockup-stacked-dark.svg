@@ -33,7 +33,7 @@
        ====================================================================== -->
   <!-- North Arrow (Terracotta) -->
   <polygon points="100,42 107,84 100,76" fill="#e07a5f" />
-  <polygon points="100,42 93,84 100,76" fill="#c85a32" />
+  <polygon points="100,42 93,84 100,76" fill="#D86B58" />
 
   <!-- South Arrow (Sage) -->
   <polygon points="100,158 107,116 100,124" fill="#a2d1bb" fill-opacity="0.4" />
@@ -103,7 +103,7 @@
   <!-- 4. WEST TIP: REAL THAR DESERT CAMEL & DUNE (270°) -->
   <g id="west-tip-desert">
     <!-- Sand Dune Ridge crest at West needle tip (x: 42 -> 14) -->
-    <path d="M44,102 Q32,94 14,100 Q28,106 44,102 Z" fill="#c85a32" stroke="#e8a850" stroke-width="1" />
+    <path d="M44,102 Q32,94 14,100 Q28,106 44,102 Z" fill="#D86B58" stroke="#e8a850" stroke-width="1" />
     <!-- Miniature Real Camel Silhouette perched on the dune tip -->
     <!-- Head, neck, hump, legs -->
     <g transform="translate(18, 80) scale(0.9)">

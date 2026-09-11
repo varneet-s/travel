@@ -1,0 +1,233 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80" width="100%" height="100%" role="img" aria-labelledby="badge-title badge-desc">
+  <title id="badge-title">Horn OK Please - Himalayan Highway Badge</title>
+  <desc id="badge-desc">Vintage Indian highway truck art badge with dual brass musical horns, Himalayan pine peaks crown, and decorative Horn OK Please Awaz Do lettering.</desc>
+  <defs>
+    <style>
+      .line-base { stroke-linecap: round; stroke-linejoin: round; fill: none; }
+      .stroke-charcoal { stroke: #1E1B18; }
+      .stroke-terracotta { stroke: #D86B58; }
+      .stroke-mustard { stroke: #F5A623; }
+      .stroke-pine { stroke: #5B9B82; }
+      .text-ribbon { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-weight: 900; }
+      @media (prefers-reduced-motion: no-preference) {
+        .wave-1 { animation: hornWave 2.2s ease-in-out infinite; }
+        .wave-2 { animation: hornWave 2.2s ease-in-out 0.35s infinite; }
+        .wave-3 { animation: hornWave 2.2s ease-in-out 0.7s infinite; }
+        .sparkle-pulse { animation: sparkleGlow 2.8s ease-in-out infinite; }
+      }
+      @keyframes hornWave {
+        0%, 100% { opacity: 0.35; stroke-width: 1.2; }
+        50% { opacity: 1; stroke-width: 1.8; }
+      }
+      @keyframes sparkleGlow {
+        0%, 100% { opacity: 0.5; transform: scale(0.85); }
+        50% { opacity: 1; transform: scale(1.15); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .wave-1, .wave-2, .wave-3, .sparkle-pulse { animation: none !important; opacity: 1 !important; }
+      }
+    </style>
+    <linearGradient id="brassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F5A623" />
+      <stop offset="50%" stop-color="#FAF8F5" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#F5A623" />
+    </linearGradient>
+    <linearGradient id="terracottaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D86B58" />
+      <stop offset="100%" stop-color="#8A3525" />
+    </linearGradient>
+  </defs>
+  <!-- Outer Plaque Drop Shadow -->
+  <path d="M 22,16 H 84 C 92,16 97,9 105,8 H 135 C 143,9 148,16 156,16 H 218 C 225,16 230,21 230,27 V 64 C 230,71 225,76 218,76 H 22 C 15,76 10,71 10,64 V 27 C 10,21 15,16 22,16 Z" fill="#1E1B18" fill-opacity="0.18" />
+  <!-- Main Highway Badge Plate -->
+  <path d="M 21,14 H 83 C 91,14 96,7 104,6 H 136 C 144,7 149,14 157,14 H 219 C 226,14 230,19 230,25 V 63 C 230,69 226,74 219,74 H 21 C 14,74 10,69 10,63 V 25 C 10,19 14,14 21,14 Z" fill="#FAF8F5" stroke="#1E1B18" stroke-width="2" stroke-linejoin="round" />
+  <!-- Inner Framing Pinstripes -->
+  <path d="M 23,16.8 H 82 C 90,16.8 95,10.2 103,9.5 H 137 C 145,10.2 150,16.8 158,16.8 H 217 C 222,16.8 226,20.8 226,25.8 V 61.2 C 226,66.2 222,70.2 217,70.2 H 23 C 18,70.2 14,66.2 14,61.2 V 25.8 C 14,20.8 18,16.8 23,16.8 Z" fill="none" stroke="#D86B58" stroke-width="1.2" stroke-linejoin="round" />
+  <path d="M 23,16.8 H 82 C 90,16.8 95,10.2 103,9.5 H 137 C 145,10.2 150,16.8 158,16.8 H 217 C 222,16.8 226,20.8 226,25.8 V 61.2 C 226,66.2 222,70.2 217,70.2 H 23 C 18,70.2 14,66.2 14,61.2 V 25.8 C 14,20.8 18,16.8 23,16.8 Z" fill="none" stroke="#F5A623" stroke-width="0.7" stroke-dasharray="2.5 2" stroke-opacity="0.85" />
+  <!-- Corner Floral Flourishes -->
+  <g transform="translate(18,22) scale(1,1)">
+    <circle cx="0" cy="0" r="2.2" fill="#F5A623" stroke="#1E1B18" stroke-width="0.6" />
+    <path d="M 0,-2.2 C 1.2,-4.8 3.5,-4.8 4.2,-2.8 C 4.8,-0.8 2.8,1.2 0,2.2" fill="#D86B58" stroke="#1E1B18" stroke-width="0.5" />
+    <path d="M 2.2,0 C 4.8,1.2 4.8,3.5 2.8,4.2 C 0.8,4.8 -1.2,2.8 -2.2,0" fill="#5B9B82" stroke="#1E1B18" stroke-width="0.5" />
+    <circle cx="0" cy="0" r="0.8" fill="#FAF8F5" />
+  </g>
+  <g transform="translate(222,22) scale(-1,1)">
+    <circle cx="0" cy="0" r="2.2" fill="#F5A623" stroke="#1E1B18" stroke-width="0.6" />
+    <path d="M 0,-2.2 C 1.2,-4.8 3.5,-4.8 4.2,-2.8 C 4.8,-0.8 2.8,1.2 0,2.2" fill="#D86B58" stroke="#1E1B18" stroke-width="0.5" />
+    <path d="M 2.2,0 C 4.8,1.2 4.8,3.5 2.8,4.2 C 0.8,4.8 -1.2,2.8 -2.2,0" fill="#5B9B82" stroke="#1E1B18" stroke-width="0.5" />
+    <circle cx="0" cy="0" r="0.8" fill="#FAF8F5" />
+  </g>
+  <g transform="translate(18,62) scale(1,-1)">
+    <circle cx="0" cy="0" r="2.2" fill="#F5A623" stroke="#1E1B18" stroke-width="0.6" />
+    <path d="M 0,-2.2 C 1.2,-4.8 3.5,-4.8 4.2,-2.8 C 4.8,-0.8 2.8,1.2 0,2.2" fill="#D86B58" stroke="#1E1B18" stroke-width="0.5" />
+    <path d="M 2.2,0 C 4.8,1.2 4.8,3.5 2.8,4.2 C 0.8,4.8 -1.2,2.8 -2.2,0" fill="#5B9B82" stroke="#1E1B18" stroke-width="0.5" />
+    <circle cx="0" cy="0" r="0.8" fill="#FAF8F5" />
+  </g>
+  <g transform="translate(222,62) scale(-1,-1)">
+    <circle cx="0" cy="0" r="2.2" fill="#F5A623" stroke="#1E1B18" stroke-width="0.6" />
+    <path d="M 0,-2.2 C 1.2,-4.8 3.5,-4.8 4.2,-2.8 C 4.8,-0.8 2.8,1.2 0,2.2" fill="#D86B58" stroke="#1E1B18" stroke-width="0.5" />
+    <path d="M 2.2,0 C 4.8,1.2 4.8,3.5 2.8,4.2 C 0.8,4.8 -1.2,2.8 -2.2,0" fill="#5B9B82" stroke="#1E1B18" stroke-width="0.5" />
+    <circle cx="0" cy="0" r="0.8" fill="#FAF8F5" />
+  </g>
+  <!-- Highway Milestone Hazard Bar -->
+  <rect x="25" y="66" width="190" height="5" fill="#1E1B18" rx="1" />
+    <polygon points="27,71 31,66 34,66 30,71" fill="#F5A623" />
+    <polygon points="35,71 39,66 42,66 38,71" fill="#D86B58" />
+    <polygon points="43,71 47,66 50,66 46,71" fill="#F5A623" />
+    <polygon points="51,71 55,66 58,66 54,71" fill="#D86B58" />
+    <polygon points="59,71 63,66 66,66 62,71" fill="#F5A623" />
+    <polygon points="67,71 71,66 74,66 70,71" fill="#D86B58" />
+    <polygon points="75,71 79,66 82,66 78,71" fill="#F5A623" />
+    <polygon points="83,71 87,66 90,66 86,71" fill="#D86B58" />
+    <polygon points="91,71 95,66 98,66 94,71" fill="#F5A623" />
+    <polygon points="99,71 103,66 106,66 102,71" fill="#D86B58" />
+    <polygon points="107,71 111,66 114,66 110,71" fill="#F5A623" />
+    <polygon points="120,66 123,68.5 120,71 117,68.5" fill="#FAF8F5" stroke="#1E1B18" stroke-width="0.6" />
+    <polygon points="129,71 125,66 128,66 132,71" fill="#D86B58" />
+    <polygon points="137,71 133,66 136,66 140,71" fill="#F5A623" />
+    <polygon points="145,71 141,66 144,66 148,71" fill="#D86B58" />
+    <polygon points="153,71 149,66 152,66 156,71" fill="#F5A623" />
+    <polygon points="161,71 157,66 160,66 164,71" fill="#D86B58" />
+    <polygon points="169,71 165,66 168,66 172,71" fill="#F5A623" />
+    <polygon points="177,71 173,66 176,66 180,71" fill="#D86B58" />
+    <polygon points="185,71 181,66 184,66 188,71" fill="#F5A623" />
+    <polygon points="193,71 189,66 192,66 196,71" fill="#D86B58" />
+    <polygon points="201,71 197,66 200,66 204,71" fill="#F5A623" />
+    <polygon points="209,71 205,66 208,66 212,71" fill="#D86B58" />
+  <!-- Top Crown: Himalayan Peaks, Sunburst & Pines -->
+  <g id="crown-sunburst">
+    <line x1="120" y1="7" x2="120" y2="1" stroke="#F5A623" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="116" y1="7.5" x2="109" y2="2.2" stroke="#F5A623" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="124" y1="7.5" x2="131" y2="2.2" stroke="#F5A623" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="113" y1="8.5" x2="102" y2="4.2" stroke="#F5A623" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="127" y1="8.5" x2="138" y2="4.2" stroke="#F5A623" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="111" y1="10" x2="96" y2="7" stroke="#F5A623" stroke-width="1.3" stroke-linecap="round" />
+    <line x1="129" y1="10" x2="144" y2="7" stroke="#F5A623" stroke-width="1.3" stroke-linecap="round" />
+  </g>
+  <g id="crown-mountains">
+    <polygon points="106,7 98,15 114,15" fill="#5B9B82" stroke="#1E1B18" stroke-width="0.8" />
+    <polygon points="106,7 101,15 98,15" fill="#FAF8F5" stroke="#1E1B18" stroke-width="0.8" />
+    <polygon points="106,7 104,10 106,11 108,10" fill="#FAF8F5" />
+    <polygon points="134,7 126,15 142,15" fill="#2D4A3E" stroke="#1E1B18" stroke-width="0.8" />
+    <polygon points="134,7 130,15 126,15" fill="#5B9B82" stroke="#1E1B18" stroke-width="0.8" />
+    <polygon points="134,7 132,10 134,11 136,10" fill="#FAF8F5" />
+    <polygon points="120,3.5 110,15 120,15" fill="#FAF8F5" stroke="#1E1B18" stroke-width="0.9" />
+    <polygon points="120,3.5 120,15 130,15" fill="#2D4A3E" stroke="#1E1B18" stroke-width="0.9" />
+    <path d="M 120,3.5 L 115,9.5 L 117.5,10.5 L 120,8.5 L 122.5,10.5 L 125,9.5 Z" fill="#FAF8F5" stroke="#1E1B18" stroke-width="0.8" />
+  </g>
+  <!-- Deodar Cedars -->
+<g transform="translate(92,5) scale(0.85)">
+  <line x1="0" y1="8" x2="0" y2="10" stroke="#1E1B18" stroke-width="1.2" />
+  <polygon points="0,0 -3.5,4 3.5,4" fill="#2D4A3E" stroke="#1E1B18" stroke-width="0.6" />
+  <polygon points="0,2.5 -4.5,6.5 4.5,6.5" fill="#5B9B82" stroke="#1E1B18" stroke-width="0.6" />
+  <polygon points="0,5 -5.5,9 5.5,9" fill="#2D4A3E" stroke="#1E1B18" stroke-width="0.6" />
+</g>
+<g transform="translate(148,5) scale(0.85)">
+  <line x1="0" y1="8" x2="0" y2="10" stroke="#1E1B18" stroke-width="1.2" />
+  <polygon points="0,0 -3.5,4 3.5,4" fill="#2D4A3E" stroke="#1E1B18" stroke-width="0.6" />
+  <polygon points="0,2.5 -4.5,6.5 4.5,6.5" fill="#5B9B82" stroke="#1E1B18" stroke-width="0.6" />
+  <polygon points="0,5 -5.5,9 5.5,9" fill="#2D4A3E" stroke="#1E1B18" stroke-width="0.6" />
+</g>
+  <!-- AWAZ DO Crown Ribbon -->
+  <polygon points="96,15 90,18.5 96,22 93,18.5" fill="#8A3525" stroke="#1E1B18" stroke-width="0.8" />
+  <polygon points="144,15 150,18.5 144,22 147,18.5" fill="#8A3525" stroke="#1E1B18" stroke-width="0.8" />
+  <rect x="94" y="14" width="52" height="9" rx="2" fill="url(#terracottaGrad)" stroke="#1E1B18" stroke-width="1" />
+  <rect x="95" y="15" width="50" height="7" rx="1.5" fill="none" stroke="#F5A623" stroke-width="0.6" stroke-dasharray="1 1" />
+  <text x="120" y="20.7" text-anchor="middle" fill="#FAF8F5" class="text-ribbon" font-size="5.2" letter-spacing="1.2">★ AWAZ DO ★</text>
+  <!-- Dual Brass Musical Horns -->
+  <g id="left-horn">
+    <path d="M 28,21.5 A 5.5,5.5 0 0,0 28,32.5" class="wave-1 stroke-mustard line-base" stroke-width="1.6" />
+    <path d="M 22,18.5 A 9.5,9.5 0 0,0 22,35.5" class="wave-2 stroke-terracotta line-base" stroke-width="1.5" />
+    <path d="M 16,15.5 A 13.5,13.5 0 0,0 16,38.5" class="wave-3 stroke-pine line-base" stroke-width="1.3" stroke-dasharray="2.5 2" />
+    <g class="sparkle-pulse" style="transform-origin: 19px 14px;">
+      <polygon points="19,12 20,13.8 22,14 20,14.8 19,16.5 18,14.8 16,14 18,13.8" fill="#F5A623" />
+    </g>
+    <g class="sparkle-pulse" style="transform-origin: 19px 40px;">
+      <polygon points="19,38 20,39.8 22,40 20,40.8 19,42.5 18,40.8 16,40 18,39.8" fill="#D86B58" />
+    </g>
+    <circle cx="72" cy="27" r="4.2" fill="#D86B58" stroke="#1E1B18" stroke-width="1" />
+    <circle cx="71" cy="26" r="1.5" fill="#F4A89A" />
+    <rect x="66" y="25" width="2.5" height="4" rx="0.5" fill="#1E1B18" />
+    <path d="M 48,25.5 H 66 V 28.5 H 48 Z" fill="url(#brassGrad)" stroke="#1E1B18" stroke-width="1" stroke-linejoin="round" />
+    <line x1="48" y1="26.2" x2="66" y2="26.2" stroke="#FAF8F5" stroke-width="0.6" stroke-linecap="round" />
+    <rect x="56" y="24.5" width="2.5" height="6" rx="0.5" fill="#5B9B82" stroke="#1E1B18" stroke-width="0.8" />
+    <circle cx="57.2" cy="27.5" r="0.6" fill="#FAF8F5" />
+    <path d="M 48,25.5 C 42,25.5 38,22 34,19.5 V 34.5 C 38,32 42,28.5 48,28.5 Z" fill="url(#brassGrad)" stroke="#1E1B18" stroke-width="1" stroke-linejoin="round" />
+    <ellipse cx="34" cy="27" rx="2.5" ry="7.5" fill="#F5A623" stroke="#1E1B18" stroke-width="1" />
+    <ellipse cx="33.5" cy="27" rx="1.8" ry="6" fill="#8A3525" />
+    <ellipse cx="32.8" cy="27" rx="1.1" ry="4.5" fill="#1E1B18" />
+  </g>
+  <g id="right-horn">
+    <path d="M 212,21.5 A 5.5,5.5 0 0,1 212,32.5" class="wave-1 stroke-mustard line-base" stroke-width="1.6" />
+    <path d="M 218,18.5 A 9.5,9.5 0 0,1 218,35.5" class="wave-2 stroke-terracotta line-base" stroke-width="1.5" />
+    <path d="M 224,15.5 A 13.5,13.5 0 0,1 224,38.5" class="wave-3 stroke-pine line-base" stroke-width="1.3" stroke-dasharray="2.5 2" />
+    <g class="sparkle-pulse" style="transform-origin: 221px 14px;">
+      <polygon points="221,12 222,13.8 224,14 222,14.8 221,16.5 220,14.8 218,14 220,13.8" fill="#F5A623" />
+    </g>
+    <g class="sparkle-pulse" style="transform-origin: 221px 40px;">
+      <polygon points="221,38 222,39.8 224,40 222,40.8 221,42.5 220,40.8 218,40 220,39.8" fill="#D86B58" />
+    </g>
+    <circle cx="168" cy="27" r="4.2" fill="#D86B58" stroke="#1E1B18" stroke-width="1" />
+    <circle cx="169" cy="26" r="1.5" fill="#F4A89A" />
+    <rect x="171.5" y="25" width="2.5" height="4" rx="0.5" fill="#1E1B18" />
+    <path d="M 174,25.5 H 192 V 28.5 H 174 Z" fill="url(#brassGrad)" stroke="#1E1B18" stroke-width="1" stroke-linejoin="round" />
+    <line x1="174" y1="26.2" x2="192" y2="26.2" stroke="#FAF8F5" stroke-width="0.6" stroke-linecap="round" />
+    <rect x="181.5" y="24.5" width="2.5" height="6" rx="0.5" fill="#5B9B82" stroke="#1E1B18" stroke-width="0.8" />
+    <circle cx="182.8" cy="27.5" r="0.6" fill="#FAF8F5" />
+    <path d="M 192,25.5 C 198,25.5 202,22 206,19.5 V 34.5 C 202,32 198,28.5 192,28.5 Z" fill="url(#brassGrad)" stroke="#1E1B18" stroke-width="1" stroke-linejoin="round" />
+    <ellipse cx="206" cy="27" rx="2.5" ry="7.5" fill="#F5A623" stroke="#1E1B18" stroke-width="1" />
+    <ellipse cx="206.5" cy="27" rx="1.8" ry="6" fill="#8A3525" />
+    <ellipse cx="207.2" cy="27" rx="1.1" ry="4.5" fill="#1E1B18" />
+  </g>
+  <!-- Center Roundel Medallion: OK -->
+  <polygon points="136.5,44.0 134.2,46.8 135.2,50.3 132.1,52.1 131.7,55.7 128.1,56.1 126.3,59.2 122.8,58.2 120.0,60.5 117.2,58.2 113.7,59.2 111.9,56.1 108.3,55.7 107.9,52.1 104.8,50.3 105.8,46.8 103.5,44.0 105.8,41.2 104.8,37.7 107.9,35.9 108.3,32.3 111.9,31.9 113.7,28.8 117.2,29.8 120.0,27.5 122.8,29.8 126.3,28.8 128.1,31.9 131.7,32.3 132.1,35.9 135.2,37.7 134.2,41.2" fill="#F5A623" stroke="#1E1B18" stroke-width="1.2" stroke-linejoin="round" />
+  <circle cx="120" cy="44" r="13" fill="#FAF8F5" stroke="#D86B58" stroke-width="1.2" />
+  <circle cx="120" cy="44" r="11" fill="none" stroke="#5B9B82" stroke-width="0.7" stroke-dasharray="1.5 1.5" />
+  <polygon points="120,33.5 120.8,35 122.5,35.3 121.2,36.5 121.6,38 120,37.2 118.4,38 118.8,36.5 117.5,35.3 119.2,35" fill="#D86B58" />
+  <polygon points="120,50 120.8,51.5 122.5,51.8 121.2,53 121.6,54.5 120,53.7 118.4,54.5 118.8,53 117.5,51.8 119.2,51.5" fill="#D86B58" />
+  <g transform="translate(1, 1)">
+    <path d="M 111,38.5 H 116 C 118.5,38.5 119.8,40 119.8,42.5 V 47.5 C 119.8,50 118.5,51.5 116,51.5 H 111 C 108.5,51.5 107.2,50 107.2,47.5 V 42.5 C 107.2,40 108.5,38.5 111,38.5 Z M 111.5,41.5 C 110.8,41.5 110.5,42.1 110.5,43 V 47 C 110.5,47.9 110.8,48.5 111.5,48.5 H 115.5 C 116.2,48.5 116.5,47.9 116.5,47 V 43 C 116.5,42.1 116.2,41.5 115.5,41.5 Z M 122,38.5 H 125 V 43.2 L 128.5,38.5 H 132 L 127.5,44.2 L 132.5,51.5 H 128.8 L 125,45.5 V 51.5 H 122 Z" fill="#8A3525" />
+  </g>
+  <path d="M 111,38.5 H 116 C 118.5,38.5 119.8,40 119.8,42.5 V 47.5 C 119.8,50 118.5,51.5 116,51.5 H 111 C 108.5,51.5 107.2,50 107.2,47.5 V 42.5 C 107.2,40 108.5,38.5 111,38.5 Z M 111.5,41.5 C 110.8,41.5 110.5,42.1 110.5,43 V 47 C 110.5,47.9 110.8,48.5 111.5,48.5 H 115.5 C 116.2,48.5 116.5,47.9 116.5,47 V 43 C 116.5,42.1 116.2,41.5 115.5,41.5 Z M 122,38.5 H 125 V 43.2 L 128.5,38.5 H 132 L 127.5,44.2 L 132.5,51.5 H 128.8 L 125,45.5 V 51.5 H 122 Z" fill="#1E1B18" stroke="#F5A623" stroke-width="0.5" stroke-linejoin="round" />
+  <circle cx="113.5" cy="45" r="0.7" fill="#FAF8F5" />
+  <circle cx="123.5" cy="45" r="0.7" fill="#FAF8F5" />
+  <!-- Typography Drop Shadow -->
+  <g id="letters-shadow" transform="translate(1.5, 1.5)">
+    <path d="M 32,42 H 36.5 V 48.5 H 42.5 V 42 H 47 V 58 H 42.5 V 52 H 36.5 V 58 H 32 Z M 51,42 H 58 C 61,42 62.5,44 62.5,47 V 53 C 62.5,56 61,58 58,58 H 51 C 48,58 46.5,56 46.5,53 V 47 C 46.5,44 48,42 51,42 Z M 52,45.5 C 51,45.5 50.5,46.3 50.5,47.5 V 52.5 C 50.5,53.7 51,54.5 52,54.5 H 57 C 58,54.5 58.5,53.7 58.5,52.5 V 47.5 C 58.5,46.3 58,45.5 57,45.5 Z M 67,42 H 76 C 79.5,42 81.5,43.8 81.5,47.2 C 81.5,49.5 80.2,51.2 78,51.8 L 82,58 H 77 L 73.5,52.2 H 71.5 V 58 H 67 Z M 71.5,45.5 V 49 H 75.5 C 76.8,49 77.5,48.4 77.5,47.2 C 77.5,46 76.8,45.5 75.5,45.5 Z M 86,42 H 90.5 L 97,52 V 42 H 101 V 58 H 97 L 90.5,48 V 58 H 86 Z" fill="#8A3525" />
+    <path d="M 141,42 H 148.5 C 151.5,42 153,43.5 153,46.8 C 153,50 151.5,51.5 148.5,51.5 H 144.8 V 58 H 141 Z M 144.8,45.2 V 48.5 H 148.2 C 149.2,48.5 149.8,48 149.8,46.8 C 149.8,45.6 149.2,45.2 148.2,45.2 Z M 155,42 H 158.8 V 54.5 H 164.5 V 58 H 155 Z M 166.5,42 H 175.5 V 45.5 H 170.2 V 48.2 H 174.5 V 51.5 H 170.2 V 54.5 H 175.5 V 58 H 166.5 Z M 178,58 L 182.5,42 H 186.5 L 191,58 H 187.2 L 186,54 H 183 L 181.8,58 Z M 183.8,50.8 H 185.2 L 184.5,46 Z M 193,43.5 C 194.5,42.3 196.8,41.8 199,41.8 C 202.2,41.8 204,43.5 204,46.2 C 204,48.2 202.8,49.5 200.5,50.2 L 198.5,50.8 C 197.5,51.2 197,51.6 197,52.3 C 197,53.2 197.8,53.8 199.2,53.8 C 200.5,53.8 202,53.2 203.5,52.2 V 55.8 C 202,56.8 200.2,57.5 198.2,57.5 C 195,57.5 193.2,55.5 193.2,52.2 C 193.2,50 194.5,48.8 196.8,48 L 198.8,47.4 C 199.8,47 200.2,46.5 200.2,45.8 C 200.2,45 199.5,44.5 198.5,44.5 C 197.2,44.5 195.8,45.2 194.5,46.2 Z M 205.5,42 H 214.5 V 45.5 H 209.2 V 48.2 H 213.5 V 51.5 H 209.2 V 54.5 H 214.5 V 58 H 205.5 Z" fill="#8A3525" />
+  </g>
+  <!-- Typography Main Faces -->
+  <g id="letters-body">
+    <path d="M 32,42 H 36.5 V 48.5 H 42.5 V 42 H 47 V 58 H 42.5 V 52 H 36.5 V 58 H 32 Z M 51,42 H 58 C 61,42 62.5,44 62.5,47 V 53 C 62.5,56 61,58 58,58 H 51 C 48,58 46.5,56 46.5,53 V 47 C 46.5,44 48,42 51,42 Z M 52,45.5 C 51,45.5 50.5,46.3 50.5,47.5 V 52.5 C 50.5,53.7 51,54.5 52,54.5 H 57 C 58,54.5 58.5,53.7 58.5,52.5 V 47.5 C 58.5,46.3 58,45.5 57,45.5 Z M 67,42 H 76 C 79.5,42 81.5,43.8 81.5,47.2 C 81.5,49.5 80.2,51.2 78,51.8 L 82,58 H 77 L 73.5,52.2 H 71.5 V 58 H 67 Z M 71.5,45.5 V 49 H 75.5 C 76.8,49 77.5,48.4 77.5,47.2 C 77.5,46 76.8,45.5 75.5,45.5 Z M 86,42 H 90.5 L 97,52 V 42 H 101 V 58 H 97 L 90.5,48 V 58 H 86 Z" fill="#F5A623" stroke="#1E1B18" stroke-width="1.2" stroke-linejoin="round" />
+    <path d="M 141,42 H 148.5 C 151.5,42 153,43.5 153,46.8 C 153,50 151.5,51.5 148.5,51.5 H 144.8 V 58 H 141 Z M 144.8,45.2 V 48.5 H 148.2 C 149.2,48.5 149.8,48 149.8,46.8 C 149.8,45.6 149.2,45.2 148.2,45.2 Z M 155,42 H 158.8 V 54.5 H 164.5 V 58 H 155 Z M 166.5,42 H 175.5 V 45.5 H 170.2 V 48.2 H 174.5 V 51.5 H 170.2 V 54.5 H 175.5 V 58 H 166.5 Z M 178,58 L 182.5,42 H 186.5 L 191,58 H 187.2 L 186,54 H 183 L 181.8,58 Z M 183.8,50.8 H 185.2 L 184.5,46 Z M 193,43.5 C 194.5,42.3 196.8,41.8 199,41.8 C 202.2,41.8 204,43.5 204,46.2 C 204,48.2 202.8,49.5 200.5,50.2 L 198.5,50.8 C 197.5,51.2 197,51.6 197,52.3 C 197,53.2 197.8,53.8 199.2,53.8 C 200.5,53.8 202,53.2 203.5,52.2 V 55.8 C 202,56.8 200.2,57.5 198.2,57.5 C 195,57.5 193.2,55.5 193.2,52.2 C 193.2,50 194.5,48.8 196.8,48 L 198.8,47.4 C 199.8,47 200.2,46.5 200.2,45.8 C 200.2,45 199.5,44.5 198.5,44.5 C 197.2,44.5 195.8,45.2 194.5,46.2 Z M 205.5,42 H 214.5 V 45.5 H 209.2 V 48.2 H 213.5 V 51.5 H 209.2 V 54.5 H 214.5 V 58 H 205.5 Z" fill="#F5A623" stroke="#1E1B18" stroke-width="1.2" stroke-linejoin="round" />
+  </g>
+  <!-- Typography Painted Inline Highlights -->
+  <g id="letters-inline" stroke="#FAF8F5" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <line x1="34.2" y1="44" x2="34.2" y2="56" />
+    <line x1="34.2" y1="50.2" x2="44.8" y2="50.2" />
+    <line x1="44.8" y1="44" x2="44.8" y2="56" />
+    <path d="M 51,43.8 H 58 C 59.8,43.8 60.8,45 60.8,47 V 53 C 60.8,55 59.8,56.2 58,56.2 H 51 C 49.2,56.2 48.2,55 48.2,53 V 47 C 48.2,45 49.2,43.8 51,43.8 Z" stroke-dasharray="2 2" stroke-width="0.5" />
+    <line x1="69.2" y1="44" x2="69.2" y2="56" />
+    <path d="M 69.2,43.8 H 75.5 C 77.5,43.8 79,44.8 79,47 C 79,49 77.5,50.2 75.5,50.2 H 69.2" />
+    <line x1="74.5" y1="51" x2="80.5" y2="56.5" />
+    <line x1="88.2" y1="44" x2="88.2" y2="56" />
+    <line x1="89" y1="45" x2="98.5" y2="55" />
+    <line x1="99" y1="44" x2="99" y2="56" />
+    <line x1="143" y1="44" x2="143" y2="56" />
+    <path d="M 143,43.8 H 148 C 150,43.8 151,44.8 151,46.8 C 151,48.8 150,49.8 148,49.8 H 143" />
+    <line x1="157" y1="44" x2="157" y2="56" />
+    <line x1="157" y1="56.2" x2="163" y2="56.2" />
+    <line x1="168.5" y1="44" x2="168.5" y2="56" />
+    <line x1="168.5" y1="43.8" x2="174" y2="43.8" />
+    <line x1="168.5" y1="50" x2="173" y2="50" />
+    <line x1="168.5" y1="56.2" x2="174" y2="56.2" />
+    <line x1="180" y1="56" x2="184.5" y2="44" />
+    <line x1="184.5" y1="44" x2="189" y2="56" />
+    <line x1="182.5" y1="52.2" x2="186.5" y2="52.2" />
+    <path d="M 195,44 C 196.5,43 198,42.8 199.2,42.8 C 201.2,42.8 202.2,44 202.2,45.8 C 202.2,47.5 201.2,48.2 199,49 L 197.8,49.5 C 196,50.2 195.2,51.2 195.2,52.5 C 195.2,54.2 196.8,55.5 198.8,55.5 C 200.2,55.5 201.5,54.8 202.5,54" />
+    <line x1="207.5" y1="44" x2="207.5" y2="56" />
+    <line x1="207.5" y1="43.8" x2="213" y2="43.8" />
+    <line x1="207.5" y1="50" x2="212" y2="50" />
+    <line x1="207.5" y1="56.2" x2="213" y2="56.2" />
+  </g>
+</svg>

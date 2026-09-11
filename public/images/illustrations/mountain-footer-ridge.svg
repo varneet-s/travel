@@ -191,7 +191,7 @@
     <!-- Top Barb -->
     <polygon points="1265,100 1318,120 1265,120" fill="#e8a850" stroke="#f3c272" stroke-width="1.5" />
     <!-- Bottom Barb (Terracotta shading) -->
-    <polygon points="1265,140 1318,120 1265,120" fill="#c85a32" stroke="#f3c272" stroke-width="1.5" />
+    <polygon points="1265,140 1318,120 1265,120" fill="#D86B58" stroke="#f3c272" stroke-width="1.5" />
     <!-- Sharp Piercing Tip Spine -->
     <line x1="1255" y1="120" x2="1332" y2="120" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
 
