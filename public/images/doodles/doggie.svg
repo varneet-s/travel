@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%" fill="none" role="img" aria-label="Playful doodle dog running along mountain trail">
+  <!-- Open Doodles style: Doggie figure -->
+  <g stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Tail curved upward excitedly -->
+    <path d="M75 160 C55 120 40 85 60 70 C75 60 85 85 90 120" stroke-width="4" />
+    <path d="M60 70 Q52 65 58 55" stroke-width="2.5" opacity="0.6" />
+
+    <!-- Dog Body / Torso -->
+    <path d="M85 140 C110 130 160 130 200 145 C220 152 235 170 240 190 C190 205 140 205 95 185 C85 170 80 150 85 140 Z" fill="#0F1720" />
+
+    <!-- Dog Head & Floppy Ear -->
+    <path d="M225 140 C235 110 265 100 290 115 C310 125 325 145 325 160 C310 175 285 175 260 165 C245 160 235 150 225 140 Z" fill="#0F1720" />
+    <!-- Big Floppy Ear -->
+    <path d="M250 115 C240 100 225 110 220 135 C215 155 230 170 240 165 C245 150 248 130 250 115 Z" fill="#FFFFFF" fill-opacity="0.12" stroke-width="3.5" />
+    <!-- Snout & Nose -->
+    <circle cx="323" cy="155" r="5" fill="#FFFFFF" />
+    <path d="M305 165 Q315 168 322 162" stroke-width="2.5" />
+    <!-- Happy eye -->
+    <path d="M280 125 Q286 120 292 125" stroke-width="3" />
+
+    <!-- Front Legs galloping/stretching -->
+    <path d="M240 185 C250 215 265 245 280 265 C285 270 295 265 290 258 C275 235 260 205 255 180" fill="#0F1720" />
+    <path d="M220 185 C225 210 235 235 245 255 C248 260 256 256 252 250 C245 230 235 205 230 185" fill="#0F1720" />
+    <!-- Front paws -->
+    <path d="M280 265 Q290 268 295 262" stroke-width="3" />
+
+    <!-- Back Legs propelling forward -->
+    <path d="M110 180 C95 205 85 230 75 250 C70 256 80 262 86 255 C100 235 115 210 125 185" fill="#0F1720" />
+    <path d="M135 185 C125 210 115 235 105 252 C102 257 110 262 115 256 C128 238 140 215 145 190" fill="#0F1720" />
+
+    <!-- Trail dust / action sparks -->
+    <path d="M60 255 Q45 250 35 258" stroke-width="2.5" stroke-dasharray="3 4" opacity="0.6" />
+    <path d="M50 240 Q40 235 30 242" stroke-width="2.5" stroke-dasharray="3 4" opacity="0.6" />
+    <circle cx="345" cy="140" r="3" fill="#FFFFFF" opacity="0.5" />
+    <circle cx="360" cy="155" r="2" fill="#FFFFFF" opacity="0.4" />
+  </g>
+</svg>

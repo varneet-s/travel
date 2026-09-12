@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%" fill="none" role="img" aria-label="Playful doodle character floating in empty mountain air">
+  <!-- Open Doodles style: Chilling / Floating figure -->
+  <g stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Head / Hair -->
+    <path d="M190 120 C180 90 220 80 230 100 C245 90 260 110 250 130 C255 140 245 155 235 155" fill="#0F1720" />
+    <circle cx="215" cy="135" r="22" fill="#FFFFFF" fill-opacity="0.05" />
+    <!-- Face details -->
+    <path d="M225 130 Q228 132 230 130" stroke-width="3" />
+    <path d="M215 142 Q222 148 230 142" stroke-width="3" />
+    <!-- Ear -->
+    <path d="M200 135 Q195 140 200 145" />
+
+    <!-- Torso / Hoodie -->
+    <path d="M205 160 C170 175 160 215 165 250 C195 260 235 255 255 240 C250 200 240 170 205 160 Z" fill="#0F1720" />
+    <!-- Collar / Hood folds -->
+    <path d="M202 160 Q215 175 228 160" />
+    <path d="M212 172 L210 200" stroke-width="2.5" stroke-dasharray="4 4" />
+
+    <!-- Left Arm outstretched floating -->
+    <path d="M175 190 C140 175 110 160 85 145 C80 140 70 148 78 155 C98 170 135 200 165 215" fill="#0F1720" />
+    <!-- Left Hand fingers -->
+    <path d="M85 145 Q75 135 70 142 Q75 150 82 152" />
+
+    <!-- Right Arm leaning back relaxedly -->
+    <path d="M245 195 C280 190 310 195 330 205 C338 210 335 220 325 218 C305 215 275 215 245 225" fill="#0F1720" />
+
+    <!-- Legs floating / crossed -->
+    <!-- Left Leg -->
+    <path d="M175 250 C150 275 120 310 95 335 C88 342 98 350 108 345 C135 320 175 280 195 260" fill="#0F1720" />
+    <!-- Left Foot / Sneaker -->
+    <path d="M95 335 C80 345 75 355 90 360 C105 365 115 355 108 345" fill="#FFFFFF" fill-opacity="0.1" />
+
+    <!-- Right Leg casually crossed over -->
+    <path d="M230 250 C255 275 285 295 315 310 C325 315 328 305 320 298 C290 280 260 255 245 240" fill="#0F1720" />
+    <path d="M315 310 C330 318 345 320 345 310 C345 300 330 295 320 298" fill="#FFFFFF" fill-opacity="0.1" />
+
+    <!-- Playful Floating Sparkles / Breeze Doodles -->
+    <path d="M290 120 L295 135 L310 140 L295 145 L290 160 L285 145 L270 140 L285 135 Z" stroke-width="2" fill="#FFFFFF" fill-opacity="0.15" />
+    <path d="M60 230 Q75 225 90 232" stroke-width="2.5" stroke-dasharray="3 5" opacity="0.6" />
+    <path d="M320 150 Q335 145 350 150" stroke-width="2.5" stroke-dasharray="3 5" opacity="0.6" />
+    <circle cx="120" cy="110" r="4" fill="#FFFFFF" opacity="0.4" />
+    <circle cx="340" cy="260" r="3" fill="#FFFFFF" opacity="0.4" />
+  </g>
+</svg>

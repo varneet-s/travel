@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%" fill="none" role="img" aria-label="Playful doodle character sitting and reading an open book">
+  <!-- Open Doodles style: Reading figure -->
+  <g stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Head / Hair -->
+    <path d="M220 95 C205 70 240 60 255 75 C270 65 285 85 275 105 C285 115 275 130 260 130" fill="#0F1720" />
+    <circle cx="240" cy="105" r="22" fill="#FFFFFF" fill-opacity="0.05" />
+    <!-- Downward reading eyes & nose -->
+    <path d="M245 108 L250 115 L245 118" stroke-width="2.5" />
+    <path d="M252 110 Q256 112 258 110" stroke-width="2.5" />
+    <path d="M235 120 Q242 125 248 120" stroke-width="2.5" />
+
+    <!-- Torso bent forward absorbed in reading -->
+    <path d="M225 130 C195 145 180 190 190 230 C220 240 260 235 270 210 C270 170 260 140 225 130 Z" fill="#0F1720" />
+
+    <!-- Arms holding book -->
+    <path d="M205 165 C185 180 170 200 160 220" />
+    <path d="M255 165 C265 185 270 205 270 220" />
+
+    <!-- Oversized Open Book -->
+    <!-- Left page -->
+    <path d="M140 230 C175 220 205 225 215 235 L215 295 C195 285 165 280 130 290 Z" fill="#0F1720" stroke="#FFFFFF" stroke-width="3.5" />
+    <!-- Right page -->
+    <path d="M215 235 C225 225 255 220 290 230 L300 290 C265 280 235 285 215 295 Z" fill="#0F1720" stroke="#FFFFFF" stroke-width="3.5" />
+    <!-- Book spine -->
+    <path d="M215 235 L215 295" stroke-width="3.5" />
+    <!-- Text lines in book -->
+    <line x1="150" y1="245" x2="195" y2="240" stroke-width="2" opacity="0.6" />
+    <line x1="148" y1="258" x2="200" y2="252" stroke-width="2" opacity="0.6" />
+    <line x1="145" y1="270" x2="190" y2="265" stroke-width="2" opacity="0.6" />
+    <line x1="230" y1="240" x2="275" y2="245" stroke-width="2" opacity="0.6" />
+    <line x1="228" y1="252" x2="280" y2="258" stroke-width="2" opacity="0.6" />
+    <line x1="230" y1="265" x2="270" y2="270" stroke-width="2" opacity="0.6" />
+
+    <!-- Legs sitting crossed on floor -->
+    <!-- Left bent knee -->
+    <path d="M190 230 C150 250 110 270 95 300 C85 320 110 330 135 325 C160 320 185 300 205 285" fill="#0F1720" />
+    <path d="M95 300 C85 305 78 318 90 325 C100 330 115 328 120 320" fill="#FFFFFF" fill-opacity="0.1" />
+
+    <!-- Right bent knee tucked -->
+    <path d="M260 225 C295 245 325 270 335 300 C345 320 320 330 295 325 C270 320 245 300 225 285" fill="#0F1720" />
+    <path d="M335 300 C345 305 352 318 340 325 C330 330 315 328 310 320" fill="#FFFFFF" fill-opacity="0.1" />
+
+    <!-- Ground doodle line -->
+    <path d="M70 335 C140 330 260 330 350 335" stroke-width="2" stroke-dasharray="6 6" opacity="0.4" />
+
+    <!-- Floating contemplation dots / leaf -->
+    <path d="M275 80 C290 60 310 65 305 85 C300 100 285 95 275 80 Z" stroke-width="2" fill="#FFFFFF" fill-opacity="0.1" />
+    <circle cx="320" cy="115" r="3" fill="#FFFFFF" opacity="0.5" />
+    <circle cx="120" cy="200" r="3" fill="#FFFFFF" opacity="0.4" />
+  </g>
+</svg>

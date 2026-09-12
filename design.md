@@ -62,47 +62,53 @@ All typography is loaded exclusively from Google Fonts via standard `<link>` tag
 
 ---
 
-## 4. Spacing System & Grid Discipline
+## 4. Spacing System & Bento Grid Discipline (v2 Spacious & Fun)
 
-A strict **8px base grid** governs all padding, margins, and layout proportions:
+### The "Travel Next Level" Whitespace & Breathing Room
+* **Vast & Uncluttered**: Spacing is doubled compared to standard web layouts. Sections breathe freely with massive vertical clearance:
+  * Section Vertical Clearance: `py-32 md:py-48`
+  * Major Section Transition Clearance: `py-36 md:py-56`
+* **Zero Cramping**: Never trap typography in tight, cramped bounding boxes. The obsidian background (`#0A1118`) dominates screen real estate. If a section feels empty, leave it empty.
 
-* **Base Unit**: `8px`
-* **Standard Gap**: `16px` (`gap-4`)
-* **Scale**:
-  * `8px` (`p-2`, `gap-2`): Micro spacing between tags and icons.
-  * `16px` (`p-4`, `gap-4`): Standard component padding, list gaps, input gaps.
-  * `24px` (`p-6`, `gap-6`): Card padding and content grouping.
-  * `32px` (`p-8`, `gap-8`): Column gaps and major section subdivisions.
-  * `64px` (`py-16`): Minor section vertical clearance.
-  * `96px`–`128px` (`py-24`–`py-32`): Major chapter and section transitions.
+### The "Vita Travel" Bento Grids
+* **Strict Oversized Bento Layouts**:
+  * Default Mobile Container: `grid grid-cols-1` with `px-4 sm:px-6`
+  * Desktop Bento Expansion: `md:grid-cols-12 gap-8 md:gap-16`
+* **Big Metrics & Massive Editorial Numbers**:
+  * Each bento card is anchored with massive, muted editorial numbers (**01**, **02**, **03**, **04**) rendered in `Newsreader` (`text-6xl sm:text-8xl md:text-9xl text-white/10 select-none font-serif leading-none`).
+  * Oversized geographical data points (elevations like `2,400m`, distances, field log identifiers) create an immediate editorial hierarchy.
 
 ---
 
-## 5. Visual Assets: Do's & Don'ts
+## 5. Visual Assets & The "Fun" Factor (Illustrations)
 
 ### Do's:
-* **Bold Outline Illustrations**: UI icons and visual chapter motifs must use bold, expressive outline drawings inspired by [Pickles](https://pickles.team/), [Open Doodles](https://www.opendoodles.com/), and [Open Peeps](https://blush.design/collections/open-peeps).
-* **Authentic Mountain Photography**: Use authentic, real photography of the Himalayas and Indian trails (e.g. `/images/scenery/real-mountains-himachal.jpg`).
-* **100vh Hero Visual**: The hero mountain background must cover exactly 100% of the viewport height (`h-screen h-[100vh] min-h-[100dvh] object-cover`) without cutting off halfway, directly referencing [Woodnest](https://www.woodnest.no/).
-* **Hairline Borders**: Use delicate `1px border-white/10` to anchor content without creating heavy card visual clutter.
+* **The "Fun" Factor (Open Doodles)**: Inject bold, black/contrasting outline doodles into the whitespace to playfully disrupt the seriousness of editorial typography.
+* **Grid-Breaking Placement**: Have illustrations break the strict grid slightly—peeking out from behind a card, sitting on top of a massive editorial number, or acting as standalone floating figures in the vast whitespace between sections.
+* **Authentic Mountain Photography**: Authentic Himalayan and Indian trail photography (`/images/scenery/real-mountains-himachal.jpg`).
+* **100vh Hero Visual**: Unclipped mountain cover visual covering 100% viewport height (`h-screen h-[100vh] min-h-[100dvh] object-cover`).
+* **Hairline Borders**: Delicate `1px border-white/10` to anchor cards without heavy visual clutter.
 
 ### Don'ts:
+* **NO Desktop-Default Classes**: Default classes must always be mobile-first (`grid-cols-1`, `flex-col`, `w-full`). Desktop layouts are strictly unlocked via `md:` and `lg:` prefixes.
 * **NO Hamburger Menus**: Permanently removed. Navigation must be minimal, exposed, or omitted.
 * **NO Complex Floating Widgets**: No chat widgets, sticky dials, or jumping navigation balls.
-* **NO Generic Stock Icons**: Avoid generic Lucide/Feather icon sets where evocative bold outline doodles can tell a story.
-* **NO Horizontal Scroll Hijacking**: The site scrolls vertically with natural, predictable browser mechanics.
+* **NO Generic Stock Icons**: Avoid generic Lucide/Feather icon sets.
+* **NO Horizontal Scroll Hijacking**: The site scrolls vertically with natural browser mechanics.
 * **NO Movie Sections**: Excluded. Focus is strictly on travel dispatches and literary reading companions.
 
 ---
 
-## 6. Motion & Scroll Engine (GSAP Vertical Crossfade)
+## 6. Layout Architecture (Mobile-First)
 
-* **Natural Vertical Scroll**: The user scrolls down naturally through the page.
-* **Sticky Chronological Dispatches**:
-  * Pinned viewport container powered by GSAP ScrollTrigger (referencing [CodePen RwKZEEe](https://codepen.io/shuvosd/pen/RwKZEEe)).
-  * Four chronological Substack travel letters (Bir, Jaipur, Jodhpur, Kangra Valley).
-  * Seamless opacity crossfade: as previous letter smoothly fades out, the incoming letter crossfades in with perfect legibility and zero overlapping text collisions.
-  * Timeline scrubbing is strictly synchronized to vertical scroll distance.
+* **Mobile screens first, always**: Default Tailwind classes dictate mobile layout:
+  * Layout containers: `w-full px-4 sm:px-6`
+  * Headings: `text-3xl sm:text-4xl`
+  * Card stacks: `flex-col` / `grid-cols-1`
+* **Desktop expansion**:
+  * Grid expansion: `md:grid-cols-12 md:gap-16`
+  * Editorial typography expansion: `md:text-6xl lg:text-7xl xl:text-8xl`
+  * Card horizontal spans: `md:col-span-7`, `md:col-span-5`, `md:col-span-4`
 
 ---
 
@@ -111,12 +117,15 @@ A strict **8px base grid** governs all padding, margins, and layout proportions:
 - [x] Primary palette: `#0A1118`
 - [x] Surface palette: `#0F1720`
 - [x] Text palette: `#FFFFFF`
-- [x] Google Fonts: `Newsreader` (Headings) & `Inter` (Body/UI)
-- [x] 8px base unit with 16px gaps
+- [x] Google Fonts: `Newsreader` (Headings & Big Numbers) & `Inter` (Body/UI)
+- [x] Mobile-First defaults (`grid-cols-1`, `flex-col`, `px-4`) with `md:` expansion
+- [x] Massive vertical whitespace (`py-32 md:py-48`)
+- [x] "Vita Travel" bento grids (`grid-cols-1 md:grid-cols-12 gap-8 md:gap-16`)
+- [x] Massive muted editorial numbers (01, 02, 03, 04)
+- [x] Open Doodles illustrations breaking the grid playfully
 - [x] 100vh hero covering full viewport height with unclipped mountain imagery
 - [x] Hero title line 1: "Letters from" (`Inter`, muted)
 - [x] Hero title line 2: "The Long way Home." (`Newsreader`, `whitespace-nowrap`)
-- [x] Vertical GSAP ScrollTrigger crossfade for Bir, Jaipur, Jodhpur, and Kangra Valley
 - [x] Minimalist Reading List section with Goodreads reading shelf data
 - [x] Zero movie sections
 - [x] Zero hamburger menu code

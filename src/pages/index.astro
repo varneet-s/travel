@@ -8,7 +8,8 @@ const currentlyReading = goodreadsData.currentlyReading || [];
 const chronologicalLetters = [
   {
     id: "kangra",
-    step: "01 / 04",
+    step: "01",
+    counter: "01 / 04",
     season: "Spring 2023",
     destination: "Kangra Valley, Himachal Pradesh",
     altitude: "1,525m · Dhauladhar Foothills",
@@ -22,7 +23,8 @@ const chronologicalLetters = [
   },
   {
     id: "jaipur",
-    step: "02 / 04",
+    step: "02",
+    counter: "02 / 04",
     season: "Autumn 2023",
     destination: "Jaipur, Rajasthan",
     altitude: "431m · Aravalli Ridge",
@@ -36,7 +38,8 @@ const chronologicalLetters = [
   },
   {
     id: "jodhpur",
-    step: "03 / 04",
+    step: "03",
+    counter: "03 / 04",
     season: "Winter 2024",
     destination: "Jodhpur, Rajasthan",
     altitude: "231m · Thar Border",
@@ -50,7 +53,8 @@ const chronologicalLetters = [
   },
   {
     id: "bir-return",
-    step: "04 / 04",
+    step: "04",
+    counter: "04 / 04",
     season: "Winter 2025–2026",
     destination: "Bir Billing, Himachal Pradesh",
     altitude: "2,400m · Dhauladhar Range",
@@ -71,14 +75,14 @@ const chronologicalLetters = [
   image="/images/scenery/real-mountains-himachal.jpg"
 >
   <!-- ================================================================= -->
-  <!-- TASK 2: HERO SECTION (Exactly 100vh, Full Viewport Mountain Image)-->
+  <!-- 1. HERO SECTION (Mobile-First, 100vh Full Viewport Mountain Visual)-->
   <!-- ================================================================= -->
   <section
     id="hero"
     class="relative h-screen h-[100vh] min-h-[100dvh] w-full overflow-hidden flex items-center justify-center select-none"
     aria-label="Hero: Letters from The Long way Home."
   >
-    <!-- Background: Mountain visual covering exactly 100% of the viewport height (woodnest.no reference) -->
+    <!-- Background: Mountain visual covering exactly 100% of the viewport height -->
     <img
       src="/images/scenery/real-mountains-himachal.jpg"
       alt="Snow-covered Himalayan peaks in Himachal Pradesh"
@@ -89,34 +93,34 @@ const chronologicalLetters = [
 
     <!-- Ambient Dark Gradient Scrim: Blends delicately into #0A1118 -->
     <div
-      class="absolute inset-0 bg-gradient-to-b from-[#0A1118]/70 via-[#0A1118]/40 to-[#0A1118] pointer-events-none"
+      class="absolute inset-0 bg-gradient-to-b from-[#0A1118]/70 via-[#0A1118]/45 to-[#0A1118] pointer-events-none"
       aria-hidden="true"
     ></div>
 
-    <!-- Hero Content Container -->
-    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-      <!-- Line 1: "Letters from" (Inter, smaller text, muted opacity) -->
-      <p class="font-sans text-xs sm:text-sm md:text-base uppercase tracking-[0.25em] text-white/70 font-medium mb-3">
+    <!-- Hero Content Container (Strict Mobile-First: flex-col, px-4, text-3xl scaling to md:text-7xl lg:text-8xl) -->
+    <div class="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 text-center flex flex-col items-center">
+      <!-- Line 1: "Letters from" (Inter, muted uppercase tracking) -->
+      <p class="font-sans text-xs sm:text-sm md:text-base uppercase tracking-[0.25em] text-white/70 font-medium mb-3 sm:mb-4">
         Letters from
       </p>
 
-      <!-- Line 2: "The Long way Home." (Newsreader serif, large editorial display, single line whitespace-nowrap) -->
+      <!-- Line 2: "The Long way Home." (Newsreader serif, single-line editorial display) -->
       <h1 class="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white font-normal whitespace-nowrap tracking-tight leading-none">
         The Long way Home.
       </h1>
 
-      <!-- Editorial Subtitle -->
-      <p class="mt-6 font-sans text-xs sm:text-sm md:text-base text-white/65 max-w-xl leading-relaxed tracking-wide">
+      <!-- Editorial Subtitle with vast breathing room -->
+      <p class="mt-4 sm:mt-6 font-sans text-xs sm:text-sm md:text-base text-white/65 max-w-xl mx-auto leading-relaxed tracking-wide">
         Slow routes across Himachal, Rajasthan &amp; the coastal south. Field notebooks, bus ledgers, and honest stories from the trail.
       </p>
 
       <!-- Minimal Downward Prompt -->
       <a
         href="#letters"
-        class="mt-10 sm:mt-14 inline-flex flex-col items-center gap-2 text-white/50 hover:text-white transition-colors duration-200 group"
+        class="mt-8 sm:mt-12 md:mt-16 inline-flex flex-col items-center gap-2 text-white/50 hover:text-white transition-colors duration-200 group"
         aria-label="Scroll down to travel letters"
       >
-        <span class="text-[11px] uppercase font-sans tracking-[0.2em] font-medium">Scroll to Begin</span>
+        <span class="text-[11px] uppercase font-sans tracking-[0.2em] font-medium">Explore Dispatches</span>
         <svg
           class="w-4 h-4 text-white/60 group-hover:text-white transition-transform duration-200 group-hover:translate-y-1"
           fill="none"
@@ -131,131 +135,159 @@ const chronologicalLetters = [
   </section>
 
   <!-- ================================================================= -->
-  <!-- TASK 3: CHRONOLOGICAL LETTERS (Vertical GSAP ScrollTrigger Crossfade)-->
+  <!-- 2. SUBSTACK LETTERS (Vita Travel Bento Grid + Extreme Whitespace)  -->
   <!-- ================================================================= -->
   <section
     id="letters"
-    class="relative bg-[#0A1118] border-t border-white/10"
+    class="relative w-full py-32 md:py-48 bg-[#0A1118] border-t border-white/10 overflow-hidden"
     aria-label="Chronological Travel Letters"
   >
-    <!-- Section Introduction Header (Clean editorial intro before pinning) -->
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-10 text-center">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0F1720] border border-white/10 text-white/60 text-xs font-sans tracking-widest uppercase mb-4">
-        <span>Chronological Dispatches</span>
-        <span>·</span>
-        <span>2023–2026</span>
-      </div>
-      <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-white font-normal tracking-tight">
-        Past Travel to Kangra, Jaipur &amp; Jodhpur
-      </h2>
-      <p class="mt-4 font-sans text-sm sm:text-base text-white/60 max-w-xl mx-auto leading-relaxed">
-        As you scroll vertically, each chronological dispatch unfolds in sequence.
-      </p>
+    <!-- Background Ambient Glow & Empty Whitespace Canvas -->
+    <div class="absolute inset-0 pointer-events-none opacity-20" aria-hidden="true">
+      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] md:w-[900px] h-[600px] md:h-[900px] rounded-full bg-[#0F1720] blur-3xl"></div>
     </div>
 
-    <!-- Pinned Viewport Container for GSAP ScrollTrigger Crossfade -->
-    <div
-      id="letters-pinned-container"
-      class="relative w-full h-screen h-[100vh] min-h-[100dvh] overflow-hidden flex items-center justify-center"
-    >
-      <!-- Subtle Topographic Decorative Ring Motif in the background -->
-      <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20" aria-hidden="true">
-        <div class="w-[500px] h-[500px] rounded-full border border-white/10 flex items-center justify-center">
-          <div class="w-[380px] h-[380px] rounded-full border border-dashed border-white/15 flex items-center justify-center">
-            <div class="w-[240px] h-[240px] rounded-full border border-white/10"></div>
-          </div>
+    <!-- Section Content Container (Default mobile w-full px-4 sm:px-6, expanding to max-w-7xl) -->
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+
+      <!-- Section Editorial Header with Vast Breathing Room -->
+      <div class="relative max-w-3xl mb-16 sm:mb-24 md:mb-32">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0F1720] border border-white/10 text-white/60 text-xs font-sans tracking-widest uppercase mb-6">
+          <span>Field Notes &amp; Dispatches</span>
+          <span>·</span>
+          <span>2023–2026</span>
+        </div>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-normal tracking-tight leading-tight">
+          Chronological Dispatches From the Trail
+        </h2>
+        <p class="mt-4 sm:mt-6 font-sans text-sm sm:text-base md:text-lg text-white/60 max-w-2xl leading-relaxed">
+          Unfolding slowly across the mountains and desert ridges. Each dispatch documents quiet moments, state bus tickets, and lessons learned on foot.
+        </p>
+
+        <!-- Fun Factor Illustration 1: Open Doodles Chilling Figure floating playfully in header whitespace -->
+        <div class="absolute -top-12 right-0 sm:-top-16 md:-top-24 md:-right-8 w-24 h-24 sm:w-36 sm:h-36 md:w-52 md:h-52 pointer-events-none opacity-80 select-none">
+          <img
+            src="/images/doodles/chilling.svg"
+            alt="Playful doodle character floating in open mountain air"
+            class="w-full h-full object-contain filter drop-shadow-lg"
+            loading="lazy"
+          />
         </div>
       </div>
 
-      <!-- Stack of Crossfading Letter Blocks (Absolute positioning in pinned viewport) -->
-      <div class="relative w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-center">
-        {chronologicalLetters.map((letter, index) => (
-          <article
-            id={`letter-slide-${index}`}
-            class="letter-crossfade-slide absolute inset-x-4 sm:inset-x-6 lg:inset-x-8 max-w-3xl mx-auto my-auto p-6 sm:p-10 md:p-12 rounded-2xl bg-[#0F1720] border border-white/10 shadow-2xl backdrop-blur-xl transition-all duration-300"
-            data-index={index}
-            style={index === 0 ? "opacity: 1; pointer-events: auto;" : "opacity: 0; pointer-events: none;"}
-          >
-            <!-- Top Metadata Row -->
-            <div class="flex flex-wrap items-center justify-between gap-3 pb-6 border-b border-white/10">
-              <div class="flex items-center gap-2.5">
-                <span class="font-mono text-xs text-white/80 font-semibold tracking-wider">
-                  {letter.step}
-                </span>
-                <span class="text-white/30">/</span>
-                <span class="font-sans text-xs text-white/60 tracking-wider uppercase font-medium">
-                  {letter.season}
+      <!-- Bento Grid (Mobile-First: grid-cols-1 defaulting to single column, expanding to md:grid-cols-12 with double gap) -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
+        {chronologicalLetters.map((letter, index) => {
+          // Asymmetric Vita Travel Bento column spans
+          const colSpanClass = (index === 0 || index === 3)
+            ? "md:col-span-7"
+            : "md:col-span-5";
+
+          return (
+            <article
+              id={`letter-card-${letter.id}`}
+              class={`group relative flex flex-col justify-between p-6 sm:p-10 md:p-14 rounded-3xl bg-[#0F1720] border border-white/10 hover:border-white/20 transition-all duration-300 shadow-xl overflow-hidden ${colSpanClass}`}
+            >
+              <!-- Massive Editorial Background Number (Vita Travel Vibe in Newsreader serif) -->
+              <div
+                class="absolute -top-4 sm:-top-6 md:-top-8 -right-2 sm:-right-4 md:-right-6 font-serif text-7xl sm:text-8xl md:text-9xl text-white/[0.06] group-hover:text-white/[0.12] transition-colors duration-500 select-none pointer-events-none leading-none z-0"
+                aria-hidden="true"
+              >
+                {letter.step}
+              </div>
+
+              <!-- Top Row: Editorial Step Number, Season, and Altitude Metric -->
+              <div class="relative z-10 flex flex-wrap items-center justify-between gap-3 pb-6 sm:pb-8 border-b border-white/10">
+                <div class="flex items-center gap-3">
+                  <span class="font-mono text-sm sm:text-base text-white/90 font-bold tracking-wider">
+                    {letter.step}
+                  </span>
+                  <span class="text-white/25">/</span>
+                  <span class="font-sans text-xs uppercase tracking-widest text-white/60 font-medium">
+                    {letter.season}
+                  </span>
+                </div>
+
+                <!-- Prominent Altitude / Ridge Metric -->
+                <span class="inline-flex items-center gap-2 text-xs sm:text-sm text-white/70 font-mono bg-[#0A1118]/60 px-3 py-1.5 rounded-full border border-white/10">
+                  <svg class="w-3.5 h-3.5 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  {letter.altitude}
                 </span>
               </div>
-              <span class="inline-flex items-center gap-1.5 text-xs text-white/50 font-mono">
-                <svg class="w-3.5 h-3.5 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                {letter.altitude}
-              </span>
-            </div>
 
-            <!-- Main Letter Content -->
-            <div class="pt-6">
-              <p class="font-sans text-xs uppercase tracking-[0.2em] text-white/60 mb-2 font-medium">
-                {letter.destination}
-              </p>
-              <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl text-white font-normal tracking-tight mb-4">
-                {letter.title}
-              </h3>
-              <p class="font-sans text-sm sm:text-base text-white/85 leading-relaxed mb-4">
-                {letter.summary}
-              </p>
-              <p class="font-serif italic text-xs sm:text-sm text-white/65 border-l-2 border-white/20 pl-4 py-1 mb-8">
-                "{letter.reflection}"
-              </p>
+              <!-- Card Core Narrative (Vast, uncluttered typographic breathing room) -->
+              <div class="relative z-10 py-6 sm:py-8 flex-grow">
+                <p class="font-sans text-xs uppercase tracking-[0.25em] text-white/50 font-semibold mb-3">
+                  {letter.destination}
+                </p>
 
-              <!-- Footer CTA Link -->
-              <div class="flex items-center justify-between pt-4 border-t border-white/10">
-                <span class="text-xs font-mono text-white/40">
+                <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl text-white font-normal tracking-tight mb-4 sm:mb-6 group-hover:text-white/95 transition-colors">
+                  {letter.title}
+                </h3>
+
+                <p class="font-sans text-sm sm:text-base text-white/80 leading-relaxed mb-6 font-normal">
+                  {letter.summary}
+                </p>
+
+                <blockquote class="font-serif italic text-xs sm:text-sm md:text-base text-white/60 border-l-2 border-white/20 pl-4 sm:pl-5 py-1 mb-2">
+                  "{letter.reflection}"
+                </blockquote>
+              </div>
+
+              <!-- Card Footer: Tag & Direct Substack CTA Button -->
+              <div class="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-6 sm:pt-8 border-t border-white/10">
+                <span class="text-xs font-mono text-white/40 tracking-wide">
                   {letter.tag}
                 </span>
+
                 <a
                   href={letter.substackUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-[#0A1118] font-sans text-xs font-semibold hover:bg-white/90 transition-all duration-200 shadow-md"
+                  class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-white text-[#0A1118] font-sans text-xs sm:text-sm font-semibold hover:bg-white/90 active:scale-[0.98] transition-all duration-200 shadow-md self-start sm:self-auto"
                 >
-                  <span>Read Letter on Substack</span>
+                  <span>Read on Substack</span>
                   <span class="text-xs">↗</span>
                 </a>
               </div>
-            </div>
-          </article>
-        ))}
+            </article>
+          );
+        })}
       </div>
 
-      <!-- Slide Indicator Dots -->
-      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2.5 z-20" aria-label="Slide Indicator">
-        {chronologicalLetters.map((_, idx) => (
-          <div
-            id={`indicator-dot-${idx}`}
-            class={`slide-indicator-dot h-1.5 rounded-full transition-all duration-300 ${idx === 0 ? 'w-8 bg-white' : 'w-2 bg-white/25'}`}
-          ></div>
-        ))}
+      <!-- Fun Factor Illustration 2: Playful Trail Dog peeking out in the empty gap between sections -->
+      <div class="relative w-full flex justify-end mt-12 sm:mt-16 md:mt-24 pointer-events-none select-none">
+        <div class="w-28 h-20 sm:w-36 sm:h-28 md:w-52 md:h-36 opacity-75 mr-4 sm:mr-12 md:mr-20">
+          <img
+            src="/images/doodles/doggie.svg"
+            alt="Playful doodle dog running along the empty trail whitespace"
+            class="w-full h-full object-contain filter drop-shadow-md"
+            loading="lazy"
+          />
+        </div>
       </div>
+
     </div>
   </section>
 
   <!-- ================================================================= -->
-  <!-- TASK 3: MINIMALIST READING LIST (Literary Identity, Zero Movies)  -->
+  <!-- 3. READING LIST (Vita Travel Bento Grid + Extreme Whitespace)      -->
   <!-- ================================================================= -->
   <section
     id="reading"
-    class="py-24 sm:py-32 bg-[#0A1118] border-t border-white/10"
-    aria-label="Currently Reading Books"
+    class="relative w-full py-32 md:py-48 bg-[#0A1118] border-t border-white/10 overflow-hidden"
+    aria-label="Currently Reading on the Road"
   >
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Section Header with Bold Outline Hand-drawn Icon -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-white/10">
-        <div>
-          <!-- Hand-drawn Open Book Outline Doodle (Pickles/Open Doodles Style) -->
+    <!-- Section Container (Default mobile w-full px-4 sm:px-6, expanding to max-w-7xl) -->
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+
+      <!-- Section Header with hand-drawn motif & Open Doodles reader breaking whitespace -->
+      <div class="relative flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 sm:pb-16 md:pb-20 border-b border-white/10">
+        <div class="max-w-2xl">
+          <!-- Hand-drawn Open Book Outline Doodle -->
           <div class="w-12 h-12 mb-4 text-white flex items-center justify-center">
             <svg class="w-10 h-10" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M8 16c6-4 16-4 24 2v34c-8-6-18-6-24-2V16z" fill="#0F1720" />
@@ -267,91 +299,125 @@ const chronologicalLetters = [
               <path d="M36 34c4-2 9-2 12 0" />
             </svg>
           </div>
-          <span class="font-sans text-xs uppercase tracking-[0.25em] text-white/60 font-semibold">
+
+          <span class="font-sans text-xs uppercase tracking-[0.25em] text-white/60 font-semibold block mb-2">
             Field Library · Trail Companions
           </span>
-          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-white font-normal tracking-tight mt-2">
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-normal tracking-tight leading-tight">
             Currently Reading on the Road
           </h2>
-          <p class="mt-3 font-sans text-sm sm:text-base text-white/60 max-w-xl leading-relaxed">
+          <p class="mt-4 font-sans text-sm sm:text-base md:text-lg text-white/60 leading-relaxed">
             Books carried across high Himalayan passes and long state bus journeys. Words that shape how the landscape is seen.
           </p>
         </div>
 
-        <div class="flex items-center gap-3">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
           <a
             href="https://www.goodreads.com/user/show/202026328-varneet-singh"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#0F1720] hover:bg-white/10 text-white/80 hover:text-white border border-white/10 text-xs font-sans tracking-wide transition-colors"
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#0F1720] hover:bg-white/10 text-white/80 hover:text-white border border-white/10 text-xs sm:text-sm font-sans tracking-wide transition-colors"
           >
-            <span>Goodreads Shelf</span>
+            <span>Goodreads Reading Shelf</span>
             <span class="text-white/40">↗</span>
           </a>
         </div>
+
+        <!-- Fun Factor Illustration 3: Open Doodles Reading figure leaning over the library header -->
+        <div class="absolute -top-10 sm:-top-14 md:-top-20 right-0 sm:right-6 md:right-16 w-24 h-24 sm:w-36 sm:h-36 md:w-48 md:h-48 pointer-events-none opacity-80 select-none">
+          <img
+            src="/images/doodles/reading.svg"
+            alt="Playful doodle character absorbed in reading"
+            class="w-full h-full object-contain filter drop-shadow-md"
+            loading="lazy"
+          />
+        </div>
       </div>
 
-      <!-- Minimalist Book Cards Grid (8px/16px Grid Scale) -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 pt-12">
-        {currentlyReading.slice(0, 3).map((book) => (
-          <div class="group flex flex-col p-6 sm:p-8 rounded-2xl bg-[#0F1720] border border-white/10 hover:border-white/20 transition-all duration-300">
-            <!-- Book Cover Image with Editorial Proportion -->
-            <div class="w-full aspect-[2/3] max-h-72 rounded-lg overflow-hidden bg-[#0A1118] border border-white/10 mb-6 flex items-center justify-center">
-              <img
-                src={book.cover}
-                alt={`Book cover of ${book.title} by ${book.author}`}
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-              />
-            </div>
-
-            <!-- Title & Author -->
-            <div class="mb-4">
-              <span class="text-xs uppercase font-sans tracking-widest text-white/50 block mb-1">
-                {book.tag || "Field Companion"}
-              </span>
-              <h3 class="font-serif text-xl sm:text-2xl text-white font-normal group-hover:text-white/90 transition-colors">
-                {book.title}
-              </h3>
-              <p class="font-sans text-sm text-white/60 mt-1 font-medium">
-                {book.author}
-              </p>
-            </div>
-
-            <!-- Reflection / Note -->
-            <p class="font-sans text-xs sm:text-sm text-white/70 leading-relaxed mb-4 flex-grow">
-              {book.note}
-            </p>
-
-            <!-- Trail Connection Location Badge -->
-            <div class="pt-4 border-t border-white/10">
-              <p class="font-sans text-xs text-white/50 italic leading-snug mb-3">
-                {book.trailConnection}
-              </p>
-
-              <!-- Progress Bar -->
-              <div class="w-full bg-[#0A1118] rounded-full h-1.5 overflow-hidden border border-white/10">
-                <div
-                  class="bg-white/80 h-full rounded-full"
-                  style={`width: ${book.percent || 25}%`}
-                ></div>
+      <!-- Bento Grid for Reading List (Mobile: grid-cols-1, Desktop: md:grid-cols-12 md:gap-16) -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 pt-12 sm:pt-16 md:pt-20">
+        {currentlyReading.slice(0, 3).map((book, idx) => {
+          const editorialNumber = `0${idx + 1}`;
+          return (
+            <div class="group relative flex flex-col justify-between p-6 sm:p-8 md:p-10 rounded-3xl bg-[#0F1720] border border-white/10 hover:border-white/20 transition-all duration-300 shadow-xl md:col-span-4 overflow-hidden">
+              
+              <!-- Massive Editorial Muted Number in Background -->
+              <div
+                class="absolute -top-3 -right-1 sm:-top-4 sm:-right-2 font-serif text-6xl sm:text-7xl md:text-8xl text-white/[0.06] group-hover:text-white/[0.12] transition-colors duration-500 select-none pointer-events-none leading-none z-0"
+                aria-hidden="true"
+              >
+                {editorialNumber}
               </div>
-              <div class="flex justify-between items-center mt-2 text-[11px] font-mono text-white/40">
-                <span>Reading Progress</span>
-                <span>{book.percent || 25}%</span>
+
+              <div class="relative z-10">
+                <!-- Book Cover Image with Editorial Proportion -->
+                <div class="w-full aspect-[2/3] max-h-72 rounded-xl overflow-hidden bg-[#0A1118] border border-white/10 mb-6 flex items-center justify-center">
+                  <img
+                    src={book.cover}
+                    alt={`Book cover of ${book.title} by ${book.author}`}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </div>
+
+                <!-- Step Counter & Tag -->
+                <div class="flex items-center justify-between mb-3">
+                  <span class="font-mono text-xs text-white/50 font-semibold tracking-wider">
+                    {editorialNumber} / 03
+                  </span>
+                  <span class="text-[11px] uppercase font-sans tracking-widest text-white/50 bg-[#0A1118]/70 px-2.5 py-1 rounded-full border border-white/10">
+                    {book.tag || "Field Companion"}
+                  </span>
+                </div>
+
+                <!-- Title & Author -->
+                <h3 class="font-serif text-xl sm:text-2xl text-white font-normal group-hover:text-white/90 transition-colors mb-1">
+                  {book.title}
+                </h3>
+                <p class="font-sans text-xs sm:text-sm text-white/60 mb-4 font-medium">
+                  {book.author}
+                </p>
+
+                <!-- Reading Reflection -->
+                <p class="font-sans text-xs sm:text-sm text-white/70 leading-relaxed mb-6">
+                  {book.note}
+                </p>
+              </div>
+
+              <!-- Trail Connection Location & Progress Bar -->
+              <div class="relative z-10 pt-4 border-t border-white/10">
+                <p class="font-sans text-xs text-white/50 italic leading-snug mb-3">
+                  {book.trailConnection}
+                </p>
+
+                <div class="w-full bg-[#0A1118] rounded-full h-1.5 overflow-hidden border border-white/10">
+                  <div
+                    class="bg-white/80 h-full rounded-full"
+                    style={`width: ${book.percent || 25}%`}
+                  ></div>
+                </div>
+                <div class="flex justify-between items-center mt-2 text-[11px] font-mono text-white/40">
+                  <span>Reading Progress</span>
+                  <span>{book.percent || 25}%</span>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
+
     </div>
   </section>
 
   <!-- ================================================================= -->
-  <!-- SUBSTACK DIRECT DISPATCH CALLOUT (Minimalist Closure)             -->
+  <!-- 4. SUBSTACK DIRECT DISPATCH (Extreme Whitespace & Calm Closure)    -->
   <!-- ================================================================= -->
-  <section class="py-20 bg-[#0F1720] border-t border-white/10" aria-label="Subscribe to Letters">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+  <section
+    id="dispatch"
+    class="relative w-full py-32 md:py-48 bg-[#0F1720] border-t border-white/10 overflow-hidden"
+    aria-label="Subscribe to Letters"
+  >
+    <div class="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 md:px-8 text-center flex flex-col items-center">
       <!-- Minimalist Pen/Quill Outline Illustration -->
       <div class="w-12 h-12 mx-auto mb-4 text-white flex items-center justify-center">
         <svg class="w-10 h-10" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -364,10 +430,12 @@ const chronologicalLetters = [
       <span class="font-sans text-xs uppercase tracking-[0.25em] text-white/60 font-semibold">
         reKhoj on Substack
       </span>
-      <h2 class="font-serif text-3xl sm:text-4xl text-white font-normal tracking-tight mt-2 mb-4">
+
+      <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-white font-normal tracking-tight mt-3 mb-6">
         Receive the Next Dispatch in Your Inbox
       </h2>
-      <p class="font-sans text-sm sm:text-base text-white/65 max-w-lg mx-auto leading-relaxed mb-8">
+
+      <p class="font-sans text-sm sm:text-base md:text-lg text-white/65 max-w-xl mx-auto leading-relaxed mb-10">
         Every fortnight, unhurried trail notes, state transport bus ledgers, and stories from the open road are sent directly to readers without algorithms.
       </p>
 
@@ -375,7 +443,7 @@ const chronologicalLetters = [
         href="https://rekhoj.substack.com"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-white text-[#0A1118] font-sans text-sm font-semibold hover:bg-white/90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-xl"
+        class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-[#0A1118] font-sans text-sm sm:text-base font-semibold hover:bg-white/90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-2xl"
       >
         <span>Subscribe to reKhoj on Substack</span>
         <span>↗</span>
@@ -383,103 +451,3 @@ const chronologicalLetters = [
     </div>
   </section>
 </BaseLayout>
-
-<!-- ================================================================= -->
-<!-- GSAP SCROLLTRIGGER CROSSFADE ENGINE (Vertical Scroll Pinned Logic)-->
-<!-- ================================================================= -->
-<script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  function setupLetterCrossfade() {
-    const pinnedContainer = document.getElementById("letters-pinned-container");
-    const slides = gsap.utils.toArray<HTMLElement>(".letter-crossfade-slide");
-    const dots = gsap.utils.toArray<HTMLElement>(".slide-indicator-dot");
-
-    if (!pinnedContainer || slides.length === 0) return;
-
-    // Initialize slides: First slide visible at 1, others at 0
-    slides.forEach((slide, idx) => {
-      gsap.set(slide, {
-        opacity: idx === 0 ? 1 : 0,
-        y: idx === 0 ? 0 : 30,
-        pointerEvents: idx === 0 ? "auto" : "none",
-      });
-    });
-
-    function updateDots(activeIndex: number) {
-      dots.forEach((dot, dIdx) => {
-        if (dIdx === activeIndex) {
-          dot.classList.remove("w-2", "bg-white/25");
-          dot.classList.add("w-8", "bg-white");
-        } else {
-          dot.classList.remove("w-8", "bg-white");
-          dot.classList.add("w-2", "bg-white/25");
-        }
-      });
-    }
-
-    // Pinned ScrollTrigger Timeline
-    // Distance corresponds to vertical scrolling duration (e.g. 2.5 screens)
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: pinnedContainer,
-        start: "top top",
-        end: () => `+=${window.innerHeight * 2.8}`,
-        pin: true,
-        scrub: 0.8,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-      },
-    });
-
-    const total = slides.length;
-
-    // Crossfade sequence across the chronological slides
-    slides.forEach((slide, i) => {
-      if (i < total - 1) {
-        const nextSlide = slides[i + 1];
-
-        // 1. Reading dwell period on current slide
-        tl.to({}, {
-          duration: 0.8,
-          onStart: () => updateDots(i),
-          onReverseComplete: () => updateDots(i),
-        });
-
-        // 2. Smooth crossfade: outgoing fades out, incoming fades in without overlapping
-        tl.to(slide, {
-          opacity: 0,
-          y: -25,
-          pointerEvents: "none",
-          duration: 1.0,
-          ease: "power2.inOut",
-        })
-        .to(nextSlide, {
-          opacity: 1,
-          y: 0,
-          pointerEvents: "auto",
-          duration: 1.0,
-          ease: "power2.inOut",
-          onStart: () => updateDots(i + 1),
-          onReverseComplete: () => updateDots(i),
-        }, "<");
-      }
-    });
-
-    // Final dwell period on the 4th (last) slide before user scrolls past pinned container
-    tl.to({}, {
-      duration: 0.8,
-      onStart: () => updateDots(total - 1),
-    });
-  }
-
-  // Run on mount
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", setupLetterCrossfade);
-  } else {
-    setupLetterCrossfade();
-  }
-</script>
