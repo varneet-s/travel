@@ -67,13 +67,62 @@ inject();
     />
   </head>
   <body class="bg-[#0A1C20] text-white min-h-screen flex flex-col font-sans selection:bg-[#77C5A0]/25 selection:text-white">
-    <!-- Minimalist Top Navigation Header in Cherry Blossom -->
+    <!-- Minimalist Top Navigation Header in Cherry Blossom with Botanical Elements -->
     <header
       id="main-header"
-      class="fixed top-0 left-0 right-0 z-50 bg-[#FFB7C5] border-b border-[#F492A8] text-[#0A1C20] transition-all duration-500 ease-out transform -translate-y-full opacity-0 pointer-events-none shadow-xl"
+      class="fixed top-0 left-0 right-0 z-50 bg-[#FFCCD5] border-b border-[#F492A8] text-[#0A1C20] transition-all duration-500 ease-out transform -translate-y-full opacity-0 pointer-events-none shadow-xl overflow-hidden"
     >
-      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between" aria-label="Main Navigation">
+      <!-- Atmospheric Cherry Blossom Petals Floating in Header -->
+      <div class="absolute inset-0 pointer-events-none overflow-hidden select-none" aria-hidden="true">
+        <!-- Petal 1 -->
+        <svg class="absolute -top-1 left-[22%] w-4 h-4 text-[#F4718E] opacity-40 rotate-12" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 3 C14 7 18 10 16 16 C14 20 10 20 8 16 C6 10 10 7 12 3 Z" />
+        </svg>
+        <!-- Petal 2 -->
+        <svg class="absolute bottom-1 left-[45%] w-3.5 h-3.5 text-[#F4718E] opacity-35 -rotate-45" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 3 C14 7 18 10 16 16 C14 20 10 20 8 16 C6 10 10 7 12 3 Z" />
+        </svg>
+        <!-- Petal 3 -->
+        <svg class="absolute top-2 right-[25%] w-4 h-4 text-[#F4718E] opacity-40 rotate-45" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 3 C14 7 18 10 16 16 C14 20 10 20 8 16 C6 10 10 7 12 3 Z" />
+        </svg>
+        <!-- Petal 4 -->
+        <svg class="absolute bottom-1.5 right-[10%] w-3 h-3 text-[#F4718E] opacity-30 -rotate-15" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 3 C14 7 18 10 16 16 C14 20 10 20 8 16 C6 10 10 7 12 3 Z" />
+        </svg>
+      </div>
+
+      <nav class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between" aria-label="Main Navigation">
         <a href="/" class="group flex items-center gap-2.5 text-[#0A1C20] no-underline focus:outline-none">
+          <!-- Hand-crafted Cherry Blossom 5-Petal Flower Motif -->
+          <svg class="w-6 h-6 shrink-0 filter drop-shadow-sm group-hover:rotate-45 transition-transform duration-500" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="sakura-petal-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" />
+                <stop offset="60%" stop-color="#FFB3C1" />
+                <stop offset="100%" stop-color="#F4718E" />
+              </linearGradient>
+            </defs>
+            <!-- 5 Heart-notched Cherry Blossom Petals -->
+            <path d="M16 16 C13.5 10 10.5 7 13.5 4.5 C15.5 3 17.5 3.5 19 5 C21.5 7.5 18.5 11 16 16 Z" fill="url(#sakura-petal-grad)" stroke="#E85D7D" stroke-width="0.75" />
+            <path d="M16 16 C22 13.5 25 10.5 27.5 13.5 C29 15.5 28.5 17.5 27 19 C24.5 21.5 21 18.5 16 16 Z" fill="url(#sakura-petal-grad)" stroke="#E85D7D" stroke-width="0.75" />
+            <path d="M16 16 C18.5 22 21.5 25 18.5 27.5 C16.5 29 14.5 28.5 13 27 C10.5 24.5 13.5 21 16 16 Z" fill="url(#sakura-petal-grad)" stroke="#E85D7D" stroke-width="0.75" />
+            <path d="M16 16 C10 18.5 7 21.5 4.5 18.5 C3 16.5 3.5 14.5 5 13 C7.5 10.5 11 13.5 16 16 Z" fill="url(#sakura-petal-grad)" stroke="#E85D7D" stroke-width="0.75" />
+            <path d="M16 16 C11.5 12.5 8.5 9 10 6.5 C11.5 4.5 13.5 4.5 15.5 6 C17.5 8 16.5 12 16 16 Z" fill="url(#sakura-petal-grad)" stroke="#E85D7D" stroke-width="0.75" />
+            <!-- Golden/Rose Center Pistil Stamens -->
+            <circle cx="16" cy="16" r="2.2" fill="#E85D7D" />
+            <circle cx="16" cy="16" r="1.1" fill="#FFE58F" />
+            <line x1="16" y1="16" x2="16" y2="11.5" stroke="#C83E58" stroke-width="0.75" stroke-linecap="round" />
+            <line x1="16" y1="16" x2="20" y2="13.5" stroke="#C83E58" stroke-width="0.75" stroke-linecap="round" />
+            <line x1="16" y1="16" x2="19" y2="19.5" stroke="#C83E58" stroke-width="0.75" stroke-linecap="round" />
+            <line x1="16" y1="16" x2="13" y2="19.5" stroke="#C83E58" stroke-width="0.75" stroke-linecap="round" />
+            <line x1="16" y1="16" x2="12" y2="13.5" stroke="#C83E58" stroke-width="0.75" stroke-linecap="round" />
+            <circle cx="16" cy="11" r="0.7" fill="#FFE58F" />
+            <circle cx="20.5" cy="13" r="0.7" fill="#FFE58F" />
+            <circle cx="19.5" cy="20" r="0.7" fill="#FFE58F" />
+            <circle cx="12.5" cy="20" r="0.7" fill="#FFE58F" />
+            <circle cx="11.5" cy="13" r="0.7" fill="#FFE58F" />
+          </svg>
           <span class="font-serif text-lg tracking-tight font-bold group-hover:text-black transition-colors">
             reKhoj
           </span>
@@ -129,35 +178,39 @@ inject();
         </div>
       </nav>
 
-      <!-- Mobile Dropdown Menu -->
+      <!-- Mobile Dropdown Menu with Cherry Blossom Aesthetic -->
       <div
         id="mobile-menu"
-        class="hidden md:hidden border-t border-[#F492A8] bg-[#FFB7C5] px-6 py-6 transition-all duration-300 shadow-2xl"
+        class="hidden md:hidden border-t border-[#F492A8] bg-[#FFCCD5] px-6 py-6 transition-all duration-300 shadow-2xl relative"
       >
-        <div class="flex flex-col gap-5 text-base font-sans tracking-wide">
+        <div class="flex flex-col gap-4 text-base font-sans tracking-wide">
           <a
             href="/#letters"
-            class="mobile-nav-link text-[#0A1C20] font-semibold hover:underline py-1 border-b border-black/10"
+            class="mobile-nav-link flex items-center justify-between text-[#0A1C20] font-semibold hover:underline py-1.5 border-b border-black/10"
           >
-            Letters
+            <span>Letters</span>
+            <span class="text-sm opacity-80" aria-hidden="true">🌸</span>
           </a>
           <a
             href="/#reading"
-            class="mobile-nav-link text-[#0A1C20] font-semibold hover:underline py-1 border-b border-black/10"
+            class="mobile-nav-link flex items-center justify-between text-[#0A1C20] font-semibold hover:underline py-1.5 border-b border-black/10"
           >
-            Reading
+            <span>Reading</span>
+            <span class="text-sm opacity-80" aria-hidden="true">🌸</span>
           </a>
           <a
             href="/#about"
-            class="mobile-nav-link text-[#0A1C20] font-semibold hover:underline py-1 border-b border-black/10"
+            class="mobile-nav-link flex items-center justify-between text-[#0A1C20] font-semibold hover:underline py-1.5 border-b border-black/10"
           >
-            About
+            <span>About</span>
+            <span class="text-sm opacity-80" aria-hidden="true">🌸</span>
           </a>
           <a
             href="/#volunteer"
-            class="mobile-nav-link text-[#0A1C20] font-semibold hover:underline py-1"
+            class="mobile-nav-link flex items-center justify-between text-[#0A1C20] font-semibold hover:underline py-1.5"
           >
-            Volunteer
+            <span>Volunteer</span>
+            <span class="text-sm opacity-80" aria-hidden="true">🌸</span>
           </a>
         </div>
       </div>

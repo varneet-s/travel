@@ -356,31 +356,31 @@ const chronologicalLetters = [
           return (
             <article
               id={`letter-card-${letter.id}`}
-              class={`group relative flex flex-col justify-between p-6 sm:p-10 md:p-12 rounded-3xl bg-[#12292E] border border-white/10 ${letter.pastel.hoverBorder} transition-all duration-300 shadow-xl overflow-hidden min-w-[310px] sm:min-w-[420px] md:min-w-[500px] max-w-[560px] flex-shrink-0 snap-start`}
+              class={`group relative flex flex-col justify-between p-4 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl bg-[#12292E] border border-white/10 ${letter.pastel.hoverBorder} transition-all duration-300 shadow-xl overflow-hidden w-[72vw] min-w-[240px] max-w-[265px] sm:w-auto sm:min-w-[400px] sm:max-w-[540px] flex-shrink-0 snap-start`}
             >
-              <!-- Massive Editorial Background Number in Newsreader serif -->
+              <!-- Editorial Background Number in Newsreader serif -->
               <div
-                class={`absolute -top-4 sm:-top-6 md:-top-8 -right-2 sm:-right-4 md:-right-6 font-serif text-7xl sm:text-8xl md:text-9xl ${letter.pastel.bgNumber} transition-colors duration-500 select-none pointer-events-none leading-none z-0`}
+                class={`absolute -top-3 sm:-top-6 md:-top-8 -right-1 sm:-right-4 md:-right-6 font-serif text-5xl sm:text-7xl md:text-9xl ${letter.pastel.bgNumber} transition-colors duration-500 select-none pointer-events-none leading-none z-0`}
                 aria-hidden="true"
               >
                 {letter.step}
               </div>
 
               <!-- Top Row: Editorial Step Number, Season, and Altitude Metric -->
-              <div class="relative z-10 flex flex-wrap items-center justify-between gap-3 pb-6 sm:pb-8 border-b border-white/10">
-                <div class="flex items-center gap-3">
-                  <span class={`font-mono text-sm sm:text-base ${letter.pastel.accentText} font-bold tracking-wider`}>
+              <div class="relative z-10 flex flex-wrap items-center justify-between gap-2 pb-3 sm:pb-6 border-b border-white/10">
+                <div class="flex items-center gap-2 sm:gap-3">
+                  <span class={`font-mono text-xs sm:text-base ${letter.pastel.accentText} font-bold tracking-wider`}>
                     {letter.step}
                   </span>
                   <span class="text-white/25">/</span>
-                  <span class="font-sans text-xs uppercase tracking-widest text-white/60 font-medium">
+                  <span class="font-sans text-[10px] sm:text-xs uppercase tracking-widest text-white/60 font-medium">
                     {letter.season}
                   </span>
                 </div>
 
                 <!-- Prominent Altitude / Ridge Metric -->
-                <span class={`inline-flex items-center gap-2 text-xs sm:text-sm ${letter.pastel.accentText} font-mono ${letter.pastel.accentBg} px-3 py-1.5 rounded-full border ${letter.pastel.accentBorder}`}>
-                  <svg class={`w-3.5 h-3.5 ${letter.pastel.accentText}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span class={`inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-mono ${letter.pastel.accentText} ${letter.pastel.accentBg} px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full border ${letter.pastel.accentBorder}`}>
+                  <svg class={`w-3 h-3 ${letter.pastel.accentText}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
@@ -389,30 +389,30 @@ const chronologicalLetters = [
               </div>
 
               <!-- Card Core Narrative -->
-              <div class="relative z-10 py-6 sm:py-8 flex-grow">
-                <p class={`font-sans text-xs uppercase tracking-[0.25em] ${letter.pastel.accentText} font-semibold mb-3`}>
+              <div class="relative z-10 py-3 sm:py-6 flex-grow">
+                <p class={`font-sans text-[10px] sm:text-xs uppercase tracking-[0.2em] ${letter.pastel.accentText} font-semibold mb-1.5 sm:mb-3`}>
                   {letter.destination}
                 </p>
 
-                <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl text-white font-normal tracking-tight mb-4 sm:mb-6 group-hover:text-white/95 transition-colors">
+                <h3 class="font-serif text-lg sm:text-2xl md:text-3xl text-white font-normal tracking-tight mb-2 sm:mb-4 group-hover:text-white/95 transition-colors">
                   {letter.title}
                 </h3>
 
-                <p class="font-sans text-sm sm:text-base text-white/80 leading-relaxed mb-6 font-normal">
+                <p class="font-sans text-xs sm:text-sm md:text-base text-white/80 leading-relaxed mb-3 sm:mb-5 font-normal line-clamp-3 sm:line-clamp-none">
                   {letter.summary}
                 </p>
 
-                <blockquote class={`font-serif italic text-xs sm:text-sm md:text-base text-white/70 border-l-2 ${letter.pastel.quoteBorder} pl-4 sm:pl-5 py-1 mb-2`}>
+                <blockquote class={`font-serif italic text-xs sm:text-sm text-white/70 border-l-2 ${letter.pastel.quoteBorder} pl-3 sm:pl-5 py-0.5 sm:py-1 mb-1 sm:mb-2 line-clamp-2 sm:line-clamp-none`}>
                   "{letter.reflection}"
                 </blockquote>
               </div>
 
               <!-- Card Footer: Tag & Season Info -->
-              <div class="relative z-10 flex items-center justify-between gap-4 pt-6 sm:pt-8 border-t border-white/10">
-                <span class="text-xs font-mono text-white/40 tracking-wide">
+              <div class="relative z-10 flex items-center justify-between gap-3 pt-3 sm:pt-6 border-t border-white/10">
+                <span class="text-[10px] sm:text-xs font-mono text-white/40 tracking-wide">
                   {letter.tag}
                 </span>
-                <span class={`text-xs font-mono ${letter.pastel.accentText}`}>
+                <span class={`text-[10px] sm:text-xs font-mono ${letter.pastel.accentText}`}>
                   {letter.season}
                 </span>
               </div>
@@ -508,11 +508,11 @@ const chronologicalLetters = [
           const editorialNumber = `0${idx + 1}`;
           const pastel = bookPastels[idx % bookPastels.length];
           return (
-            <div class={`group relative flex flex-col justify-between p-6 sm:p-8 md:p-10 rounded-3xl bg-[#0A1C20] border border-white/10 ${pastel.hoverBorder} transition-all duration-300 shadow-xl min-w-[280px] sm:min-w-[340px] md:min-w-[380px] max-w-[400px] flex-shrink-0 snap-start overflow-hidden`}>
+            <div class={`group relative flex flex-col justify-between p-4 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl bg-[#0A1C20] border border-white/10 ${pastel.hoverBorder} transition-all duration-300 shadow-xl w-[70vw] min-w-[230px] max-w-[255px] sm:w-auto sm:min-w-[320px] md:min-w-[380px] sm:max-w-[400px] flex-shrink-0 snap-start overflow-hidden`}>
               
-              <!-- Massive Editorial Muted Number in Background -->
+              <!-- Editorial Background Number in Newsreader serif -->
               <div
-                class={`absolute -top-3 -right-1 sm:-top-4 sm:-right-2 font-serif text-6xl sm:text-7xl md:text-8xl ${pastel.bgNumber} transition-colors duration-500 select-none pointer-events-none leading-none z-0`}
+                class={`absolute -top-3 -right-1 sm:-top-4 sm:-right-2 font-serif text-5xl sm:text-7xl md:text-8xl ${pastel.bgNumber} transition-colors duration-500 select-none pointer-events-none leading-none z-0`}
                 aria-hidden="true"
               >
                 {editorialNumber}
@@ -520,8 +520,8 @@ const chronologicalLetters = [
 
               <div class="relative z-10">
                 <!-- Book Cover Image with Editorial Proportion (Vertical Rectangle Paperback) -->
-                <div class="w-full flex justify-center items-center py-2 mb-6">
-                  <div class="w-36 sm:w-40 aspect-[2/3] rounded-lg overflow-hidden border border-white/20 shadow-2xl bg-[#12292E] relative group-hover:scale-105 transition-transform duration-500 flex-shrink-0">
+                <div class="w-full flex justify-center items-center py-1 sm:py-2 mb-3 sm:mb-6">
+                  <div class="w-28 sm:w-40 aspect-[2/3] rounded-lg overflow-hidden border border-white/20 shadow-2xl bg-[#12292E] relative group-hover:scale-105 transition-transform duration-500 flex-shrink-0">
                     <img
                       src={book.cover}
                       alt={`Book cover of ${book.title} by ${book.author}`}
@@ -529,37 +529,37 @@ const chronologicalLetters = [
                       loading="lazy"
                     />
                     <!-- Subtle book spine shadow on the left edge giving 3D physical book depth -->
-                    <div class="absolute inset-y-0 left-0 w-3 bg-gradient-to-r from-black/40 to-transparent pointer-events-none" aria-hidden="true"></div>
+                    <div class="absolute inset-y-0 left-0 w-2.5 sm:w-3 bg-gradient-to-r from-black/40 to-transparent pointer-events-none" aria-hidden="true"></div>
                   </div>
                 </div>
 
                 <!-- Step Counter & Tag -->
-                <div class="flex items-center justify-between mb-3">
-                  <span class={`font-mono text-xs ${pastel.accentText} font-semibold tracking-wider`}>
+                <div class="flex items-center justify-between mb-2 sm:mb-3">
+                  <span class={`font-mono text-[11px] sm:text-xs ${pastel.accentText} font-semibold tracking-wider`}>
                     {editorialNumber} / 03
                   </span>
-                  <span class={`text-[11px] uppercase font-sans tracking-widest ${pastel.accentText} ${pastel.accentBg} px-2.5 py-1 rounded-full border ${pastel.accentBorder}`}>
+                  <span class={`text-[10px] sm:text-[11px] uppercase font-sans tracking-widest ${pastel.accentText} ${pastel.accentBg} px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full border ${pastel.accentBorder}`}>
                     {book.tag || "Field Companion"}
                   </span>
                 </div>
 
                 <!-- Title & Author -->
-                <h3 class="font-serif text-xl sm:text-2xl text-white font-normal group-hover:text-white/90 transition-colors mb-1">
+                <h3 class="font-serif text-base sm:text-xl md:text-2xl text-white font-normal group-hover:text-white/90 transition-colors mb-0.5 sm:mb-1">
                   {book.title}
                 </h3>
-                <p class="font-sans text-xs sm:text-sm text-white/60 mb-4 font-medium">
+                <p class="font-sans text-[11px] sm:text-sm text-white/60 mb-2 sm:mb-4 font-medium">
                   {book.author}
                 </p>
 
                 <!-- Reading Reflection -->
-                <p class="font-sans text-xs sm:text-sm text-white/70 leading-relaxed mb-6">
+                <p class="font-sans text-xs sm:text-sm text-white/70 leading-snug sm:leading-relaxed mb-3 sm:mb-6 line-clamp-2 sm:line-clamp-none">
                   {book.note}
                 </p>
               </div>
 
               <!-- Trail Connection Location & Progress Bar -->
-              <div class="relative z-10 pt-4 border-t border-white/10">
-                <p class="font-sans text-xs text-white/50 italic leading-snug mb-3">
+              <div class="relative z-10 pt-3 sm:pt-4 border-t border-white/10">
+                <p class="font-sans text-[11px] sm:text-xs text-white/50 italic leading-snug mb-2 sm:mb-3 line-clamp-1 sm:line-clamp-none">
                   {book.trailConnection}
                 </p>
 
@@ -569,7 +569,7 @@ const chronologicalLetters = [
                     style={`width: ${book.percent || 25}%`}
                   ></div>
                 </div>
-                <div class="flex justify-between items-center mt-2 text-[11px] font-mono text-white/40">
+                <div class="flex justify-between items-center mt-1.5 text-[10px] sm:text-[11px] font-mono text-white/40">
                   <span>Reading Progress</span>
                   <span class={pastel.accentText}>{book.percent || 25}%</span>
                 </div>
@@ -720,32 +720,32 @@ const chronologicalLetters = [
       </div>
 
       <!-- 14 Journeys Chronology Retrospective Highlight Bento Card -->
-      <div class="mt-8 rounded-3xl bg-[#0A1C20] border border-white/10 p-6 sm:p-10 shadow-xl">
-        <div class="flex flex-wrap items-baseline justify-between gap-4 mb-6">
+      <div class="mt-8 rounded-2xl sm:rounded-3xl bg-[#0A1C20] border border-white/10 p-4 sm:p-10 shadow-xl">
+        <div class="flex flex-wrap items-baseline justify-between gap-3 mb-4 sm:mb-6">
           <div>
-            <span class="text-xs font-mono uppercase tracking-widest text-[#77C5A0] block mb-1">
+            <span class="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-[#77C5A0] block mb-1">
               The Road Archive · 2023–2026
             </span>
-            <h3 class="font-serif text-2xl sm:text-3xl text-white font-normal">
+            <h3 class="font-serif text-xl sm:text-3xl text-white font-normal">
               14 Journeys Across 3 Years
             </h3>
           </div>
-          <span class="inline-flex items-center px-3 py-1 rounded-full bg-[#77C5A0]/10 border border-[#77C5A0]/30 text-xs font-mono text-[#77C5A0]">
+          <span class="inline-flex items-center px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-[#77C5A0]/10 border border-[#77C5A0]/30 text-[11px] sm:text-xs font-mono text-[#77C5A0]">
             14 Recorded Trips · 4 States
           </span>
         </div>
 
-        <p class="font-sans text-sm sm:text-base text-white/70 leading-relaxed mb-8">
+        <p class="font-sans text-xs sm:text-base text-white/70 leading-relaxed mb-6 sm:mb-8">
           From first-timer on the beaches of Karnataka to leading expeditions in the Himalayas and solitary temple walks in Banaras:
         </p>
 
         <!-- Chronology Milestone Columns -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-5 mb-6 sm:mb-8">
           <!-- 2023 (Pastel Seafoam) -->
-          <div class="p-5 rounded-2xl bg-[#12292E] border border-white/10 border-l-4 border-l-[#77C5A0]">
-            <div class="flex items-center justify-between mb-2">
-              <span class="font-mono text-sm font-bold text-[#77C5A0]">2023 · Beginnings</span>
-              <span class="font-mono text-xs text-[#77C5A0]/60">4 Trips</span>
+          <div class="p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-[#12292E] border border-white/10 border-l-4 border-l-[#77C5A0]">
+            <div class="flex items-center justify-between mb-1.5 sm:mb-2">
+              <span class="font-mono text-xs sm:text-sm font-bold text-[#77C5A0]">2023 · Beginnings</span>
+              <span class="font-mono text-[11px] sm:text-xs text-[#77C5A0]/60">4 Trips</span>
             </div>
             <p class="font-sans text-xs sm:text-sm text-white/70 leading-relaxed">
               Gokarna (#01, where it all started), Bir Billing, Chitkul, Jibhi 2.0 with Raw Diaries.
@@ -753,10 +753,10 @@ const chronologicalLetters = [
           </div>
 
           <!-- 2024 (Pastel Butter) -->
-          <div class="p-5 rounded-2xl bg-[#12292E] border border-white/10 border-l-4 border-l-[#F7E4A1]">
-            <div class="flex items-center justify-between mb-2">
-              <span class="font-mono text-sm font-bold text-[#F7E4A1]">2024 · Trip Leading &amp; Solo</span>
-              <span class="font-mono text-xs text-[#F7E4A1]/60">7 Trips</span>
+          <div class="p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-[#12292E] border border-white/10 border-l-4 border-l-[#F7E4A1]">
+            <div class="flex items-center justify-between mb-1.5 sm:mb-2">
+              <span class="font-mono text-xs sm:text-sm font-bold text-[#F7E4A1]">2024 · Trip Leading &amp; Solo</span>
+              <span class="font-mono text-[11px] sm:text-xs text-[#F7E4A1]/60">7 Trips</span>
             </div>
             <p class="font-sans text-xs sm:text-sm text-white/70 leading-relaxed">
               Banaras &amp; Lucknow solos, Shangarh, Jibhi (Trip Leader #10), Spiti Circuit, Shojha solo retreat.
@@ -764,10 +764,10 @@ const chronologicalLetters = [
           </div>
 
           <!-- 2025–2026 (Pastel Lavender / Rhododendron) -->
-          <div class="p-5 rounded-2xl bg-[#12292E] border border-white/10 border-l-4 border-l-[#F45B69]">
-            <div class="flex items-center justify-between mb-2">
-              <span class="font-mono text-sm font-bold text-[#F45B69]">2025–2026 · Expansion</span>
-              <span class="font-mono text-xs text-[#F45B69]/60">3 Trips</span>
+          <div class="p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-[#12292E] border border-white/10 border-l-4 border-l-[#F45B69]">
+            <div class="flex items-center justify-between mb-1.5 sm:mb-2">
+              <span class="font-mono text-xs sm:text-sm font-bold text-[#F45B69]">2025–2026 · Expansion</span>
+              <span class="font-mono text-[11px] sm:text-xs text-[#F45B69]/60">3 Trips</span>
             </div>
             <p class="font-sans text-xs sm:text-sm text-white/70 leading-relaxed">
               Jaisalmer &amp; Longewala border post, Winter Shojha snow, NYE in Jibhi (#14).
@@ -827,30 +827,30 @@ const chronologicalLetters = [
       </div>
 
       <!-- About My Vibe Card -->
-      <div class="p-6 sm:p-8 rounded-3xl bg-[#12292E] border border-white/10 shadow-xl mb-12">
-        <span class="text-xs uppercase font-mono tracking-widest text-[#F7E4A1] block mb-3">
+      <div class="p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-[#12292E] border border-white/10 shadow-xl mb-8 sm:mb-12">
+        <span class="text-[10px] sm:text-xs uppercase font-mono tracking-widest text-[#F7E4A1] block mb-2 sm:mb-3">
           About My Vibe
         </span>
-        <p class="font-sans text-base sm:text-lg text-white/85 leading-relaxed">
+        <p class="font-sans text-sm sm:text-lg text-white/85 leading-relaxed">
           I am Varneet, a travel enthusiast, avid reader, and former full-time Social Media Manager from Ludhiana. I thrive on creating a grounded, welcoming environment for guests and believe deeply in authentic cultural exchange.
         </p>
       </div>
 
       <!-- What I Can Bring: 3 Feature Bento Cards -->
-      <div class="mb-12">
-        <span class="text-xs uppercase font-mono tracking-widest text-white/50 block mb-6">
+      <div class="mb-8 sm:mb-12">
+        <span class="text-[10px] sm:text-xs uppercase font-mono tracking-widest text-white/50 block mb-4 sm:mb-6">
           What I Can Bring to Your Property
         </span>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
           <!-- 01. Operations & Guest Experience (Pastel Seafoam) -->
-          <div class="p-6 sm:p-8 rounded-3xl bg-[#12292E] border border-white/10 hover:border-[#77C5A0]/40 transition-colors flex flex-col justify-between">
+          <div class="p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-[#12292E] border border-white/10 hover:border-[#77C5A0]/40 transition-colors flex flex-col justify-between">
             <div>
-              <span class="font-mono text-lg font-bold text-[#77C5A0] block mb-3">[01]</span>
-              <h3 class="font-serif text-xl sm:text-2xl text-white font-normal mb-4">
+              <span class="font-mono text-base sm:text-lg font-bold text-[#77C5A0] block mb-2 sm:mb-3">[01]</span>
+              <h3 class="font-serif text-lg sm:text-2xl text-white font-normal mb-2 sm:mb-4">
                 Operations &amp; Guest Experience
               </h3>
-              <ul class="space-y-3 font-sans text-xs sm:text-sm text-white/70 leading-relaxed">
+              <ul class="space-y-2 sm:space-y-3 font-sans text-xs sm:text-sm text-white/70 leading-relaxed">
                 <li>• Managed complex daily schedules and organized databases of raw data during media company role.</li>
                 <li>• Welcome tired guests with a patient, calm, and detail-oriented presence.</li>
                 <li>• Tackle daily tasks and take initiative to keep property running smoothly.</li>
@@ -859,13 +859,13 @@ const chronologicalLetters = [
           </div>
 
           <!-- 02. Events & The Outdoors (Pastel Butter) -->
-          <div class="p-6 sm:p-8 rounded-3xl bg-[#12292E] border border-white/10 hover:border-[#F7E4A1]/40 transition-colors flex flex-col justify-between">
+          <div class="p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-[#12292E] border border-white/10 hover:border-[#F7E4A1]/40 transition-colors flex flex-col justify-between">
             <div>
-              <span class="font-mono text-lg font-bold text-[#F7E4A1] block mb-3">[02]</span>
-              <h3 class="font-serif text-xl sm:text-2xl text-white font-normal mb-4">
+              <span class="font-mono text-base sm:text-lg font-bold text-[#F7E4A1] block mb-2 sm:mb-3">[02]</span>
+              <h3 class="font-serif text-lg sm:text-2xl text-white font-normal mb-2 sm:mb-4">
                 Events &amp; The Outdoors
               </h3>
-              <ul class="space-y-3 font-sans text-xs sm:text-sm text-white/70 leading-relaxed">
+              <ul class="space-y-2 sm:space-y-3 font-sans text-xs sm:text-sm text-white/70 leading-relaxed">
                 <li>• Coordinated live, on-the-ground coverage for 3 major events; comfortable managing group dynamics.</li>
                 <li>• Curate inclusive, low-pressure activities to help solo or quieter guests connect naturally.</li>
                 <li>• Lead groups on local hikes and treks safely with respectful mountain stewardship.</li>
@@ -874,13 +874,13 @@ const chronologicalLetters = [
           </div>
 
           <!-- 03. Digital Marketing & Storytelling (Rhododendron / Terracotta) -->
-          <div class="p-6 sm:p-8 rounded-3xl bg-[#12292E] border border-white/10 hover:border-[#F45B69]/40 transition-colors flex flex-col justify-between">
+          <div class="p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-[#12292E] border border-white/10 hover:border-[#F45B69]/40 transition-colors flex flex-col justify-between">
             <div>
-              <span class="font-mono text-lg font-bold text-[#F45B69] block mb-3">[03]</span>
-              <h3 class="font-serif text-xl sm:text-2xl text-white font-normal mb-4">
+              <span class="font-mono text-base sm:text-lg font-bold text-[#F45B69] block mb-2 sm:mb-3">[03]</span>
+              <h3 class="font-serif text-lg sm:text-2xl text-white font-normal mb-2 sm:mb-4">
                 Digital Marketing &amp; Storytelling
               </h3>
-              <ul class="space-y-3 font-sans text-xs sm:text-sm text-white/70 leading-relaxed">
+              <ul class="space-y-2 sm:space-y-3 font-sans text-xs sm:text-sm text-white/70 leading-relaxed">
                 <li>• Strategized and grew social communities, organically scaling Instagram by 10x.</li>
                 <li>• Produced content at volume, publishing 60 to 80 blogs monthly across 6 platforms.</li>
                 <li>• Document your property's authentic story with unposed photos and editorial journal writeups.</li>
@@ -891,17 +891,17 @@ const chronologicalLetters = [
       </div>
 
       <!-- The Exchange & Current Availability -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
-        <div class="p-6 sm:p-8 rounded-3xl bg-[#12292E] border border-white/10">
-          <span class="text-xs uppercase font-mono tracking-widest text-[#F7E4A1] block mb-2">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-12">
+        <div class="p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-[#12292E] border border-white/10">
+          <span class="text-[10px] sm:text-xs uppercase font-mono tracking-widest text-[#F7E4A1] block mb-1.5 sm:mb-2">
             The Exchange
           </span>
-          <p class="font-sans text-sm sm:text-base text-white/75 leading-relaxed">
+          <p class="font-sans text-xs sm:text-base text-white/75 leading-relaxed">
             I am ready to commit to the required volunteer hours (such as a 6-hour daily commitment) to keep your operations running smoothly in exchange for accommodation and meals.
           </p>
         </div>
 
-        <div class="p-6 sm:p-8 rounded-3xl bg-[#12292E] border border-[#77C5A0]/40">
+        <div class="p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-[#12292E] border border-[#77C5A0]/40">
           <div class="flex items-center gap-2 mb-2">
             <span class="w-2 h-2 rounded-full bg-[#77C5A0]"></span>
             <span class="text-xs uppercase font-mono tracking-widest text-[#77C5A0]">
