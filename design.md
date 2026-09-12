@@ -30,6 +30,7 @@ The color system is calibrated to a Deep Teal / Slate palette rooted in color ps
 |---|---|---|
 | **Primary (Global Canvas)** | `#0A1C20` | Deep Teal / Slate. The primary background color for the main body and global canvas. |
 | **Surface (Bento Cards)** | `#12292E` | Slightly lighter Deep Teal Slate. Used for bento cards, reading containers, and elevated modules. |
+| **Cherry Blossom** | `#FFB7C5` | Scroll-activated navigation bar, drawer header, and blossom accents. |
 | **Pastel Seafoam** | `#77C5A0` | Trail, pine foothills, active beacons, nature field logs (#01 Kangra), primary pastel buttons. |
 | **Pastel Butter** | `#F7E4A1` | Dawn, sand, Aravalli foothills, reading shelves, desert field logs (#02 Jaipur), warm CTAs. |
 | **Pastel Dusty Rose** | `#F4A89A` | Terracotta sunset, ramparts, reflection quotes, arid field logs (#03 Jodhpur). |

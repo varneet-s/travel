@@ -238,29 +238,42 @@ const chronologicalLetters = [
     <!-- Top Spacer for Visual Breathing Room -->
     <div class="relative z-10 w-full pt-12 sm:pt-16 md:pt-20"></div>
 
-    <!-- Hero Middle Block (Tagline with expansive spacing, Letters from left above, Subtitle right below) -->
+    <!-- Hero Middle Block (Tagline using full horizontal space, Letters from left above, Subtitle right below) -->
     <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 md:px-12 flex flex-col my-auto">
-      <!-- 1. "Letters from" on left above tagline with generous breathing room -->
-      <div class="w-full flex items-center gap-3 text-left mb-3 sm:mb-5 md:mb-6">
-        <span class="w-6 sm:w-8 h-[1px] bg-[#77C5A0]/80"></span>
-        <p class="font-sans text-xs sm:text-sm uppercase tracking-[0.3em] text-[#77C5A0] font-semibold">
+      <!-- 1. "Letters from" on left above tagline with delicate typography -->
+      <div class="w-full flex items-center gap-2 text-left mb-1.5 sm:mb-2 md:mb-3">
+        <span class="w-3 sm:w-5 h-[1px] bg-[#77C5A0]/70"></span>
+        <p class="font-sans text-[10px] sm:text-xs uppercase tracking-[0.25em] text-[#77C5A0]/90 font-medium">
           Letters from
         </p>
       </div>
 
-      <!-- 2. Flagship Tagline Title: The biggest element on screen, strictly in 1 single line with expansive word spacing -->
-      <div class="w-full text-center py-2 sm:py-4">
-        <h1 class="w-full font-['Oswald',sans-serif] font-black uppercase text-[1.45rem] sm:text-3xl md:text-5xl lg:text-7xl xl:text-[5.25rem] text-white tracking-[0.08em] sm:tracking-[0.12em] md:tracking-[0.16em] leading-none select-none flex flex-nowrap whitespace-nowrap justify-center items-center gap-x-3.5 sm:gap-x-8 md:gap-x-14 lg:gap-x-20 xl:gap-x-28 drop-shadow-2xl">
-          <span>The</span>
-          <span>Long</span>
-          <span>Way</span>
-          <span>Home.</span>
-        </h1>
+      <!-- 2. Flagship Tagline Title: The biggest element on screen, strictly using the whole horizontal space with equal distance between characters -->
+      <div class="w-full py-1 sm:py-2">
+        <h1 class="sr-only">The Long Way Home.</h1>
+        <svg
+          viewBox="0 0 1000 82"
+          class="w-full h-auto block select-none drop-shadow-2xl overflow-visible"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <text
+            x="0"
+            y="68"
+            textLength="1000"
+            lengthAdjust="spacing"
+            font-family="'Oswald', sans-serif"
+            font-weight="900"
+            font-size="80"
+            fill="#FFFFFF"
+            letter-spacing="0"
+          >THE LONG WAY HOME.</text>
+        </svg>
       </div>
 
-      <!-- 3. Subtitle: Below and on the RIGHT side of the tagline with comfortable spacing -->
-      <div class="w-full flex justify-end mt-4 sm:mt-6 md:mt-8">
-        <p class="font-sans text-xs sm:text-sm md:text-base text-white/80 leading-relaxed tracking-wide font-normal max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg text-right">
+      <!-- 3. Subtitle: Below and on the RIGHT side of the tagline with smaller, subtle typography -->
+      <div class="w-full flex justify-end mt-2 sm:mt-3 md:mt-4">
+        <p class="font-sans text-[10px] sm:text-[11px] md:text-xs text-white/60 leading-snug tracking-wide font-normal max-w-[220px] sm:max-w-xs md:max-w-sm text-right">
           Slow routes across Himachal, Rajasthan &amp; the coastal south. Field notebooks, bus ledgers, and honest stories from the trail.
         </p>
       </div>
@@ -506,14 +519,18 @@ const chronologicalLetters = [
               </div>
 
               <div class="relative z-10">
-                <!-- Book Cover Image with Editorial Proportion -->
-                <div class="w-full aspect-[2/3] max-h-72 rounded-xl overflow-hidden bg-[#12292E] border border-white/10 mb-6 flex items-center justify-center">
-                  <img
-                    src={book.cover}
-                    alt={`Book cover of ${book.title} by ${book.author}`}
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
+                <!-- Book Cover Image with Editorial Proportion (Vertical Rectangle Paperback) -->
+                <div class="w-full flex justify-center items-center py-2 mb-6">
+                  <div class="w-36 sm:w-40 aspect-[2/3] rounded-lg overflow-hidden border border-white/20 shadow-2xl bg-[#12292E] relative group-hover:scale-105 transition-transform duration-500 flex-shrink-0">
+                    <img
+                      src={book.cover}
+                      alt={`Book cover of ${book.title} by ${book.author}`}
+                      class="w-full h-full object-cover object-center"
+                      loading="lazy"
+                    />
+                    <!-- Subtle book spine shadow on the left edge giving 3D physical book depth -->
+                    <div class="absolute inset-y-0 left-0 w-3 bg-gradient-to-r from-black/40 to-transparent pointer-events-none" aria-hidden="true"></div>
+                  </div>
                 </div>
 
                 <!-- Step Counter & Tag -->
