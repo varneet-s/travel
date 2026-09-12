@@ -3,7 +3,7 @@
 ---
 
 <div class="w-full max-w-md mx-auto my-6 p-6 rounded-2xl bg-[#0F1720] border border-white/10 text-center">
-  <p class="text-xs uppercase font-sans tracking-[0.2em] text-white/50 mb-2 font-medium">
+  <p class="text-xs uppercase font-sans tracking-[0.2em] text-[#F7E4A1] mb-2 font-medium">
     Substack Newsletter
   </p>
   <h3 class="font-serif text-xl text-white font-normal mb-3">
@@ -12,13 +12,25 @@
   <p class="font-sans text-xs text-white/60 mb-6 leading-relaxed">
     Bi-weekly dispatches, transit breakdowns, and field notes sent directly to your inbox.
   </p>
-  <a
-    href="https://rekhoj.substack.com"
+  <form
+    action="https://rekhoj.substack.com/subscribe"
+    method="get"
     target="_blank"
-    rel="noopener noreferrer"
-    class="inline-flex items-center justify-center w-full px-5 py-2.5 rounded-full bg-white text-[#0A1118] font-sans text-xs font-semibold hover:bg-white/90 transition-all duration-200"
+    class="flex flex-col sm:flex-row gap-2"
   >
-    <span>Subscribe on Substack</span>
-    <span class="ml-1 text-xs">↗</span>
-  </a>
+    <input
+      type="email"
+      name="email"
+      placeholder="Type your email..."
+      required
+      class="flex-1 px-4 py-2.5 rounded-full bg-[#0A1C20] border border-white/20 text-white placeholder-white/40 text-xs focus:outline-none focus:border-[#77C5A0] transition-colors"
+      aria-label="Email address for Substack newsletter"
+    />
+    <button
+      type="submit"
+      class="px-6 py-2.5 rounded-full bg-[#77C5A0] text-[#0A1C20] font-sans text-xs font-semibold hover:bg-[#8CD5B1] active:scale-[0.98] transition-all cursor-pointer"
+    >
+      Subscribe
+    </button>
+  </form>
 </div>

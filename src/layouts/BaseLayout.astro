@@ -27,7 +27,7 @@ inject();
 ---
 
 <!doctype html>
-<html lang="en" class="bg-[#0A1118] text-white">
+<html lang="en" class="bg-[#0A1C20] text-white">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -62,55 +62,162 @@ inject();
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Oswald:wght@700;900&family=Syne:wght@700;800&display=swap"
       rel="stylesheet"
     />
   </head>
-  <body class="bg-[#0A1118] text-white min-h-screen flex flex-col font-sans selection:bg-white/20 selection:text-white">
-    <!-- Minimalist Top Navigation Header (No hamburger menu) -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-[#0A1118]/85 backdrop-blur-md border-b border-white/10 transition-all duration-300">
+  <body class="bg-[#0A1C20] text-white min-h-screen flex flex-col font-sans selection:bg-[#77C5A0]/25 selection:text-white">
+    <!-- Minimalist Top Navigation Header in Rhododendron -->
+    <header
+      id="main-header"
+      class="fixed top-0 left-0 right-0 z-50 bg-[#F45B69] border-b border-[#D83B4C] text-[#0A1C20] transition-all duration-500 ease-out transform -translate-y-full opacity-0 pointer-events-none shadow-xl"
+    >
       <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between" aria-label="Main Navigation">
-        <a href="/" class="group flex items-center gap-2.5 text-white no-underline focus:outline-none">
-          <span class="font-serif text-lg tracking-tight font-medium group-hover:text-white/80 transition-colors">
+        <a href="/" class="group flex items-center gap-2.5 text-[#0A1C20] no-underline focus:outline-none">
+          <span class="font-serif text-lg tracking-tight font-bold group-hover:text-black transition-colors">
             reKhoj
           </span>
-          <span class="text-xs text-white/40 font-mono tracking-widest hidden sm:inline-block">
+          <span class="text-xs text-[#0A1C20]/75 font-mono tracking-widest hidden sm:inline-block">
             @the_musafir_paaji
           </span>
         </a>
 
-        <!-- Direct Semantic Nav Links (Directly visible, zero hamburger menu) -->
-        <div class="flex items-center gap-6 sm:gap-8 text-xs sm:text-sm font-sans tracking-wide">
+        <!-- Desktop Nav Links (Visible on md and up; zero Substack/Subscribe link) -->
+        <div class="hidden md:flex items-center gap-8 text-sm font-sans tracking-wide">
           <a
             href="/#letters"
-            class="text-white/70 hover:text-white transition-colors duration-200"
+            class="text-[#0A1C20]/85 hover:text-[#0A1C20] font-semibold hover:underline underline-offset-4 transition-colors duration-200"
           >
             Letters
           </a>
           <a
             href="/#reading"
-            class="text-white/70 hover:text-white transition-colors duration-200"
+            class="text-[#0A1C20]/85 hover:text-[#0A1C20] font-semibold hover:underline underline-offset-4 transition-colors duration-200"
           >
             Reading
           </a>
           <a
-            href="/about"
-            class="text-white/70 hover:text-white transition-colors duration-200"
+            href="/#about"
+            class="text-[#0A1C20]/85 hover:text-[#0A1C20] font-semibold hover:underline underline-offset-4 transition-colors duration-200"
           >
             About
           </a>
           <a
-            href="https://rekhoj.substack.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-medium border border-white/15 transition-colors duration-200 text-xs"
+            href="/#volunteer"
+            class="text-[#0A1C20]/85 hover:text-[#0A1C20] font-semibold hover:underline underline-offset-4 transition-colors duration-200"
           >
-            <span>Substack</span>
-            <span class="text-white/60">↗</span>
+            Volunteer
           </a>
         </div>
+
+        <!-- Mobile Hamburger Button -->
+        <div class="md:hidden flex items-center">
+          <button
+            id="mobile-menu-btn"
+            type="button"
+            class="p-2 text-[#0A1C20] hover:text-black hover:bg-black/10 focus:outline-none focus:ring-1 focus:ring-[#0A1C20] rounded-lg transition-colors"
+            aria-label="Toggle Navigation Menu"
+            aria-expanded="false"
+          >
+            <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
       </nav>
+
+      <!-- Mobile Dropdown Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden border-t border-[#D83B4C] bg-[#F45B69] px-6 py-6 transition-all duration-300 shadow-2xl"
+      >
+        <div class="flex flex-col gap-5 text-base font-sans tracking-wide">
+          <a
+            href="/#letters"
+            class="mobile-nav-link text-[#0A1C20] font-semibold hover:underline py-1 border-b border-black/10"
+          >
+            Letters
+          </a>
+          <a
+            href="/#reading"
+            class="mobile-nav-link text-[#0A1C20] font-semibold hover:underline py-1 border-b border-black/10"
+          >
+            Reading
+          </a>
+          <a
+            href="/#about"
+            class="mobile-nav-link text-[#0A1C20] font-semibold hover:underline py-1 border-b border-black/10"
+          >
+            About
+          </a>
+          <a
+            href="/#volunteer"
+            class="mobile-nav-link text-[#0A1C20] font-semibold hover:underline py-1"
+          >
+            Volunteer
+          </a>
+        </div>
+      </div>
     </header>
+
+    <script is:inline>
+      function handleScrollNav() {
+        const header = document.getElementById('main-header');
+        if (!header) return;
+        if (window.scrollY > 40) {
+          header.classList.remove('-translate-y-full', 'opacity-0', 'pointer-events-none');
+          header.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
+        } else {
+          header.classList.add('-translate-y-full', 'opacity-0', 'pointer-events-none');
+          header.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
+          // Close mobile menu when scrolling back to absolute top
+          const mobileMenu = document.getElementById('mobile-menu');
+          const hIcon = document.getElementById('hamburger-icon');
+          const cIcon = document.getElementById('close-icon');
+          if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+            if (hIcon) hIcon.classList.remove('hidden');
+            if (cIcon) cIcon.classList.add('hidden');
+          }
+        }
+      }
+
+      function setupMobileMenu() {
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const hIcon = document.getElementById('hamburger-icon');
+        const cIcon = document.getElementById('close-icon');
+        if (!btn || !menu) return;
+
+        btn.addEventListener('click', () => {
+          const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', !isExpanded);
+          menu.classList.toggle('hidden');
+          if (hIcon) hIcon.classList.toggle('hidden');
+          if (cIcon) cIcon.classList.toggle('hidden');
+        });
+
+        // Close when clicking any link
+        const links = menu.querySelectorAll('.mobile-nav-link');
+        links.forEach(l => {
+          l.addEventListener('click', () => {
+            menu.classList.add('hidden');
+            btn.setAttribute('aria-expanded', 'false');
+            if (hIcon) hIcon.classList.remove('hidden');
+            if (cIcon) cIcon.classList.add('hidden');
+          });
+        });
+      }
+
+      window.addEventListener('scroll', handleScrollNav, { passive: true });
+      document.addEventListener('DOMContentLoaded', () => {
+        handleScrollNav();
+        setupMobileMenu();
+      });
+    </script>
 
     <!-- Main Content Area -->
     <main class="flex-grow">
@@ -118,24 +225,28 @@ inject();
     </main>
 
     <!-- Minimalist Editorial Footer -->
-    <footer class="border-t border-white/10 bg-[#0F1720] py-12 px-4 sm:px-6 lg:px-8 text-white/50 text-xs font-sans">
-      <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div class="flex items-center gap-2">
-          <span class="font-serif text-sm text-white/80">reKhoj</span>
+    <footer class="border-t border-white/10 bg-[#12292E] py-12 px-4 sm:px-6 lg:px-8 text-white/50 text-xs font-sans">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex flex-wrap items-center justify-center md:justify-start gap-2 text-center md:text-left">
+          <span class="font-serif text-sm text-[#F7E4A1]/90">reKhoj</span>
           <span>·</span>
           <span>The Long way Home.</span>
           <span>·</span>
-          <span>Slow routes & open notebooks</span>
+          <span>Slow routes &amp; open notebooks</span>
         </div>
-        <div class="flex items-center gap-6">
-          <a href="https://rekhoj.substack.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
-            Substack ↗
+        <div class="flex flex-wrap items-center justify-center gap-6">
+          <a
+            href="https://buymeacoffee.com/rekhoj"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFDD00] hover:bg-[#FFE633] text-[#000000] font-sans text-xs font-semibold shadow-md transition-transform hover:scale-105"
+            title="Buy me a coffee on buymeacoffee.com"
+          >
+            <span>☕</span>
+            <span>Buy me a coffee</span>
           </a>
-          <a href="https://instagram.com/the_musafir_paaji" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+          <a href="https://instagram.com/the_musafir_paaji" target="_blank" rel="noopener noreferrer" class="hover:text-[#F7E4A1] transition-colors">
             Instagram ↗
-          </a>
-          <a href="/about" class="hover:text-white transition-colors">
-            About
           </a>
         </div>
       </div>
