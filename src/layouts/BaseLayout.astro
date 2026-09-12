@@ -63,6 +63,10 @@ inject();
       <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     )}
 
+    <!-- Critical Hero & UI Asset Preloads -->
+    <link rel="preload" as="image" href="/images/bir/bir-hero.jpg" fetchpriority="high" />
+    <link rel="preload" as="image" href="/images/illustrations/expedition-compass.svg" />
+
     <!-- Google Fonts: Courier Prime, Newsreader, Source Sans 3 -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -140,33 +144,35 @@ inject();
       </button>
     </div>
 
-    <!-- Desktop Side Scroll-Linked Indicator Dots -->
-    <nav class="side-wayfinding-dots" aria-label="Section wayfinding" id="sideWayfindingNav">
-      <a href="#hero" class="wayfinding-dot active" data-target="hero" title="The Road (Altitude Intro)">
-        <span class="dot-point"></span>
-        <span class="dot-label">01 · The Road</span>
-      </a>
-      <a href="#dispatch" class="wayfinding-dot" data-target="dispatch" title="Featured Dispatch (Shangarh)">
-        <span class="dot-point"></span>
-        <span class="dot-label">02 · Dispatch</span>
-      </a>
-      <a href="#atlas" class="wayfinding-dot" data-target="atlas" title="Expedition Atlas (14 Journeys)">
-        <span class="dot-point"></span>
-        <span class="dot-label">03 · Atlas</span>
-      </a>
-      <a href="#consuming" class="wayfinding-dot" data-target="consuming" title="Currently Consuming (Books + Film)">
-        <span class="dot-point"></span>
-        <span class="dot-label">04 · Consuming</span>
-      </a>
-      <a href="#letters" class="wayfinding-dot" data-target="letters" title="Substack Dispatches">
-        <span class="dot-point"></span>
-        <span class="dot-label">05 · Letters</span>
-      </a>
-      <a href="#volunteer" class="wayfinding-dot" data-target="volunteer" title="Hostel Volunteering">
-        <span class="dot-point"></span>
-        <span class="dot-label">06 · Stays</span>
-      </a>
-    </nav>
+    <!-- Desktop Side Scroll-Linked Indicator Dots (Scoped to Homepage) -->
+    {currentPath === '/' && (
+      <nav class="side-wayfinding-dots" aria-label="Section wayfinding" id="sideWayfindingNav">
+        <a href="#hero" class="wayfinding-dot active" data-target="hero" title="The Road (Altitude Intro)">
+          <span class="dot-point"></span>
+          <span class="dot-label">01 · The Road</span>
+        </a>
+        <a href="#dispatch" class="wayfinding-dot" data-target="dispatch" title="Featured Dispatch (Shangarh)">
+          <span class="dot-point"></span>
+          <span class="dot-label">02 · Dispatch</span>
+        </a>
+        <a href="#atlas" class="wayfinding-dot" data-target="atlas" title="Expedition Atlas (14 Journeys)">
+          <span class="dot-point"></span>
+          <span class="dot-label">03 · Atlas</span>
+        </a>
+        <a href="#consuming" class="wayfinding-dot" data-target="consuming" title="Currently Consuming (Books + Film)">
+          <span class="dot-point"></span>
+          <span class="dot-label">04 · Consuming</span>
+        </a>
+        <a href="#letters" class="wayfinding-dot" data-target="letters" title="Substack Dispatches">
+          <span class="dot-point"></span>
+          <span class="dot-label">05 · Letters</span>
+        </a>
+        <a href="#volunteer" class="wayfinding-dot" data-target="volunteer" title="Hostel Volunteering">
+          <span class="dot-point"></span>
+          <span class="dot-label">06 · Stays</span>
+        </a>
+      </nav>
+    )}
 
     <!-- Hidden Header Nav Structure Preserving Tests T3.1 & T4.1.1 -->
     <header class="nav-header" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0;">
@@ -379,20 +385,19 @@ inject();
       </div>
     </footer>
 
-    <!-- Client-side Navigation, Wayfinding Dots, Custom Cursor & Interactive Compass -->
-    <script is:inline>
-      document.addEventListener('DOMContentLoaded', () => {
-        // 1. Reading progress bar
-        const progressBar = document.getElementById('readingProgress');
-        window.addEventListener('scroll', () => {
-          const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-          if (totalHeight > 0 && progressBar) {
-            const progress = (window.scrollY / totalHeight) * 100;
-            progressBar.style.width = progress + '%';
-          }
-        }, { passive: true });
+    <!-- Centralized Scroll Engine, Wayfinding, Custom Cursor & Interactive Compass -->
+    <script>
+      import { initScrollEngine, bindReadingProgress, bindWayfindingDots } from '../scripts/scroll-engine';
 
-        // 2. Full-Screen Wayfinding Overlay Toggle
+      function initBaseLayout() {
+        // 1. Centralized Scroll Engine with Lenis & GSAP ScrollTrigger sync
+        const engine = initScrollEngine();
+
+        // 2. Reading progress and wayfinding dots bound to Lenis scroll (zero duplicate unthrottled listeners)
+        const unbindProgress = bindReadingProgress(engine.lenis, 'readingProgress');
+        const unbindDots = bindWayfindingDots(engine.lenis, ['hero', 'dispatch', 'atlas', 'consuming', 'letters', 'volunteer']);
+
+        // 3. Full-Screen Wayfinding Overlay Toggle
         const toggle = document.getElementById('mobileNavToggle');
         const drawer = document.getElementById('mobileNavDrawer');
         const backdrop = document.getElementById('mobileNavBackdrop');
@@ -420,31 +425,16 @@ inject();
         backdrop?.addEventListener('click', closeDrawer);
         stopLinks.forEach(link => link.addEventListener('click', closeDrawer));
 
-        // 3. Side Wayfinding Dots Active Section Tracking
-        const wayfindingDots = document.querySelectorAll('.wayfinding-dot');
-        const sections = ['hero', 'dispatch', 'atlas', 'consuming', 'letters', 'volunteer'];
-
-        window.addEventListener('scroll', () => {
-          const scrollPos = window.scrollY + window.innerHeight * 0.35;
-          for (let i = sections.length - 1; i >= 0; i--) {
-            const sec = document.getElementById(sections[i]);
-            if (sec && sec.offsetTop <= scrollPos) {
-              wayfindingDots.forEach(d => d.classList.remove('active'));
-              const activeDot = document.querySelector(`.wayfinding-dot[data-target="${sections[i]}"]`);
-              activeDot?.classList.add('active');
-              break;
-            }
-          }
-        }, { passive: true });
-
         // 4. Custom Subtle Compass Cursor
         const cursorDot = document.getElementById('cursorDot');
         const cursorRing = document.getElementById('cursorRing');
+        let onMouseMove: ((e: MouseEvent) => void) | null = null;
         if (cursorDot && cursorRing && window.matchMedia('(pointer: fine)').matches) {
-          window.addEventListener('mousemove', (e) => {
+          onMouseMove = (e: MouseEvent) => {
             cursorDot.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
             cursorRing.style.transform = `translate3d(${e.clientX - 16}px, ${e.clientY - 16}px, 0)`;
-          }, { passive: true });
+          };
+          window.addEventListener('mousemove', onMouseMove, { passive: true });
 
           const clickables = document.querySelectorAll('a, button, .milestone-interactive-node');
           clickables.forEach((el) => {
@@ -455,16 +445,38 @@ inject();
 
         // 5. Interactive Footer Compass (Rotates towards cursor)
         const footerCompass = document.getElementById('footerInteractiveCompass');
+        let onCompassMove: ((e: MouseEvent) => void) | null = null;
         if (footerCompass) {
-          window.addEventListener('mousemove', (e) => {
+          onCompassMove = (e: MouseEvent) => {
             const rect = footerCompass.getBoundingClientRect();
             const compassCenterX = rect.left + rect.width / 2;
             const compassCenterY = rect.top + rect.height / 2;
             const angle = Math.atan2(e.clientY - compassCenterY, e.clientX - compassCenterX) * (180 / Math.PI) + 90;
             footerCompass.style.transform = `rotate(${angle}deg)`;
-          }, { passive: true });
+          };
+          window.addEventListener('mousemove', onCompassMove, { passive: true });
         }
-      });
+
+        // 6. Comprehensive Teardown on pagehide or Astro view transitions
+        const cleanup = () => {
+          unbindProgress();
+          unbindDots();
+          engine.destroy();
+          if (onMouseMove) window.removeEventListener('mousemove', onMouseMove);
+          if (onCompassMove) window.removeEventListener('mousemove', onCompassMove);
+          window.removeEventListener('pagehide', cleanup);
+          document.removeEventListener('astro:before-swap', cleanup);
+        };
+
+        window.addEventListener('pagehide', cleanup, { once: true });
+        document.addEventListener('astro:before-swap', cleanup, { once: true });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initBaseLayout);
+      } else {
+        initBaseLayout();
+      }
     </script>
 
     <style>
@@ -572,11 +584,31 @@ inject();
         justify-content: space-between;
       }
 
-      .hamburger-line {
-        display: block;
-        width: 100%;
-        height: 1.5px;
-        background: #FAF8F5;
+      /* Mobile Clearance: Eliminate button collision on 375px-412px viewports */
+      @media (max-width: 768px) {
+        .corner-brand-anchor {
+          top: 14px;
+          left: 14px;
+        }
+        .corner-wayfinding-wrap {
+          top: 14px;
+          right: 14px;
+        }
+        .corner-brand-coords {
+          display: none !important;
+        }
+        .wayfinding-trigger-label {
+          display: none !important;
+        }
+        .brand-mark-link {
+          padding: 6px 12px;
+        }
+        .corner-compass-trigger {
+          padding: 8px 12px;
+          min-width: 44px;
+          min-height: 44px;
+          justify-content: center;
+        }
       }
 
       /* Desktop Side Wayfinding Dots */

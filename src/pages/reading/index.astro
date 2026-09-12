@@ -124,7 +124,24 @@ const allBooks = [
     <section class="carol-shelf-section" aria-label="Bookshelf Scroll">
       <div class="carol-shelf-viewport" id="carolShelfViewport" tabindex="0" role="region" aria-label="Horizontal bookshelf">
         <div class="carol-shelf-track" id="carolShelfTrack">
-          {allBooks.map((b) => (
+          {allBooks.length === 0 ? (
+            <div class="carol-empty-shelf-card" id="readingEmptyCard">
+              <div class="carol-empty-badge">Goodreads RSS · Mountain Library</div>
+              <h2 class="carol-empty-title">Trail Books Forthcoming</h2>
+              <p class="carol-empty-desc">
+                Volumes carried across Himachal transit routes, homestay shelves, and long road journeys are being synchronized from Goodreads.
+              </p>
+              <a
+                href="https://www.goodreads.com/user/show/202026328-varneet-singh"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="carol-empty-cta"
+              >
+                Browse Goodreads Profile ↗
+              </a>
+            </div>
+          ) : (
+            allBooks.map((b) => (
             <div
               class={`carol-book-item ${b.isReading ? 'reading-card-horizontal' : 'read-book-card'}`}
               data-status={b.isReading ? 'currently-reading' : 'read'}
@@ -201,7 +218,8 @@ const allBooks = [
                 <div class="carol-spine-bottom-crease" aria-hidden="true"></div>
               </div>
             </div>
-          ))}
+          ))
+          )}
         </div>
 
         {/* Shelf Base Ledge */}
@@ -705,6 +723,63 @@ const allBooks = [
 
   .carol-popup-link:hover {
     color: #9e3e1a;
+  }
+
+  .carol-empty-shelf-card {
+    background: #FAF8F5;
+    border: 1.5px dashed rgba(27, 46, 36, 0.2);
+    border-radius: 12px;
+    padding: 40px 32px;
+    text-align: center;
+    max-width: 540px;
+    margin: 40px auto;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  }
+
+  .carol-empty-badge {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-sage, #5B9B82);
+    margin-bottom: 12px;
+  }
+
+  .carol-empty-title {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-light-primary);
+    margin: 0 0 12px 0;
+  }
+
+  .carol-empty-desc {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--text-light-secondary);
+    margin: 0 0 20px 0;
+  }
+
+  .carol-empty-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-terracotta);
+    color: #ffffff;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 10px 20px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .carol-empty-cta:hover {
+    background: var(--accent-terracotta-light, #d86b58);
+    transform: translateY(-2px);
   }
 
   @media (prefers-reduced-motion: reduce) {

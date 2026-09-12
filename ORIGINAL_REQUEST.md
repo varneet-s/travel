@@ -251,3 +251,55 @@ Beyond the palette and typography, agents may apply creative enhancements that i
   - Is there visual coherence across the homepage, letters page, and about page? (Yes / No)
   - Would a slow-travel reader find this more characterful than a generic white-background blog? (Yes / No)
 
+## Follow-up — 2026-09-11T16:16:49Z
+
+Fix stability, stutter, and layout shift issues across the existing travel site build, and convert the vertical hero animation into a pinned horizontal parallax sequence where a stationary bus rides over scrolling road, mountain ridges, and altitude milestones before handing off to normal vertical scrolling. On mobile touch devices, implement a native horizontal swipe experience with CSS scroll-snap.
+
+Working directory: `/Users/rekhoj/Documents/GitHub/travel`
+Integrity mode: development
+
+## Requirements
+
+### R1. Root-Cause Build & Stability Fixes
+- **Lenis & GSAP ScrollTrigger Synchronization**: Ensure smooth-scroll (Lenis) drives ScrollTrigger's scroll updates cleanly (`lenis.on('scroll', ScrollTrigger.update)` and syncing GSAP ticker with `lenis.raf`). Prevent competing scroll loops, stutter, and jank on resize or scroll.
+- **Teardown & Cleanup**: Properly clean up and revert all ScrollTrigger instances and animation timelines on component unmount or view transitions to prevent lingering memory leaks and event listener duplication.
+- **Asset Preloading**: Preload all critical hero visual assets (bus SVG, road segments, mountain layers, milestone markers) so elements render synchronously without late pop-in or layout shift (CLS < 0.1).
+- **Graceful RSS Fallback**: Ensure external feed integrations (Substack, Goodreads, Letterboxd) fail gracefully with clean fallback states if network requests timeout or fail, without crashing SSR or blocking page rendering.
+- **Navigation Continuity**: Verify the overlay menu and section-dot navigation remain fully functional and all previous sections and anchors are reachable after navbar removal.
+
+### R2. Pinned Horizontal Hero Animation (Desktop / Large Screens)
+- **Stationary Bus & Moving Canvas**: The hero road remains pinned near the bottom of the viewport. The bus remains visually stationary in the frame while vertical scroll drives horizontal `translateX` of the road, mountain ridges, and milestones underneath it (side-scroller runner aesthetic).
+- **Parallax Depth**: Multi-layer mountain ridges translate at differential horizontal speeds behind the road layer for atmospheric depth.
+- **Chronological Milestones & Readability**: Altitude milestones pass in sequence with comfortable pacing (each milestone is readable before the next arrives) without requiring excessive vertical scrolling.
+- **Seamless Release & Vertical Hand-off**: Once all milestones have passed, release the GSAP pin and return seamlessly to normal vertical scrolling for the rest of the site (map, dispatches, reading).
+
+### R3. Mobile Touch Experience (CSS Scroll-Snap Native Swipe)
+- On touch/mobile screens (viewport widths < 768px), avoid vertical-to-horizontal scroll jacking.
+- Provide a touch-native horizontal swipe container with CSS scroll-snap for milestone cards/milestones, allowing users to swipe sideways with 1:1 touch response while preserving normal vertical scrolling through the page.
+
+## Verification Plan
+
+### Verification Resources
+- Project test suite runner: `node tests/e2e/runner.js`
+- Astro build runner: `npm run build`
+- Mobile viewport geometry audit (375px–412px, e.g., iPhone SE, iPhone 14/15, Pixel 7)
+
+## Acceptance Criteria
+
+### Build & Stability
+- [ ] `npm run build` completes successfully with exit code 0.
+- [ ] Simulated network failure of RSS feeds does not crash the build or leave blank/broken UI sections.
+- [ ] All GSAP ScrollTrigger and Lenis listeners clean up without console errors or orphan triggers.
+- [ ] Hero visual assets load without layout shift or delayed pop-in.
+
+### Horizontal Hero Interaction
+- [ ] On desktop, vertical scrolling drives horizontal movement of road, mountains, and milestones.
+- [ ] Bus remains visually stationary near the bottom while background and foreground elements translate horizontally.
+- [ ] Background mountain ridges move with distinct parallax speed ratios relative to the road.
+- [ ] Milestones appear in chronological order and remain comfortably readable during scroll.
+- [ ] The pin releases cleanly after the last milestone, resuming standard vertical scroll down to subsequent sections.
+
+### Mobile & Navigation
+- [ ] Viewports < 768px feature a responsive, touch-native horizontal swipe mechanism with CSS scroll-snap.
+- [ ] Overlay menu and section-dot navigation trigger correct scrolling and section visibility across all pages and anchor points.
+- [ ] No horizontal overflow or viewport clipping occurs on mobile screens (tested at 375px, 390px, and 412px).

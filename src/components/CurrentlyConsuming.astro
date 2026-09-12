@@ -40,44 +40,64 @@ const films = await getLetterboxdDiary();
         <h3 class="column-title">Books in the Rucksack</h3>
 
         <div class="books-consuming-list">
-          {currentlyReading.map((book) => (
-            <article class="consuming-book-card reading-card-horizontal">
-              <div class="book-card-cover-wrap">
-                <img src={book.cover} alt={book.title} class="consuming-book-cover" loading="lazy" />
-                <span class="book-live-ribbon">{book.progress || 'Reading'}</span>
-              </div>
-              <div class="book-card-info">
-                <div class="card-tagline-status">Currently Reading</div>
-                <h4 class="book-item-title">{book.title}</h4>
-                <div class="book-item-author">{book.author}</div>
-                <p class="book-item-note">{book.note}</p>
-                <div class="trailConnection">{book.trailConnection}</div>
-                <a href={book.link} target="_blank" rel="noopener noreferrer" class="consuming-ext-link">
-                  Goodreads Reflection ↗
-                </a>
-              </div>
-            </article>
-          ))}
+          {currentlyReading.length === 0 && readBooks.length === 0 ? (
+            <div class="consuming-empty-card" id="booksEmptyCard">
+              <div class="empty-card-badge">Goodreads RSS · Transit Shelf</div>
+              <h4 class="empty-card-title">Rucksack Volumes Forthcoming</h4>
+              <p class="empty-card-text">
+                Book companions carried on Himalayan bus routes, homestay verandas, and mountain walks are being synchronized from Goodreads.
+              </p>
+              <a
+                href="https://www.goodreads.com/user/show/202026328-varneet-singh"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="consuming-ext-link"
+              >
+                Browse Goodreads Profile ↗
+              </a>
+            </div>
+          ) : (
+            <>
+              {currentlyReading.map((book) => (
+                <article class="consuming-book-card reading-card-horizontal">
+                  <div class="book-card-cover-wrap">
+                    <img src={book.cover} alt={book.title} class="consuming-book-cover" loading="lazy" />
+                    <span class="book-live-ribbon">{book.progress || 'Reading'}</span>
+                  </div>
+                  <div class="book-card-info">
+                    <div class="card-tagline-status">Currently Reading</div>
+                    <h4 class="book-item-title">{book.title}</h4>
+                    <div class="book-item-author">{book.author}</div>
+                    <p class="book-item-note">{book.note}</p>
+                    <div class="trailConnection">{book.trailConnection}</div>
+                    <a href={book.link} target="_blank" rel="noopener noreferrer" class="consuming-ext-link">
+                      Goodreads Reflection ↗
+                    </a>
+                  </div>
+                </article>
+              ))}
 
-          <!-- Recent Read Spotlight -->
-          {readBooks.slice(0, 2).map((book) => (
-            <article class="consuming-book-card read-book-card">
-              <div class="book-card-cover-wrap">
-                <img src={book.cover} alt={book.title} class="consuming-book-cover" loading="lazy" />
-              </div>
-              <div class="book-card-info">
-                <div class="card-tagline-status">
-                  Read {book.readAt} · <span class="stars-gold" aria-label={`Rating: ${book.rating} out of 5 stars`}>{'★'.repeat(book.rating)}</span>
-                </div>
-                <h4 class="book-item-title">{book.title}</h4>
-                <div class="book-item-author">{book.author}</div>
-                <div class="trailConnection">{book.trailConnection || '📍 Carried on Himachal transit routes.'}</div>
-                <a href={book.link} target="_blank" rel="noopener noreferrer" class="consuming-ext-link">
-                  View Shelf Entry ↗
-                </a>
-              </div>
-            </article>
-          ))}
+              <!-- Recent Read Spotlight -->
+              {readBooks.slice(0, 2).map((book) => (
+                <article class="consuming-book-card read-book-card">
+                  <div class="book-card-cover-wrap">
+                    <img src={book.cover} alt={book.title} class="consuming-book-cover" loading="lazy" />
+                  </div>
+                  <div class="book-card-info">
+                    <div class="card-tagline-status">
+                      Read {book.readAt} · <span class="stars-gold" aria-label={`Rating: ${book.rating} out of 5 stars`}>{'★'.repeat(book.rating)}</span>
+                    </div>
+                    <h4 class="book-item-title">{book.title}</h4>
+                    <div class="book-item-author">{book.author}</div>
+                    <div class="trailConnection">{book.trailConnection || '📍 Carried on Himachal transit routes.'}</div>
+                    <a href={book.link} target="_blank" rel="noopener noreferrer" class="consuming-ext-link">
+                      View Shelf Entry ↗
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </>
+          )}
         </div>
 
         <div class="column-foot-action">
@@ -106,30 +126,48 @@ const films = await getLetterboxdDiary();
         <h3 class="column-title">Cinema on the Road</h3>
 
         <div class="films-consuming-list">
-          {films.map((film) => (
-            <article class="consuming-film-card">
-              <div class="film-poster-wrap">
-                <img src={film.poster} alt={film.title} class="consuming-film-poster" loading="lazy" />
-                <span class="film-rating-stamp">{film.rating}</span>
-              </div>
-              <div class="film-card-info">
-                <div class="film-meta-header">
-                  <span class="film-year">{film.year}</span>
-                  <span class="film-watched">Watched {film.watchedDate}</span>
+          {films.length === 0 ? (
+            <div class="consuming-empty-card" id="filmsEmptyCard">
+              <div class="empty-card-badge">Letterboxd Diary · Slow Cinema</div>
+              <h4 class="empty-card-title">Cinema Logs Forthcoming</h4>
+              <p class="empty-card-text">
+                Road cinema reflections and film journal entries between transit stops are syncing from Letterboxd.
+              </p>
+              <a
+                href="https://letterboxd.com/the_musafir_paaji/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="consuming-ext-link"
+              >
+                Browse Letterboxd Diary ↗
+              </a>
+            </div>
+          ) : (
+            films.map((film) => (
+              <article class="consuming-film-card">
+                <div class="film-poster-wrap">
+                  <img src={film.poster} alt={film.title} class="consuming-film-poster" loading="lazy" />
+                  <span class="film-rating-stamp">{film.rating}</span>
                 </div>
-                <h4 class="film-item-title">{film.title}</h4>
-                {film.note && <p class="film-item-note">{film.note}</p>}
-                {film.trailConnection && (
-                  <div class="trailConnection" style="color: var(--accent-sage);">
-                    {film.trailConnection}
+                <div class="film-card-info">
+                  <div class="film-meta-header">
+                    <span class="film-year">{film.year}</span>
+                    <span class="film-watched">Watched {film.watchedDate}</span>
                   </div>
-                )}
-                <a href={film.link} target="_blank" rel="noopener noreferrer" class="consuming-ext-link">
-                  Diary Entry on Letterboxd ↗
-                </a>
-              </div>
-            </article>
-          ))}
+                  <h4 class="film-item-title">{film.title}</h4>
+                  {film.note && <p class="film-item-note">{film.note}</p>}
+                  {film.trailConnection && (
+                    <div class="trailConnection" style="color: var(--accent-sage);">
+                      {film.trailConnection}
+                    </div>
+                  )}
+                  <a href={film.link} target="_blank" rel="noopener noreferrer" class="consuming-ext-link">
+                    Diary Entry on Letterboxd ↗
+                  </a>
+                </div>
+              </article>
+            ))
+          )}
         </div>
 
         <div class="column-foot-action">
@@ -229,6 +267,40 @@ const films = await getLetterboxdDiary();
     display: flex;
     flex-direction: column;
     gap: 20px;
+  }
+
+  .consuming-empty-card {
+    background: #ffffff;
+    border: 1.5px dashed var(--border-on-light);
+    border-radius: 8px;
+    padding: 28px 20px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  }
+
+  .empty-card-badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-sage, #5B9B82);
+    margin-bottom: 8px;
+  }
+
+  .empty-card-title {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-light-primary);
+    margin: 0 0 8px 0;
+  }
+
+  .empty-card-text {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-light-secondary);
+    margin: 0 0 14px 0;
   }
 
   /* Book Card */

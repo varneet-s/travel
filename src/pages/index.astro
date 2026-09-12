@@ -46,32 +46,56 @@ const substackPosts = await getSubstackArticles();
       <!-- Direct Substack Email Subscribe Component -->
       <SubstackDirectSubscribe />
 
-      <!-- Substack Recent Posts Grid -->
-      <div class="substack-cards-grid" style="margin-top: 40px;">
-        {substackPosts.slice(0, 3).map((post) => (
+      <!-- Substack Recent Posts Grid & Fallback -->
+      {substackPosts.length > 0 ? (
+        <div class="substack-cards-grid" style="margin-top: 40px;">
+          {substackPosts.slice(0, 3).map((post) => (
+            <a
+              href={post.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="substack-post-card"
+            >
+              <div class="substack-post-top">
+                <span class="substack-badge">Letter</span>
+                <span class="substack-date">{post.pubDate}</span>
+              </div>
+              {post.enclosureUrl && (
+                <div class="substack-post-image">
+                  <img src={post.enclosureUrl} alt={post.title} loading="lazy" />
+                </div>
+              )}
+              <h3 class="substack-post-title">{post.title}</h3>
+              <p class="substack-post-desc">{post.description}</p>
+              <span class="substack-read-link">
+                Read letter on Substack <span class="arrow-spring">→</span>
+              </span>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div id="homeSubstackEmptyCard" class="home-substack-empty-card" style="margin-top: 40px;">
+          <div class="empty-state-badge">reKhoj · The Road Notebook</div>
+          <h3 class="empty-state-title">Dispatches from the Slow Road Forthcoming</h3>
+          <p class="empty-state-desc">
+            Unpublished trail notes, state bus transit logs, travel expense ledgers, and stories from the road are being drafted for <em>reKhoj</em> on Substack and will syndicate here automatically via RSS.
+          </p>
+          <div class="empty-state-sections">
+            <span class="section-tag">Paaji Trails (Routes & Transit)</span>
+            <span class="section-tag">Coffee & Khaata (Trip Khatas)</span>
+            <span class="section-tag">Dhaba Stories (Road Encounters)</span>
+          </div>
           <a
-            href={post.link}
+            href="https://rekhoj.substack.com"
             target="_blank"
             rel="noopener noreferrer"
-            class="substack-post-card"
+            class="home-empty-cta"
           >
-            <div class="substack-post-top">
-              <span class="substack-badge">Letter</span>
-              <span class="substack-date">{post.pubDate}</span>
-            </div>
-            {post.enclosureUrl && (
-              <div class="substack-post-image">
-                <img src={post.enclosureUrl} alt={post.title} loading="lazy" />
-              </div>
-            )}
-            <h3 class="substack-post-title">{post.title}</h3>
-            <p class="substack-post-desc">{post.description}</p>
-            <span class="substack-read-link">
-              Read letter on Substack <span class="arrow-spring">→</span>
-            </span>
+            <span>Subscribe to reKhoj on Substack</span>
+            <span class="arrow-spring">↗</span>
           </a>
-        ))}
-      </div>
+        </div>
+      )}
     </div>
   </section>
 
@@ -101,5 +125,79 @@ const substackPosts = await getSubstackArticles();
   .letters-home-header {
     text-align: center;
     margin-bottom: 24px;
+  }
+
+  .home-substack-empty-card {
+    background: #172320;
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 36px 24px;
+    text-align: center;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .empty-state-badge {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-sage-light);
+    margin-bottom: 12px;
+  }
+
+  .empty-state-title {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    color: #ffffff;
+    margin: 0 0 12px 0;
+  }
+
+  .empty-state-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-dark-secondary);
+    max-width: 540px;
+    margin: 0 auto 20px auto;
+  }
+
+  .empty-state-sections {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+
+  .section-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-dark-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .home-empty-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-terracotta);
+    color: #ffffff;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 10px 22px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .home-empty-cta:hover {
+    background: var(--accent-terracotta-light, #d86b58);
+    transform: translateY(-2px);
   }
 </style>
