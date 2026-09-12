@@ -311,91 +311,270 @@ inject();
       </div>
     </div>
 
-    <!-- Main Content Slot -->
-    <main>
-      <slot />
-    </main>
-
-    <!-- Unified Editorial Footer with Interactive Cursor-Reactive Compass -->
-    <footer class="editorial-footer" id="footer">
-      <div class="footer-arrow-banner" aria-hidden="true">
-        <img
-          src="/images/illustrations/mountain-footer-ridge.svg?v=arrow-horizon"
-          alt=""
-          class="footer-ridge-svg"
-          loading="lazy"
-        />
-      </div>
-      <div class="footer-bottom-panel">
-        <div class="content-wrap">
-          <div class="footer-content-row">
-            <div class="footer-brand-lockup">
-              <!-- Cursor-Reactive Rotating Compass Icon -->
-              <img
-                src="/images/illustrations/expedition-compass.svg"
-                alt="Expedition Compass Rose"
-                class="footer-compass-badge"
-                id="footerInteractiveCompass"
-                aria-hidden="true"
-              />
-              <div class="footer-text-block">
-                <span class="footer-brand-name">reKhoj · the_musafir_paaji</span>
-                <span class="footer-tagline">
-                  Letter from — The Long Way Home | Slow routes. Useful stays. Open notebooks.
-                </span>
-              </div>
-            </div>
-            <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-              <a
-                href="https://rekhoj.substack.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="footer-action footer-action-substack"
-                title="Read and subscribe to dispatches on Substack"
-              >
-                Substack Dispatches <span class="arrow-spring">↗</span>
-              </a>
-              <a
-                href="https://instagram.com/the_musafir_paaji"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="footer-action"
-              >
-                Instagram ↗
-              </a>
-              <a
-                href="https://www.goodreads.com/user/show/202026328-varneet-singh"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="footer-action"
-              >
-                Goodreads ↗
-              </a>
-              <a
-                href="https://letterboxd.com/the_musafir_paaji/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="footer-action"
-              >
-                Letterboxd ↗
-              </a>
-            </div>
+    {currentPath === '/' ? (
+      <div class="master-horizontal-container" id="masterContainer">
+        {/* Pinned Dog Guide Element (outside moving track) */}
+        <div class="fixed-dog-guide" id="fixedDogGuide" aria-label="Himalayan Mountain Dog Companion Guide">
+          <img
+            src="/images/scenery/real-pahadi-dog.png"
+            alt="Himalayan Mountain Dog Companion Guide"
+            class="dog-guide-photo"
+          />
+          <div class="dog-guide-badge">
+            <span class="dog-guide-tag">TRAIL GUIDE</span>
+            <span class="dog-guide-name">Pahadi Dog</span>
           </div>
         </div>
+
+        {/* Moving Horizontal Track (Flex Row Container set to width equivalent to section count) */}
+        <main class="horizontal-scroll-track" id="horizontalScrollTrack">
+          <slot />
+          <!-- Unified Editorial Footer as final journey panel -->
+          <footer class="editorial-footer horizontal-panel panel-footer" id="footer">
+            <div class="footer-arrow-banner" aria-hidden="true">
+              <img
+                src="/images/illustrations/mountain-footer-ridge.svg?v=arrow-horizon"
+                alt=""
+                class="footer-ridge-svg"
+                loading="lazy"
+              />
+            </div>
+            <div class="footer-bottom-panel">
+              <div class="content-wrap">
+                <div class="footer-content-row">
+                  <div class="footer-brand-lockup">
+                    <!-- Cursor-Reactive Rotating Compass Icon -->
+                    <img
+                      src="/images/illustrations/expedition-compass.svg"
+                      alt="Expedition Compass Rose"
+                      class="footer-compass-badge"
+                      id="footerInteractiveCompass"
+                      aria-hidden="true"
+                    />
+                    <div class="footer-text-block">
+                      <span class="footer-brand-name">reKhoj · the_musafir_paaji</span>
+                      <span class="footer-tagline">
+                        Letter from — The Long Way Home | Slow routes. Useful stays. Open notebooks.
+                      </span>
+                    </div>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                    <a
+                      href="https://rekhoj.substack.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="footer-action footer-action-substack"
+                      title="Read and subscribe to dispatches on Substack"
+                    >
+                      Substack Dispatches <span class="arrow-spring">↗</span>
+                    </a>
+                    <a
+                      href="https://instagram.com/the_musafir_paaji"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="footer-action"
+                    >
+                      Instagram ↗
+                    </a>
+                    <a
+                      href="https://www.goodreads.com/user/show/202026328-varneet-singh"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="footer-action"
+                    >
+                      Goodreads ↗
+                    </a>
+                    <a
+                      href="https://letterboxd.com/the_musafir_paaji/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="footer-action"
+                    >
+                      Letterboxd ↗
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </main>
       </div>
-    </footer>
+    ) : (
+      <>
+        <main>
+          <slot />
+        </main>
+        <footer class="editorial-footer" id="footer">
+          <div class="footer-arrow-banner" aria-hidden="true">
+            <img
+              src="/images/illustrations/mountain-footer-ridge.svg?v=arrow-horizon"
+              alt=""
+              class="footer-ridge-svg"
+              loading="lazy"
+            />
+          </div>
+          <div class="footer-bottom-panel">
+            <div class="content-wrap">
+              <div class="footer-content-row">
+                <div class="footer-brand-lockup">
+                  <img
+                    src="/images/illustrations/expedition-compass.svg"
+                    alt="Expedition Compass Rose"
+                    class="footer-compass-badge"
+                    id="footerInteractiveCompass"
+                    aria-hidden="true"
+                  />
+                  <div class="footer-text-block">
+                    <span class="footer-brand-name">reKhoj · the_musafir_paaji</span>
+                    <span class="footer-tagline">
+                      Letter from — The Long Way Home | Slow routes. Useful stays. Open notebooks.
+                    </span>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                  <a
+                    href="https://rekhoj.substack.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="footer-action footer-action-substack"
+                    title="Read and subscribe to dispatches on Substack"
+                  >
+                    Substack Dispatches <span class="arrow-spring">↗</span>
+                  </a>
+                  <a
+                    href="https://instagram.com/the_musafir_paaji"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="footer-action"
+                  >
+                    Instagram ↗
+                  </a>
+                  <a
+                    href="https://www.goodreads.com/user/show/202026328-varneet-singh"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="footer-action"
+                  >
+                    Goodreads ↗
+                  </a>
+                  <a
+                    href="https://letterboxd.com/the_musafir_paaji/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="footer-action"
+                  >
+                    Letterboxd ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </>
+    )}
 
     <!-- Centralized Scroll Engine, Wayfinding, Custom Cursor & Interactive Compass -->
     <script>
       import { initScrollEngine, bindReadingProgress, bindWayfindingDots } from '../scripts/scroll-engine';
+      import { gsap } from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+      gsap.registerPlugin(ScrollTrigger);
+      (window as any).gsap = gsap;
+      (window as any).ScrollTrigger = ScrollTrigger;
 
       function initBaseLayout() {
         // 1. Centralized Scroll Engine with Lenis & GSAP ScrollTrigger sync
         const engine = initScrollEngine();
 
-        // 2. Reading progress and wayfinding dots bound to Lenis scroll (zero duplicate unthrottled listeners)
-        const unbindProgress = bindReadingProgress(engine.lenis, 'readingProgress');
-        const unbindDots = bindWayfindingDots(engine.lenis, ['hero', 'dispatch', 'atlas', 'consuming', 'letters', 'volunteer']);
+        // 2. Horizontal Scroll Engine for Homepage
+        const isHome = window.location.pathname === '/' || window.location.pathname === '';
+        const master = document.getElementById('masterContainer');
+        const track = document.getElementById('horizontalScrollTrack');
+        let horizontalTween: any = null;
+
+        if (isHome && master && track) {
+          const panels = track.querySelectorAll('.horizontal-panel');
+          const panelCount = panels.length || 6;
+          track.style.width = `${panelCount * 100}vw`;
+
+          const getDistance = () => Math.max(0, track.scrollWidth - window.innerWidth);
+
+          // Pin master container & translate track horizontally on scroll
+          horizontalTween = gsap.to(track, {
+            x: () => -getDistance(),
+            ease: 'none',
+            scrollTrigger: {
+              trigger: master,
+              pin: true,
+              pinSpacing: true,
+              scrub: 1,
+              start: 'top top',
+              end: () => `+=${getDistance()}`,
+              invalidateOnRefresh: true,
+              anticipatePin: 1,
+              onRefreshInit: () => {
+                track.style.width = `${panelCount * 100}vw`;
+              },
+              onRefresh: (self) => {
+                if (self.spacer) {
+                  self.spacer.style.paddingBottom = `${getDistance()}px`;
+                  if (engine.lenis) {
+                    engine.lenis.resize();
+                  }
+                }
+              },
+              onUpdate: (self) => {
+                const progress = self.progress;
+                const activeIndex = Math.min(
+                  Math.floor(progress * panelCount),
+                  panelCount - 1
+                );
+
+                const dots = document.querySelectorAll('.wayfinding-dot');
+                dots.forEach((dot, idx) => {
+                  if (idx === activeIndex) {
+                    dot.classList.add('active');
+                  } else {
+                    dot.classList.remove('active');
+                  }
+                });
+
+                const progressBar = document.getElementById('readingProgress');
+                if (progressBar) {
+                  progressBar.style.width = `${Math.min(100, Math.max(0, progress * 100))}%`;
+                }
+              }
+            }
+          });
+
+          // Ensure spacer has proper padding height immediately upon mount
+          const stInstance = horizontalTween.scrollTrigger;
+          if (stInstance && stInstance.spacer) {
+            stInstance.spacer.style.paddingBottom = `${getDistance()}px`;
+            if (engine.lenis) {
+              engine.lenis.resize();
+            }
+          }
+
+          // Wayfinding dot click scrolls to corresponding horizontal panel
+          const dots = document.querySelectorAll('.wayfinding-dot');
+          dots.forEach((dot, idx) => {
+            dot.addEventListener('click', (e) => {
+              e.preventDefault();
+              const targetP = idx / Math.max(1, panelCount - 1);
+              const st = horizontalTween?.scrollTrigger;
+              if (st) {
+                const targetScroll = st.start + (targetP * (st.end - st.start));
+                engine.lenis ? engine.lenis.scrollTo(targetScroll) : window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+              }
+            });
+          });
+        } else {
+          // Regular vertical scroll bindings for subpages
+          bindReadingProgress(engine.lenis, 'readingProgress');
+          bindWayfindingDots(engine.lenis, ['hero', 'dispatch', 'atlas', 'consuming', 'letters', 'volunteer']);
+        }
 
         // 3. Full-Screen Wayfinding Overlay Toggle
         const toggle = document.getElementById('mobileNavToggle');
@@ -459,8 +638,10 @@ inject();
 
         // 6. Comprehensive Teardown on pagehide or Astro view transitions
         const cleanup = () => {
-          unbindProgress();
-          unbindDots();
+          if (horizontalTween) {
+            horizontalTween.scrollTrigger?.kill();
+            horizontalTween.kill();
+          }
           engine.destroy();
           if (onMouseMove) window.removeEventListener('mousemove', onMouseMove);
           if (onCompassMove) window.removeEventListener('mousemove', onCompassMove);
@@ -480,6 +661,96 @@ inject();
     </script>
 
     <style>
+      /* Master Horizontal Viewport Container */
+      .master-horizontal-container {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+        background: #0B1412;
+      }
+
+      /* Moving Horizontal Flex Row Track */
+      .horizontal-scroll-track {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        height: 100vh;
+        width: 600vw;
+        will-change: transform;
+        position: relative;
+      }
+
+      /* Pinned Dog Guide Element outside moving track */
+      .fixed-dog-guide {
+        position: fixed;
+        bottom: 28px;
+        left: 28px;
+        z-index: 850;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: rgba(13, 22, 20, 0.88);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1.5px solid rgba(255, 255, 255, 0.18);
+        border-radius: 999px;
+        padding: 6px 16px 6px 8px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+        pointer-events: auto;
+        transition: all 0.25s ease;
+      }
+
+      .fixed-dog-guide:hover {
+        border-color: var(--accent-terracotta);
+        transform: translateY(-2px);
+      }
+
+      .dog-guide-photo {
+        width: 44px;
+        height: 44px;
+        object-fit: contain;
+        filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+      }
+
+      .dog-guide-badge {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.2;
+      }
+
+      .dog-guide-tag {
+        font-family: var(--font-mono);
+        font-size: 8.5px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-terracotta);
+      }
+
+      .dog-guide-name {
+        font-family: 'Courier Prime', monospace;
+        font-size: 11px;
+        font-weight: 700;
+        color: #FAF8F5;
+        letter-spacing: 0.04em;
+      }
+
+      @media (max-width: 768px) {
+        .fixed-dog-guide {
+          bottom: 14px;
+          left: 14px;
+          padding: 4px 10px 4px 6px;
+        }
+        .dog-guide-photo {
+          width: 32px;
+          height: 32px;
+        }
+        .dog-guide-name {
+          font-size: 9.5px;
+        }
+      }
+
       /* Fixed Top-Left Brand Anchor */
       .corner-brand-anchor {
         position: fixed;

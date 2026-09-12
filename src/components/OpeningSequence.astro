@@ -645,14 +645,14 @@ const elevationFillD = `${elevationLineD} L ${roadWidth + 200},${roadHeight} L -
     // Wrap desktop animation in ScrollTrigger.matchMedia so it does NOT pin or interfere on mobile (< 768px)
     mmInstance = (ScrollTrigger as any).matchMedia({
       "(min-width: 768px)": function() {
-        // Master pinned hero timeline
+        // Hero timeline scrubbed with scroll
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: hero,
             start: 'top top',
-            end: '+=3500px',
-            pin: true,
-            pinSpacing: true,
+            end: '+=1000px',
+            pin: false,
+            pinSpacing: false,
             scrub: 1,
             anticipatePin: 1,
             onUpdate: (self) => {

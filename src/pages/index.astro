@@ -17,90 +17,102 @@ const substackPosts = await getSubstackArticles();
   image="/images/og-compass-card.png"
 >
   <!-- 1. Opening Sequence: Mountain Road Altitude Intro (Hero) -->
-  <OpeningSequence />
+  <div class="horizontal-panel panel-hero" data-panel-index="0">
+    <OpeningSequence />
+  </div>
 
   <!-- 2. Featured Dispatch: Shangarh Alpine Bowl -->
-  <FeaturedDispatch />
+  <div class="horizontal-panel panel-dispatch" data-panel-index="1">
+    <FeaturedDispatch />
+  </div>
 
   <!-- 3. Expedition Atlas: Interactive 14-Journey Map -->
-  <section class="section-dark atlas-scroll-wrapper" id="atlas">
-    <TravelMap />
-  </section>
+  <div class="horizontal-panel panel-atlas" data-panel-index="2">
+    <section class="section-dark atlas-scroll-wrapper" id="atlas">
+      <TravelMap />
+    </section>
+  </div>
 
   <!-- 4. Currently Consuming: Reading + Cinema Side-by-Side -->
-  <CurrentlyConsuming />
+  <div class="horizontal-panel panel-consuming" data-panel-index="3">
+    <CurrentlyConsuming />
+  </div>
 
   <!-- 5. Letters from the Road: Substack Direct Ingestion -->
-  <section class="section-dark letters-home-section reveal-on-scroll" id="letters" aria-label="Substack Field Letters">
-    <div class="content-wrap">
-      <div class="letters-home-header">
-        <span class="eyebrow" style="color: var(--accent-sage);">Substack Dispatches · reKhoj</span>
-        <h2 class="section-title" style="color: #FAF8F5; margin-top: 6px;">
-          Letters from the Slow Road.
-        </h2>
-        <p style="color: var(--text-dark-secondary); max-width: 600px; margin: 12px auto 0 auto; line-height: 1.6;">
-          Unhurried field dispatches, transit ledgers, and road encounters delivered straight to your inbox without algorithmic noise.
-        </p>
-      </div>
+  <div class="horizontal-panel panel-letters" data-panel-index="4">
+    <section class="section-dark letters-home-section reveal-on-scroll" id="letters" aria-label="Substack Field Letters">
+      <div class="content-wrap">
+        <div class="letters-home-header">
+          <span class="eyebrow" style="color: var(--accent-sage);">Substack Dispatches · reKhoj</span>
+          <h2 class="section-title" style="color: #FAF8F5; margin-top: 6px;">
+            Letters from the Slow Road.
+          </h2>
+          <p style="color: var(--text-dark-secondary); max-width: 600px; margin: 12px auto 0 auto; line-height: 1.6;">
+            Unhurried field dispatches, transit ledgers, and road encounters delivered straight to your inbox without algorithmic noise.
+          </p>
+        </div>
 
-      <!-- Direct Substack Email Subscribe Component -->
-      <SubstackDirectSubscribe />
+        <!-- Direct Substack Email Subscribe Component -->
+        <SubstackDirectSubscribe />
 
-      <!-- Substack Recent Posts Grid & Fallback -->
-      {substackPosts.length > 0 ? (
-        <div class="substack-cards-grid" style="margin-top: 40px;">
-          {substackPosts.slice(0, 3).map((post) => (
+        <!-- Substack Recent Posts Grid & Fallback -->
+        {substackPosts.length > 0 ? (
+          <div class="substack-cards-grid" style="margin-top: 40px;">
+            {substackPosts.slice(0, 3).map((post) => (
+              <a
+                href={post.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="substack-post-card"
+              >
+                <div class="substack-post-top">
+                  <span class="substack-badge">Letter</span>
+                  <span class="substack-date">{post.pubDate}</span>
+                </div>
+                {post.enclosureUrl && (
+                  <div class="substack-post-image">
+                    <img src={post.enclosureUrl} alt={post.title} loading="lazy" />
+                  </div>
+                )}
+                <h3 class="substack-post-title">{post.title}</h3>
+                <p class="substack-post-desc">{post.description}</p>
+                <span class="substack-read-link">
+                  Read letter on Substack <span class="arrow-spring">→</span>
+                </span>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <div id="homeSubstackEmptyCard" class="home-substack-empty-card" style="margin-top: 40px;">
+            <div class="empty-state-badge">reKhoj · The Road Notebook</div>
+            <h3 class="empty-state-title">Dispatches from the Slow Road Forthcoming</h3>
+            <p class="empty-state-desc">
+              Unpublished trail notes, state bus transit logs, travel expense ledgers, and stories from the road are being drafted for <em>reKhoj</em> on Substack and will syndicate here automatically via RSS.
+            </p>
+            <div class="empty-state-sections">
+              <span class="section-tag">Paaji Trails (Routes & Transit)</span>
+              <span class="section-tag">Coffee & Khaata (Trip Khatas)</span>
+              <span class="section-tag">Dhaba Stories (Road Encounters)</span>
+            </div>
             <a
-              href={post.link}
+              href="https://rekhoj.substack.com"
               target="_blank"
               rel="noopener noreferrer"
-              class="substack-post-card"
+              class="home-empty-cta"
             >
-              <div class="substack-post-top">
-                <span class="substack-badge">Letter</span>
-                <span class="substack-date">{post.pubDate}</span>
-              </div>
-              {post.enclosureUrl && (
-                <div class="substack-post-image">
-                  <img src={post.enclosureUrl} alt={post.title} loading="lazy" />
-                </div>
-              )}
-              <h3 class="substack-post-title">{post.title}</h3>
-              <p class="substack-post-desc">{post.description}</p>
-              <span class="substack-read-link">
-                Read letter on Substack <span class="arrow-spring">→</span>
-              </span>
+              <span>Subscribe to reKhoj on Substack</span>
+              <span class="arrow-spring">↗</span>
             </a>
-          ))}
-        </div>
-      ) : (
-        <div id="homeSubstackEmptyCard" class="home-substack-empty-card" style="margin-top: 40px;">
-          <div class="empty-state-badge">reKhoj · The Road Notebook</div>
-          <h3 class="empty-state-title">Dispatches from the Slow Road Forthcoming</h3>
-          <p class="empty-state-desc">
-            Unpublished trail notes, state bus transit logs, travel expense ledgers, and stories from the road are being drafted for <em>reKhoj</em> on Substack and will syndicate here automatically via RSS.
-          </p>
-          <div class="empty-state-sections">
-            <span class="section-tag">Paaji Trails (Routes & Transit)</span>
-            <span class="section-tag">Coffee & Khaata (Trip Khatas)</span>
-            <span class="section-tag">Dhaba Stories (Road Encounters)</span>
           </div>
-          <a
-            href="https://rekhoj.substack.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="home-empty-cta"
-          >
-            <span>Subscribe to reKhoj on Substack</span>
-            <span class="arrow-spring">↗</span>
-          </a>
-        </div>
-      )}
-    </div>
-  </section>
+        )}
+      </div>
+    </section>
+  </div>
 
   <!-- 6. Hostel & Volunteering Pitch -->
-  <HostelPitch />
+  <div class="horizontal-panel panel-volunteer" data-panel-index="5">
+    <HostelPitch />
+  </div>
 
   <!-- Test Preservation Vault (Preserving test tokens for ADV-M3-07, runner.js, etc.) -->
   <div class="test-preservation-vault" style="display: none;" aria-hidden="true">
@@ -111,6 +123,21 @@ const substackPosts = await getSubstackArticles();
 </BaseLayout>
 
 <style>
+  .horizontal-panel {
+    flex: 0 0 100vw;
+    width: 100vw;
+    min-width: 100vw;
+    max-width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .atlas-scroll-wrapper {
     padding: 60px 0;
     background: #0B1412;
