@@ -67,151 +67,101 @@ inject();
     />
   </head>
   <body class="bg-[#0A1C20] text-white min-h-screen flex flex-col font-sans selection:bg-[#77C5A0]/25 selection:text-white">
-    <!-- Minimalist Top Navigation Header in Cherry Blossom with Botanical Elements -->
+    <!-- Navbar: White background with Fogging Forest video loop, reKhoj (large backpacker K), equal word spacing -->
     <header
       id="main-header"
-      class="fixed top-0 left-0 right-0 z-50 bg-[#FFCCD5] border-b border-[#F492A8] text-[#0A1C20] transition-all duration-500 ease-out transform -translate-y-full opacity-0 pointer-events-none shadow-xl overflow-hidden"
+      class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-black/5 text-[#0A1C20] transition-all duration-500 ease-out transform -translate-y-full opacity-0 pointer-events-none shadow-sm overflow-hidden"
     >
-      <!-- Atmospheric Cherry Blossom Petals Floating in Header -->
-      <div class="absolute inset-0 pointer-events-none overflow-hidden select-none" aria-hidden="true">
-        <!-- Petal 1 -->
-        <svg class="absolute -top-1 left-[22%] w-4 h-4 text-[#F4718E] opacity-40 rotate-12" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 3 C14 7 18 10 16 16 C14 20 10 20 8 16 C6 10 10 7 12 3 Z" />
-        </svg>
-        <!-- Petal 2 -->
-        <svg class="absolute bottom-1 left-[45%] w-3.5 h-3.5 text-[#F4718E] opacity-35 -rotate-45" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 3 C14 7 18 10 16 16 C14 20 10 20 8 16 C6 10 10 7 12 3 Z" />
-        </svg>
-        <!-- Petal 3 -->
-        <svg class="absolute top-2 right-[25%] w-4 h-4 text-[#F4718E] opacity-40 rotate-45" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 3 C14 7 18 10 16 16 C14 20 10 20 8 16 C6 10 10 7 12 3 Z" />
-        </svg>
-        <!-- Petal 4 -->
-        <svg class="absolute bottom-1.5 right-[10%] w-3 h-3 text-[#F4718E] opacity-30 -rotate-15" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 3 C14 7 18 10 16 16 C14 20 10 20 8 16 C6 10 10 7 12 3 Z" />
-        </svg>
+      <!-- Real Clouds Video Background Loop in Navbar -->
+      <div class="absolute inset-0 pointer-events-none overflow-hidden select-none z-0" aria-hidden="true">
+        <video
+          autoplay
+          loop
+          muted
+          playsinline
+          onloadeddata="this.playbackRate = 0.5;"
+          class="w-full h-full object-cover pointer-events-none opacity-45 filter contrast-[1.15] brightness-[1.05] saturate-[1.2]"
+          style="object-position: center 15%;"
+        >
+          <source src="/videos/fogging-forest.mp4" type="video/mp4" />
+        </video>
       </div>
 
-      <nav class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between" aria-label="Main Navigation">
-        <a href="/" class="group flex items-center gap-2.5 text-[#0A1C20] no-underline focus:outline-none">
-          <!-- Hand-crafted Cherry Blossom 5-Petal Flower Motif -->
-          <svg class="w-6 h-6 shrink-0 filter drop-shadow-sm group-hover:rotate-45 transition-transform duration-500" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <defs>
-              <linearGradient id="sakura-petal-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#FFFFFF" />
-                <stop offset="60%" stop-color="#FFB3C1" />
-                <stop offset="100%" stop-color="#F4718E" />
-              </linearGradient>
-            </defs>
-            <!-- 5 Heart-notched Cherry Blossom Petals -->
-            <path d="M16 16 C13.5 10 10.5 7 13.5 4.5 C15.5 3 17.5 3.5 19 5 C21.5 7.5 18.5 11 16 16 Z" fill="url(#sakura-petal-grad)" stroke="#E85D7D" stroke-width="0.75" />
-            <path d="M16 16 C22 13.5 25 10.5 27.5 13.5 C29 15.5 28.5 17.5 27 19 C24.5 21.5 21 18.5 16 16 Z" fill="url(#sakura-petal-grad)" stroke="#E85D7D" stroke-width="0.75" />
-            <path d="M16 16 C18.5 22 21.5 25 18.5 27.5 C16.5 29 14.5 28.5 13 27 C10.5 24.5 13.5 21 16 16 Z" fill="url(#sakura-petal-grad)" stroke="#E85D7D" stroke-width="0.75" />
-            <path d="M16 16 C10 18.5 7 21.5 4.5 18.5 C3 16.5 3.5 14.5 5 13 C7.5 10.5 11 13.5 16 16 Z" fill="url(#sakura-petal-grad)" stroke="#E85D7D" stroke-width="0.75" />
-            <path d="M16 16 C11.5 12.5 8.5 9 10 6.5 C11.5 4.5 13.5 4.5 15.5 6 C17.5 8 16.5 12 16 16 Z" fill="url(#sakura-petal-grad)" stroke="#E85D7D" stroke-width="0.75" />
-            <!-- Golden/Rose Center Pistil Stamens -->
-            <circle cx="16" cy="16" r="2.2" fill="#E85D7D" />
-            <circle cx="16" cy="16" r="1.1" fill="#FFE58F" />
-            <line x1="16" y1="16" x2="16" y2="11.5" stroke="#C83E58" stroke-width="0.75" stroke-linecap="round" />
-            <line x1="16" y1="16" x2="20" y2="13.5" stroke="#C83E58" stroke-width="0.75" stroke-linecap="round" />
-            <line x1="16" y1="16" x2="19" y2="19.5" stroke="#C83E58" stroke-width="0.75" stroke-linecap="round" />
-            <line x1="16" y1="16" x2="13" y2="19.5" stroke="#C83E58" stroke-width="0.75" stroke-linecap="round" />
-            <line x1="16" y1="16" x2="12" y2="13.5" stroke="#C83E58" stroke-width="0.75" stroke-linecap="round" />
-            <circle cx="16" cy="11" r="0.7" fill="#FFE58F" />
-            <circle cx="20.5" cy="13" r="0.7" fill="#FFE58F" />
-            <circle cx="19.5" cy="20" r="0.7" fill="#FFE58F" />
-            <circle cx="12.5" cy="20" r="0.7" fill="#FFE58F" />
-            <circle cx="11.5" cy="13" r="0.7" fill="#FFE58F" />
-          </svg>
-          <span class="font-serif text-lg tracking-tight font-bold group-hover:text-black transition-colors">
-            reKhoj
-          </span>
-          <span class="text-xs text-[#0A1C20]/75 font-mono tracking-widest hidden sm:inline-block">
-            @the_musafir_paaji
-          </span>
+      <!-- Desktop Navigation Bar: Corner-to-corner full width with equal word spacing -->
+      <nav class="relative z-10 w-full px-4 sm:px-6 md:px-8 h-16 hidden md:flex items-center justify-between" aria-label="Main Navigation">
+        <!-- Brand: reKhoj with backpacker K matching text baseline and clean spacing -->
+        <a href="/" class="group inline-flex items-baseline text-[#0A1C20] no-underline focus:outline-none" aria-label="reKhoj — home">
+          <span class="font-serif text-2xl font-bold tracking-tight mr-1.5 sm:mr-2">re</span>
+          <img
+            src="/images/backpacker-k.png"
+            alt=""
+            aria-hidden="true"
+            class="inline-block h-8 sm:h-9 w-auto object-contain group-hover:scale-110 transition-transform duration-300"
+            style="vertical-align: -0.14em;"
+            loading="eager"
+          />
+          <span class="font-serif text-2xl font-bold tracking-tight">hoj</span>
         </a>
 
-        <!-- Desktop Nav Links (Visible on md and up; zero Substack/Subscribe link) -->
-        <div class="hidden md:flex items-center gap-8 text-sm font-sans tracking-wide">
-          <a
-            href="/#letters"
-            class="text-[#0A1C20]/85 hover:text-[#0A1C20] font-semibold hover:underline underline-offset-4 transition-colors duration-200"
-          >
-            Letters
-          </a>
-          <a
-            href="/#reading"
-            class="text-[#0A1C20]/85 hover:text-[#0A1C20] font-semibold hover:underline underline-offset-4 transition-colors duration-200"
-          >
-            Reading
-          </a>
-          <a
-            href="/#about"
-            class="text-[#0A1C20]/85 hover:text-[#0A1C20] font-semibold hover:underline underline-offset-4 transition-colors duration-200"
-          >
-            About
-          </a>
-          <a
-            href="/#volunteer"
-            class="text-[#0A1C20]/85 hover:text-[#0A1C20] font-semibold hover:underline underline-offset-4 transition-colors duration-200"
-          >
-            Volunteer
-          </a>
-        </div>
+        <a href="/#letters" class="text-[#0A1C20]/85 hover:text-[#0A1C20] font-sans font-semibold text-sm hover:underline underline-offset-4 transition-colors duration-200">
+          Letters
+        </a>
 
-        <!-- Mobile Hamburger Button -->
-        <div class="md:hidden flex items-center">
-          <button
-            id="mobile-menu-btn"
-            type="button"
-            class="p-2 text-[#0A1C20] hover:text-black hover:bg-black/10 focus:outline-none focus:ring-1 focus:ring-[#0A1C20] rounded-lg transition-colors"
-            aria-label="Toggle Navigation Menu"
-            aria-expanded="false"
-          >
-            <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
+        <a href="/#reading" class="text-[#0A1C20]/85 hover:text-[#0A1C20] font-sans font-semibold text-sm hover:underline underline-offset-4 transition-colors duration-200">
+          Reading
+        </a>
+
+        <a href="/#about" class="text-[#0A1C20]/85 hover:text-[#0A1C20] font-sans font-semibold text-sm hover:underline underline-offset-4 transition-colors duration-200">
+          About
+        </a>
+
+        <a href="/#volunteer" class="text-[#0A1C20]/85 hover:text-[#0A1C20] font-sans font-semibold text-sm hover:underline underline-offset-4 transition-colors duration-200">
+          Volunteer
+        </a>
       </nav>
 
-      <!-- Mobile Dropdown Menu with Cherry Blossom Aesthetic -->
+      <!-- Mobile Navigation Bar -->
+      <nav class="relative z-10 w-full px-4 sm:px-6 h-16 flex md:hidden items-center justify-between" aria-label="Mobile Navigation">
+        <a href="/" class="group inline-flex items-baseline text-[#0A1C20] no-underline focus:outline-none" aria-label="reKhoj — home">
+          <span class="font-serif text-xl font-bold tracking-tight mr-1.5">re</span>
+          <img
+            src="/images/backpacker-k.png"
+            alt=""
+            aria-hidden="true"
+            class="inline-block h-7 w-auto object-contain"
+            style="vertical-align: -0.14em;"
+            loading="eager"
+          />
+          <span class="font-serif text-xl font-bold tracking-tight">hoj</span>
+        </a>
+
+        <!-- Mobile Hamburger Button -->
+        <button
+          id="mobile-menu-btn"
+          type="button"
+          class="p-2 text-[#0A1C20] hover:text-black hover:bg-black/10 focus:outline-none rounded-lg transition-colors"
+          aria-label="Toggle Navigation Menu"
+          aria-expanded="false"
+        >
+          <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </nav>
+
+      <!-- Mobile Dropdown Menu -->
       <div
         id="mobile-menu"
-        class="hidden md:hidden border-t border-[#F492A8] bg-[#FFCCD5] px-6 py-6 transition-all duration-300 shadow-2xl relative"
+        class="hidden md:hidden border-t border-black/10 bg-white/95 backdrop-blur-md px-6 py-6 transition-all duration-300 shadow-lg relative"
       >
         <div class="flex flex-col gap-4 text-base font-sans tracking-wide">
-          <a
-            href="/#letters"
-            class="mobile-nav-link flex items-center justify-between text-[#0A1C20] font-semibold hover:underline py-1.5 border-b border-black/10"
-          >
-            <span>Letters</span>
-            <span class="text-sm opacity-80" aria-hidden="true">🌸</span>
-          </a>
-          <a
-            href="/#reading"
-            class="mobile-nav-link flex items-center justify-between text-[#0A1C20] font-semibold hover:underline py-1.5 border-b border-black/10"
-          >
-            <span>Reading</span>
-            <span class="text-sm opacity-80" aria-hidden="true">🌸</span>
-          </a>
-          <a
-            href="/#about"
-            class="mobile-nav-link flex items-center justify-between text-[#0A1C20] font-semibold hover:underline py-1.5 border-b border-black/10"
-          >
-            <span>About</span>
-            <span class="text-sm opacity-80" aria-hidden="true">🌸</span>
-          </a>
-          <a
-            href="/#volunteer"
-            class="mobile-nav-link flex items-center justify-between text-[#0A1C20] font-semibold hover:underline py-1.5"
-          >
-            <span>Volunteer</span>
-            <span class="text-sm opacity-80" aria-hidden="true">🌸</span>
-          </a>
+          <a href="/#letters" class="mobile-nav-link flex items-center justify-between text-[#0A1C20] font-semibold hover:underline py-1.5 border-b border-black/10">Letters</a>
+          <a href="/#reading" class="mobile-nav-link flex items-center justify-between text-[#0A1C20] font-semibold hover:underline py-1.5 border-b border-black/10">Reading</a>
+          <a href="/#about" class="mobile-nav-link flex items-center justify-between text-[#0A1C20] font-semibold hover:underline py-1.5 border-b border-black/10">About</a>
+          <a href="/#volunteer" class="mobile-nav-link flex items-center justify-between text-[#0A1C20] font-semibold hover:underline py-1.5">Volunteer</a>
         </div>
       </div>
     </header>
@@ -265,11 +215,20 @@ inject();
         });
       }
 
+      function enforceVideoHalfSpeed() {
+        document.querySelectorAll('video').forEach((v) => {
+          v.playbackRate = 0.5;
+        });
+      }
+
       window.addEventListener('scroll', handleScrollNav, { passive: true });
       document.addEventListener('DOMContentLoaded', () => {
         handleScrollNav();
         setupMobileMenu();
+        enforceVideoHalfSpeed();
       });
+      // Periodic check on load to ensure video speed stays at 0.5x
+      window.addEventListener('load', enforceVideoHalfSpeed);
     </script>
 
     <!-- Main Content Area -->

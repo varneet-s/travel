@@ -39,8 +39,8 @@ assert(indexHtml.includes('fonts.googleapis.com/css2?family=Inter') && indexHtml
 // 3. Hero Section (100vh)
 assert(indexAstro.includes('h-screen') && indexAstro.includes('h-[100vh]') && indexAstro.includes('object-cover'),
   'Hero section uses exactly h-screen h-[100vh] object-cover');
-assert(indexAstro.includes('/images/scenery/real-mountains-himachal.jpg'),
-  'Hero section uses real mountain visual');
+assert(indexAstro.includes('/videos/fogging-forest.mp4'),
+  'Hero section uses atmospheric fogging forest video');
 
 // 4. Title Typography
 assert(indexAstro.includes('Letters from'), 'Hero title includes Line 1 "Letters from"');

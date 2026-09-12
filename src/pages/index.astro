@@ -147,7 +147,6 @@ const chronologicalLetters = [
 <BaseLayout
   title="Letters from — The Long way Home."
   description="Notes from the road, Himalayan state bus routes, and honest travel reflections by Varneet Singh (@the_musafir_paaji)."
-  image="/images/scenery/real-mountains-himachal.jpg"
 >
   <!-- ================================================================= -->
   <!-- 1. HERO SECTION (Mobile-First, 100vh Full Viewport Mountain Visual)-->
@@ -160,19 +159,23 @@ const chronologicalLetters = [
     class="relative h-screen h-[100vh] min-h-[100dvh] w-full overflow-hidden flex flex-col justify-between select-none"
     aria-label="Hero: Letters from The Long Way Home."
   >
-    <!-- Background: Mountain visual covering exactly 100% of the viewport height -->
-    <img
-      src="/images/scenery/real-mountains-himachal.jpg"
-      alt="Snow-covered Himalayan peaks in Himachal Pradesh"
-      class="absolute inset-0 w-full h-full h-screen h-[100vh] object-cover object-center pointer-events-none"
-      loading="eager"
-      fetchpriority="high"
-    />
+    <!-- Background: Atmospheric Fogging Landscape Forest Video (50% speed, shifted upwards, color graded) -->
+    <video
+      autoplay
+      loop
+      muted
+      playsinline
+      onloadeddata="this.playbackRate = 0.5;"
+      class="absolute inset-0 w-full h-full h-screen h-[100vh] object-cover pointer-events-none"
+      style="object-position: center 98%; filter: contrast(1.18) brightness(0.92) saturate(1.28) hue-rotate(-2deg);"
+    >
+      <source src="/videos/fogging-forest.mp4" type="video/mp4" />
+    </video>
 
     <!-- Atmospheric Mountain Clouds & Drifting Mist Layers -->
     <div class="absolute inset-0 pointer-events-none overflow-hidden select-none z-[4]" aria-hidden="true">
       <!-- Billowy Cloud Cluster 1 (Upper Left Sky, Drifting) -->
-      <div class="absolute top-[6%] -left-[8%] w-[550px] md:w-[750px] h-[220px] opacity-75 blur-md animate-cloud-left">
+      <div class="absolute top-[4%] -left-[8%] w-[550px] md:w-[750px] h-[200px] opacity-65 blur-md animate-cloud-left">
         <svg viewBox="0 0 600 220" fill="none" class="w-full h-full">
           <path d="M50 180 C30 180 10 160 10 140 C10 115 30 95 60 95 C70 50 120 20 175 25 C215 10 270 25 295 65 C330 45 385 55 410 90 C450 85 490 110 495 150 C525 150 550 170 550 190 C550 210 520 220 490 220 L50 220 Z" fill="url(#cumulus-grad-1)" />
           <path d="M120 160 C100 160 85 145 85 130 C85 110 105 95 130 95 C140 65 180 40 225 45 C255 35 300 45 320 75 C350 60 395 70 415 95 C445 95 470 115 470 145 C470 170 440 180 410 180 L120 180 Z" fill="url(#cumulus-grad-2)" />
@@ -180,14 +183,14 @@ const chronologicalLetters = [
       </div>
 
       <!-- Billowy Cloud Cluster 2 (Upper Right Peak, Drifting opposite) -->
-      <div class="absolute top-[10%] -right-[10%] w-[600px] md:w-[850px] h-[260px] opacity-70 blur-md animate-cloud-right">
+      <div class="absolute top-[8%] -right-[10%] w-[600px] md:w-[850px] h-[240px] opacity-60 blur-md animate-cloud-right">
         <svg viewBox="0 0 650 240" fill="none" class="w-full h-full">
           <path d="M80 190 C50 190 30 170 30 145 C30 120 55 95 85 95 C100 55 150 25 205 30 C250 15 310 30 335 70 C375 50 435 60 460 100 C505 95 550 120 555 160 C585 165 610 185 610 210 C610 230 580 240 550 240 L80 240 Z" fill="url(#cumulus-grad-1)" />
         </svg>
       </div>
 
       <!-- Cloud Layer 3: Summit Crest Mist (Wisps directly clinging to the mountain summit) -->
-      <div class="absolute top-[16%] left-[15%] right-[15%] h-[180px] opacity-65 blur-xl animate-cloud-left">
+      <div class="absolute top-[14%] left-[15%] right-[15%] h-[160px] opacity-50 blur-xl animate-cloud-left">
         <svg viewBox="0 0 800 160" fill="none" class="w-full h-full">
           <ellipse cx="400" cy="80" rx="360" ry="60" fill="url(#mist-grad-center)" />
           <ellipse cx="320" cy="85" rx="220" ry="45" fill="url(#mist-grad-bright)" />
@@ -196,10 +199,10 @@ const chronologicalLetters = [
       </div>
 
       <!-- Cloud Layer 4: Wide Valley Mist Rolling Along the Mid-Slopes -->
-      <div class="absolute top-[36%] -left-[20%] w-[140%] h-[240px] opacity-45 blur-2xl animate-cloud-right bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+      <div class="absolute top-[32%] -left-[20%] w-[140%] h-[200px] opacity-30 blur-2xl animate-cloud-right bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
 
-      <!-- Cloud Layer 5: Deep Pine Forest Ground Fog -->
-      <div class="absolute bottom-0 left-0 w-full h-[38vh] opacity-60 blur-3xl animate-mist bg-gradient-to-t from-[#0A1C20] via-white/15 to-transparent"></div>
+      <!-- Cloud Layer 5: Deep Pine Forest Ground Fog (Subtle so land stays visible) -->
+      <div class="absolute bottom-0 left-0 w-full h-[18vh] opacity-25 blur-3xl animate-mist bg-gradient-to-t from-[#0A1C20] via-white/10 to-transparent"></div>
 
       <!-- Shared Cloud Gradients -->
       <svg class="absolute w-0 h-0" aria-hidden="true">
@@ -231,19 +234,18 @@ const chronologicalLetters = [
 
     <!-- Ambient Dark Gradient Scrim: Delicate balance preserving mountain & cloud visibility -->
     <div
-      class="absolute inset-0 bg-gradient-to-b from-[#0A1C20]/40 via-[#0A1C20]/20 to-[#0A1C20] pointer-events-none z-[5]"
+      class="absolute inset-0 bg-gradient-to-b from-[#0A1C20]/40 via-[#0A1C20]/15 to-[#0A1C20]/60 pointer-events-none z-[5]"
       aria-hidden="true"
     ></div>
 
-    <!-- Top-Left Corner: "Letters from" (Flush to top-left corner, no container margins) -->
-    <div class="absolute top-5 left-4 sm:top-8 sm:left-8 md:top-10 md:left-10 z-20 flex items-center gap-2 text-left">
-      <span class="w-3.5 sm:w-5 h-[1px] bg-[#77C5A0]/80"></span>
+    <!-- Top-Left Corner: "Letters From" (Only text, no dash) -->
+    <div class="absolute top-5 left-4 sm:top-8 sm:left-8 md:top-10 md:left-10 z-20 flex items-center text-left">
       <p class="font-sans text-[10px] sm:text-xs uppercase tracking-[0.28em] text-[#77C5A0] font-medium">
-        Letters from
+        Letters From
       </p>
     </div>
 
-    <!-- Center: "THE LONG WAY HOME." using all horizontal space with 1:5 word-to-character ratio -->
+    <!-- Center: "THE LONG WAY HOME." with colorful flowers video inside the tagline letters -->
     <div class="relative z-10 w-full px-2 sm:px-4 md:px-6 my-auto py-2">
       <h1 class="sr-only">The Long Way Home.</h1>
       <svg
@@ -252,46 +254,26 @@ const chronologicalLetters = [
         preserveAspectRatio="none"
         aria-hidden="true"
       >
-        <text
-          x="0"
-          y="75"
-          textLength="165.7"
-          lengthAdjust="spacing"
-          font-family="'Oswald', sans-serif"
-          font-weight="900"
-          font-size="80"
-          fill="#FFFFFF"
-        >THE</text>
-        <text
-          x="279.1"
-          y="75"
-          textLength="239.7"
-          lengthAdjust="spacing"
-          font-family="'Oswald', sans-serif"
-          font-weight="900"
-          font-size="80"
-          fill="#FFFFFF"
-        >LONG</text>
-        <text
-          x="632.2"
-          y="75"
-          textLength="180.6"
-          lengthAdjust="spacing"
-          font-family="'Oswald', sans-serif"
-          font-weight="900"
-          font-size="80"
-          fill="#FFFFFF"
-        >WAY</text>
-        <text
-          x="926.2"
-          y="75"
-          textLength="273.6"
-          lengthAdjust="spacing"
-          font-family="'Oswald', sans-serif"
-          font-weight="900"
-          font-size="80"
-          fill="#FFFFFF"
-        >HOME.</text>
+        <defs>
+          <mask id="tagline-mask">
+            <text x="0" y="75" textLength="165.7" lengthAdjust="spacing" font-family="'Oswald', sans-serif" font-weight="900" font-size="80" fill="#FFFFFF">THE</text>
+            <text x="279.1" y="75" textLength="239.7" lengthAdjust="spacing" font-family="'Oswald', sans-serif" font-weight="900" font-size="80" fill="#FFFFFF">LONG</text>
+            <text x="632.2" y="75" textLength="180.6" lengthAdjust="spacing" font-family="'Oswald', sans-serif" font-weight="900" font-size="80" fill="#FFFFFF">WAY</text>
+            <text x="926.2" y="75" textLength="273.6" lengthAdjust="spacing" font-family="'Oswald', sans-serif" font-weight="900" font-size="80" fill="#FFFFFF">HOME.</text>
+          </mask>
+        </defs>
+        <foreignObject x="0" y="0" width="1200" height="90" mask="url(#tagline-mask)">
+          <video
+            autoplay
+            loop
+            muted
+            playsinline
+            class="w-full h-full object-cover"
+            style="width: 100%; height: 100%; object-fit: cover;"
+          >
+            <source src="/videos/colorful-flowers.mp4" type="video/mp4" />
+          </video>
+        </foreignObject>
       </svg>
     </div>
 
@@ -373,7 +355,7 @@ const chronologicalLetters = [
       </div>
 
       <!-- Horizontal Bento Grid: Scrollable horizontally with mouse wheel & touch swipe -->
-      <div class="letters-scroll-rail flex flex-row gap-6 sm:gap-8 snap-x snap-mandatory overflow-x-auto [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:bg-white/15 [&::-webkit-scrollbar-thumb]:rounded-full py-4 scroll-smooth">
+      <div class="letters-scroll-rail flex flex-row gap-6 sm:gap-8 snap-x snap-mandatory overflow-x-auto [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:bg-white/15 [&::-webkit-scrollbar-thumb]:rounded-full py-4">
         {chronologicalLetters.map((letter, index) => {
           return (
             <article
@@ -525,7 +507,7 @@ const chronologicalLetters = [
       </div>
 
       <!-- Horizontal Bento Grid for Reading List: Scrollable horizontally with mouse wheel & touch swipe -->
-      <div class="letters-scroll-rail flex flex-row gap-6 sm:gap-8 snap-x snap-mandatory overflow-x-auto [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:bg-white/15 [&::-webkit-scrollbar-thumb]:rounded-full pt-8 sm:pt-10 md:pt-12 pb-4 scroll-smooth">
+      <div class="letters-scroll-rail flex flex-row gap-6 sm:gap-8 snap-x snap-mandatory overflow-x-auto [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:bg-white/15 [&::-webkit-scrollbar-thumb]:rounded-full pt-8 sm:pt-10 md:pt-12 pb-4">
         {currentlyReading.slice(0, 3).map((book, idx) => {
           const editorialNumber = `0${idx + 1}`;
           const pastel = bookPastels[idx % bookPastels.length];
@@ -960,13 +942,29 @@ const chronologicalLetters = [
     document.addEventListener('DOMContentLoaded', () => {
       const rails = document.querySelectorAll('.letters-scroll-rail');
       rails.forEach((rail) => {
+        // Compositor hint — avoids layout recalc on scroll
+        rail.style.willChange = 'scroll-position';
+
+        let velocity = 0;
+        let rafId = null;
+        const FRICTION = 0.88;
+
+        function step() {
+          if (Math.abs(velocity) < 0.5) { velocity = 0; return; }
+          rail.scrollLeft += velocity;
+          velocity *= FRICTION;
+          rafId = requestAnimationFrame(step);
+        }
+
         rail.addEventListener('wheel', (e) => {
           if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
             const atStart = rail.scrollLeft <= 0 && e.deltaY < 0;
             const atEnd = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 2 && e.deltaY > 0;
             if (!atStart && !atEnd) {
               e.preventDefault();
-              rail.scrollLeft += e.deltaY * 1.2;
+              velocity += e.deltaY * 0.6;
+              if (rafId) cancelAnimationFrame(rafId);
+              rafId = requestAnimationFrame(step);
             }
           }
         }, { passive: false });
