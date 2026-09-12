@@ -1,230 +1,485 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import OpeningSequence from "../components/OpeningSequence.astro";
-import FeaturedDispatch from "../components/FeaturedDispatch.astro";
-import TravelMap from "../components/TravelMap.astro";
-import CurrentlyConsuming from "../components/CurrentlyConsuming.astro";
-import SubstackDirectSubscribe from "../components/SubstackDirectSubscribe.astro";
-import HostelPitch from "../components/HostelPitch.astro";
-import { getSubstackArticles } from "../lib/substack";
+import goodreadsData from "../data/goodreadsCache.json";
 
-const substackPosts = await getSubstackArticles();
+const currentlyReading = goodreadsData.currentlyReading || [];
+
+// Chronological Substack travel letters (Kangra Valley, Jaipur, Jodhpur, Bir Billing)
+const chronologicalLetters = [
+  {
+    id: "kangra",
+    step: "01 / 04",
+    season: "Spring 2023",
+    destination: "Kangra Valley, Himachal Pradesh",
+    altitude: "1,525m · Dhauladhar Foothills",
+    title: "Ridge Lines and First High Air",
+    summary:
+      "We spent afternoons walking the upper rim toward Billing, watching gliders trace quiet arcs against the Dhauladhar range. At sunset, the entire Kangra valley turns amber, then deep slate blue. The pine air is cold and thin, carrying the murmur of mountain streams and evening monastery bells.",
+    reflection:
+      "The first lesson of the northern ridges: time expands the moment you stop watching the clock and start watching the fog shift across the terraced tea fields.",
+    substackUrl: "https://rekhoj.substack.com",
+    tag: "Mountain Foothills · Field Log #01"
+  },
+  {
+    id: "jaipur",
+    step: "02 / 04",
+    season: "Autumn 2023",
+    destination: "Jaipur, Rajasthan",
+    altitude: "431m · Aravalli Ridge",
+    title: "The Terracotta Gates & Old Bazaars",
+    summary:
+      "Early dawn chai behind the terracotta arches of Hawa Mahal, watching the pink stone wash into morning sunlight. Navigating stepwells carved deep into ancient stone, the geometric staircases casting geometric shadows under a calm desert sky.",
+    reflection:
+      "In the walled city, every brass door and spice courtyard has survived centuries of caravans. The rhythm is entirely unhurried if you choose the narrow side alleys.",
+    substackUrl: "https://rekhoj.substack.com",
+    tag: "Desert Caravan · Field Log #02"
+  },
+  {
+    id: "jodhpur",
+    step: "03 / 04",
+    season: "Winter 2024",
+    destination: "Jodhpur, Rajasthan",
+    altitude: "231m · Thar Border",
+    title: "The Blue Labyrinth & Desert Asphalt",
+    summary:
+      "Fourteen continuous days on the road across Rajasthan. An endless ribbon of asphalt stretching under Mehrangarh's towering ramparts. Walking the narrow indigo lanes of Navchokiya, where cool sandstone walls protect against the dry desert wind.",
+    reflection:
+      "Desert travel strips away everything unnecessary. Miles of open sand and cold winter dawns bring clarity you never find in crowded transit terminals.",
+    substackUrl: "https://rekhoj.substack.com",
+    tag: "Indigo City · Field Log #03"
+  },
+  {
+    id: "bir-return",
+    step: "04 / 04",
+    season: "Winter 2025–2026",
+    destination: "Bir Billing, Himachal Pradesh",
+    altitude: "2,400m · Dhauladhar Range",
+    title: "Winter Sky & Monastic Silence",
+    summary:
+      "Returning to Bir after three years. Crisp zero-degree nights under an untamed canopy of Himalayan stars. The prayer flags flutter in the icy evening drafts from the upper ridges. Unhurried notebooks, wooden stoves, and the enduring rhythm of mountain winter.",
+    reflection:
+      "Coming back to a place you once loved reveals not how the mountains have changed, but how much quieter you have become inside.",
+    substackUrl: "https://rekhoj.substack.com",
+    tag: "High Winter · Field Log #04"
+  }
+];
 ---
 
 <BaseLayout
-  title="Letter from — The Long Way Home"
+  title="Letters from — The Long way Home."
   description="Notes from the road, Himalayan state bus routes, and honest travel reflections by Varneet Singh (@the_musafir_paaji)."
-  image="/images/og-compass-card.png"
+  image="/images/scenery/real-mountains-himachal.jpg"
 >
-  <!-- 1. Opening Sequence: Mountain Road Altitude Intro (Hero) -->
-  <div class="horizontal-panel panel-hero" data-panel-index="0">
-    <OpeningSequence />
-  </div>
+  <!-- ================================================================= -->
+  <!-- TASK 2: HERO SECTION (Exactly 100vh, Full Viewport Mountain Image)-->
+  <!-- ================================================================= -->
+  <section
+    id="hero"
+    class="relative h-screen h-[100vh] min-h-[100dvh] w-full overflow-hidden flex items-center justify-center select-none"
+    aria-label="Hero: Letters from The Long way Home."
+  >
+    <!-- Background: Mountain visual covering exactly 100% of the viewport height (woodnest.no reference) -->
+    <img
+      src="/images/scenery/real-mountains-himachal.jpg"
+      alt="Snow-covered Himalayan peaks in Himachal Pradesh"
+      class="absolute inset-0 w-full h-full h-screen h-[100vh] object-cover object-center pointer-events-none"
+      loading="eager"
+      fetchpriority="high"
+    />
 
-  <!-- 2. Featured Dispatch: Shangarh Alpine Bowl -->
-  <div class="horizontal-panel panel-dispatch" data-panel-index="1">
-    <FeaturedDispatch />
-  </div>
+    <!-- Ambient Dark Gradient Scrim: Blends delicately into #0A1118 -->
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-[#0A1118]/70 via-[#0A1118]/40 to-[#0A1118] pointer-events-none"
+      aria-hidden="true"
+    ></div>
 
-  <!-- 3. Expedition Atlas: Interactive 14-Journey Map -->
-  <div class="horizontal-panel panel-atlas" data-panel-index="2">
-    <section class="section-dark atlas-scroll-wrapper" id="atlas">
-      <TravelMap />
-    </section>
-  </div>
+    <!-- Hero Content Container -->
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+      <!-- Line 1: "Letters from" (Inter, smaller text, muted opacity) -->
+      <p class="font-sans text-xs sm:text-sm md:text-base uppercase tracking-[0.25em] text-white/70 font-medium mb-3">
+        Letters from
+      </p>
 
-  <!-- 4. Currently Consuming: Reading + Cinema Side-by-Side -->
-  <div class="horizontal-panel panel-consuming" data-panel-index="3">
-    <CurrentlyConsuming />
-  </div>
+      <!-- Line 2: "The Long way Home." (Newsreader serif, large editorial display, single line whitespace-nowrap) -->
+      <h1 class="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white font-normal whitespace-nowrap tracking-tight leading-none">
+        The Long way Home.
+      </h1>
 
-  <!-- 5. Letters from the Road: Substack Direct Ingestion -->
-  <div class="horizontal-panel panel-letters" data-panel-index="4">
-    <section class="section-dark letters-home-section reveal-on-scroll" id="letters" aria-label="Substack Field Letters">
-      <div class="content-wrap">
-        <div class="letters-home-header">
-          <span class="eyebrow" style="color: var(--accent-sage);">Substack Dispatches · reKhoj</span>
-          <h2 class="section-title" style="color: #FAF8F5; margin-top: 6px;">
-            Letters from the Slow Road.
+      <!-- Editorial Subtitle -->
+      <p class="mt-6 font-sans text-xs sm:text-sm md:text-base text-white/65 max-w-xl leading-relaxed tracking-wide">
+        Slow routes across Himachal, Rajasthan &amp; the coastal south. Field notebooks, bus ledgers, and honest stories from the trail.
+      </p>
+
+      <!-- Minimal Downward Prompt -->
+      <a
+        href="#letters"
+        class="mt-10 sm:mt-14 inline-flex flex-col items-center gap-2 text-white/50 hover:text-white transition-colors duration-200 group"
+        aria-label="Scroll down to travel letters"
+      >
+        <span class="text-[11px] uppercase font-sans tracking-[0.2em] font-medium">Scroll to Begin</span>
+        <svg
+          class="w-4 h-4 text-white/60 group-hover:text-white transition-transform duration-200 group-hover:translate-y-1"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.75"
+          viewBox="0 0 24 24"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ================================================================= -->
+  <!-- TASK 3: CHRONOLOGICAL LETTERS (Vertical GSAP ScrollTrigger Crossfade)-->
+  <!-- ================================================================= -->
+  <section
+    id="letters"
+    class="relative bg-[#0A1118] border-t border-white/10"
+    aria-label="Chronological Travel Letters"
+  >
+    <!-- Section Introduction Header (Clean editorial intro before pinning) -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-10 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0F1720] border border-white/10 text-white/60 text-xs font-sans tracking-widest uppercase mb-4">
+        <span>Chronological Dispatches</span>
+        <span>·</span>
+        <span>2023–2026</span>
+      </div>
+      <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-white font-normal tracking-tight">
+        Past Travel to Kangra, Jaipur &amp; Jodhpur
+      </h2>
+      <p class="mt-4 font-sans text-sm sm:text-base text-white/60 max-w-xl mx-auto leading-relaxed">
+        As you scroll vertically, each chronological dispatch unfolds in sequence.
+      </p>
+    </div>
+
+    <!-- Pinned Viewport Container for GSAP ScrollTrigger Crossfade -->
+    <div
+      id="letters-pinned-container"
+      class="relative w-full h-screen h-[100vh] min-h-[100dvh] overflow-hidden flex items-center justify-center"
+    >
+      <!-- Subtle Topographic Decorative Ring Motif in the background -->
+      <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20" aria-hidden="true">
+        <div class="w-[500px] h-[500px] rounded-full border border-white/10 flex items-center justify-center">
+          <div class="w-[380px] h-[380px] rounded-full border border-dashed border-white/15 flex items-center justify-center">
+            <div class="w-[240px] h-[240px] rounded-full border border-white/10"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stack of Crossfading Letter Blocks (Absolute positioning in pinned viewport) -->
+      <div class="relative w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-center">
+        {chronologicalLetters.map((letter, index) => (
+          <article
+            id={`letter-slide-${index}`}
+            class="letter-crossfade-slide absolute inset-x-4 sm:inset-x-6 lg:inset-x-8 max-w-3xl mx-auto my-auto p-6 sm:p-10 md:p-12 rounded-2xl bg-[#0F1720] border border-white/10 shadow-2xl backdrop-blur-xl transition-all duration-300"
+            data-index={index}
+            style={index === 0 ? "opacity: 1; pointer-events: auto;" : "opacity: 0; pointer-events: none;"}
+          >
+            <!-- Top Metadata Row -->
+            <div class="flex flex-wrap items-center justify-between gap-3 pb-6 border-b border-white/10">
+              <div class="flex items-center gap-2.5">
+                <span class="font-mono text-xs text-white/80 font-semibold tracking-wider">
+                  {letter.step}
+                </span>
+                <span class="text-white/30">/</span>
+                <span class="font-sans text-xs text-white/60 tracking-wider uppercase font-medium">
+                  {letter.season}
+                </span>
+              </div>
+              <span class="inline-flex items-center gap-1.5 text-xs text-white/50 font-mono">
+                <svg class="w-3.5 h-3.5 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                {letter.altitude}
+              </span>
+            </div>
+
+            <!-- Main Letter Content -->
+            <div class="pt-6">
+              <p class="font-sans text-xs uppercase tracking-[0.2em] text-white/60 mb-2 font-medium">
+                {letter.destination}
+              </p>
+              <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl text-white font-normal tracking-tight mb-4">
+                {letter.title}
+              </h3>
+              <p class="font-sans text-sm sm:text-base text-white/85 leading-relaxed mb-4">
+                {letter.summary}
+              </p>
+              <p class="font-serif italic text-xs sm:text-sm text-white/65 border-l-2 border-white/20 pl-4 py-1 mb-8">
+                "{letter.reflection}"
+              </p>
+
+              <!-- Footer CTA Link -->
+              <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                <span class="text-xs font-mono text-white/40">
+                  {letter.tag}
+                </span>
+                <a
+                  href={letter.substackUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-[#0A1118] font-sans text-xs font-semibold hover:bg-white/90 transition-all duration-200 shadow-md"
+                >
+                  <span>Read Letter on Substack</span>
+                  <span class="text-xs">↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- Slide Indicator Dots -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2.5 z-20" aria-label="Slide Indicator">
+        {chronologicalLetters.map((_, idx) => (
+          <div
+            id={`indicator-dot-${idx}`}
+            class={`slide-indicator-dot h-1.5 rounded-full transition-all duration-300 ${idx === 0 ? 'w-8 bg-white' : 'w-2 bg-white/25'}`}
+          ></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================= -->
+  <!-- TASK 3: MINIMALIST READING LIST (Literary Identity, Zero Movies)  -->
+  <!-- ================================================================= -->
+  <section
+    id="reading"
+    class="py-24 sm:py-32 bg-[#0A1118] border-t border-white/10"
+    aria-label="Currently Reading Books"
+  >
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section Header with Bold Outline Hand-drawn Icon -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-white/10">
+        <div>
+          <!-- Hand-drawn Open Book Outline Doodle (Pickles/Open Doodles Style) -->
+          <div class="w-12 h-12 mb-4 text-white flex items-center justify-center">
+            <svg class="w-10 h-10" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 16c6-4 16-4 24 2v34c-8-6-18-6-24-2V16z" fill="#0F1720" />
+              <path d="M56 16c-6-4-16-4-24 2v34c8-6 18-6 24-2V16z" fill="#0F1720" />
+              <path d="M32 18v34" />
+              <path d="M16 26c4-2 9-2 12 0" />
+              <path d="M16 34c4-2 9-2 12 0" />
+              <path d="M36 26c4-2 9-2 12 0" />
+              <path d="M36 34c4-2 9-2 12 0" />
+            </svg>
+          </div>
+          <span class="font-sans text-xs uppercase tracking-[0.25em] text-white/60 font-semibold">
+            Field Library · Trail Companions
+          </span>
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-white font-normal tracking-tight mt-2">
+            Currently Reading on the Road
           </h2>
-          <p style="color: var(--text-dark-secondary); max-width: 600px; margin: 12px auto 0 auto; line-height: 1.6;">
-            Unhurried field dispatches, transit ledgers, and road encounters delivered straight to your inbox without algorithmic noise.
+          <p class="mt-3 font-sans text-sm sm:text-base text-white/60 max-w-xl leading-relaxed">
+            Books carried across high Himalayan passes and long state bus journeys. Words that shape how the landscape is seen.
           </p>
         </div>
 
-        <!-- Direct Substack Email Subscribe Component -->
-        <SubstackDirectSubscribe />
-
-        <!-- Substack Recent Posts Grid & Fallback -->
-        {substackPosts.length > 0 ? (
-          <div class="substack-cards-grid" style="margin-top: 40px;">
-            {substackPosts.slice(0, 3).map((post) => (
-              <a
-                href={post.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="substack-post-card"
-              >
-                <div class="substack-post-top">
-                  <span class="substack-badge">Letter</span>
-                  <span class="substack-date">{post.pubDate}</span>
-                </div>
-                {post.enclosureUrl && (
-                  <div class="substack-post-image">
-                    <img src={post.enclosureUrl} alt={post.title} loading="lazy" />
-                  </div>
-                )}
-                <h3 class="substack-post-title">{post.title}</h3>
-                <p class="substack-post-desc">{post.description}</p>
-                <span class="substack-read-link">
-                  Read letter on Substack <span class="arrow-spring">→</span>
-                </span>
-              </a>
-            ))}
-          </div>
-        ) : (
-          <div id="homeSubstackEmptyCard" class="home-substack-empty-card" style="margin-top: 40px;">
-            <div class="empty-state-badge">reKhoj · The Road Notebook</div>
-            <h3 class="empty-state-title">Dispatches from the Slow Road Forthcoming</h3>
-            <p class="empty-state-desc">
-              Unpublished trail notes, state bus transit logs, travel expense ledgers, and stories from the road are being drafted for <em>reKhoj</em> on Substack and will syndicate here automatically via RSS.
-            </p>
-            <div class="empty-state-sections">
-              <span class="section-tag">Paaji Trails (Routes & Transit)</span>
-              <span class="section-tag">Coffee & Khaata (Trip Khatas)</span>
-              <span class="section-tag">Dhaba Stories (Road Encounters)</span>
-            </div>
-            <a
-              href="https://rekhoj.substack.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="home-empty-cta"
-            >
-              <span>Subscribe to reKhoj on Substack</span>
-              <span class="arrow-spring">↗</span>
-            </a>
-          </div>
-        )}
+        <div class="flex items-center gap-3">
+          <a
+            href="https://www.goodreads.com/user/show/202026328-varneet-singh"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#0F1720] hover:bg-white/10 text-white/80 hover:text-white border border-white/10 text-xs font-sans tracking-wide transition-colors"
+          >
+            <span>Goodreads Shelf</span>
+            <span class="text-white/40">↗</span>
+          </a>
+        </div>
       </div>
-    </section>
-  </div>
 
-  <!-- 6. Hostel & Volunteering Pitch -->
-  <div class="horizontal-panel panel-volunteer" data-panel-index="5">
-    <HostelPitch />
-  </div>
+      <!-- Minimalist Book Cards Grid (8px/16px Grid Scale) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 pt-12">
+        {currentlyReading.slice(0, 3).map((book) => (
+          <div class="group flex flex-col p-6 sm:p-8 rounded-2xl bg-[#0F1720] border border-white/10 hover:border-white/20 transition-all duration-300">
+            <!-- Book Cover Image with Editorial Proportion -->
+            <div class="w-full aspect-[2/3] max-h-72 rounded-lg overflow-hidden bg-[#0A1118] border border-white/10 mb-6 flex items-center justify-center">
+              <img
+                src={book.cover}
+                alt={`Book cover of ${book.title} by ${book.author}`}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+            </div>
 
-  <!-- Test Preservation Vault (Preserving test tokens for ADV-M3-07, runner.js, etc.) -->
-  <div class="test-preservation-vault" style="display: none;" aria-hidden="true">
-    <div class="hero-photo-strip">
-      <img src="/images/bir/bir-hero.jpg" class="hero-photo" alt="Bir Billing" loading="eager" />
+            <!-- Title & Author -->
+            <div class="mb-4">
+              <span class="text-xs uppercase font-sans tracking-widest text-white/50 block mb-1">
+                {book.tag || "Field Companion"}
+              </span>
+              <h3 class="font-serif text-xl sm:text-2xl text-white font-normal group-hover:text-white/90 transition-colors">
+                {book.title}
+              </h3>
+              <p class="font-sans text-sm text-white/60 mt-1 font-medium">
+                {book.author}
+              </p>
+            </div>
+
+            <!-- Reflection / Note -->
+            <p class="font-sans text-xs sm:text-sm text-white/70 leading-relaxed mb-4 flex-grow">
+              {book.note}
+            </p>
+
+            <!-- Trail Connection Location Badge -->
+            <div class="pt-4 border-t border-white/10">
+              <p class="font-sans text-xs text-white/50 italic leading-snug mb-3">
+                {book.trailConnection}
+              </p>
+
+              <!-- Progress Bar -->
+              <div class="w-full bg-[#0A1118] rounded-full h-1.5 overflow-hidden border border-white/10">
+                <div
+                  class="bg-white/80 h-full rounded-full"
+                  style={`width: ${book.percent || 25}%`}
+                ></div>
+              </div>
+              <div class="flex justify-between items-center mt-2 text-[11px] font-mono text-white/40">
+                <span>Reading Progress</span>
+                <span>{book.percent || 25}%</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
-  </div>
+  </section>
+
+  <!-- ================================================================= -->
+  <!-- SUBSTACK DIRECT DISPATCH CALLOUT (Minimalist Closure)             -->
+  <!-- ================================================================= -->
+  <section class="py-20 bg-[#0F1720] border-t border-white/10" aria-label="Subscribe to Letters">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <!-- Minimalist Pen/Quill Outline Illustration -->
+      <div class="w-12 h-12 mx-auto mb-4 text-white flex items-center justify-center">
+        <svg class="w-10 h-10" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M48 6l10 10L24 50l-14 4 4-14L48 6z" fill="#0A1118" />
+          <path d="M40 14l10 10" />
+          <path d="M10 54l6-6" />
+        </svg>
+      </div>
+
+      <span class="font-sans text-xs uppercase tracking-[0.25em] text-white/60 font-semibold">
+        reKhoj on Substack
+      </span>
+      <h2 class="font-serif text-3xl sm:text-4xl text-white font-normal tracking-tight mt-2 mb-4">
+        Receive the Next Dispatch in Your Inbox
+      </h2>
+      <p class="font-sans text-sm sm:text-base text-white/65 max-w-lg mx-auto leading-relaxed mb-8">
+        Every fortnight, unhurried trail notes, state transport bus ledgers, and stories from the open road are sent directly to readers without algorithms.
+      </p>
+
+      <a
+        href="https://rekhoj.substack.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-white text-[#0A1118] font-sans text-sm font-semibold hover:bg-white/90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-xl"
+      >
+        <span>Subscribe to reKhoj on Substack</span>
+        <span>↗</span>
+      </a>
+    </div>
+  </section>
 </BaseLayout>
 
-<style>
-  .horizontal-panel {
-    flex: 0 0 100vw;
-    width: 100vw;
-    min-width: 100vw;
-    max-width: 100vw;
-    height: 100vh;
-    min-height: 100vh;
-    max-height: 100vh;
-    box-sizing: border-box;
-    overflow-y: auto;
-    overflow-x: hidden;
-    position: relative;
-    -webkit-overflow-scrolling: touch;
+<!-- ================================================================= -->
+<!-- GSAP SCROLLTRIGGER CROSSFADE ENGINE (Vertical Scroll Pinned Logic)-->
+<!-- ================================================================= -->
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  function setupLetterCrossfade() {
+    const pinnedContainer = document.getElementById("letters-pinned-container");
+    const slides = gsap.utils.toArray<HTMLElement>(".letter-crossfade-slide");
+    const dots = gsap.utils.toArray<HTMLElement>(".slide-indicator-dot");
+
+    if (!pinnedContainer || slides.length === 0) return;
+
+    // Initialize slides: First slide visible at 1, others at 0
+    slides.forEach((slide, idx) => {
+      gsap.set(slide, {
+        opacity: idx === 0 ? 1 : 0,
+        y: idx === 0 ? 0 : 30,
+        pointerEvents: idx === 0 ? "auto" : "none",
+      });
+    });
+
+    function updateDots(activeIndex: number) {
+      dots.forEach((dot, dIdx) => {
+        if (dIdx === activeIndex) {
+          dot.classList.remove("w-2", "bg-white/25");
+          dot.classList.add("w-8", "bg-white");
+        } else {
+          dot.classList.remove("w-8", "bg-white");
+          dot.classList.add("w-2", "bg-white/25");
+        }
+      });
+    }
+
+    // Pinned ScrollTrigger Timeline
+    // Distance corresponds to vertical scrolling duration (e.g. 2.5 screens)
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: pinnedContainer,
+        start: "top top",
+        end: () => `+=${window.innerHeight * 2.8}`,
+        pin: true,
+        scrub: 0.8,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+      },
+    });
+
+    const total = slides.length;
+
+    // Crossfade sequence across the chronological slides
+    slides.forEach((slide, i) => {
+      if (i < total - 1) {
+        const nextSlide = slides[i + 1];
+
+        // 1. Reading dwell period on current slide
+        tl.to({}, {
+          duration: 0.8,
+          onStart: () => updateDots(i),
+          onReverseComplete: () => updateDots(i),
+        });
+
+        // 2. Smooth crossfade: outgoing fades out, incoming fades in without overlapping
+        tl.to(slide, {
+          opacity: 0,
+          y: -25,
+          pointerEvents: "none",
+          duration: 1.0,
+          ease: "power2.inOut",
+        })
+        .to(nextSlide, {
+          opacity: 1,
+          y: 0,
+          pointerEvents: "auto",
+          duration: 1.0,
+          ease: "power2.inOut",
+          onStart: () => updateDots(i + 1),
+          onReverseComplete: () => updateDots(i),
+        }, "<");
+      }
+    });
+
+    // Final dwell period on the 4th (last) slide before user scrolls past pinned container
+    tl.to({}, {
+      duration: 0.8,
+      onStart: () => updateDots(total - 1),
+    });
   }
 
-  .atlas-scroll-wrapper {
-    padding: 60px 0;
-    background: #0B1412;
+  // Run on mount
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupLetterCrossfade);
+  } else {
+    setupLetterCrossfade();
   }
-
-  .letters-home-section {
-    padding: 90px 0;
-    background: #0D1614;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .letters-home-header {
-    text-align: center;
-    margin-bottom: 24px;
-  }
-
-  .home-substack-empty-card {
-    background: #172320;
-    border: 1px dashed rgba(255, 255, 255, 0.15);
-    border-radius: 12px;
-    padding: 36px 24px;
-    text-align: center;
-    max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .empty-state-badge {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent-sage-light);
-    margin-bottom: 12px;
-  }
-
-  .empty-state-title {
-    font-family: var(--font-serif);
-    font-size: 1.6rem;
-    color: #ffffff;
-    margin: 0 0 12px 0;
-  }
-
-  .empty-state-desc {
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--text-dark-secondary);
-    max-width: 540px;
-    margin: 0 auto 20px auto;
-  }
-
-  .empty-state-sections {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-bottom: 24px;
-  }
-
-  .section-tag {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    padding: 4px 10px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.06);
-    color: var(--text-dark-secondary);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .home-empty-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--accent-terracotta);
-    color: #ffffff;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    padding: 10px 22px;
-    border-radius: 999px;
-    text-decoration: none;
-    transition: transform 0.2s ease, background 0.2s ease;
-  }
-
-  .home-empty-cta:hover {
-    background: var(--accent-terracotta-light, #d86b58);
-    transform: translateY(-2px);
-  }
-</style>
+</script>
