@@ -235,68 +235,66 @@ const chronologicalLetters = [
       aria-hidden="true"
     ></div>
 
-    <!-- Top Spacer for Visual Breathing Room -->
-    <div class="relative z-10 w-full pt-12 sm:pt-16 md:pt-20"></div>
-
-    <!-- Hero Middle Block (Tagline using full horizontal space, Letters from left above, Subtitle right below) -->
-    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 md:px-12 flex flex-col my-auto">
-      <!-- 1. "Letters from" on left above tagline with delicate typography -->
-      <div class="w-full flex items-center gap-2 text-left mb-1.5 sm:mb-2 md:mb-3">
-        <span class="w-3 sm:w-5 h-[1px] bg-[#77C5A0]/70"></span>
-        <p class="font-sans text-[10px] sm:text-xs uppercase tracking-[0.25em] text-[#77C5A0]/90 font-medium">
+    <!-- Top Block / 3x3 Grid Top-Left: "Letters from" -->
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 md:px-12 pt-14 sm:pt-16 md:pt-20">
+      <div class="flex items-center gap-2 text-left">
+        <span class="w-3.5 sm:w-5 h-[1px] bg-[#77C5A0]/80"></span>
+        <p class="font-sans text-[10px] sm:text-xs uppercase tracking-[0.28em] text-[#77C5A0] font-medium">
           Letters from
-        </p>
-      </div>
-
-      <!-- 2. Flagship Tagline Title: The biggest element on screen, strictly using the whole horizontal space with equal distance between characters -->
-      <div class="w-full py-1 sm:py-2">
-        <h1 class="sr-only">The Long Way Home.</h1>
-        <svg
-          viewBox="0 0 1000 82"
-          class="w-full h-auto block select-none drop-shadow-2xl overflow-visible"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-        >
-          <text
-            x="0"
-            y="68"
-            textLength="1000"
-            lengthAdjust="spacing"
-            font-family="'Oswald', sans-serif"
-            font-weight="900"
-            font-size="80"
-            fill="#FFFFFF"
-            letter-spacing="0"
-          >THE LONG WAY HOME.</text>
-        </svg>
-      </div>
-
-      <!-- 3. Subtitle: Below and on the RIGHT side of the tagline with smaller, subtle typography -->
-      <div class="w-full flex justify-end mt-2 sm:mt-3 md:mt-4">
-        <p class="font-sans text-[10px] sm:text-[11px] md:text-xs text-white/60 leading-snug tracking-wide font-normal max-w-[220px] sm:max-w-xs md:max-w-sm text-right">
-          Slow routes across Himachal, Rajasthan &amp; the coastal south. Field notebooks, bus ledgers, and honest stories from the trail.
         </p>
       </div>
     </div>
 
-    <!-- Bottom Downward Exploration Prompt: Explore Letters -->
-    <div class="relative z-10 w-full text-center pb-6 sm:pb-10 md:pb-12">
-      <a
-        href="#letters"
-        class="inline-flex flex-col items-center gap-2 text-white/60 hover:text-[#77C5A0] transition-colors duration-200 group"
-        aria-label="Scroll down to explore travel letters"
+    <!-- Center Block / 3x3 Grid Center: "THE LONG WAY HOME." (Spans full horizontal width) -->
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 md:px-12 my-auto py-2">
+      <h1 class="sr-only">The Long Way Home.</h1>
+      <svg
+        viewBox="0 0 1000 82"
+        class="w-full h-auto block select-none drop-shadow-2xl overflow-visible"
+        preserveAspectRatio="none"
+        aria-hidden="true"
       >
-        <span class="text-[11px] uppercase font-sans tracking-[0.2em] font-medium">Explore Letters</span>
-        <svg
-          class="w-4 h-4 text-white/70 group-hover:text-[#77C5A0] transition-transform duration-200 group-hover:translate-y-1"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.75"
-          viewBox="0 0 24 24"
+        <text
+          x="0"
+          y="68"
+          textLength="1000"
+          lengthAdjust="spacing"
+          font-family="'Oswald', sans-serif"
+          font-weight="900"
+          font-size="80"
+          fill="#FFFFFF"
+          letter-spacing="0"
+        >THE LONG WAY HOME.</text>
+      </svg>
+    </div>
+
+    <!-- Bottom Block / 3x3 Grid Bottom-Right & Bottom-Center Arrow -->
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 md:px-12 pb-8 sm:pb-12 flex flex-col justify-end">
+      <!-- 3x3 Grid Bottom-Right: Subtitle -->
+      <div class="w-full flex justify-end mb-6 sm:mb-8">
+        <p class="font-sans text-[11px] sm:text-xs md:text-sm text-white/70 leading-relaxed tracking-wide font-normal max-w-[240px] sm:max-w-xs md:max-w-sm text-right">
+          Slow routes across Himachal, Rajasthan &amp; the coastal south. Field notebooks, bus ledgers, and honest stories from the trail.
+        </p>
+      </div>
+
+      <!-- Bottom-Center: Just the Downward Arrow (Word 'Explore Letters' removed) -->
+      <div class="w-full flex justify-center items-center">
+        <a
+          href="#letters"
+          class="inline-flex items-center justify-center p-2 text-white/60 hover:text-[#77C5A0] transition-colors duration-200 group"
+          aria-label="Scroll down to explore letters"
         >
-          <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
-      </a>
+          <svg
+            class="w-5 h-5 text-white/70 group-hover:text-[#77C5A0] transition-transform duration-300 group-hover:translate-y-1.5 animate-bounce"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </a>
+      </div>
     </div>
   </section>
 
