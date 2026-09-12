@@ -235,66 +235,90 @@ const chronologicalLetters = [
       aria-hidden="true"
     ></div>
 
-    <!-- Top Block / 3x3 Grid Top-Left: "Letters from" -->
-    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 md:px-12 pt-14 sm:pt-16 md:pt-20">
-      <div class="flex items-center gap-2 text-left">
-        <span class="w-3.5 sm:w-5 h-[1px] bg-[#77C5A0]/80"></span>
-        <p class="font-sans text-[10px] sm:text-xs uppercase tracking-[0.28em] text-[#77C5A0] font-medium">
-          Letters from
-        </p>
-      </div>
+    <!-- Top-Left Corner: "Letters from" (Flush to top-left corner, no container margins) -->
+    <div class="absolute top-5 left-4 sm:top-8 sm:left-8 md:top-10 md:left-10 z-20 flex items-center gap-2 text-left">
+      <span class="w-3.5 sm:w-5 h-[1px] bg-[#77C5A0]/80"></span>
+      <p class="font-sans text-[10px] sm:text-xs uppercase tracking-[0.28em] text-[#77C5A0] font-medium">
+        Letters from
+      </p>
     </div>
 
-    <!-- Center Block / 3x3 Grid Center: "THE LONG WAY HOME." (Spans full horizontal width) -->
-    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 md:px-12 my-auto py-2">
+    <!-- Center: "THE LONG WAY HOME." using all horizontal space with 1:5 word-to-character ratio -->
+    <div class="relative z-10 w-full px-2 sm:px-4 md:px-6 my-auto py-2">
       <h1 class="sr-only">The Long Way Home.</h1>
       <svg
-        viewBox="0 0 1000 82"
+        viewBox="0 0 1200 90"
         class="w-full h-auto block select-none drop-shadow-2xl overflow-visible"
         preserveAspectRatio="none"
         aria-hidden="true"
       >
         <text
           x="0"
-          y="68"
-          textLength="1000"
+          y="75"
+          textLength="188.6"
           lengthAdjust="spacing"
           font-family="'Oswald', sans-serif"
           font-weight="900"
           font-size="80"
           fill="#FFFFFF"
-          letter-spacing="0"
-        >THE LONG WAY HOME.</text>
+        >THE</text>
+        <text
+          x="260.1"
+          y="75"
+          textLength="274.0"
+          lengthAdjust="spacing"
+          font-family="'Oswald', sans-serif"
+          font-weight="900"
+          font-size="80"
+          fill="#FFFFFF"
+        >LONG</text>
+        <text
+          x="605.6"
+          y="75"
+          textLength="203.5"
+          lengthAdjust="spacing"
+          font-family="'Oswald', sans-serif"
+          font-weight="900"
+          font-size="80"
+          fill="#FFFFFF"
+        >WAY</text>
+        <text
+          x="880.6"
+          y="75"
+          textLength="319.4"
+          lengthAdjust="spacing"
+          font-family="'Oswald', sans-serif"
+          font-weight="900"
+          font-size="80"
+          fill="#FFFFFF"
+        >HOME.</text>
       </svg>
     </div>
 
-    <!-- Bottom Block / 3x3 Grid Bottom-Right & Bottom-Center Arrow -->
-    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 md:px-12 pb-8 sm:pb-12 flex flex-col justify-end">
-      <!-- 3x3 Grid Bottom-Right: Subtitle -->
-      <div class="w-full flex justify-end mb-6 sm:mb-8">
-        <p class="font-sans text-[11px] sm:text-xs md:text-sm text-white/70 leading-relaxed tracking-wide font-normal max-w-[240px] sm:max-w-xs md:max-w-sm text-right">
-          Slow routes across Himachal, Rajasthan &amp; the coastal south. Field notebooks, bus ledgers, and honest stories from the trail.
-        </p>
-      </div>
+    <!-- Bottom-Right Corner: Subtitle (Flush to bottom-right corner with mobile clearance) -->
+    <div class="absolute bottom-10 sm:bottom-8 md:bottom-10 right-4 sm:right-8 md:right-10 z-20 flex justify-end">
+      <p class="font-sans text-[10px] sm:text-xs md:text-sm text-white/75 leading-relaxed tracking-wide font-normal max-w-[165px] sm:max-w-xs md:max-w-sm text-right">
+        Slow routes across Himachal, Rajasthan &amp; the coastal south. Field notebooks, bus ledgers, and honest stories from the trail.
+      </p>
+    </div>
 
-      <!-- Bottom-Center: Just the Downward Arrow (Word 'Explore Letters' removed) -->
-      <div class="w-full flex justify-center items-center">
-        <a
-          href="#letters"
-          class="inline-flex items-center justify-center p-2 text-white/60 hover:text-[#77C5A0] transition-colors duration-200 group"
-          aria-label="Scroll down to explore letters"
+    <!-- Bottom-Center: Just Downward Arrow -->
+    <div class="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 flex justify-center items-center">
+      <a
+        href="#letters"
+        class="inline-flex items-center justify-center p-2 text-white/60 hover:text-[#77C5A0] transition-colors duration-200 group"
+        aria-label="Scroll down to explore letters"
+      >
+        <svg
+          class="w-5 h-5 text-white/70 group-hover:text-[#77C5A0] transition-transform duration-300 group-hover:translate-y-1.5 animate-bounce"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
         >
-          <svg
-            class="w-5 h-5 text-white/70 group-hover:text-[#77C5A0] transition-transform duration-300 group-hover:translate-y-1.5 animate-bounce"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </a>
-      </div>
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </a>
     </div>
   </section>
 
@@ -652,7 +676,7 @@ const chronologicalLetters = [
         <span class="font-sans text-xs uppercase tracking-[0.25em] text-[#77C5A0] font-semibold block mb-3">
           About · reKhoj
         </span>
-        <h2 class="font-serif text-3xl sm:text-5xl md:text-6xl text-white font-normal tracking-tight">
+        <h2 class="font-['Fontdiner_Swanky',cursive] text-4xl sm:text-5xl md:text-6xl text-white font-normal tracking-wide leading-tight">
           the_musafir_paaji
         </h2>
 
